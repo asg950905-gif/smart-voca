@@ -1,0 +1,60 @@
+# 환경 변수
+.env
+.env.local
+.env.*.local
+
+# 로그 및 백업
+*.log
+*.bak
+*.tmp
+logs/
+backups/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상환경
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 데이터 (대용량 원본)
+data/*.csv
+data/*.xlsx
+data/*.parquet
+!data/.gitkeep
+
+# 주피터
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Docker
+docker-compose.override.yml
