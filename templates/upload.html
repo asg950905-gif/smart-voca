@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}파일 업로드 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="upload-page">
+    <h1>📤 단어 파일 업로드</h1>
+
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <h3>CSV 파일 업로드</h3>
+
+        <form method="POST" enctype="multipart/form-data" id="upload-form">
+            <div class="upload-area">
+                <input type="file" id="file-input" name="file" accept=".csv" required>
+                <label for="file-input">
+                    <p>📁 CSV 파일을 선택하세요</p>
+                    <p style="font-size: 12px;">또는 파일을 드래그하여 놓으세요</p>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                업로드
+            </button>
+        </form>
+
+        <div style="margin-top: 30px;">
+            <h4>📋 CSV 파일 형식</h4>
+            <p>다음과 같은 형식의 CSV 파일이 필요합니다:</p>
+            <pre style="background: var(--light-color); padding: 10px; border-radius: 4px; overflow-x: auto;">
+id,english,korean,part_of_speech,example
+1,apple,사과,noun,An apple a day keeps the doctor away.
+2,book,책,noun,I love reading books.
+            </pre>
+        </div>
+    </div>
+</div>
+
+<style>
+    .upload-area {
+        border: 2px dashed var(--border-color);
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s;
+    }
+
+    .upload-area:hover {
+        border-color: var(--primary-color);
+    }
+
+    .upload-area input {
+        display: none;
+    }
+
+    .upload-area label {
+        cursor: pointer;
+        margin: 0;
+    }
+</style>
+
+<script>
+    const form = document.getElementById('upload-form');
+    const fileInput = document.getElementById('file-input');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('파일 업로드 완료: ' + data.message);
+                location.href = '/';
+            } else {
+                alert('오류: ' + data.error);
+            }
+        } catch (error) {
+            alert('업로드 실패: ' + error.message);
+        }
+    });
+</script>
+{% endblock %}

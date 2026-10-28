@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}대시보드 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>📊 대시보드</h1>
+
+    <div class="welcome-section">
+        <h2>안녕하세요! 오늘도 화이팅! 💪</h2>
+        <p>매일 꾸준한 학습이 영어의 완성입니다.</p>
+    </div>
+
+    <!-- 진도 카드 -->
+    <div class="cards-container">
+        <div class="card">
+            <h3>📅 학습 진도</h3>
+            <div class="progress-info">
+                <p class="progress-text" id="progress-text">로드 중...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <p class="progress-percent" id="progress-percent">0%</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📚 오늘의 학습</h3>
+            <div id="today-status">
+                <p>로드 중...</p>
+            </div>
+            <button class="btn btn-primary" onclick="location.href='/study'">
+                학습 시작 →
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>✏️ 시험 응시</h3>
+            <p>실력을 확인하고 약점을 보완하세요.</p>
+            <button class="btn btn-primary" onclick="location.href='/test'">
+                시험 시작 →
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>📊 통계 보기</h3>
+            <p>학습 현황을 그래프로 분석합니다.</p>
+            <button class="btn btn-primary" onclick="location.href='/report'">
+                통계 보기 →
+            </button>
+        </div>
+    </div>
+
+    <!-- 빠른 접근 -->
+    <div class="quick-links">
+        <h3>빠른 접근</h3>
+        <div class="links-container">
+            <a href="/upload" class="quick-link">📤 단어 업로드</a>
+            <a href="/settings" class="quick-link">⚙️ 설정</a>
+            <a href="/" class="quick-link">🔄 새로고침</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 진도 정보 로드
+    fetch('/api/progress')
+        .then(response => response.json())
+        .then(data => {
+            const rate = data.completion_rate || 0;
+            document.getElementById('progress-text').textContent =
+                `${data.current_day}일차 / ${data.total_days}일차`;
+            document.getElementById('progress-fill').style.width = `${rate}%`;
+            document.getElementById('progress-percent').textContent = `${rate.toFixed(1)}%`;
+        })
+        .catch(error => {
+            document.getElementById('progress-text').textContent = '데이터를 불러올 수 없습니다';
+            console.error('Error:', error);
+        });
+
+    // 오늘의 학습 상태
+    fetch('/api/progress')
+        .then(response => response.json())
+        .then(data => {
+            const todayEl = document.getElementById('today-status');
+            const status = data.status === 'completed' ? '✓ 학습 완료!' : '오늘 아직 학습하지 않았습니다';
+            todayEl.innerHTML = `<p>${status}</p>`;
+        });
+</script>
+{% endblock %}

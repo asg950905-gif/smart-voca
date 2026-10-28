@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}통계 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="report-page">
+    <h1>📊 학습 통계</h1>
+
+    <!-- 통계 카드 -->
+    <div class="cards-container">
+        <div class="card">
+            <h3>학습 일수</h3>
+            <p id="study-days" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0</p>
+            <p style="color: var(--secondary-color);">일</p>
+        </div>
+
+        <div class="card">
+            <h3>시험 응시</h3>
+            <p id="test-attempts" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0</p>
+            <p style="color: var(--secondary-color);">회</p>
+        </div>
+
+        <div class="card">
+            <h3>평균 성공률</h3>
+            <p id="avg-success" style="font-size: 28px; font-weight: bold; color: var(--success-color);">0%</p>
+        </div>
+
+        <div class="card">
+            <h3>평균 시험 점수</h3>
+            <p id="avg-score" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0점</p>
+        </div>
+    </div>
+
+    <!-- 차트 -->
+    <div class="card" style="margin-top: 30px;">
+        <h3>최근 학습 추이</h3>
+        <canvas id="study-chart"></canvas>
+    </div>
+
+    <!-- 버튼 -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button class="btn btn-primary" style="width: 200px;" onclick="exportReport()">
+            📥 CSV 다운로드
+        </button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/report.js') }}"></script>
+{% endblock %}

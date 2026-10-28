@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}설정 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="settings-page">
+    <h1>⚙️ 설정</h1>
+
+    <div class="settings-container">
+        <!-- 학습 설정 -->
+        <div class="card">
+            <h3>학습 설정</h3>
+
+            <label for="daily-target">일일 학습 단어 수:</label>
+            <input type="number" id="daily-target" min="1" max="50" value="10">
+            <p style="font-size: 12px; color: var(--secondary-color);">매일 학습할 단어의 개수입니다.</p>
+        </div>
+
+        <!-- 표시 설정 -->
+        <div class="card">
+            <h3>표시 설정</h3>
+
+            <label>
+                <input type="checkbox" id="dark-mode">
+                다크 모드
+            </label>
+
+            <label for="theme">테마 선택:</label>
+            <select id="theme">
+                <option value="default">기본</option>
+                <option value="blue">파란색</option>
+                <option value="green">초록색</option>
+            </select>
+
+            <label for="font-size">폰트 크기:</label>
+            <select id="font-size">
+                <option value="small">작음</option>
+                <option value="medium" selected>보통</option>
+                <option value="large">큼</option>
+            </select>
+        </div>
+
+        <!-- 데이터 관리 -->
+        <div class="card">
+            <h3>데이터 관리</h3>
+
+            <button class="btn btn-warning" onclick="resetProgress()">
+                진도 초기화
+            </button>
+            <p style="font-size: 12px; color: var(--secondary-color); margin: 10px 0;">
+                학습 진도만 초기화합니다. (단어 데이터는 유지)
+            </p>
+
+            <button class="btn btn-danger" onclick="resetAllData()" style="margin-top: 10px;">
+                모든 데이터 초기화
+            </button>
+            <p style="font-size: 12px; color: var(--danger-color); margin: 10px 0;">
+                ⚠️ 이 작업은 되돌릴 수 없습니다!
+            </p>
+        </div>
+
+        <!-- 저장 버튼 -->
+        <button class="btn btn-success" onclick="saveSettings()" style="width: 100%; margin-top: 20px;">
+            설정 저장
+        </button>
+    </div>
+</div>
+
+<style>
+    .settings-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .card label {
+        display: block;
+        margin-top: 15px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .card input[type="checkbox"] {
+        width: auto;
+        margin-right: 10px;
+    }
+</style>
+
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}
