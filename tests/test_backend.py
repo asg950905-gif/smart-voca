@@ -68,8 +68,11 @@ def make_user(app, username='kim', password='pass1234'):
 # ---------- 인증/권한 ----------
 def test_anonymous_is_blocked(app):
     client = new_client(app)
-    assert client.get('/').status_code == 302
+    assert client.get('/').status_code == 200          # 로그인 전 '/' 는 랜딩 페이지
+    assert client.get('/study').status_code == 302     # 나머지 사용자 화면은 로그인으로 이동
+    assert client.get('/league').status_code == 302
     assert client.get('/api/progress').status_code == 401
+    assert client.get('/api/league').status_code == 401
     assert client.get('/api/admin/overview').status_code == 401
 
 
@@ -248,7 +251,7 @@ def test_admin_charts_and_settings(app, admin):
 
 
 # ---------- 화면(HTML) 렌더링 ----------
-USER_PAGES = ['/', '/study', '/test', '/report', '/settings']
+USER_PAGES = ['/', '/study', '/test', '/league', '/report', '/settings']
 ADMIN_PAGES = ['/admin/', '/admin/words', '/admin/users', '/admin/settings']
 
 
@@ -285,3 +288,81 @@ def test_deactivated_user_sees_reason_after_redirect(app, admin):
     api(admin, 'post', f'/api/admin/users/{uid}/active', json={'active': False})
     assert kim.get('/').status_code == 302  # 로그인 화면으로 이동
     assert '비활성화되었거나 삭제되어' in kim.get('/login').get_data(as_text=True)  # 이유를 안내한다
+
+
+# ---------- v2: 랜딩 · XP/레벨 · 리그 · 빈칸 문제 ----------
+EXAMPLE_WORDS = [
+    ('ability', '능력', 'She has the ability to learn fast.'),
+    ('avoid', '피하다', 'You should avoid sugary drinks.'),
+    ('courage', '용기', 'It takes courage to speak up.'),
+    ('habit', '습관', 'Reading is a good habit.'),
+    ('attempt', '시도하다', 'She attempted to climb the wall.'),   # 활용형(attempted) → 빈칸 불가, 4지선다로 대체
+]
+
+
+def test_landing_shows_only_real_stats(app):
+    html = new_client(app).get('/').get_data(as_text=True)
+    assert 'data-count="8"' in html            # 테스트용 단어 8개 = 실제 DB 값
+    assert '1000만' not in html and '4.8' not in html   # 꾸며낸 신뢰 수치를 넣지 않는다
+
+
+def test_xp_level_and_levelup(app):
+    from src.business.gamification import level_info
+    assert level_info(0)['level'] == 1 and level_info(99)['level'] == 1
+    assert level_info(100)['level'] == 2 and level_info(299)['level'] == 2 and level_info(300)['level'] == 3
+    client = make_user(app)
+    words = api(client, 'get', '/api/study/daily-words').get_json()
+    result = api(client, 'post', '/api/study/record',
+                 json={'results': [{'word_id': w['id'], 'is_correct': True} for w in words]}).get_json()
+    assert result['xp_gained'] == 80 and result['level'] == 1 and result['level_up'] is False  # 8개 × 10XP
+    again = api(client, 'post', '/api/study/record',
+                json={'results': [{'word_id': w['id'], 'is_correct': True} for w in words]}).get_json()
+    assert again['xp'] == 160 and again['level'] == 2 and again['level_up'] is True   # 100XP 를 넘으면 레벨 2
+    assert api(client, 'get', '/api/progress').get_json()['level'] == 2
+
+
+def test_weekly_league_ranking_and_exclusions(app, admin):
+    a, b = make_user(app, 'userA'), make_user(app, 'userB')
+    words = api(a, 'get', '/api/study/daily-words').get_json()
+    api(a, 'post', '/api/study/record', json={'results': [{'word_id': w['id'], 'is_correct': True} for w in words]})
+    api(b, 'post', '/api/study/record', json={'results': [{'word_id': words[0]['id'], 'is_correct': True}]})
+    league = api(b, 'get', '/api/league').get_json()
+    names = [r['name'] for r in league['board']]
+    assert names[:2] == ['userA', 'userB'] and league['my_rank'] == 2 and league['total'] == 2
+    assert 'admin' not in names and 'userA' in names                 # 관리자는 순위에서 제외
+    assert [r for r in league['board'] if r['me']][0]['name'] == 'userB'
+    assert api(a, 'get', '/api/league').get_json()['my_rank'] == 1
+
+
+def test_fill_in_blank_hides_answer_and_falls_back(app):
+    for en, ko, ex in EXAMPLE_WORDS:
+        app.words.add_word(en, ko, 'noun', ex)
+    client = make_user(app)
+    api(client, 'post', '/api/test/start', json={'num_problems': 13, 'format': '빈칸형'})
+    kinds = set()
+    while True:
+        p = api(client, 'get', '/api/test/current').get_json()
+        if p['finished']:
+            break
+        kinds.add(p['format'])
+        assert 'correct_answer' not in p                           # 정답은 응답에 없다
+        if p['format'] == '빈칸형':
+            assert '_____' in p['question'] and p['hint'] and len(p['options']) == 4
+            for _, _, ex in EXAMPLE_WORDS:
+                assert ex not in p['question']                     # 원문 예문이 그대로 노출되지 않는다
+        api(client, 'post', '/api/test/answer', json={'answer': p['options'][0] if p['options'] else 'x'})
+    assert '빈칸형' in kinds and '4지선다형' in kinds              # 예문 없는 단어·활용형은 4지선다로 대체됨
+    result = api(client, 'post', '/api/test/finish').get_json()
+    assert result['xp_gained'] == result['correct_answers'] * 15 + (result['total_problems'] - result['correct_answers']) * 3
+
+
+def test_blank_answer_is_graded_case_insensitively(app):
+    app.words.add_word('courage', '용기', 'noun', 'It takes courage to speak up.')
+    client = make_user(app)
+    # 단어가 9개라 4지선다 보기 생성 가능. 빈칸 문제의 정답을 서버 DB 에서 직접 확인해 채점을 검증한다.
+    api(client, 'post', '/api/test/start', json={'num_problems': 9, 'format': '빈칸형'})
+    state_json = app.db.scalar("SELECT state_json FROM test_sessions", default='{}')
+    import json as _json
+    problems = _json.loads(state_json)['problems']
+    blank = next(pr for pr in problems if pr['format'] == '빈칸형')
+    assert blank['correct_answer'] == 'courage' and blank['question'] == 'It takes _____ to speak up.'

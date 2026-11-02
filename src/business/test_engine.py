@@ -6,15 +6,17 @@
 import json
 import logging
 import random
+import re
 from datetime import datetime
 from typing import Dict, Optional
 from src.data.database import Database
 from src.business.word_manager import WordManager
+from src.business.gamification import GamificationManager, level_info, quiz_xp
 
 logger = logging.getLogger(__name__)
 
 MODES = ('한->영', '영->한', '혼합')
-FORMATS = ('단답형', '4지선다형', 'OX형', '혼합')
+FORMATS = ('단답형', '4지선다형', 'OX형', '빈칸형', '혼합')
 MIN_WORDS_FOR_CHOICE = 4  # 4지선다형은 오답 보기를 만들 단어가 최소 4개 필요
 
 
@@ -27,9 +29,10 @@ class TestEngine:
 
     __test__ = False  # pytest 가 클래스 이름 때문에 테스트로 오인하지 않도록 한다
 
-    def __init__(self, db: Database, word_manager: WordManager):
+    def __init__(self, db: Database, word_manager: WordManager, game: GamificationManager):
         self.db = db
         self.word_manager = word_manager
+        self.game = game
 
     # ---------- 세션 저장/로드 ----------
     def _load(self, user_id: int) -> Optional[Dict]:
@@ -60,17 +63,17 @@ class TestEngine:
         total_words = self.word_manager.count()
         if total_words == 0:
             raise TestError('등록된 단어가 없습니다. 관리자에게 단어 등록을 요청하세요.')
-        if fmt in ('4지선다형', '혼합') and total_words < MIN_WORDS_FOR_CHOICE:
+        if fmt in ('4지선다형', '빈칸형', '혼합') and total_words < MIN_WORDS_FOR_CHOICE:
             fmt = 'OX형' if total_words >= 2 else '단답형'  # 단어가 부족하면 가능한 형식으로 낮춘다
 
         # 오답이 많은 단어를 우선 출제한다
         words = self.db.query(
-            """SELECT w.id, w.english, w.korean FROM words w
+            """SELECT w.id, w.english, w.korean, w.example FROM words w
                LEFT JOIN user_word_stats s ON s.word_id = w.id AND s.user_id = ?
                ORDER BY COALESCE(s.weight, 0) DESC, RANDOM() LIMIT ?""",
             (user_id, num),
         )
-        pool = self.db.query("SELECT id, english, korean FROM words")
+        pool = self.db.query("SELECT id, english, korean FROM words")  # 보기·오답 후보
         problems = [self._make_problem(w, mode, fmt, pool) for w in words]
         random.shuffle(problems)
 
@@ -82,7 +85,16 @@ class TestEngine:
 
     def _make_problem(self, word: Dict, mode: str, fmt: str, pool: list) -> Dict:
         p_mode = random.choice(['한->영', '영->한']) if mode == '혼합' else mode
-        p_fmt = random.choice(['단답형', '4지선다형', 'OX형']) if fmt == '혼합' else fmt
+        p_fmt = random.choice(['단답형', '4지선다형', 'OX형', '빈칸형']) if fmt == '혼합' else fmt
+        if p_fmt == '빈칸형':
+            sentence = self._blank_sentence(word)
+            if sentence and len(pool) >= MIN_WORDS_FOR_CHOICE:
+                others = [w['english'] for w in pool if w['id'] != word['id'] and w['english'].lower() != word['english'].lower()]
+                options = random.sample(others, min(3, len(others))) + [word['english']]
+                random.shuffle(options)
+                return {'word_id': word['id'], 'mode': '빈칸', 'format': '빈칸형', 'prompt': sentence,
+                        'question': sentence, 'hint': word['korean'], 'correct_answer': word['english'], 'options': options}
+            p_fmt = '4지선다형'  # 예문이 없거나 단어가 예문에 그대로 나오지 않으면 일반 4지선다로 대체
         if p_fmt == '4지선다형' and len(pool) < MIN_WORDS_FOR_CHOICE:
             p_fmt = 'OX형'
         if p_fmt == 'OX형' and len(pool) < 2:
@@ -112,6 +124,15 @@ class TestEngine:
             problem['question'] = f"'{ask}'" + ("의 영문은?" if p_mode == '한->영' else "의 뜻은?")
         return problem
 
+    @staticmethod
+    def _blank_sentence(word: Dict) -> Optional[str]:
+        """예문에서 단어(철자 그대로)를 ____ 로 가린다. 활용형(attempted 등)이라 찾지 못하면 None."""
+        example = (word.get('example') or '').strip()
+        if not example:
+            return None
+        match = re.search(r'\b' + re.escape(word['english']) + r'\b', example, re.IGNORECASE)
+        return example[:match.start()] + '_____' + example[match.end():] if match else None
+
     # ---------- 진행/채점 ----------
     def get_current_problem(self, user_id: int) -> Dict:
         state = self._load(user_id)
@@ -123,7 +144,8 @@ class TestEngine:
         p = state['problems'][idx]
         # 정답은 클라이언트에 보내지 않는다
         return {'finished': False, 'index': idx + 1, 'total': len(state['problems']),
-                'question': p['question'], 'format': p['format'], 'mode': p['mode'], 'options': p['options']}
+                'question': p['question'], 'format': p['format'], 'mode': p['mode'], 'options': p['options'],
+                'hint': p.get('hint')}
 
     def grade_answer(self, user_id: int, answer: str) -> Dict:
         state = self._load(user_id)
@@ -156,6 +178,7 @@ class TestEngine:
         score = round(correct / total * 100, 1)
         today = datetime.now().strftime('%Y-%m-%d')
         cfg = state['config']
+        xp_before = self.game.user_xp(user_id)
         with self.db.session() as conn:
             conn.execute(
                 "INSERT INTO test_logs(user_id, date, mode, format, total_problems, correct_answers, score) "
@@ -163,4 +186,8 @@ class TestEngine:
             for r in results:
                 self.word_manager.update_user_stat(conn, user_id, r['word_id'], r['is_correct'], today)
             conn.execute("DELETE FROM test_sessions WHERE user_id = ?", (user_id,))
-        return {'total_problems': total, 'correct_answers': correct, 'score': score, 'details': results}
+        gained = quiz_xp(correct, total)
+        info = level_info(xp_before + gained)
+        return {'total_problems': total, 'correct_answers': correct, 'score': score, 'details': results,
+                'xp_gained': gained, 'xp': info['xp'], 'level': info['level'],
+                'level_up': info['level'] > level_info(xp_before)['level']}

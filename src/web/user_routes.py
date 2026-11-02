@@ -3,7 +3,7 @@
 # 2026-11-02 - smart-voca - 사용자 화면·API 라우트 (대시보드/학습/시험/리포트/설정)
 # 파일 위치: src/web/user_routes.py
 
-from flask import Blueprint, current_app, g, jsonify, render_template, request, send_file
+from flask import Blueprint, current_app, g, jsonify, redirect, render_template, request, send_file, url_for
 from io import BytesIO
 from src.business.test_engine import TestError
 from src.utils.config import SettingsError
@@ -14,9 +14,21 @@ bp = Blueprint('user', __name__)
 
 # ===================== 페이지 =====================
 @bp.route('/')
-@login_required
 def dashboard():
-    return render_template('dashboard.html', progress=current_app.study.get_progress_info(g.user['id']))
+    """로그인 전에는 랜딩 페이지, 로그인 후에는 내 대시보드."""
+    if g.get('user') is None:
+        if g.get('kicked'):
+            return redirect(url_for('auth.login'))
+        return render_template('landing.html', stats=current_app.reports.public_stats())
+    league = current_app.game.weekly_league(g.user['id'])
+    return render_template('dashboard.html', progress=current_app.study.get_progress_info(g.user['id']),
+                           league=league)
+
+
+@bp.route('/league')
+@login_required
+def league_page():
+    return render_template('league.html')
 
 
 @bp.route('/study')
@@ -59,6 +71,12 @@ def api_record_study():
         return json_error('학습 결과가 올바르지 않습니다.')
     summary = current_app.study.record_study(g.user['id'], results)
     return jsonify({'status': 'success', **summary})
+
+
+@bp.route('/api/league')
+@login_required
+def api_league():
+    return jsonify(current_app.game.weekly_league(g.user['id']))
 
 
 @bp.route('/api/progress')

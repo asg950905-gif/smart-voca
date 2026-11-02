@@ -77,6 +77,16 @@ class ReportGenerator:
         out.seek(0)
         return out
 
+    # ---------- 공개 (랜딩 페이지) ----------
+    def public_stats(self) -> Dict:
+        """로그인 전에 보여주는 수치. 개인정보 없이 집계된 실제 값만 노출한다."""
+        return {
+            'words': self.db.scalar("SELECT COUNT(*) FROM words"),
+            'learners': self.db.scalar("SELECT COUNT(*) FROM users WHERE role = 'user' AND active = 1"),
+            'studied': self.db.scalar("SELECT SUM(words_count) FROM study_logs"),
+            'tests': self.db.scalar("SELECT COUNT(*) FROM test_logs"),
+        }
+
     # ---------- 관리자 전체 ----------
     def admin_overview(self) -> Dict:
         today = datetime.now().strftime('%Y-%m-%d')

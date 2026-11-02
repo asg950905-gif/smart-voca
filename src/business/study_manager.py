@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import Dict, List
 from src.data.database import Database
 from src.business.word_manager import WordManager
+from src.business.gamification import GamificationManager, level_info, study_xp
 
 logger = logging.getLogger(__name__)
 
@@ -17,9 +18,10 @@ DEFAULT_TOTAL_DAYS = 200
 class StudyManager:
     """사용자별 학습 진행 관리"""
 
-    def __init__(self, db: Database, word_manager: WordManager):
+    def __init__(self, db: Database, word_manager: WordManager, game: GamificationManager):
         self.db = db
         self.word_manager = word_manager
+        self.game = game
 
     def get_daily_words(self, user_id: int) -> List[Dict]:
         """오늘 학습할 단어. 오답이 많은 단어 → 아직 안 본 단어 → 오래전에 본 단어 순으로 고른다."""
@@ -43,11 +45,12 @@ class StudyManager:
         valid_ids = {r['id'] for r in self.db.query("SELECT id FROM words")}
         cleaned = [r for r in results if isinstance(r, dict) and r.get('word_id') in valid_ids]
         if not cleaned:
-            return {'words_count': 0, 'correct_count': 0, 'success_rate': 0}
+            return {'words_count': 0, 'correct_count': 0, 'success_rate': 0, 'xp_gained': 0, 'level_up': False}
 
         correct = sum(1 for r in cleaned if r.get('is_correct'))
         total = len(cleaned)
         rate = round(correct / total * 100, 1)
+        xp_before = self.game.user_xp(user_id)
         with self.db.session() as conn:  # 단어 통계와 로그를 한 트랜잭션으로 묶는다
             for r in cleaned:
                 self.word_manager.update_user_stat(conn, user_id, r['word_id'], bool(r.get('is_correct')), today)
@@ -55,8 +58,11 @@ class StudyManager:
                 "INSERT INTO study_logs(user_id, date, words_count, correct_count, success_rate) VALUES(?,?,?,?,?)",
                 (user_id, today, total, correct, rate),
             )
-        logger.info(f"학습 기록: user={user_id} {correct}/{total}")
-        return {'words_count': total, 'correct_count': correct, 'success_rate': rate}
+        gained = study_xp(correct, total)
+        info = level_info(xp_before + gained)
+        logger.info(f"학습 기록: user={user_id} {correct}/{total} +{gained}XP")
+        return {'words_count': total, 'correct_count': correct, 'success_rate': rate, 'xp_gained': gained,
+                'level_up': info['level'] > level_info(xp_before)['level'], **{k: info[k] for k in ('xp', 'level')}}
 
     def get_progress_info(self, user_id: int) -> Dict:
         """진도: 학습한 날 수(서로 다른 날짜)를 기준으로 계산"""
@@ -78,6 +84,7 @@ class StudyManager:
             'total_days': total_days,
             'completion_rate': round(min(100.0, studied_days / total_days * 100), 1) if total_days else 0,
             'streak': self._streak(user_id),
+            **self.game.user_level(user_id),
             'total_words': total_words,
             'learned_words': learned,
             'mastered_words': mastered,

@@ -14,7 +14,8 @@
 | `word_manager.py` | `WordManager` | 단어 목록(검색·페이징), 추가/수정/삭제(중복 검사), CSV 가져오기·내보내기, 사용자별 통계 갱신 |
 | `study_manager.py` | `StudyManager` | 오늘의 단어 선택, 학습 결과 저장, 진도·연속 학습일 계산 |
 | `test_engine.py` | `TestEngine` | 시험 출제(4지선다·OX·단답), 채점, 종료 시 기록 저장 |
-| `report_generator.py` | `ReportGenerator` | 사용자 개인 통계·차트 데이터, 관리자 전체 통계 |
+| `report_generator.py` | `ReportGenerator` | 사용자 개인 통계·차트 데이터, 관리자 전체 통계, 랜딩용 공개 통계 |
+| `gamification.py` | `GamificationManager` | XP 계산, 레벨, 최근 7일 주간 리그 순위 |
 
 ## 핵심 로직과 이유
 **1. 오늘의 단어 선택 (`StudyManager.get_daily_words`)**
@@ -26,7 +27,13 @@
 - **정답은 서버에만 둔다.** `get_current_problem` 은 정답을 빼고 보내고, 채점(`grade_answer`) 후에만 알려준다. 브라우저 개발자도구로 정답을 훔쳐볼 수 없다.
 - 4지선다는 단어가 4개 미만이면 OX → 단답 순으로 형식을 낮춘다(보기를 만들 수 없으므로).
 
-**3. 트랜잭션** — `record_study`, `finish_test` 는 `db.session()` 한 번으로 "단어 통계 + 로그"를 묶는다. 중간에 실패하면 모두 취소된다.
+**3. XP·레벨·리그 (`gamification.py`)** — XP 는 별도 테이블 없이 **기존 학습·시험 기록에서 계산**한다(스키마 변경·마이그레이션 불필요, 기록과 항상 일치).
+학습 정답 +10 · 오답 +2, 시험 정답 +15 · 오답 +3 (틀려도 '참여' 점수를 줘서 포기하지 않게 함). 레벨 n 도달 누적 XP = 50·(n−1)·n 이라 레벨이 오를수록 필요 XP 가 늘어난다.
+리그는 최근 7일 XP 순위이며 관리자·비활성 계정은 제외한다.
+
+**3-1. 빈칸 채우기 (`TestEngine._blank_sentence`)** — 단어의 예문에서 정답 단어를 `\b단어\b` 정규식 (단어 경계)으로 찾아 `_____` 로 가린다. 예문이 없거나 활용형(attempted 등)이라 못 찾으면 4지선다로 자동 대체한다.
+
+**3-2. 트랜잭션** — `record_study`, `finish_test` 는 `db.session()` 한 번으로 "단어 통계 + 로그"를 묶는다. 중간에 실패하면 모두 취소된다.
 
 **4. 검증과 오류** — 사용자에게 보여줘도 되는 오류는 `AuthError / WordError / TestError` 로 분리하고, 라우트가 400 으로 변환한다.
 예상치 못한 오류는 일반 500 으로 처리해 내부 정보가 새지 않게 한다.

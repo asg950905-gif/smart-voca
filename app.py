@@ -21,6 +21,7 @@ from src.business.word_manager import WordManager
 from src.business.study_manager import StudyManager
 from src.business.test_engine import TestEngine
 from src.business.report_generator import ReportGenerator
+from src.business.gamification import GamificationManager
 from src.utils.config import SettingsManager
 from src.web import admin_routes, auth_routes, user_routes
 from src.web.security import check_csrf, get_csrf_token, wants_json
@@ -56,8 +57,9 @@ def create_app(data_dir=None) -> Flask:
     app.db = db
     app.auth = AuthManager(db)
     app.words = WordManager(db)
-    app.study = StudyManager(db, app.words)
-    app.tests = TestEngine(db, app.words)
+    app.game = GamificationManager(db)
+    app.study = StudyManager(db, app.words, app.game)
+    app.tests = TestEngine(db, app.words, app.game)
     app.reports = ReportGenerator(db)
     app.settings = SettingsManager(db)
 
@@ -74,6 +76,7 @@ def create_app(data_dir=None) -> Flask:
     @app.before_request
     def load_user():
         g.user = None
+        g.kicked = False
         user_id = session.get('user_id')
         if user_id:
             user = app.auth.get_user(user_id)
@@ -81,6 +84,7 @@ def create_app(data_dir=None) -> Flask:
                 g.user = user
             else:
                 session.pop('user_id', None)  # 삭제·비활성화된 계정의 세션은 즉시 무효화
+                g.kicked = True  # 강제 로그아웃: 랜딩 대신 로그인 화면에서 사유를 보여준다
                 flash('계정이 비활성화되었거나 삭제되어 로그아웃되었어요. 관리자에게 문의하세요.', 'error')
         check_csrf()
 
