@@ -1,17 +1,18 @@
 {% extends "base.html" %}
-{# 2026-11-02 - smart-voca - 시험 화면: 설정 → 문제 풀이(즉시 피드백) → 결과 #}
+{% from "_mascot.html" import mascot %}
+{# 2026-11-02 - smart-voca - 시험 화면: 설정 → 문제 풀이(빈칸/4지선다/OX/단답, 즉시 피드백) → 결과(XP·축하) #}
 {% block title %}시험{% endblock %}
 {% block content %}
 <div class="test-stage">
     <!-- 1) 설정 -->
     <section id="setup" class="card">
-        <div class="page-head" style="margin-bottom:14px"><div><h1>실력 테스트</h1><p>방식을 고르고 바로 시작해요.</p></div></div>
+        <div class="page-head" style="margin-bottom:14px"><div><h1>실력 테스트</h1><p>방식을 고르고 바로 시작해요.</p></div><div style="color:var(--text)">{{ mascot(70) }}</div></div>
         <div class="field">
             <label for="num">문제 수</label>
             <select id="num"><option>5</option><option selected>10</option><option>20</option><option>30</option></select>
         </div>
         <div class="field">
-            <label>출제 방향</label>
+            <label>출제 방향 <span class="muted">(빈칸형은 방향과 무관)</span></label>
             <div class="seg" id="mode">
                 <label><input type="radio" name="mode" value="혼합" checked><span>혼합</span></label>
                 <label><input type="radio" name="mode" value="영->한"><span>영어 → 한글</span></label>
@@ -22,10 +23,12 @@
             <label>문제 형식</label>
             <div class="seg" id="format">
                 <label><input type="radio" name="format" value="혼합" checked><span>혼합</span></label>
+                <label><input type="radio" name="format" value="빈칸형"><span>✏️ 빈칸 채우기</span></label>
                 <label><input type="radio" name="format" value="4지선다형"><span>4지선다</span></label>
                 <label><input type="radio" name="format" value="단답형"><span>단답형</span></label>
                 <label><input type="radio" name="format" value="OX형"><span>O / X</span></label>
             </div>
+            <p class="hint">빈칸 채우기는 단어 예문에서 정답 단어를 가려 출제해요. 예문이 없는 단어는 4지선다로 대체돼요.</p>
         </div>
         <button id="btn-start" class="btn block" type="button">시험 시작</button>
     </section>
@@ -34,7 +37,13 @@
     <section id="quiz" class="card hidden" aria-live="polite">
         <div class="row between"><span class="pill neutral" id="q-count"></span><span class="pill neutral" id="q-format"></span></div>
         <div class="bar" style="margin-top:12px"><div id="q-bar" style="width:0"></div></div>
+
+        <div id="sentence-card" class="sentence-card hidden" style="margin-top:20px">
+            <span class="hint-chip" id="q-hint"></span>
+            <div class="sentence" id="q-sentence"></div>
+        </div>
         <div class="question" id="q-text" style="margin-top:20px"></div>
+
         <div id="q-options" class="options"></div>
         <form id="q-short" class="hidden" autocomplete="off">
             <input id="q-input" placeholder="정답을 입력하세요" aria-label="정답 입력">
@@ -46,15 +55,17 @@
 
     <!-- 3) 결과 -->
     <section id="result" class="card hidden">
-        <div class="center">
+        <div class="center result-hero">
+            <div style="color:var(--text)">{{ mascot(100) }}</div>
             <div class="score-big" id="r-score"></div>
-            <p class="muted" id="r-summary" style="margin:8px 0 18px"></p>
-            <div class="row" style="justify-content:center">
+            <p class="muted" id="r-summary" style="margin:6px 0 10px"></p>
+            <div id="r-xp"></div>
+            <div class="row" style="justify-content:center;margin-top:16px">
                 <button class="btn" id="btn-retry" type="button">다시 도전</button>
-                <a class="btn secondary" href="{{ url_for('user.report_page') }}">통계 보기</a>
+                <a class="btn secondary" href="{{ url_for('user.league_page') }}">리그 순위 보기</a>
             </div>
         </div>
-        <h3 style="margin:22px 0 4px">문제별 결과</h3>
+        <h3 style="margin:24px 0 4px">문제별 결과</h3>
         <div id="r-list"></div>
     </section>
 </div>

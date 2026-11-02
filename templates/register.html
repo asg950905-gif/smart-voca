@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% from "_mascot.html" import mascot %}
 {# 2026-11-02 - smart-voca - 회원가입 화면 (가입자는 항상 일반 사용자 역할) #}
 {% block title %}회원가입{% endblock %}
 {% block content %}
 <div class="auth-wrap">
     <div class="card auth-card">
-        <div class="brand"><span class="logo">📘</span> 회원가입</div>
-        <p class="muted center" style="margin-bottom:22px">계정을 만들고 나만의 학습 기록을 시작하세요</p>
+        <div class="mascot-wrap">{{ mascot(96) }}</div>
+        <h1>함께 시작해요!</h1>
+        <p class="lead">계정을 만들고 나만의 학습 기록을 쌓아요</p>
         <form method="post" novalidate>
             <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <div class="field">
@@ -14,7 +16,7 @@
                 <p class="hint">영문·숫자·밑줄 3~20자</p>
             </div>
             <div class="field">
-                <label for="display_name">표시 이름 <span class="muted">(선택)</span></label>
+                <label for="display_name">표시 이름 <span class="muted">(선택, 리그에 보여요)</span></label>
                 <input id="display_name" name="display_name" value="{{ display_name }}" maxlength="30">
             </div>
             <div class="field">

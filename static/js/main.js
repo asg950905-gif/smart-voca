@@ -63,6 +63,62 @@
         });
     };
 
+    // ---- 컨페티: 정답·학습 완료 축하용 (DOM 조각을 떨어뜨린다) ----
+    window.confetti = function (count = 36) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const colors = ['#6d5bf7', '#2380d6', '#12a37a', '#f5a524', '#e5484d', '#d6416f'];
+        const wrap = document.createElement('div');
+        wrap.className = 'confetti-wrap';
+        for (let i = 0; i < count; i++) {
+            const piece = document.createElement('span');
+            piece.className = 'confetti-piece';
+            piece.style.left = Math.random() * 100 + '%';
+            piece.style.background = colors[i % colors.length];
+            piece.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+            piece.style.setProperty('--rot', (360 + Math.random() * 540) + 'deg');
+            piece.style.setProperty('--dur', (1.8 + Math.random() * 1.2) + 's');
+            piece.style.setProperty('--delay', (Math.random() * 0.4) + 's');
+            wrap.appendChild(piece);
+        }
+        document.body.appendChild(wrap);
+        setTimeout(() => wrap.remove(), 3600);
+    };
+
+    // ---- 발음 듣기: 브라우저 내장 음성 합성(Web Speech API). 서버·외부 API 불필요 ----
+    window.ttsSupported = 'speechSynthesis' in window;
+    window.speak = function (text, button) {
+        if (!window.ttsSupported || !text) return;
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-US';
+        utter.rate = 0.9;
+        const voice = window.speechSynthesis.getVoices().find((v) => v.lang && v.lang.startsWith('en'));
+        if (voice) utter.voice = voice;
+        if (button) {
+            button.classList.add('speaking');
+            utter.onend = utter.onerror = () => button.classList.remove('speaking');
+        }
+        window.speechSynthesis.speak(utter);
+    };
+    // data-speak="텍스트" 가 붙은 버튼을 한 번에 연결 (지원하지 않는 브라우저에서는 버튼을 숨긴다)
+    window.bindSpeakButtons = function (root = document) {
+        root.querySelectorAll('[data-speak]').forEach((btn) => {
+            if (!window.ttsSupported) { btn.classList.add('hidden'); return; }
+            btn.onclick = (e) => { e.stopPropagation(); window.speak(btn.dataset.speak, btn); };
+        });
+    };
+
+    // ---- 숫자 카운트업 (랜딩 수치 등) ----
+    window.countUp = function (el, target, duration = 1200) {
+        const start = performance.now();
+        const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            el.textContent = Math.round(target * (1 - Math.pow(1 - progress, 3))).toLocaleString('ko-KR');
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    };
+
     // ---- 테마: system / light / dark ----
     const media = window.matchMedia('(prefers-color-scheme: dark)');
     function applyTheme(pref) {

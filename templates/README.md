@@ -11,8 +11,9 @@
 | 영역 | 파일 | 화면 |
 | :--- | :--- | :--- |
 | 공통 | `base.html` | 상단 내비·하단 탭바·테마 초기화. 모든 화면이 상속 |
-| 공통 | `login.html`, `register.html`, `error.html` | 로그인, 가입, 오류(400/403/404/413/500) |
-| 사용자 | `dashboard.html`, `study.html`, `test.html`, `report.html`, `settings.html` | 홈, 플립카드 학습, 시험, 개인 통계, 설정 |
+| 공통 | `login.html`, `register.html`, `error.html`, `_mascot.html` | 로그인, 가입, 오류(400/403/404/413/500), 마스코트 SVG 매크로 |
+| 공개 | `landing.html` | 로그인 전 `/` 랜딩 페이지 (히어로·퀴즈 체험·기능·실제 수치·FAQ) |
+| 사용자 | `dashboard.html`, `study.html`, `test.html`, `league.html`, `report.html`, `settings.html` | 홈(레벨·XP·목표), 플립카드 학습, 시험, 주간 리그, 개인 통계, 설정 |
 | 관리자 | `admin/dashboard.html`, `admin/words.html`, `admin/users.html`, `admin/settings.html` | 전체 현황, 단어 관리, 사용자 관리, 전역 설정 |
 
 ## 핵심 개념

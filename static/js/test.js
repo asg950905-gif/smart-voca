@@ -3,7 +3,7 @@
 (function () {
     'use strict';
     const $ = (id) => document.getElementById(id);
-    let answered = false, finished = false;
+    let answered = false, finished = false, current = null;
 
     function show(name) {
         ['setup', 'quiz', 'result'].forEach((id) => $(id).classList.toggle('hidden', id !== name));
@@ -21,14 +21,39 @@
         $('btn-start').disabled = false;
     }
 
+    // 빈칸 문장을 안전하게 그린다: 서버 문자열은 textContent 로만 넣는다 (XSS 방지)
+    function renderSentence(sentence, filledWord) {
+        const box = $('q-sentence');
+        box.textContent = '';
+        const parts = sentence.split('_____');
+        parts.forEach((text, i) => {
+            box.appendChild(document.createTextNode(text));
+            if (i < parts.length - 1) {
+                const blank = document.createElement('span');
+                blank.className = 'blank' + (filledWord ? ' filled' : '');
+                blank.textContent = filledWord || ' ';
+                box.appendChild(blank);
+            }
+        });
+    }
+
     async function loadProblem() {
         const p = await api('/api/test/current');
         if (p.finished) { await finish(); return; }
-        answered = false;
+        current = p; answered = false;
         $('q-count').textContent = `${p.index} / ${p.total}`;
         $('q-format').textContent = p.format;
         $('q-bar').style.width = `${((p.index - 1) / p.total) * 100}%`;
-        $('q-text').textContent = p.question;
+
+        const isBlank = p.format === '빈칸형';
+        $('sentence-card').classList.toggle('hidden', !isBlank);
+        $('q-text').classList.toggle('hidden', isBlank);
+        if (isBlank) {
+            $('q-hint').textContent = `뜻: ${p.hint}`;
+            renderSentence(p.question, '');
+        } else {
+            $('q-text').textContent = p.question;
+        }
         $('q-feedback').classList.add('hidden');
         $('btn-next').classList.add('hidden');
 
@@ -62,9 +87,26 @@
                 if (b.textContent === r.correct_answer) b.classList.add('correct');
             });
             if (clicked && !r.is_correct) clicked.classList.add('wrong');
+            if (current && current.format === '빈칸형') {
+                renderSentence(current.question, r.correct_answer);   // 정답을 빈칸에 채워 보여준다
+            }
             const fb = $('q-feedback');
             fb.className = 'feedback ' + (r.is_correct ? 'ok' : 'no');
-            fb.textContent = r.is_correct ? '✅ 정답이에요!' : `❌ 정답: ${r.correct_answer}`;
+            fb.textContent = '';
+            const badge = document.createElement('span');
+            badge.className = 'check-badge' + (r.is_correct ? '' : ' cross');
+            badge.textContent = r.is_correct ? '✓' : '✕';
+            fb.appendChild(badge);
+            fb.appendChild(document.createTextNode(r.is_correct ? '정답이에요!' : `정답: ${r.correct_answer}`));
+            const isWord = current && (current.format === '빈칸형' || current.mode === '한->영');
+            if (window.ttsSupported && isWord) {   // 영어 정답은 발음을 들려준다
+                const tts = document.createElement('button');
+                tts.type = 'button'; tts.className = 'tts-btn sm'; tts.style.marginLeft = 'auto';
+                tts.textContent = '🔊'; tts.setAttribute('aria-label', '정답 발음 듣기');
+                tts.dataset.speak = r.correct_answer;
+                fb.appendChild(tts); bindSpeakButtons(fb);
+            }
+            if (r.is_correct && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) confetti(14);
             $('q-short').classList.add('hidden');
             $('btn-next').classList.remove('hidden');
             $('btn-next').focus();
@@ -78,10 +120,13 @@
             const r = await api('/api/test/finish', { method: 'POST' });
             $('r-score').textContent = `${r.score}점`;
             $('r-summary').textContent = `${r.total_problems}문제 중 ${r.correct_answers}문제 정답`;
+            $('r-xp').innerHTML = `<span class="xp-pop">⭐ +${r.xp_gained} XP</span>` +
+                (r.level_up ? `<div class="levelup">🎉 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
             $('r-list').innerHTML = r.details.map((d) =>
                 `<div class="result-item"><span>${d.is_correct ? '✅' : '❌'} ${esc(d.question)}</span>` +
                 `<span class="muted">정답: ${esc(d.correct_answer)}${d.is_correct ? '' : ` · 내 답: ${esc(d.user_answer || '–')}`}</span></div>`).join('');
             show('result');
+            if (r.score >= 80 || r.level_up) confetti(r.level_up ? 80 : 50);
         } catch (e) { toast(e.message, 'error'); }
         finished = false;
     }

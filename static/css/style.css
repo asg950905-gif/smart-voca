@@ -2,49 +2,67 @@
 
 /* ===== 디자인 토큰 ===== */
 :root {
-    --bg: #f6f7fb;
+    --bg: #fafaff;
     --surface: #ffffff;
-    --surface-2: #f0f2f8;
+    --surface-2: #f3f2fd;
     --text: #1b1f3b;
     --text-muted: #6b7194;
-    --border: #e4e7f2;
-    --accent: #5b5bd6;
-    --accent-strong: #4646c0;
-    --accent-soft: #ecebff;
+    --border: #e8e8f6;
+    --accent: #6d5bf7;
+    --accent-strong: #5846e0;
+    --accent-soft: #eeebff;
     --success: #12a37a;
     --success-soft: #e0f6ee;
     --danger: #e5484d;
     --danger-soft: #fdeaea;
     --warning: #f5a524;
     --warning-soft: #fff3dc;
-    --shadow-sm: 0 1px 2px rgba(27, 31, 59, .06);
-    --shadow: 0 8px 24px rgba(27, 31, 59, .08);
-    --radius: 16px;
-    --radius-sm: 10px;
-    --gap: 16px;
+    /* 파스텔 팔레트: 기능별 색 구분 (어휘·시험·리그·통계·설정) */
+    --p-violet: #ece9ff; --p-violet-ink: #6d5bf7;
+    --p-sky: #dff1ff;    --p-sky-ink: #2380d6;
+    --p-mint: #dff7ea;   --p-mint-ink: #12936b;
+    --p-peach: #ffe9d8;  --p-peach-ink: #d9692a;
+    --p-rose: #ffe3ec;   --p-rose-ink: #d6416f;
+    --p-lemon: #fff5c9;  --p-lemon-ink: #a67c00;
+    --shadow-sm: 0 1px 2px rgba(40, 30, 120, .06);
+    --shadow: 0 12px 32px rgba(60, 45, 160, .10);
+    --radius: 24px;
+    --radius-sm: 14px;
+    --gap: 18px;
     --font: 'Pretendard', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
     color-scheme: light;
 }
 :root[data-theme="dark"] {
-    --bg: #0f1120;
-    --surface: #181b30;
-    --surface-2: #20243d;
+    --bg: #0e0f1f;
+    --surface: #171a2e;
+    --surface-2: #20233c;
     --text: #eceefb;
     --text-muted: #9aa0c5;
-    --border: #2b3050;
-    --accent: #8b8bff;
-    --accent-strong: #a5a5ff;
-    --accent-soft: #272a52;
+    --border: #2a2f4e;
+    --accent: #9a8cff;
+    --accent-strong: #b3a8ff;
+    --accent-soft: #26244f;
     --success: #34d3a1;
     --success-soft: #12342c;
     --danger: #ff6b70;
     --danger-soft: #3a1c22;
     --warning: #ffc552;
     --warning-soft: #3a2f16;
+    --p-violet: #272455; --p-violet-ink: #b3a8ff;
+    --p-sky: #153149;    --p-sky-ink: #7cc4ff;
+    --p-mint: #12342a;   --p-mint-ink: #5fe0b4;
+    --p-peach: #3d2a1e;  --p-peach-ink: #ffab7a;
+    --p-rose: #40202e;   --p-rose-ink: #ff8fb0;
+    --p-lemon: #3a3114;  --p-lemon-ink: #f2d060;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
-    --shadow: 0 8px 24px rgba(0, 0, 0, .35);
+    --shadow: 0 12px 32px rgba(0, 0, 0, .4);
     color-scheme: dark;
 }
+/* 버튼·배너 그라데이션 색 토큰: 흰 글씨가 올라가므로 다크모드에서도 충분히 진한 색을 유지한다.
+   (body 에 선언해야 아래 body.admin 의 --accent 변경이 라이트 모드 버튼에도 반영된다) */
+body { --btn-a: var(--accent); --btn-b: var(--accent-strong); }
+:root[data-theme="dark"] body { --btn-a: #6d5bf7; --btn-b: #5846e0; }
+:root[data-theme="dark"] body.admin { --btn-a: #0e9f8e; --btn-b: #0b8577; }
 /* 관리자 화면은 포인트 색을 달리해 사용자 화면과 한눈에 구분한다 */
 body.admin { --accent: #0e9f8e; --accent-strong: #0b8577; --accent-soft: #dcf5f1; }
 :root[data-theme="dark"] body.admin { --accent: #2dd4bf; --accent-strong: #5eead4; --accent-soft: #123532; }
@@ -52,12 +70,13 @@ body.admin { --accent: #0e9f8e; --accent-strong: #0b8577; --accent-soft: #dcf5f1
 /* ===== 기본 ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; }
-body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6;
+body, h1, h2, h3, p, li, td { word-break: keep-all; overflow-wrap: break-word; }
+body { font-family: var(--font); background: radial-gradient(900px 500px at 85% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent), radial-gradient(700px 420px at -5% 10%, color-mix(in srgb, var(--p-sky-ink) 8%, transparent), transparent), var(--bg); background-attachment: fixed; color: var(--text); line-height: 1.6;
        min-height: 100vh; display: flex; flex-direction: column; transition: background .2s, color .2s; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-h1 { font-size: 1.6rem; line-height: 1.3; }
-h2 { font-size: 1.15rem; }
+h1 { font-size: 1.85rem; line-height: 1.25; font-weight: 800; letter-spacing: -.03em; }
+h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; }
 h3 { font-size: 1rem; }
 .muted { color: var(--text-muted); }
 .small { font-size: .85rem; }
@@ -85,7 +104,7 @@ h3 { font-size: 1rem; }
                 display: flex; align-items: center; gap: 24px; }
 .brand { font-weight: 800; font-size: 1.15rem; color: var(--text); display: flex; align-items: center; gap: 8px; }
 .brand:hover { text-decoration: none; }
-.brand .logo { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+.brand .logo { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--btn-a), var(--btn-b));
                display: grid; place-items: center; color: #fff; font-size: 1rem; }
 .badge-role { font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
               background: var(--accent-soft); color: var(--accent-strong); }
@@ -104,11 +123,11 @@ h3 { font-size: 1rem; }
         padding: 22px; box-shadow: var(--shadow-sm); }
 .card.hover:hover { box-shadow: var(--shadow); transform: translateY(-2px); transition: .2s; }
 .card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-.hero { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #fff; border: none;
+.hero { background: linear-gradient(135deg, var(--btn-a), var(--btn-b)); color: #fff; border: none; position: relative; overflow: hidden;
         display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .hero h1 { font-size: 1.5rem; }
 .hero p { opacity: .9; }
-.hero .btn { background: #fff; color: var(--accent-strong); }
+.hero .btn { background: #fff; color: #4636b8; }
 
 /* KPI */
 .kpi { display: flex; flex-direction: column; gap: 2px; }
@@ -126,16 +145,17 @@ h3 { font-size: 1rem; }
 
 /* ===== 버튼 / 폼 ===== */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 18px;
-       border-radius: 12px; border: 1px solid transparent; font: inherit; font-weight: 700; cursor: pointer;
-       background: var(--accent); color: #fff; transition: .15s; min-height: 42px; }
-.btn:hover { background: var(--accent-strong); text-decoration: none; }
+       border-radius: 999px; border: 1px solid transparent; font: inherit; font-weight: 700; cursor: pointer;
+       background: linear-gradient(135deg, var(--btn-a), var(--btn-b)); color: #fff; transition: .15s; min-height: 44px;
+       box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 28%, transparent); }
+.btn:hover { filter: brightness(1.06); transform: translateY(-1px); text-decoration: none; }
 .btn:active { transform: scale(.97); }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
-.btn.secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn.secondary { background: var(--surface); color: var(--text); border-color: var(--border); box-shadow: none; }
 .btn.secondary:hover { background: var(--surface-2); }
-.btn.ghost { background: transparent; color: var(--text-muted); }
+.btn.ghost { background: transparent; color: var(--text-muted); box-shadow: none; }
 .btn.ghost:hover { background: var(--surface-2); color: var(--text); }
-.btn.danger { background: var(--danger); }
+.btn.danger { background: var(--danger); box-shadow: none; }
 .btn.danger.outline { background: transparent; color: var(--danger); border-color: var(--danger); }
 .btn.small { padding: 6px 12px; min-height: 34px; font-size: .85rem; border-radius: 10px; white-space: nowrap; }
 td .row { flex-wrap: nowrap; }
@@ -143,7 +163,7 @@ td .row { flex-wrap: nowrap; }
 .icon-btn { width: 40px; height: 40px; padding: 0; border-radius: 12px; font-size: 1.1rem; }
 
 label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
-input, select, textarea { width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--border);
+input, select, textarea { width: 100%; padding: 11px 16px; border-radius: 14px; border: 1px solid var(--border);
                           background: var(--surface); color: var(--text); font: inherit; min-height: 44px; }
 input:focus, select:focus, textarea:focus { outline: 3px solid var(--accent-soft); border-color: var(--accent); }
 .field { margin-bottom: 14px; }
@@ -209,8 +229,8 @@ tbody tr:hover { background: var(--surface-2); }
 .face.back .pos { background: var(--surface); }
 .judge { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .judge .btn { min-height: 52px; font-size: 1rem; }
-.btn.know { background: var(--success); }
-.btn.unknown { background: var(--danger); }
+.btn.know { background: var(--success); box-shadow: 0 6px 16px color-mix(in srgb, var(--success) 30%, transparent); }
+.btn.unknown { background: var(--danger); box-shadow: 0 6px 16px color-mix(in srgb, var(--danger) 25%, transparent); }
 
 /* ===== 시험 ===== */
 .test-stage { max-width: 640px; margin: 0 auto; }
@@ -232,6 +252,7 @@ tbody tr:hover { background: var(--surface-2); }
 
 /* 차트 */
 .chart-box { position: relative; height: 260px; }
+.container.full { max-width: none; padding: 0; }
 .footer { text-align: center; color: var(--text-muted); font-size: .8rem; padding: 18px 0 24px; }
 
 /* ===== 로그인 / 오류 ===== */

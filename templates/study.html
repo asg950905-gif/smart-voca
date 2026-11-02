@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{# 2026-11-02 - smart-voca - 학습 화면: 플립카드로 오늘의 단어 학습 #}
+{% from "_mascot.html" import mascot %}
+{# 2026-11-02 - smart-voca - 학습 화면: 플립카드 + 발음 듣기(TTS) + 완료 축하(컨페티·XP) #}
 {% block title %}학습{% endblock %}
 {% block content %}
 <div class="study-stage">
@@ -10,11 +11,13 @@
         <div class="flip" id="flip" tabindex="0" role="button" aria-label="카드 뒤집기 (스페이스바)">
             <div class="flip-inner">
                 <div class="face front">
+                    <button class="tts-btn" id="tts-word" type="button" aria-label="단어 발음 듣기" title="발음 듣기">🔊</button>
                     <span class="pos" id="pos"></span>
                     <div class="word" id="english"></div>
                     <div class="tap">탭하거나 스페이스바로 뜻 보기</div>
                 </div>
                 <div class="face back">
+                    <button class="tts-btn" id="tts-example" type="button" aria-label="예문 듣기" title="예문 듣기">🔊</button>
                     <div class="word" id="korean"></div>
                     <div class="example" id="example"></div>
                 </div>
@@ -24,16 +27,17 @@
             <button class="btn unknown" id="btn-unknown" type="button">🤔 아직 헷갈려요</button>
             <button class="btn know" id="btn-know" type="button">😎 알고 있어요</button>
         </div>
-        <p class="center muted small" style="margin-top:10px">단축키: Space 뒤집기 · ← 헷갈려요 · → 알아요</p>
+        <p class="center muted small" style="margin-top:10px">단축키: Space 뒤집기 · ← 헷갈려요 · → 알아요 · P 발음 듣기</p>
     </div>
 
-    <div id="empty-area" class="card empty hidden"><span class="emoji">📭</span>학습할 단어가 없어요.<br>관리자가 단어를 등록하면 시작할 수 있어요.</div>
+    <div id="empty-area" class="card empty hidden"><div style="color:var(--text)">{{ mascot(90) }}</div>학습할 단어가 없어요.<br>관리자가 단어를 등록하면 시작할 수 있어요.</div>
 
     <div id="done-area" class="card center hidden">
-        <div class="emoji" style="font-size:2.6rem">🎉</div>
+        <div style="color:var(--text)">{{ mascot(110) }}</div>
         <h2 style="margin:8px 0">오늘의 학습 완료!</h2>
-        <p class="muted" id="done-summary" style="margin-bottom:18px"></p>
-        <div class="row" style="justify-content:center">
+        <p class="muted" id="done-summary" style="margin-bottom:12px"></p>
+        <div id="done-xp"></div>
+        <div class="row" style="justify-content:center;margin-top:18px">
             <a class="btn" href="{{ url_for('user.test_page') }}">바로 시험 보기</a>
             <a class="btn secondary" href="{{ url_for('user.dashboard') }}">홈으로</a>
         </div>

@@ -20,13 +20,15 @@
     </script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%235b5bd6'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%93%98%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    {% block head %}{% endblock %}
 </head>
 <body class="{{ 'admin' if in_admin else '' }}" data-logged-in="{{ '1' if current_user else '0' }}">
 {% if current_user %}
     {% if in_admin %}
         {% set links = [('/admin/', '📊', '대시보드'), ('/admin/words', '📚', '단어'), ('/admin/users', '👥', '사용자'), ('/admin/settings', '⚙️', '설정')] %}
     {% else %}
-        {% set links = [('/', '🏠', '홈'), ('/study', '🃏', '학습'), ('/test', '📝', '시험'), ('/report', '📈', '통계'), ('/settings', '⚙️', '설정')] %}
+        {% set links = [('/', '🏠', '홈'), ('/study', '🃏', '학습'), ('/test', '📝', '시험'), ('/league', '🏆', '리그'), ('/report', '📈', '통계'), ('/settings', '⚙️', '설정')] %}
     {% endif %}
     <header class="navbar">
         <div class="navbar-inner">
@@ -54,7 +56,7 @@
     </header>
 {% endif %}
 
-    <main class="container">
+    <main class="container {% block main_class %}{% endblock %}">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% for category, message in messages %}
                 <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>

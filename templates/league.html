@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_mascot.html" import mascot %}
+{# 2026-11-02 - smart-voca - 주간 리그: 최근 7일 획득 XP 순위 (포디엄 + 목록) #}
+{% block title %}리그{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div><h1>🏆 주간 리그</h1><p id="league-sub">최근 7일 동안 모은 XP로 순위를 겨뤄요.</p></div>
+    <a class="btn" href="{{ url_for('user.study_page') }}">XP 쌓으러 가기</a>
+</div>
+<section class="card">
+    <div id="podium" class="podium hidden"></div>
+    <div id="board"></div>
+    <div id="league-empty" class="empty hidden"><div style="color:var(--text)">{{ mascot(90) }}</div>아직 순위가 없어요.<br>학습이나 시험을 하면 첫 순위에 오를 수 있어요!</div>
+</section>
+<p class="muted small" style="margin-top:12px">관리자 계정은 순위에서 제외돼요. XP: 학습 정답 +10 · 학습 오답 +2 · 시험 정답 +15 · 시험 오답 +3</p>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/league.js') }}"></script>{% endblock %}
