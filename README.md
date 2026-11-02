@@ -21,16 +21,17 @@ python app.py                                       # http://127.0.0.1:5000
 
 ## 주요 기능
 
-- **사용자**: 회원가입/로그인, 오늘의 단어 플립카드 학습, 시험(4지선다·단답·OX), 개인 통계 차트, 하루 학습량·다크모드 설정
+- **랜딩 페이지**(로그인 전 `/`): 떠다니는 파스텔 카드 히어로, 브라우저에서 바로 풀어보는 빈칸 퀴즈 체험, 기능 소개, **DB 실제 수치**, FAQ
+- **사용자**: 회원가입/로그인, 오늘의 단어 플립카드 학습(🔊 발음 듣기), 시험(**빈칸 채우기**·4지선다·단답·OX), XP·레벨·연속 학습·**주간 리그**, 개인 통계 차트, 하루 학습량·다크모드 설정
 - **관리자**: 전체 현황 대시보드, 단어 CRUD·CSV 가져오기/내보내기, 사용자 관리(역할·활성화·비밀번호 재설정·삭제), 전역 설정
-- **UI**: 카드형 디자인, 다크모드, 모바일 하단 탭바, 키보드 단축키(학습: Space/←/→)
+- **UI**: 파스텔 디자인 시스템(토큰·라이트/다크), 마스코트 '보카'(직접 그린 SVG), 컨페티·체크 애니메이션, 모바일 하단 탭바, 키보드 단축키(학습: Space/←/→/P)
 
 ## 구조
 
 ```
 app.py                  앱 팩토리 (환경변수 · 보안 헤더 · 오류 처리)
 src/data/database.py    SQLite 스키마·접속
-src/business/           auth / word / study / test_engine / report_generator
+src/business/           auth / word / study / test_engine / gamification / report_generator
 src/web/                Blueprint (auth, user, admin) + security (권한·CSRF·로그인 제한)
 src/utils/config.py     사용자 설정 + 관리자 전역 설정
 templates/ static/      화면 (admin/ 하위가 관리자 화면)
