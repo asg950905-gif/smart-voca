@@ -9,7 +9,7 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
-from flask import Flask, g, jsonify, render_template, request, session
+from flask import Flask, flash, g, jsonify, render_template, request, session
 
 # 프로젝트 루트를 import 경로에 추가 (src.* 패키지 import 용)
 PROJECT_ROOT = Path(__file__).parent
@@ -81,6 +81,7 @@ def create_app(data_dir=None) -> Flask:
                 g.user = user
             else:
                 session.pop('user_id', None)  # 삭제·비활성화된 계정의 세션은 즉시 무효화
+                flash('계정이 비활성화되었거나 삭제되어 로그아웃되었어요. 관리자에게 문의하세요.', 'error')
         check_csrf()
 
     @app.context_processor

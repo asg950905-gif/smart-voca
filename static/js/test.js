@@ -80,7 +80,7 @@
             $('r-summary').textContent = `${r.total_problems}문제 중 ${r.correct_answers}문제 정답`;
             $('r-list').innerHTML = r.details.map((d) =>
                 `<div class="result-item"><span>${d.is_correct ? '✅' : '❌'} ${esc(d.question)}</span>` +
-                `<span class="muted">${esc(d.correct_answer)}</span></div>`).join('');
+                `<span class="muted">정답: ${esc(d.correct_answer)}${d.is_correct ? '' : ` · 내 답: ${esc(d.user_answer || '–')}`}</span></div>`).join('');
             show('result');
         } catch (e) { toast(e.message, 'error'); }
         finished = false;

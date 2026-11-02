@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {# 2026-11-02 - smart-voca - 공통 레이아웃 (상단 내비 + 모바일 하단 탭바, 사용자/관리자 영역 자동 전환) #}
-{% set in_admin = request.path.startswith('/admin') %}
+{# 관리자 영역 표시는 실제 관리자에게만 (권한 없는 사용자의 403 화면에 관리자 메뉴가 노출되지 않게) #}
+{% set in_admin = request.path.startswith('/admin') and current_user and current_user.role == 'admin' %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +31,7 @@
     <header class="navbar">
         <div class="navbar-inner">
             <a class="brand" href="{{ '/admin/' if in_admin else '/' }}">
-                <span class="logo">📘</span> 스마트 보카
+                <span class="logo">📘</span><span class="brand-name">스마트 보카</span>
                 {% if in_admin %}<span class="badge-role">ADMIN</span>{% endif %}
             </a>
             <nav class="nav-links" aria-label="주 메뉴">

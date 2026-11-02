@@ -268,3 +268,20 @@ def test_all_admin_pages_render_and_login_redirects_by_role(app, admin):
     other = new_client(app)
     assert login(other, 'plain', 'pass1234').headers['Location'].endswith('/')
 
+
+
+# ---------- 리허설에서 발견한 문제의 회귀 테스트 ----------
+def test_forbidden_page_does_not_leak_admin_menu(app):
+    client = make_user(app)
+    resp = client.get('/admin/')
+    html = resp.get_data(as_text=True)
+    assert resp.status_code == 403
+    assert '/admin/words' not in html and 'ADMIN' not in html  # 일반 사용자에게 관리자 메뉴 구조를 보여주지 않는다
+
+
+def test_deactivated_user_sees_reason_after_redirect(app, admin):
+    kim = make_user(app, 'kim')
+    uid = app.db.scalar("SELECT id FROM users WHERE username = 'kim'")
+    api(admin, 'post', f'/api/admin/users/{uid}/active', json={'active': False})
+    assert kim.get('/').status_code == 302  # 로그인 화면으로 이동
+    assert '비활성화되었거나 삭제되어' in kim.get('/login').get_data(as_text=True)  # 이유를 안내한다
