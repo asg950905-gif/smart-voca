@@ -1,50 +1,35 @@
 {% extends "base.html" %}
-
-{% block title %}통계 - smart-voca{% endblock %}
-
+{# 2026-11-02 - smart-voca - 사용자 통계 화면: 요약 지표 + 학습 추이/시험 점수/취약 단어 차트 #}
+{% block title %}통계{% endblock %}
 {% block content %}
-<div class="report-page">
-    <h1>📊 학습 통계</h1>
-
-    <!-- 통계 카드 -->
-    <div class="cards-container">
-        <div class="card">
-            <h3>학습 일수</h3>
-            <p id="study-days" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0</p>
-            <p style="color: var(--secondary-color);">일</p>
-        </div>
-
-        <div class="card">
-            <h3>시험 응시</h3>
-            <p id="test-attempts" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0</p>
-            <p style="color: var(--secondary-color);">회</p>
-        </div>
-
-        <div class="card">
-            <h3>평균 성공률</h3>
-            <p id="avg-success" style="font-size: 28px; font-weight: bold; color: var(--success-color);">0%</p>
-        </div>
-
-        <div class="card">
-            <h3>평균 시험 점수</h3>
-            <p id="avg-score" style="font-size: 28px; font-weight: bold; color: var(--primary-color);">0점</p>
-        </div>
-    </div>
-
-    <!-- 차트 -->
-    <div class="card" style="margin-top: 30px;">
-        <h3>최근 학습 추이</h3>
-        <canvas id="study-chart"></canvas>
-    </div>
-
-    <!-- 버튼 -->
-    <div style="text-align: center; margin-top: 20px;">
-        <button class="btn btn-primary" style="width: 200px;" onclick="exportReport()">
-            📥 CSV 다운로드
-        </button>
-    </div>
+<div class="page-head">
+    <div><h1>내 학습 통계</h1><p>최근 14일의 학습 기록이에요.</p></div>
+    <a class="btn secondary" href="{{ url_for('user.export_report') }}">⬇ CSV 내려받기</a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<section class="grid grid-4" id="kpis">
+    <div class="card kpi"><span class="label">학습 일수</span><span class="value" id="k-days">–</span></div>
+    <div class="card kpi"><span class="label">평균 학습 성공률</span><span class="value" id="k-rate">–</span></div>
+    <div class="card kpi"><span class="label">시험 응시</span><span class="value" id="k-tests">–</span></div>
+    <div class="card kpi"><span class="label">평균 / 최고 점수</span><span class="value" id="k-score">–</span></div>
+</section>
+
+<section class="grid grid-2" style="margin-top:var(--gap)">
+    <div class="card"><div class="card-title"><h2>학습 성공률 추이</h2></div>
+        <div class="chart-box"><canvas id="c-study" aria-label="학습 성공률 추이 차트" role="img"></canvas></div>
+        <p id="e-study" class="empty hidden"><span class="emoji">🌱</span>학습을 시작하면 그래프가 나타나요.</p></div>
+    <div class="card"><div class="card-title"><h2>시험 점수</h2></div>
+        <div class="chart-box"><canvas id="c-test" aria-label="시험 점수 차트" role="img"></canvas></div>
+        <p id="e-test" class="empty hidden"><span class="emoji">📝</span>시험을 보면 점수가 기록돼요.</p></div>
+</section>
+<section class="card" style="margin-top:var(--gap)">
+    <div class="card-title"><h2>자주 틀리는 단어 TOP 8</h2></div>
+    <div class="chart-box"><canvas id="c-weak" aria-label="자주 틀리는 단어 차트" role="img"></canvas></div>
+    <p id="e-weak" class="empty hidden"><span class="emoji">👏</span>아직 틀린 단어가 없어요.</p>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
 <script src="{{ url_for('static', filename='js/report.js') }}"></script>
 {% endblock %}

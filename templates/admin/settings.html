@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{# 2026-11-02 - smart-voca - 관리자 전역 설정: 목표 일수, 시험 최대 문항 수, 사용자 일일 학습량 상한 #}
+{% block title %}전역 설정{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>시험·학습 설정</h1><p>모든 사용자에게 적용되는 값이에요.</p></div></div>
+<section class="card" style="max-width:520px">
+    <form id="form">
+        <div class="field"><label for="total_days">전체 학습 목표 일수</label><input id="total_days" type="number" min="1" max="1000" required>
+            <p class="hint">진도율 계산 기준 (1~1000)</p></div>
+        <div class="field"><label for="max_test_problems">시험 최대 문항 수</label><input id="max_test_problems" type="number" min="5" max="200" required>
+            <p class="hint">사용자가 한 번에 볼 수 있는 최대 문제 수 (5~200)</p></div>
+        <div class="field"><label for="max_daily_target">하루 학습 단어 수 상한</label><input id="max_daily_target" type="number" min="5" max="100" required>
+            <p class="hint">사용자가 설정할 수 있는 최대값 (5~100)</p></div>
+        <button class="btn" type="submit">저장</button>
+    </form>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/admin-settings.js') }}"></script>{% endblock %}

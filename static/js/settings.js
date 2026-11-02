@@ -1,56 +1,35 @@
-// 2026-10-28 - smart-voca - 설정 페이지 JavaScript
+// 2026-11-02 - smart-voca - 사용자 설정 화면
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadSettings();
-});
+(function () {
+    'use strict';
+    const $ = (id) => document.getElementById(id);
 
-async function loadSettings() {
-    try {
-        const settings = await apiCall('/api/settings');
-
-        document.getElementById('daily-target').value = settings.daily_target || 10;
-        document.getElementById('dark-mode').checked = settings.dark_mode || false;
-        document.getElementById('theme').value = settings.theme || 'default';
-        document.getElementById('font-size').value = settings.font_size || 'medium';
-    } catch (error) {
-        showNotification('설정 로드 실패: ' + error.message, 'danger');
+    async function load() {
+        try {
+            const s = await api('/api/settings');
+            $('daily_target').value = s.daily_target;
+            $('daily_target').max = s.max_daily_target;
+            $('target-hint').textContent = `1 ~ ${s.max_daily_target}개`;
+            document.querySelector(`input[name="theme"][value="${s.theme}"]`).checked = true;
+        } catch (e) { toast(e.message, 'error'); }
     }
-}
 
-async function saveSettings() {
-    const settings = {
-        daily_target: parseInt(document.getElementById('daily-target').value),
-        dark_mode: document.getElementById('dark-mode').checked,
-        theme: document.getElementById('theme').value,
-        font_size: document.getElementById('font-size').value
-    };
+    $('settings-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const theme = document.querySelector('input[name="theme"]:checked').value;
+        try {
+            await api('/api/settings', { method: 'POST', body: { daily_target: Number($('daily_target').value), theme } });
+            document.documentElement.dataset.themePref = theme;
+            try { localStorage.setItem('theme', theme); } catch (_) { /* 저장 불가 환경 */ }
+            applyTheme(theme);
+            toast('저장했어요');
+        } catch (err) { toast(err.message, 'error'); }
+    });
 
-    try {
-        await apiCall('/api/settings', 'POST', settings);
-        showNotification('설정이 저장되었습니다', 'success');
-    } catch (error) {
-        showNotification('설정 저장 실패: ' + error.message, 'danger');
-    }
-}
-
-function resetProgress() {
-    if (confirm('진도를 초기화하시겠습니까?\n학습 이력은 유지됩니다.')) {
-        // TODO: 진도 초기화 API 호출
-        showNotification('진도가 초기화되었습니다', 'success');
-    }
-}
-
-function resetAllData() {
-    if (confirm('⚠️ 정말로 모든 데이터를 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다!')) {
-        if (confirm('다시 한 번 확인합니다. 정말 초기화하시겠습니까?')) {
-            apiCall('/api/settings/reset', 'POST')
-                .then(() => {
-                    showNotification('모든 데이터가 초기화되었습니다', 'success');
-                    setTimeout(() => location.href = '/', 2000);
-                })
-                .catch(error => {
-                    showNotification('초기화 실패: ' + error.message, 'danger');
-                });
-        }
-    }
-}
+    $('btn-reset').addEventListener('click', async () => {
+        if (!(await confirmDialog('내 학습 기록을 모두 삭제할까요?', '삭제'))) return;
+        try { await api('/api/settings/reset', { method: 'POST' }); toast('기록을 초기화했어요'); }
+        catch (e) { toast(e.message, 'error'); }
+    });
+    load();
+})();

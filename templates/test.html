@@ -1,57 +1,62 @@
 {% extends "base.html" %}
-
-{% block title %}시험 - smart-voca{% endblock %}
-
+{# 2026-11-02 - smart-voca - 시험 화면: 설정 → 문제 풀이(즉시 피드백) → 결과 #}
+{% block title %}시험{% endblock %}
 {% block content %}
-<div class="test-page">
-    <h1>✏️ 단어 시험</h1>
-
-    <div id="test-settings" class="card">
-        <h3>시험 설정</h3>
-
-        <label for="num-problems">문제 수:</label>
-        <input type="number" id="num-problems" min="1" max="100" value="10">
-
-        <label for="test-mode">출제 모드:</label>
-        <select id="test-mode">
-            <option value="한->영">한글 → 영문</option>
-            <option value="영->한">영문 → 한글</option>
-            <option value="혼합">혼합</option>
-        </select>
-
-        <label for="test-format">문제 형식:</label>
-        <select id="test-format">
-            <option value="단답형">단답형</option>
-            <option value="4지선다형">4지선다형</option>
-            <option value="OX형">O/X형</option>
-            <option value="혼합">혼합</option>
-        </select>
-
-        <button class="btn btn-primary" onclick="startTest()">시험 시작</button>
-    </div>
-
-    <div id="test-progress" style="display: none;" class="card">
-        <h3>진행 상황</h3>
-        <p id="problem-number">1/10</p>
-        <div class="progress-bar">
-            <div class="progress-fill" id="test-progress-fill" style="width: 0%"></div>
+<div class="test-stage">
+    <!-- 1) 설정 -->
+    <section id="setup" class="card">
+        <div class="page-head" style="margin-bottom:14px"><div><h1>실력 테스트</h1><p>방식을 고르고 바로 시작해요.</p></div></div>
+        <div class="field">
+            <label for="num">문제 수</label>
+            <select id="num"><option>5</option><option selected>10</option><option>20</option><option>30</option></select>
         </div>
-    </div>
-
-    <div id="test-area" style="display: none;" class="card">
-        <h3 id="problem-text">문제</h3>
-        <div id="answer-area">
-            <!-- 답변 입력 영역 -->
+        <div class="field">
+            <label>출제 방향</label>
+            <div class="seg" id="mode">
+                <label><input type="radio" name="mode" value="혼합" checked><span>혼합</span></label>
+                <label><input type="radio" name="mode" value="영->한"><span>영어 → 한글</span></label>
+                <label><input type="radio" name="mode" value="한->영"><span>한글 → 영어</span></label>
+            </div>
         </div>
-        <button class="btn btn-primary" onclick="submitAnswer()">제출</button>
-    </div>
+        <div class="field">
+            <label>문제 형식</label>
+            <div class="seg" id="format">
+                <label><input type="radio" name="format" value="혼합" checked><span>혼합</span></label>
+                <label><input type="radio" name="format" value="4지선다형"><span>4지선다</span></label>
+                <label><input type="radio" name="format" value="단답형"><span>단답형</span></label>
+                <label><input type="radio" name="format" value="OX형"><span>O / X</span></label>
+            </div>
+        </div>
+        <button id="btn-start" class="btn block" type="button">시험 시작</button>
+    </section>
 
-    <div id="test-result" style="display: none;" class="card">
-        <h3>시험 결과</h3>
-        <p id="result-score">0/10</p>
-        <button class="btn btn-primary" onclick="location.href='/'">대시보드로</button>
-    </div>
+    <!-- 2) 문제 -->
+    <section id="quiz" class="card hidden" aria-live="polite">
+        <div class="row between"><span class="pill neutral" id="q-count"></span><span class="pill neutral" id="q-format"></span></div>
+        <div class="bar" style="margin-top:12px"><div id="q-bar" style="width:0"></div></div>
+        <div class="question" id="q-text" style="margin-top:20px"></div>
+        <div id="q-options" class="options"></div>
+        <form id="q-short" class="hidden" autocomplete="off">
+            <input id="q-input" placeholder="정답을 입력하세요" aria-label="정답 입력">
+            <button class="btn block" type="submit" style="margin-top:10px">제출</button>
+        </form>
+        <div id="q-feedback" class="feedback hidden"></div>
+        <button id="btn-next" class="btn block hidden" type="button" style="margin-top:12px">다음 문제</button>
+    </section>
+
+    <!-- 3) 결과 -->
+    <section id="result" class="card hidden">
+        <div class="center">
+            <div class="score-big" id="r-score"></div>
+            <p class="muted" id="r-summary" style="margin:8px 0 18px"></p>
+            <div class="row" style="justify-content:center">
+                <button class="btn" id="btn-retry" type="button">다시 도전</button>
+                <a class="btn secondary" href="{{ url_for('user.report_page') }}">통계 보기</a>
+            </div>
+        </div>
+        <h3 style="margin:22px 0 4px">문제별 결과</h3>
+        <div id="r-list"></div>
+    </section>
 </div>
-
-<script src="{{ url_for('static', filename='js/test.js') }}"></script>
 {% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/test.js') }}"></script>{% endblock %}

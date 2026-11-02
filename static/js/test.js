@@ -1,118 +1,100 @@
-// 2026-10-28 - smart-voca - 시험 페이지 JavaScript
+// 2026-11-02 - smart-voca - 시험 화면: 시작/풀이/즉시 피드백/결과 (정답은 서버에만 있고 채점 후에만 받는다)
 
-let testConfig = {};
-let testResults = [];
-let currentProblemIdx = 0;
+(function () {
+    'use strict';
+    const $ = (id) => document.getElementById(id);
+    let answered = false, finished = false;
 
-async function startTest() {
-    testConfig = {
-        num_problems: parseInt(document.getElementById('num-problems').value),
-        mode: document.getElementById('test-mode').value,
-        format: document.getElementById('test-format').value
-    };
-
-    try {
-        await apiCall('/api/test/configure', 'POST', testConfig);
-
-        document.getElementById('test-settings').style.display = 'none';
-        document.getElementById('test-progress').style.display = 'block';
-        document.getElementById('test-area').style.display = 'block';
-
-        currentProblemIdx = 0;
-        testResults = [];
-        loadNextProblem();
-    } catch (error) {
-        showNotification('시험 설정 실패: ' + error.message, 'danger');
+    function show(name) {
+        ['setup', 'quiz', 'result'].forEach((id) => $(id).classList.toggle('hidden', id !== name));
     }
-}
+    const radio = (name) => document.querySelector(`input[name="${name}"]:checked`).value;
 
-async function loadNextProblem() {
-    try {
-        const problem = await apiCall('/api/test/next-problem');
+    async function start() {
+        $('btn-start').disabled = true;
+        try {
+            await api('/api/test/start', { method: 'POST', body: {
+                num_problems: Number($('num').value), mode: radio('mode'), format: radio('format') } });
+            show('quiz');
+            await loadProblem();
+        } catch (e) { toast(e.message, 'error'); }
+        $('btn-start').disabled = false;
+    }
 
-        document.getElementById('problem-text').textContent = problem.question;
-        document.getElementById('problem-number').textContent =
-            `${currentProblemIdx + 1}/${testConfig.num_problems}`;
+    async function loadProblem() {
+        const p = await api('/api/test/current');
+        if (p.finished) { await finish(); return; }
+        answered = false;
+        $('q-count').textContent = `${p.index} / ${p.total}`;
+        $('q-format').textContent = p.format;
+        $('q-bar').style.width = `${((p.index - 1) / p.total) * 100}%`;
+        $('q-text').textContent = p.question;
+        $('q-feedback').classList.add('hidden');
+        $('btn-next').classList.add('hidden');
 
-        const percent = ((currentProblemIdx) / testConfig.num_problems) * 100;
-        document.getElementById('test-progress-fill').style.width = percent + '%';
-
-        // 답변 영역 생성
-        const answerArea = document.getElementById('answer-area');
-        answerArea.innerHTML = '';
-
-        if (problem.format === '4지선다형') {
-            problem.options.forEach(option => {
-                const btn = document.createElement('button');
-                btn.className = 'btn btn-primary';
-                btn.textContent = option;
-                btn.onclick = () => {
-                    document.getElementById('user-answer').value = option;
-                    submitAnswer();
-                };
-                answerArea.appendChild(btn);
+        const box = $('q-options');
+        box.innerHTML = '';
+        box.classList.toggle('ox', p.format === 'OX형');
+        $('q-short').classList.toggle('hidden', !!p.options);
+        if (p.options) {
+            p.options.forEach((opt) => {
+                const b = document.createElement('button');
+                b.type = 'button'; b.className = 'option'; b.textContent = opt;
+                b.addEventListener('click', () => submit(opt, b));
+                box.appendChild(b);
             });
+            box.firstChild?.focus();
         } else {
-            const input = document.createElement('input');
-            input.id = 'user-answer';
-            input.type = 'text';
-            input.placeholder = '답을 입력하세요';
-            answerArea.appendChild(input);
+            $('q-input').value = '';
+            $('q-input').focus();
         }
-    } catch (error) {
-        showNotification('문제 로드 실패: ' + error.message, 'danger');
-    }
-}
-
-async function submitAnswer() {
-    const userAnswer = document.getElementById('user-answer').value;
-
-    if (!userAnswer.trim()) {
-        showNotification('답을 입력하세요', 'info');
-        return;
+        $('btn-next').dataset.last = p.index === p.total ? '1' : '0';
+        $('btn-next').textContent = p.index === p.total ? '결과 보기' : '다음 문제';
     }
 
-    try {
-        const result = await apiCall('/api/test/submit-answer', 'POST', {
-            answer: userAnswer
-        });
+    async function submit(answer, clicked) {
+        if (answered) return;
+        answered = true;
+        try {
+            const r = await api('/api/test/answer', { method: 'POST', body: { answer } });
+            document.querySelectorAll('#q-options .option').forEach((b) => {
+                b.disabled = true;
+                if (b.textContent === r.correct_answer) b.classList.add('correct');
+            });
+            if (clicked && !r.is_correct) clicked.classList.add('wrong');
+            const fb = $('q-feedback');
+            fb.className = 'feedback ' + (r.is_correct ? 'ok' : 'no');
+            fb.textContent = r.is_correct ? '✅ 정답이에요!' : `❌ 정답: ${r.correct_answer}`;
+            $('q-short').classList.add('hidden');
+            $('btn-next').classList.remove('hidden');
+            $('btn-next').focus();
+        } catch (e) { answered = false; toast(e.message, 'error'); }
+    }
 
-        testResults.push({
-            user_answer: userAnswer,
-            is_correct: result.is_correct
-        });
+    async function finish() {
+        if (finished) return;
+        finished = true;
+        try {
+            const r = await api('/api/test/finish', { method: 'POST' });
+            $('r-score').textContent = `${r.score}점`;
+            $('r-summary').textContent = `${r.total_problems}문제 중 ${r.correct_answers}문제 정답`;
+            $('r-list').innerHTML = r.details.map((d) =>
+                `<div class="result-item"><span>${d.is_correct ? '✅' : '❌'} ${esc(d.question)}</span>` +
+                `<span class="muted">${esc(d.correct_answer)}</span></div>`).join('');
+            show('result');
+        } catch (e) { toast(e.message, 'error'); }
+        finished = false;
+    }
 
-        // 정오답 표시
-        const message = result.is_correct ? '✓ 정답입니다!' :
-                        `✗ 오답입니다. 정답: ${result.correct_answer}`;
-        showNotification(message, result.is_correct ? 'success' : 'danger');
-
-        currentProblemIdx++;
-
-        if (currentProblemIdx < testConfig.num_problems) {
-            setTimeout(loadNextProblem, 1500);
-        } else {
-            finishTest();
+    $('btn-start').addEventListener('click', start);
+    $('btn-next').addEventListener('click', async () => {
+        if ($('btn-next').dataset.last === '1') await finish(); else await loadProblem();
+    });
+    $('q-short').addEventListener('submit', (e) => { e.preventDefault(); if ($('q-input').value.trim()) submit($('q-input').value); });
+    $('btn-retry').addEventListener('click', () => show('setup'));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !$('btn-next').classList.contains('hidden') && document.activeElement !== $('btn-next')) {
+            $('btn-next').click();
         }
-    } catch (error) {
-        showNotification('채점 실패: ' + error.message, 'danger');
-    }
-}
-
-async function finishTest() {
-    try {
-        const results = await apiCall('/api/test/finish', 'POST', {});
-
-        document.getElementById('test-progress').style.display = 'none';
-        document.getElementById('test-area').style.display = 'none';
-        document.getElementById('test-result').style.display = 'block';
-
-        const score = results.score.toFixed(1);
-        document.getElementById('result-score').textContent =
-            `${results.correct_answers}/${results.total_problems} (${score}점)`;
-
-        showNotification('시험이 완료되었습니다!', 'success');
-    } catch (error) {
-        showNotification('시험 완료 실패: ' + error.message, 'danger');
-    }
-}
+    });
+})();

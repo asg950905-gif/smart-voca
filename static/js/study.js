@@ -1,84 +1,66 @@
-// 2026-10-28 - smart-voca - 학습 페이지 JavaScript
+// 2026-11-02 - smart-voca - 학습 화면: 플립카드, 단축키, 결과 저장
 
-let dailyWords = [];
-let currentWordIdx = 0;
-let results = [];
+(function () {
+    'use strict';
+    const $ = (id) => document.getElementById(id);
+    let words = [], index = 0, results = [], saving = false;
 
-// 페이지 로드 시 단어 로드
-document.addEventListener('DOMContentLoaded', () => {
-    loadDailyWords();
-});
+    function show(area) {
+        ['card-area', 'empty-area', 'done-area'].forEach((id) => $(id).classList.toggle('hidden', id !== area));
+    }
 
-async function loadDailyWords() {
-    try {
-        dailyWords = await apiCall('/api/study/daily-words');
+    function render() {
+        const w = words[index];
+        $('flip').classList.remove('flipped');
+        $('english').textContent = w.english;
+        $('korean').textContent = w.korean;
+        $('pos').textContent = w.part_of_speech || '';
+        $('pos').classList.toggle('hidden', !w.part_of_speech);
+        $('example').textContent = w.example || '';
+        $('progress-text').textContent = `${index + 1} / ${words.length}`;
+        $('progress-bar').style.width = `${(index / words.length) * 100}%`;
+    }
 
-        if (dailyWords.length === 0) {
-            showNotification('오늘의 단어가 없습니다', 'info');
+    function flip() { $('flip').classList.toggle('flipped'); }
+
+    async function judge(isCorrect) {
+        if (saving || !words.length) return;
+        results.push({ word_id: words[index].id, is_correct: isCorrect });
+        index += 1;
+        if (index < words.length) { render(); return; }
+
+        saving = true;
+        $('progress-bar').style.width = '100%';
+        try {
+            const summary = await api('/api/study/record', { method: 'POST', body: { results } });
+            $('done-summary').textContent =
+                `${summary.words_count}개 중 ${summary.correct_count}개를 기억했어요 (${summary.success_rate}%)`;
+            show('done-area');
+        } catch (e) {
+            toast(e.message, 'error');
+            index -= 1; results.pop(); saving = false; // 저장 실패 시 마지막 카드로 되돌려 재시도할 수 있게 한다
             return;
         }
-
-        currentWordIdx = 0;
-        results = [];
-        displayWord();
-    } catch (error) {
-        showNotification('단어 로드 실패: ' + error.message, 'danger');
+        saving = false;
     }
-}
 
-function displayWord() {
-    if (currentWordIdx < dailyWords.length) {
-        const word = dailyWords[currentWordIdx];
-        document.getElementById('word-english').textContent = word.english;
-        document.getElementById('word-korean').textContent = word.korean;
-
-        const progress = currentWordIdx + 1;
-        const total = dailyWords.length;
-        document.getElementById('word-progress').textContent = `${progress}/${total} 완료`;
-
-        const percent = (progress / total) * 100;
-        document.getElementById('study-progress-fill').style.width = percent + '%';
-
-        updateSuccessRate();
+    async function init() {
+        try {
+            words = await api('/api/study/daily-words');
+        } catch (e) { toast(e.message, 'error'); return; }
+        if (!words.length) { $('progress-text').textContent = ''; show('empty-area'); return; }
+        show('card-area');
+        render();
     }
-}
 
-function recordAnswer(isCorrect) {
-    const word = dailyWords[currentWordIdx];
-
-    results.push({
-        word_id: word.id,
-        is_correct: isCorrect
+    $('flip').addEventListener('click', flip);
+    $('btn-know').addEventListener('click', () => judge(true));
+    $('btn-unknown').addEventListener('click', () => judge(false));
+    document.addEventListener('keydown', (e) => {
+        if ($('card-area').classList.contains('hidden')) return;
+        if (e.code === 'Space') { e.preventDefault(); flip(); }
+        else if (e.code === 'ArrowRight') judge(true);
+        else if (e.code === 'ArrowLeft') judge(false);
     });
-
-    currentWordIdx++;
-
-    if (currentWordIdx < dailyWords.length) {
-        displayWord();
-    } else {
-        finishStudy();
-    }
-}
-
-function updateSuccessRate() {
-    const correct = results.filter(r => r.is_correct).length;
-    const total = results.length;
-    const rate = total > 0 ? (correct / total * 100).toFixed(1) : 0;
-    document.getElementById('today-success-rate').textContent = rate + '%';
-}
-
-async function finishStudy() {
-    try {
-        const response = await apiCall('/api/study/record', 'POST', {
-            results: results
-        });
-
-        showNotification('오늘의 학습이 완료되었습니다! 🎉', 'success');
-
-        setTimeout(() => {
-            location.href = '/';
-        }, 2000);
-    } catch (error) {
-        showNotification('학습 저장 실패: ' + error.message, 'danger');
-    }
-}
+    init();
+})();

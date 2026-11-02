@@ -1,89 +1,33 @@
 {% extends "base.html" %}
-
-{% block title %}설정 - smart-voca{% endblock %}
-
+{# 2026-11-02 - smart-voca - 사용자 설정: 하루 학습량, 테마, 내 기록 초기화 #}
+{% block title %}설정{% endblock %}
 {% block content %}
-<div class="settings-page">
-    <h1>⚙️ 설정</h1>
-
-    <div class="settings-container">
-        <!-- 학습 설정 -->
-        <div class="card">
-            <h3>학습 설정</h3>
-
-            <label for="daily-target">일일 학습 단어 수:</label>
-            <input type="number" id="daily-target" min="1" max="50" value="10">
-            <p style="font-size: 12px; color: var(--secondary-color);">매일 학습할 단어의 개수입니다.</p>
-        </div>
-
-        <!-- 표시 설정 -->
-        <div class="card">
-            <h3>표시 설정</h3>
-
-            <label>
-                <input type="checkbox" id="dark-mode">
-                다크 모드
-            </label>
-
-            <label for="theme">테마 선택:</label>
-            <select id="theme">
-                <option value="default">기본</option>
-                <option value="blue">파란색</option>
-                <option value="green">초록색</option>
-            </select>
-
-            <label for="font-size">폰트 크기:</label>
-            <select id="font-size">
-                <option value="small">작음</option>
-                <option value="medium" selected>보통</option>
-                <option value="large">큼</option>
-            </select>
-        </div>
-
-        <!-- 데이터 관리 -->
-        <div class="card">
-            <h3>데이터 관리</h3>
-
-            <button class="btn btn-warning" onclick="resetProgress()">
-                진도 초기화
-            </button>
-            <p style="font-size: 12px; color: var(--secondary-color); margin: 10px 0;">
-                학습 진도만 초기화합니다. (단어 데이터는 유지)
-            </p>
-
-            <button class="btn btn-danger" onclick="resetAllData()" style="margin-top: 10px;">
-                모든 데이터 초기화
-            </button>
-            <p style="font-size: 12px; color: var(--danger-color); margin: 10px 0;">
-                ⚠️ 이 작업은 되돌릴 수 없습니다!
-            </p>
-        </div>
-
-        <!-- 저장 버튼 -->
-        <button class="btn btn-success" onclick="saveSettings()" style="width: 100%; margin-top: 20px;">
-            설정 저장
-        </button>
-    </div>
+<div class="page-head"><div><h1>설정</h1><p>나에게 맞게 조절해요.</p></div></div>
+<div class="grid grid-2">
+    <section class="card">
+        <h2 style="margin-bottom:14px">학습 환경</h2>
+        <form id="settings-form">
+            <div class="field">
+                <label for="daily_target">하루 학습 단어 수</label>
+                <input id="daily_target" type="number" min="1" required>
+                <p class="hint" id="target-hint"></p>
+            </div>
+            <div class="field">
+                <label>화면 테마</label>
+                <div class="seg" id="theme">
+                    <label><input type="radio" name="theme" value="system"><span>시스템</span></label>
+                    <label><input type="radio" name="theme" value="light"><span>☀️ 라이트</span></label>
+                    <label><input type="radio" name="theme" value="dark"><span>🌙 다크</span></label>
+                </div>
+            </div>
+            <button class="btn" type="submit">저장</button>
+        </form>
+    </section>
+    <section class="card">
+        <h2 style="margin-bottom:6px">내 학습 기록</h2>
+        <p class="muted small" style="margin-bottom:14px">학습·시험 기록과 단어별 통계가 모두 삭제되며 되돌릴 수 없어요. 다른 사용자에게는 영향이 없어요.</p>
+        <button id="btn-reset" class="btn danger outline" type="button">내 기록 초기화</button>
+    </section>
 </div>
-
-<style>
-    .settings-container {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .card label {
-        display: block;
-        margin-top: 15px;
-        font-weight: 500;
-        color: #333;
-    }
-
-    .card input[type="checkbox"] {
-        width: auto;
-        margin-right: 10px;
-    }
-</style>
-
-<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
 {% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/settings.js') }}"></script>{% endblock %}

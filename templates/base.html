@@ -1,44 +1,74 @@
 <!DOCTYPE html>
+{# 2026-11-02 - smart-voca - 공통 레이아웃 (상단 내비 + 모바일 하단 탭바, 사용자/관리자 영역 자동 전환) #}
+{% set in_admin = request.path.startswith('/admin') %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}smart-voca - 영어 단어 학습{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>{% block title %}스마트 보카{% endblock %} · smart-voca</title>
+    <script>
+        // 첫 페인트 전에 테마를 적용해 깜빡임을 막는다
+        (function () {
+            var pref = {{ (current_user.theme if current_user else '')|tojson }} || 'system';
+            try { if (!{{ 'true' if current_user else 'false' }}) pref = localStorage.getItem('theme') || 'system'; } catch (e) {}
+            var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.dataset.themePref = pref;
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        })();
+    </script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%235b5bd6'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%93%98%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-logo">
-                <a href="/">📚 smart-voca</a>
+<body class="{{ 'admin' if in_admin else '' }}" data-logged-in="{{ '1' if current_user else '0' }}">
+{% if current_user %}
+    {% if in_admin %}
+        {% set links = [('/admin/', '📊', '대시보드'), ('/admin/words', '📚', '단어'), ('/admin/users', '👥', '사용자'), ('/admin/settings', '⚙️', '설정')] %}
+    {% else %}
+        {% set links = [('/', '🏠', '홈'), ('/study', '🃏', '학습'), ('/test', '📝', '시험'), ('/report', '📈', '통계'), ('/settings', '⚙️', '설정')] %}
+    {% endif %}
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="{{ '/admin/' if in_admin else '/' }}">
+                <span class="logo">📘</span> 스마트 보카
+                {% if in_admin %}<span class="badge-role">ADMIN</span>{% endif %}
+            </a>
+            <nav class="nav-links" aria-label="주 메뉴">
+                {% for href, icon, label in links %}
+                    <a href="{{ href }}" class="{{ 'active' if (request.path == href or request.path == href.rstrip('/')) else '' }}">{{ label }}</a>
+                {% endfor %}
+            </nav>
+            <div class="nav-right">
+                {% if current_user.role == 'admin' %}
+                    <a class="btn secondary small" href="{{ '/' if in_admin else '/admin/' }}">{{ '사용자 화면' if in_admin else '관리자' }}</a>
+                {% endif %}
+                <span class="user-chip">{{ current_user.display_name }}</span>
+                <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">🌙</button>
+                <form method="post" action="{{ url_for('auth.logout') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                    <button class="btn ghost small" type="submit">로그아웃</button>
+                </form>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="/" class="nav-link">대시보드</a></li>
-                <li class="nav-item"><a href="/study" class="nav-link">학습</a></li>
-                <li class="nav-item"><a href="/test" class="nav-link">시험</a></li>
-                <li class="nav-item"><a href="/report" class="nav-link">통계</a></li>
-                <li class="nav-item"><a href="/settings" class="nav-link">설정</a></li>
-            </ul>
         </div>
-    </nav>
+    </header>
+{% endif %}
 
     <main class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+            {% endfor %}
         {% endwith %}
-
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 smart-voca. All rights reserved.</p>
-    </footer>
+{% if current_user %}
+    <nav class="tabbar" aria-label="하단 메뉴">
+        {% for href, icon, label in links %}
+            <a href="{{ href }}" class="{{ 'active' if (request.path == href or request.path == href.rstrip('/')) else '' }}"><span>{{ icon }}</span>{{ label }}</a>
+        {% endfor %}
+    </nav>
+{% endif %}
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}

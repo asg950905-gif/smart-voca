@@ -1,90 +1,51 @@
 {% extends "base.html" %}
-
-{% block title %}대시보드 - smart-voca{% endblock %}
-
+{# 2026-11-02 - smart-voca - 사용자 홈: 오늘의 학습 현황, 진도 링, 핵심 지표 #}
+{% block title %}홈{% endblock %}
 {% block content %}
-<div class="dashboard">
-    <h1>📊 대시보드</h1>
-
-    <div class="welcome-section">
-        <h2>안녕하세요! 오늘도 화이팅! 💪</h2>
-        <p>매일 꾸준한 학습이 영어의 완성입니다.</p>
+<section class="card hero">
+    <div>
+        <h1>안녕하세요, {{ current_user.display_name }}님 👋</h1>
+        {% if progress.studied_today %}
+            <p>오늘 {{ progress.today.words_count }}개 중 {{ progress.today.correct_count }}개를 기억했어요. 한 번 더 복습해 볼까요?</p>
+        {% elif progress.total_words == 0 %}
+            <p>아직 등록된 단어가 없어요. 관리자가 단어를 등록하면 학습을 시작할 수 있어요.</p>
+        {% else %}
+            <p>오늘의 단어 {{ progress.daily_target }}개가 준비되어 있어요.</p>
+        {% endif %}
     </div>
+    <a class="btn" href="{{ url_for('user.study_page') }}">{{ '다시 학습하기' if progress.studied_today else '학습 시작' }}</a>
+</section>
 
-    <!-- 진도 카드 -->
-    <div class="cards-container">
-        <div class="card">
-            <h3>📅 학습 진도</h3>
-            <div class="progress-info">
-                <p class="progress-text" id="progress-text">로드 중...</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
-                </div>
-                <p class="progress-percent" id="progress-percent">0%</p>
+<section class="grid grid-4" style="margin-top:var(--gap)">
+    <div class="card kpi"><span class="label">🔥 연속 학습</span><span class="value">{{ progress.streak }}일</span>
+        <span class="sub">{{ '오늘도 이어가는 중' if progress.studied_today else '오늘 학습하면 이어져요' }}</span></div>
+    <div class="card kpi"><span class="label">📖 학습한 단어</span><span class="value">{{ progress.learned_words }}<small class="muted" style="font-size:1rem"> / {{ progress.total_words }}</small></span>
+        <span class="sub">한 번 이상 맞힌 단어</span></div>
+    <div class="card kpi"><span class="label">🏅 마스터</span><span class="value">{{ progress.mastered_words }}</span>
+        <span class="sub">3회 이상 풀고 정답률 80%↑</span></div>
+    <div class="card kpi"><span class="label">📅 학습 일수</span><span class="value">{{ progress.studied_days }}일</span>
+        <span class="sub">목표 {{ progress.total_days }}일</span></div>
+</section>
+
+<section class="grid grid-2" style="margin-top:var(--gap)">
+    <div class="card">
+        <div class="card-title"><h2>전체 진도</h2><span class="muted small">{{ progress.studied_days }} / {{ progress.total_days }}일</span></div>
+        <div class="row" style="gap:22px">
+            <div class="ring" style="--p: {{ progress.completion_rate }}" role="img" aria-label="진도 {{ progress.completion_rate }}%"><span>{{ progress.completion_rate|round|int }}%</span></div>
+            <div style="flex:1;min-width:140px">
+                <p class="muted small" style="margin-bottom:8px">하루 목표 {{ progress.daily_target }}단어</p>
+                <div class="bar"><div style="width: {{ (progress.learned_words / progress.total_words * 100) if progress.total_words else 0 }}%"></div></div>
+                <p class="muted small" style="margin-top:6px">단어장 달성률</p>
             </div>
         </div>
-
-        <div class="card">
-            <h3>📚 오늘의 학습</h3>
-            <div id="today-status">
-                <p>로드 중...</p>
-            </div>
-            <button class="btn btn-primary" onclick="location.href='/study'">
-                학습 시작 →
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>✏️ 시험 응시</h3>
-            <p>실력을 확인하고 약점을 보완하세요.</p>
-            <button class="btn btn-primary" onclick="location.href='/test'">
-                시험 시작 →
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>📊 통계 보기</h3>
-            <p>학습 현황을 그래프로 분석합니다.</p>
-            <button class="btn btn-primary" onclick="location.href='/report'">
-                통계 보기 →
-            </button>
+    </div>
+    <div class="card">
+        <div class="card-title"><h2>바로가기</h2></div>
+        <div class="grid" style="gap:10px">
+            <a class="btn secondary" href="{{ url_for('user.test_page') }}">📝 실력 테스트 보기</a>
+            <a class="btn secondary" href="{{ url_for('user.report_page') }}">📈 내 학습 통계</a>
+            <a class="btn secondary" href="{{ url_for('user.settings_page') }}">⚙️ 하루 학습량 조절</a>
         </div>
     </div>
-
-    <!-- 빠른 접근 -->
-    <div class="quick-links">
-        <h3>빠른 접근</h3>
-        <div class="links-container">
-            <a href="/upload" class="quick-link">📤 단어 업로드</a>
-            <a href="/settings" class="quick-link">⚙️ 설정</a>
-            <a href="/" class="quick-link">🔄 새로고침</a>
-        </div>
-    </div>
-</div>
-
-<script>
-    // 진도 정보 로드
-    fetch('/api/progress')
-        .then(response => response.json())
-        .then(data => {
-            const rate = data.completion_rate || 0;
-            document.getElementById('progress-text').textContent =
-                `${data.current_day}일차 / ${data.total_days}일차`;
-            document.getElementById('progress-fill').style.width = `${rate}%`;
-            document.getElementById('progress-percent').textContent = `${rate.toFixed(1)}%`;
-        })
-        .catch(error => {
-            document.getElementById('progress-text').textContent = '데이터를 불러올 수 없습니다';
-            console.error('Error:', error);
-        });
-
-    // 오늘의 학습 상태
-    fetch('/api/progress')
-        .then(response => response.json())
-        .then(data => {
-            const todayEl = document.getElementById('today-status');
-            const status = data.status === 'completed' ? '✓ 학습 완료!' : '오늘 아직 학습하지 않았습니다';
-            todayEl.innerHTML = `<p>${status}</p>`;
-        });
-</script>
+</section>
 {% endblock %}
