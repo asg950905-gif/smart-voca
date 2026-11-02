@@ -13,12 +13,12 @@
 | 레이어 | 기술 |
 |--------|------|
 | 언어 | Python 3.9+ |
-| 백엔드 | Flask (경량 웹 프레임워크) |
-| 프론트엔드 | HTML5, CSS3, Vanilla JavaScript |
-| 데이터 처리 | pandas, numpy |
-| 차트/시각화 | matplotlib, Chart.js |
-| 데이터 저장 | CSV, JSON (로컬 파일) |
-| 실행 환경 | 로컬 Windows 11 (PowerShell), 개발 서버 `flask run` |
+| 백엔드 | Flask 3 (Blueprint: 인증 / 사용자 / 관리자), Werkzeug 비밀번호 해시 |
+| 프론트엔드 | HTML5, CSS3(디자인 토큰·다크모드·반응형), Vanilla JavaScript |
+| 차트 | Chart.js 4.4.1 (`static/vendor/` 로컬 파일, 오프라인 시연 가능) |
+| 데이터 저장 | SQLite (`data/smart_voca.db`, 표준 `sqlite3`) — ADR-001 |
+| 인증 | 세션 로그인 + 역할(user/admin), CSRF 토큰, 로그인 시도 제한 |
+| 실행 환경 | 로컬 Windows 11 (PowerShell), `python app.py` |
 
 ## 상위 정책 참조
 
@@ -92,18 +92,22 @@ smart-voca/
 # 1. 가상환경 생성 및 활성화
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-# 2. 의존성 설치
-pip install -r requirements.txt
-# 3. 앱 실행 (둘 중 하나)
+# 2. 의존성 설치 (개발: requirements-dev.txt = pytest, playwright 포함)
+pip install -r requirements-dev.txt
+# 3. 시연용 샘플 데이터 생성 (기존 DB 삭제됨 — 실사용 데이터가 있으면 금지)
+python ai-agent/scripts/시연데이터생성.py --reset
+# 4. 앱 실행
 python app.py
-flask run
-# 4. 브라우저에서 http://localhost:5000 접속
+# 5. 브라우저에서 http://127.0.0.1:5000 접속 (관리자 admin/admin1234, 사용자 minsu/demo1234)
 ```
+
+- 환경변수는 `.env.example` 참조. 기본은 `127.0.0.1` 에서만 접속 가능하고 디버그는 꺼져 있다
+  (`FLASK_DEBUG=1` 일 때만 켜짐. 공용망에서는 절대 켜지 않는다).
 
 ### 테스트 방법
 
-- **수동 테스트**: 브라우저에서 각 기능(학습, 시험, 통계) 확인
-- **자동 테스트**: `pytest` (추후 작성)
+- **자동 테스트**: `python -m pytest tests -q` (인증·권한·CSRF·단어 CRUD·학습·시험·사용자 간 데이터 격리·화면 렌더링)
+- **수동 테스트**: `ai-agent/claude/테스트_261102_시연 시나리오 v1.0.md` 의 순서대로 사용자/관리자 화면 확인
 
 ### 배포
 
@@ -114,7 +118,11 @@ flask run
 
 - **브라우저 캐시**: 강제 새로고침 (Ctrl+Shift+R)
 - **포트 충돌**: 기본 5000번 포트 사용 (필요 시 변경)
-- **데이터 디렉토리**: `data/` 는 `.gitignore` 에 포함 (로컬에만 저장)
+- **데이터 디렉토리**: `data/` 는 `.gitignore` 에 포함 (로컬에만 저장). SQLite DB 와 `secret_key.txt`(세션 서명 키)는
+  PUBLIC 저장소에 올라가면 안 되므로 `.gitignore` 에서 반드시 제외 상태를 유지한다.
+- **DB 스키마 변경**: `src/data/database.py` 의 `SCHEMA` 는 `CREATE TABLE IF NOT EXISTS` 라서 기존 DB 의 컬럼은 바뀌지 않는다.
+  컬럼을 바꾸면 시연 DB 는 `--reset` 으로 재생성하고, 배포 DB 는 별도 마이그레이션이 필요하다.
+- **새 템플릿에서 서버 데이터를 JS 로 그릴 때는 반드시 `esc()`** (static/js/main.js) 를 거친다 (XSS 방지).
 - **한글 경로**: 프로젝트가 한글 경로(OneDrive/문서)에 있어 패키지 호환 문제가 있었다 (`requirements.txt` 버전 수정 이력 참조)
 
 ## 코드 작성 규칙
