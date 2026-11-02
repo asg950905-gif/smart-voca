@@ -46,6 +46,32 @@ pip install -r requirements-dev.txt
 python -m pytest tests -q
 ```
 
+## 다른 컴퓨터에서 이어서 작업하기
+
+**처음 한 번 (새 컴퓨터)**
+
+```powershell
+git --version; python --version            # 없으면 Git, Python 3.9+ 설치
+git clone https://github.com/asg950905-gif/smart-voca.git
+cd smart-voca
+git config --local user.name  "asg950905-gif"   # --global 말고 --local (공용 PC 흔적 방지)
+git config --local user.email "asg950905@gmail.com"
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python ai-agent/scripts/시연데이터생성.py --reset   # data/ 는 git 에 없으므로 다시 생성
+```
+
+- 내려받기(clone)는 로그인 없이 되지만 **push 는 GitHub 로그인 필요**: `gh auth login`
+- `claude` 실행 후 "ai-agent/claude 의 최근 일지를 읽고 어디까지 했는지 정리해줘" 라고 요청한다. (이전 대화·자동 메모리는 따라오지 않으므로 일지가 인수인계 문서)
+
+**작업 시작할 때**: `git pull`
+**작업 끝낼 때**: 일지(`ai-agent/claude/일지_*.md`) 갱신 → 커밋 → `git push`
+**공용 PC(실습실)에서는 종료 전**: `gh auth logout`, Windows 자격 증명 관리자의 `github.com` 삭제, 클론 폴더 삭제.
+토큰·비밀번호·`.env` 내용은 Claude 대화창에 붙여넣지 않는다.
+
+문제 해결: push 거절 → `git pull` 후 재시도 / `Activate.ps1` 차단 → `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
 ## 문서
 
 - 프로젝트 지침: `CLAUDE.md` / 개발방법론: `docs/개발방법론.md`
