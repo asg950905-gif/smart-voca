@@ -1,199 +1,166 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# 2026-10-28 - smart-voca - 시험 엔진
+# 2026-11-02 - smart-voca - 시험 엔진 (사용자별 시험 세션을 DB 에 저장해 동시 응시를 지원)
 # 파일 위치: src/business/test_engine.py
 
-from typing import List, Dict, Optional
-from datetime import datetime
+import json
 import logging
-from src.data.models import Word, Question, TestLog
-from src.data.file_manager import FileManager
+import random
+from datetime import datetime
+from typing import Dict, Optional
+from src.data.database import Database
 from src.business.word_manager import WordManager
 
 logger = logging.getLogger(__name__)
 
+MODES = ('한->영', '영->한', '혼합')
+FORMATS = ('단답형', '4지선다형', 'OX형', '혼합')
+MIN_WORDS_FOR_CHOICE = 4  # 4지선다형은 오답 보기를 만들 단어가 최소 4개 필요
+
+
+class TestError(Exception):
+    """사용자에게 보여줘도 되는 시험 오류"""
+
 
 class TestEngine:
-    """시험 출제 및 채점"""
+    """시험 출제·채점. 상태는 서버 메모리가 아니라 test_sessions 테이블에 둔다."""
 
-    def __init__(self, word_manager: WordManager, file_manager: FileManager):
+    __test__ = False  # pytest 가 클래스 이름 때문에 테스트로 오인하지 않도록 한다
+
+    def __init__(self, db: Database, word_manager: WordManager):
+        self.db = db
         self.word_manager = word_manager
-        self.file_manager = file_manager
-        self.config = {}
-        self.problems = []
-        self.current_problem_idx = 0
-        self.results = []
 
-    def configure_test(self, config: Dict) -> bool:
-        """시험 설정"""
-        try:
-            self.config = {
-                'num_problems': int(config.get('num_problems', 10)),
-                'mode': config.get('mode', '혼합'),  # 한->영, 영->한, 혼합
-                'format': config.get('format', '혼합')  # 단답형, 4지선다형, OX형, 혼합
-            }
-            self.problems = []
-            self.current_problem_idx = 0
-            self.results = []
+    # ---------- 세션 저장/로드 ----------
+    def _load(self, user_id: int) -> Optional[Dict]:
+        row = self.db.query_one("SELECT state_json FROM test_sessions WHERE user_id = ?", (user_id,))
+        return json.loads(row['state_json']) if row else None
 
-            # 문제 생성
-            self.generate_problems()
-
-            logger.info(f"시험 설정 완료: {self.config}")
-            return True
-        except Exception as e:
-            logger.error(f"시험 설정 실패: {e}")
-            return False
-
-    def generate_problems(self) -> None:
-        """문제 생성"""
-        try:
-            words = self.word_manager.get_words_by_weight(self.config['num_problems'])
-
-            for idx, word in enumerate(words):
-                # 모드 결정
-                mode = self.config['mode']
-                if mode == '혼합':
-                    import random
-                    mode = random.choice(['한->영', '영->한'])
-
-                # 형식 결정
-                fmt = self.config['format']
-                if fmt == '혼합':
-                    import random
-                    fmt = random.choice(['단답형', '4지선다형', 'OX형'])
-
-                # 문제 생성
-                question = self.generate_question(word, mode, fmt)
-                self.problems.append(question)
-
-            logger.info(f"문제 {len(self.problems)}개 생성 완료")
-        except Exception as e:
-            logger.error(f"문제 생성 실패: {e}")
-
-    def generate_question(self, word: Word, mode: str, fmt: str) -> Question:
-        """개별 문제 생성"""
-        if mode == '한->영':
-            question_text = f"'{word.korean}'의 영문은?"
-            correct_answer = word.english
-        else:  # 영->한
-            question_text = f"'{word.english}'의 뜻은?"
-            correct_answer = word.korean
-
-        options = None
-        if fmt == '4지선다형':
-            options = self.generate_options(correct_answer, word, mode)
-
-        return Question(
-            id=word.id,
-            word=word,
-            mode=mode,
-            format=fmt,
-            question_text=question_text,
-            options=options,
-            correct_answer=correct_answer
+    def _save(self, user_id: int, state: Dict) -> None:
+        self.db.execute(
+            "INSERT INTO test_sessions(user_id, state_json) VALUES(?, ?) "
+            "ON CONFLICT(user_id) DO UPDATE SET state_json = excluded.state_json, "
+            "updated_at = datetime('now', 'localtime')",
+            (user_id, json.dumps(state, ensure_ascii=False)),
         )
 
-    def generate_options(self, correct: str, word: Word, mode: str) -> List[str]:
-        """4지선다형 선택지 생성"""
-        import random
-
-        options = [correct]
-        all_words = self.word_manager.get_all_words()
-
-        # 다른 단어에서 선택지 추가
-        while len(options) < 4:
-            random_word = random.choice(all_words)
-            if random_word.id == word.id:
-                continue
-
-            option = random_word.english if mode == '한->영' else random_word.korean
-            if option not in options:
-                options.append(option)
-
-        random.shuffle(options)
-        return options
-
-    def get_current_problem(self) -> Dict:
-        """현재 문제 반환"""
-        if self.current_problem_idx < len(self.problems):
-            problem = self.problems[self.current_problem_idx]
-            return problem.to_dict()
-        return {}
-
-    def grade_answer(self, user_answer: str) -> bool:
-        """답변 채점"""
-        if self.current_problem_idx >= len(self.problems):
-            return False
-
-        problem = self.problems[self.current_problem_idx]
-        is_correct = user_answer.strip().lower() == problem.correct_answer.lower()
-
-        problem.user_answer = user_answer
-        problem.is_correct = is_correct
-
-        self.results.append({
-            'word_id': problem.id,
-            'question': problem.question_text,
-            'user_answer': user_answer,
-            'correct_answer': problem.correct_answer,
-            'is_correct': is_correct
-        })
-
-        self.current_problem_idx += 1
-
-        return is_correct
-
-    def next_problem(self) -> bool:
-        """다음 문제로 이동"""
-        if self.current_problem_idx < len(self.problems):
-            return True
-        return False
-
-    def record_test(self) -> bool:
-        """시험 결과 저장"""
+    # ---------- 시험 시작 ----------
+    def start_test(self, user_id: int, config: Dict) -> Dict:
+        mode = config.get('mode', '혼합')
+        fmt = config.get('format', '혼합')
+        if mode not in MODES or fmt not in FORMATS:
+            raise TestError('올바르지 않은 시험 설정입니다.')
         try:
-            correct_count = sum(1 for r in self.results if r['is_correct'])
-            total = len(self.results)
+            num = int(config.get('num_problems', 10))
+        except (TypeError, ValueError):
+            raise TestError('문제 수는 숫자여야 합니다.')
+        max_num = int(self.db.get_setting('max_test_problems', '50'))
+        num = max(1, min(num, max_num))
 
-            test_log = TestLog(
-                date=datetime.now().strftime('%Y-%m-%d'),
-                mode=self.config.get('mode', '혼합'),
-                format=self.config.get('format', '혼합'),
-                total_problems=total,
-                correct_answers=correct_count,
-                score=correct_count / total * 100 if total > 0 else 0
-            )
+        total_words = self.word_manager.count()
+        if total_words == 0:
+            raise TestError('등록된 단어가 없습니다. 관리자에게 단어 등록을 요청하세요.')
+        if fmt in ('4지선다형', '혼합') and total_words < MIN_WORDS_FOR_CHOICE:
+            fmt = 'OX형' if total_words >= 2 else '단답형'  # 단어가 부족하면 가능한 형식으로 낮춘다
 
-            self.file_manager.append_csv('test_log.csv', test_log.to_dict())
+        # 오답이 많은 단어를 우선 출제한다
+        words = self.db.query(
+            """SELECT w.id, w.english, w.korean FROM words w
+               LEFT JOIN user_word_stats s ON s.word_id = w.id AND s.user_id = ?
+               ORDER BY COALESCE(s.weight, 0) DESC, RANDOM() LIMIT ?""",
+            (user_id, num),
+        )
+        pool = self.db.query("SELECT id, english, korean FROM words")
+        problems = [self._make_problem(w, mode, fmt, pool) for w in words]
+        random.shuffle(problems)
 
-            # 단어 가중치 업데이트
-            for result in self.results:
-                self.word_manager.update_word(
-                    result['word_id'],
-                    result['is_correct']
-                )
+        state = {'config': {'num_problems': len(problems), 'mode': mode, 'format': fmt},
+                 'problems': problems, 'index': 0, 'results': [],
+                 'started_at': datetime.now().isoformat()}
+        self._save(user_id, state)
+        return {'total': len(problems), 'config': state['config']}
 
-            self.word_manager.save_words()
+    def _make_problem(self, word: Dict, mode: str, fmt: str, pool: list) -> Dict:
+        p_mode = random.choice(['한->영', '영->한']) if mode == '혼합' else mode
+        p_fmt = random.choice(['단답형', '4지선다형', 'OX형']) if fmt == '혼합' else fmt
+        if p_fmt == '4지선다형' and len(pool) < MIN_WORDS_FOR_CHOICE:
+            p_fmt = 'OX형'
+        if p_fmt == 'OX형' and len(pool) < 2:
+            p_fmt = '단답형'
 
-            logger.info(f"시험 기록 저장: {correct_count}/{total}")
-            return True
-        except Exception as e:
-            logger.error(f"시험 기록 저장 실패: {e}")
-            return False
+        ask, answer = (word['korean'], word['english']) if p_mode == '한->영' else (word['english'], word['korean'])
+        key = 'english' if p_mode == '한->영' else 'korean'
+        others = [w[key] for w in pool if w['id'] != word['id'] and w[key] != answer]
+        problem = {'word_id': word['id'], 'mode': p_mode, 'format': p_fmt,
+                   'prompt': ask, 'correct_answer': answer, 'options': None}
 
-    def get_results(self) -> Dict:
-        """시험 결과 반환"""
-        correct_count = sum(1 for r in self.results if r['is_correct'])
-        total = len(self.results)
+        if p_fmt == '4지선다형':
+            options = random.sample(others, min(3, len(others))) + [answer]
+            random.shuffle(options)
+            problem['options'] = options
+            problem['question'] = f"'{ask}'" + ("의 영문은?" if p_mode == '한->영' else "의 뜻은?")
+        elif p_fmt == 'OX형':
+            # 절반은 맞는 짝, 절반은 틀린 짝을 보여주고 O/X 를 고르게 한다
+            shown, truth = (answer, True)
+            if others and random.random() < 0.5:
+                shown, truth = random.choice(others), False
+            problem['shown'] = shown
+            problem['correct_answer'] = 'O' if truth else 'X'
+            problem['options'] = ['O', 'X']
+            problem['question'] = f"'{ask}' = '{shown}' 이(가) 맞습니까?"
+        else:
+            problem['question'] = f"'{ask}'" + ("의 영문은?" if p_mode == '한->영' else "의 뜻은?")
+        return problem
 
-        return {
-            'total_problems': total,
-            'correct_answers': correct_count,
-            'score': correct_count / total * 100 if total > 0 else 0,
-            'details': self.results
-        }
+    # ---------- 진행/채점 ----------
+    def get_current_problem(self, user_id: int) -> Dict:
+        state = self._load(user_id)
+        if not state:
+            raise TestError('진행 중인 시험이 없습니다.')
+        idx = state['index']
+        if idx >= len(state['problems']):
+            return {'finished': True, 'total': len(state['problems'])}
+        p = state['problems'][idx]
+        # 정답은 클라이언트에 보내지 않는다
+        return {'finished': False, 'index': idx + 1, 'total': len(state['problems']),
+                'question': p['question'], 'format': p['format'], 'mode': p['mode'], 'options': p['options']}
 
-    def is_finished(self) -> bool:
-        """시험 완료 여부"""
-        return self.current_problem_idx >= len(self.problems)
+    def grade_answer(self, user_id: int, answer: str) -> Dict:
+        state = self._load(user_id)
+        if not state:
+            raise TestError('진행 중인 시험이 없습니다.')
+        idx = state['index']
+        if idx >= len(state['problems']):
+            raise TestError('이미 모든 문제를 풀었습니다.')
+        p = state['problems'][idx]
+        user_answer = (answer or '').strip()
+        is_correct = user_answer.lower() == p['correct_answer'].strip().lower()
+        state['results'].append({'word_id': p['word_id'], 'question': p['question'],
+                                 'user_answer': user_answer, 'correct_answer': p['correct_answer'],
+                                 'is_correct': is_correct})
+        state['index'] = idx + 1
+        self._save(user_id, state)
+        return {'is_correct': is_correct, 'correct_answer': p['correct_answer'],
+                'finished': state['index'] >= len(state['problems'])}
+
+    def finish_test(self, user_id: int) -> Dict:
+        """시험 종료: 결과 저장 + 단어 통계 반영 후 세션 삭제"""
+        state = self._load(user_id)
+        if not state:
+            raise TestError('진행 중인 시험이 없습니다.')
+        results = state['results']
+        total = len(results)
+        if total == 0:
+            raise TestError('풀이한 문제가 없습니다.')
+        correct = sum(1 for r in results if r['is_correct'])
+        score = round(correct / total * 100, 1)
+        today = datetime.now().strftime('%Y-%m-%d')
+        cfg = state['config']
+        with self.db.session() as conn:
+            conn.execute(
+                "INSERT INTO test_logs(user_id, date, mode, format, total_problems, correct_answers, score) "
+                "VALUES(?,?,?,?,?,?,?)", (user_id, today, cfg['mode'], cfg['format'], total, correct, score))
+            for r in results:
+                self.word_manager.update_user_stat(conn, user_id, r['word_id'], r['is_correct'], today)
+            conn.execute("DELETE FROM test_sessions WHERE user_id = ?", (user_id,))
+        return {'total_problems': total, 'correct_answers': correct, 'score': score, 'details': results}

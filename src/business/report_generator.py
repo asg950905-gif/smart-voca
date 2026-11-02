@@ -1,165 +1,117 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# 2026-10-28 - smart-voca - 보고서 생성
+# 2026-11-02 - smart-voca - 통계·보고서 (사용자 개인 통계 + 관리자 전체 통계)
 # 파일 위치: src/business/report_generator.py
 
-from typing import Dict, List
-from datetime import datetime, timedelta
-import logging
 import csv
+import logging
+from datetime import datetime, timedelta
 from io import StringIO
-from src.data.file_manager import FileManager
+from typing import Dict
+from src.data.database import Database
 
 logger = logging.getLogger(__name__)
 
 
+def _days_ago(days: int) -> str:
+    return (datetime.now() - timedelta(days=days)).strftime('%Y-%m-%d')
+
+
 class ReportGenerator:
-    """학습 통계 및 보고서"""
+    """학습 통계 집계"""
 
-    def __init__(self, file_manager: FileManager):
-        self.file_manager = file_manager
+    def __init__(self, db: Database):
+        self.db = db
 
-    def calculate_statistics(self) -> Dict:
-        """통계 계산"""
-        try:
-            study_logs = self.file_manager.read_csv('study_log.csv')
-            test_logs = self.file_manager.read_csv('test_log.csv')
-            progress = self.file_manager.read_json('progress.json')
-
-            # 기본값
-            stats = {
-                'total_study_days': len(study_logs),
-                'total_test_attempts': len(test_logs),
-                'average_study_success_rate': 0,
-                'average_test_score': 0,
-                'today_studied': False,
-                'today_success_rate': 0,
-                'today_test_score': 0
-            }
-
-            if study_logs:
-                success_rates = [float(log.get('success_rate', 0)) for log in study_logs]
-                stats['average_study_success_rate'] = sum(success_rates) / len(success_rates)
-
-            if test_logs:
-                scores = [float(log.get('score', 0)) for log in test_logs]
-                stats['average_test_score'] = sum(scores) / len(scores)
-
-            # 오늘 통계
-            today = datetime.now().strftime('%Y-%m-%d')
-            today_study = [log for log in study_logs if log.get('date') == today]
-            today_test = [log for log in test_logs if log.get('date') == today]
-
-            if today_study:
-                stats['today_studied'] = True
-                stats['today_success_rate'] = float(today_study[0].get('success_rate', 0))
-
-            if today_test:
-                stats['today_test_score'] = float(today_test[0].get('score', 0))
-
-            # 진도
-            if progress:
-                stats['current_day'] = progress.get('current_day', 1)
-                stats['total_days'] = progress.get('total_days', 200)
-                stats['completion_rate'] = (stats['current_day'] / stats['total_days'] * 100)
-
-            return stats
-
-        except Exception as e:
-            logger.error(f"통계 계산 실패: {e}")
-            return {}
-
-    def get_chart_data(self) -> Dict:
-        """Chart.js용 차트 데이터"""
-        try:
-            study_logs = self.file_manager.read_csv('study_log.csv')
-            test_logs = self.file_manager.read_csv('test_log.csv')
-
-            # 최근 7일 데이터
-            today = datetime.now()
-            seven_days_ago = (today - timedelta(days=7)).strftime('%Y-%m-%d')
-
-            recent_logs = [log for log in study_logs if log.get('date', '') >= seven_days_ago]
-            recent_tests = [log for log in test_logs if log.get('date', '') >= seven_days_ago]
-
-            return {
-                'study_trend': self._get_study_trend_data(recent_logs),
-                'test_scores': self._get_test_score_data(recent_tests),
-                'weak_words': self._get_weak_words_data()
-            }
-
-        except Exception as e:
-            logger.error(f"차트 데이터 생성 실패: {e}")
-            return {}
-
-    def _get_study_trend_data(self, logs: List[Dict]) -> Dict:
-        """학습 추이 데이터"""
-        labels = []
-        data = []
-
-        for log in sorted(logs, key=lambda x: x.get('date', '')):
-            labels.append(log.get('date', ''))
-            data.append(float(log.get('success_rate', 0)))
-
+    # ---------- 사용자 개인 ----------
+    def user_statistics(self, user_id: int) -> Dict:
+        today = datetime.now().strftime('%Y-%m-%d')
+        study = self.db.query_one(
+            "SELECT COUNT(DISTINCT date) AS days, ROUND(AVG(success_rate), 1) AS avg_rate, "
+            "COALESCE(SUM(words_count), 0) AS words FROM study_logs WHERE user_id = ?", (user_id,))
+        test = self.db.query_one(
+            "SELECT COUNT(*) AS attempts, ROUND(AVG(score), 1) AS avg_score, MAX(score) AS best "
+            "FROM test_logs WHERE user_id = ?", (user_id,))
         return {
-            'labels': labels,
-            'datasets': [{
-                'label': '성공률 (%)',
-                'data': data,
-                'borderColor': 'rgb(75, 192, 192)',
-                'tension': 0.1
-            }]
+            'total_study_days': study['days'],
+            'total_words_studied': study['words'],
+            'average_study_success_rate': study['avg_rate'] or 0,
+            'total_test_attempts': test['attempts'],
+            'average_test_score': test['avg_score'] or 0,
+            'best_test_score': test['best'] or 0,
+            'today_studied': bool(self.db.scalar(
+                "SELECT COUNT(*) FROM study_logs WHERE user_id = ? AND date = ?", (user_id, today))),
         }
 
-    def _get_test_score_data(self, logs: List[Dict]) -> Dict:
-        """시험 성적 데이터"""
-        labels = []
-        data = []
-
-        for log in sorted(logs, key=lambda x: x.get('date', '')):
-            labels.append(log.get('date', ''))
-            data.append(float(log.get('score', 0)))
-
+    def user_charts(self, user_id: int, days: int = 14) -> Dict:
+        since = _days_ago(days - 1)
+        study = self.db.query(
+            "SELECT date, ROUND(AVG(success_rate), 1) AS rate, SUM(words_count) AS words "
+            "FROM study_logs WHERE user_id = ? AND date >= ? GROUP BY date ORDER BY date", (user_id, since))
+        tests = self.db.query(
+            "SELECT date, ROUND(AVG(score), 1) AS score FROM test_logs "
+            "WHERE user_id = ? AND date >= ? GROUP BY date ORDER BY date", (user_id, since))
+        weak = self.db.query(
+            """SELECT w.english AS label, s.fail_count AS value FROM user_word_stats s
+               JOIN words w ON w.id = s.word_id WHERE s.user_id = ? AND s.fail_count > 0
+               ORDER BY s.fail_count DESC, w.english LIMIT 8""", (user_id,))
         return {
-            'labels': labels,
-            'datasets': [{
-                'label': '시험 점수',
-                'data': data,
-                'backgroundColor': 'rgba(54, 162, 235, 0.5)',
-                'borderColor': 'rgb(54, 162, 235)'
-            }]
+            'study_trend': {'labels': [r['date'][5:] for r in study], 'rates': [r['rate'] for r in study],
+                            'words': [r['words'] for r in study]},
+            'test_scores': {'labels': [r['date'][5:] for r in tests], 'scores': [r['score'] for r in tests]},
+            'weak_words': {'labels': [r['label'] for r in weak], 'values': [r['value'] for r in weak]},
         }
 
-    def _get_weak_words_data(self) -> Dict:
-        """약점 단어 데이터"""
+    def export_user_csv(self, user_id: int) -> StringIO:
+        stats = self.user_statistics(user_id)
+        out = StringIO()
+        out.write('﻿')
+        writer = csv.writer(out)
+        writer.writerow(['항목', '값'])
+        writer.writerow(['학습 일수', stats['total_study_days']])
+        writer.writerow(['학습한 단어 수(누적)', stats['total_words_studied']])
+        writer.writerow(['평균 학습 성공률', f"{stats['average_study_success_rate']}%"])
+        writer.writerow(['시험 응시 횟수', stats['total_test_attempts']])
+        writer.writerow(['평균 시험 점수', f"{stats['average_test_score']}점"])
+        writer.writerow(['최고 시험 점수', f"{stats['best_test_score']}점"])
+        out.seek(0)
+        return out
+
+    # ---------- 관리자 전체 ----------
+    def admin_overview(self) -> Dict:
+        today = datetime.now().strftime('%Y-%m-%d')
+        week_ago = _days_ago(6)
         return {
-            'labels': ['word1', 'word2', 'word3'],
-            'datasets': [{
-                'label': '오류 횟수',
-                'data': [5, 4, 3],
-                'backgroundColor': 'rgba(255, 99, 132, 0.5)'
-            }]
+            'total_users': self.db.scalar("SELECT COUNT(*) FROM users WHERE role = 'user'"),
+            'active_today': self.db.scalar("SELECT COUNT(DISTINCT user_id) FROM study_logs WHERE date = ?", (today,)),
+            'active_week': self.db.scalar(
+                "SELECT COUNT(DISTINCT user_id) FROM study_logs WHERE date >= ?", (week_ago,)),
+            'total_words': self.db.scalar("SELECT COUNT(*) FROM words"),
+            'total_tests': self.db.scalar("SELECT COUNT(*) FROM test_logs"),
+            'avg_test_score': self.db.scalar("SELECT ROUND(AVG(score), 1) FROM test_logs"),
+            'avg_study_rate': self.db.scalar("SELECT ROUND(AVG(success_rate), 1) FROM study_logs"),
         }
 
-    def export_csv(self) -> StringIO:
-        """CSV 내보내기"""
-        try:
-            stats = self.calculate_statistics()
-
-            output = StringIO()
-            writer = csv.writer(output)
-
-            writer.writerow(['항목', '값'])
-            writer.writerow(['학습 일수', stats.get('total_study_days', 0)])
-            writer.writerow(['시험 응시 횟수', stats.get('total_test_attempts', 0)])
-            writer.writerow(['평균 성공률', f"{stats.get('average_study_success_rate', 0):.1f}%"])
-            writer.writerow(['평균 시험 점수', f"{stats.get('average_test_score', 0):.1f}점"])
-            writer.writerow(['진도', f"{stats.get('current_day', 1)}/{stats.get('total_days', 200)}"])
-            writer.writerow(['완료율', f"{stats.get('completion_rate', 0):.1f}%"])
-
-            output.seek(0)
-            return output
-
-        except Exception as e:
-            logger.error(f"CSV 내보내기 실패: {e}")
-            return StringIO()
+    def admin_charts(self, days: int = 14) -> Dict:
+        since = _days_ago(days - 1)
+        daily = self.db.query(
+            "SELECT date, COUNT(DISTINCT user_id) AS users, SUM(words_count) AS words "
+            "FROM study_logs WHERE date >= ? GROUP BY date ORDER BY date", (since,))
+        scores = self.db.query(
+            "SELECT date, ROUND(AVG(score), 1) AS score FROM test_logs WHERE date >= ? GROUP BY date ORDER BY date",
+            (since,))
+        hard = self.db.query(
+            """SELECT w.english AS label, SUM(s.fail_count) AS fails, SUM(s.success_count) AS oks
+               FROM user_word_stats s JOIN words w ON w.id = s.word_id
+               GROUP BY w.id HAVING fails > 0 ORDER BY fails DESC, w.english LIMIT 10""")
+        ranking = self.db.query(
+            """SELECT u.display_name AS name, COUNT(DISTINCT s.date) AS days, COALESCE(SUM(s.words_count), 0) AS words
+               FROM users u LEFT JOIN study_logs s ON s.user_id = u.id
+               WHERE u.role = 'user' GROUP BY u.id ORDER BY words DESC, days DESC LIMIT 5""")
+        return {
+            'daily_activity': {'labels': [r['date'][5:] for r in daily], 'users': [r['users'] for r in daily],
+                               'words': [r['words'] for r in daily]},
+            'test_scores': {'labels': [r['date'][5:] for r in scores], 'scores': [r['score'] for r in scores]},
+            'hard_words': {'labels': [r['label'] for r in hard], 'values': [r['fails'] for r in hard]},
+            'ranking': ranking,
+        }

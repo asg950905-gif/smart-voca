@@ -62,3 +62,10 @@ docker-compose.override.yml
 # Windows
 Thumbs.db
 desktop.ini
+
+# SQLite DB · 세션 서명 키 (PUBLIC 저장소이므로 절대 커밋 금지)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/secret_key.txt
+.pytest_cache/

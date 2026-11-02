@@ -1,83 +1,64 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# 2026-10-28 - smart-voca - 설정 관리
+# 2026-11-02 - smart-voca - 설정 관리 (사용자 개인 설정 + 관리자 전역 설정)
 # 파일 위치: src/utils/config.py
 
-from typing import Dict
 import logging
-from src.data.file_manager import FileManager
+from typing import Dict
+from src.data.database import Database
 
 logger = logging.getLogger(__name__)
 
+THEMES = ('system', 'light', 'dark')
+# 전역 설정 기본값과 허용 범위 (관리자 화면에서 변경)
+GLOBAL_DEFAULTS = {'total_days': 200, 'max_test_problems': 50, 'max_daily_target': 50}
+GLOBAL_LIMITS = {'total_days': (1, 1000), 'max_test_problems': (5, 200), 'max_daily_target': (5, 100)}
 
-class ConfigManager:
-    """설정 관리"""
 
-    DEFAULT_CONFIG = {
-        'daily_target': 10,
-        'dark_mode': False,
-        'theme': 'default',
-        'font_size': 'medium',
-        'auto_save': True
-    }
+class SettingsError(Exception):
+    """사용자에게 보여줘도 되는 설정 오류"""
 
-    def __init__(self, file_manager: FileManager):
-        self.file_manager = file_manager
-        self.config = self.load_settings()
 
-    def load_settings(self) -> Dict:
-        """설정 로드"""
+class SettingsManager:
+    def __init__(self, db: Database):
+        self.db = db
+
+    # ---------- 사용자 개인 ----------
+    def get_user_settings(self, user_id: int) -> Dict:
+        row = self.db.query_one("SELECT daily_target, theme FROM users WHERE id = ?", (user_id,))
+        row = row or {'daily_target': 10, 'theme': 'system'}
+        row['max_daily_target'] = self.get_global()['max_daily_target']
+        return row
+
+    def save_user_settings(self, user_id: int, data: Dict) -> Dict:
+        max_target = self.get_global()['max_daily_target']
+        current = self.get_user_settings(user_id)
         try:
-            settings = self.file_manager.read_json('settings.json')
-            if settings:
-                # 기본값과 병합
-                return {**self.DEFAULT_CONFIG, **settings}
-            return self.DEFAULT_CONFIG
-        except Exception as e:
-            logger.warning(f"설정 로드 실패: {e}, 기본값 사용")
-            return self.DEFAULT_CONFIG
+            # 일부 항목만 보내도 되도록(예: 테마 토글) 없는 항목은 현재 값을 유지한다
+            target = int(data.get('daily_target', current['daily_target']))
+        except (TypeError, ValueError):
+            raise SettingsError('하루 학습량은 숫자여야 합니다.')
+        if not 1 <= target <= max_target:
+            raise SettingsError(f'하루 학습량은 1~{max_target} 사이여야 합니다.')
+        theme = data.get('theme', current['theme'])
+        if theme not in THEMES:
+            raise SettingsError('올바르지 않은 테마입니다.')
+        self.db.execute("UPDATE users SET daily_target = ?, theme = ? WHERE id = ?", (target, theme, user_id))
+        return self.get_user_settings(user_id)
 
-    def save_settings(self, config: Dict) -> bool:
-        """설정 저장"""
-        try:
-            self.config = {**self.DEFAULT_CONFIG, **config}
-            return self.file_manager.write_json('settings.json', self.config)
-        except Exception as e:
-            logger.error(f"설정 저장 실패: {e}")
-            return False
+    # ---------- 관리자 전역 ----------
+    def get_global(self) -> Dict:
+        return {k: int(self.db.get_setting(k, str(v))) for k, v in GLOBAL_DEFAULTS.items()}
 
-    def get_settings(self) -> Dict:
-        """설정 조회"""
-        return self.config
-
-    def get(self, key: str, default=None):
-        """개별 설정 조회"""
-        return self.config.get(key, default)
-
-    def set(self, key: str, value) -> bool:
-        """개별 설정 저장"""
-        self.config[key] = value
-        return self.save_settings(self.config)
-
-    def reset_data(self, data_dir) -> bool:
-        """모든 데이터 초기화"""
-        try:
-            # 파일 삭제
-            for filename in ['progress.json', 'study_log.csv', 'test_log.csv']:
-                self.file_manager.delete_file(filename)
-
-            # 단어 파일의 가중치 초기화
-            words = self.file_manager.read_csv('words.csv')
-            for word in words:
-                word['weight'] = 0
-                word['success_count'] = 0
-                word['fail_count'] = 0
-
-            if words:
-                self.file_manager.write_csv('words.csv', words)
-
-            logger.info("데이터 초기화 완료")
-            return True
-        except Exception as e:
-            logger.error(f"데이터 초기화 실패: {e}")
-            return False
+    def save_global(self, data: Dict) -> Dict:
+        for key, (low, high) in GLOBAL_LIMITS.items():
+            if key not in data:
+                continue
+            try:
+                value = int(data[key])
+            except (TypeError, ValueError):
+                raise SettingsError(f'{key} 는 숫자여야 합니다.')
+            if not low <= value <= high:
+                raise SettingsError(f'{key} 는 {low}~{high} 사이여야 합니다.')
+            self.db.set_setting(key, str(value))
+        return self.get_global()
