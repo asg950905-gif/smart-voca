@@ -39,6 +39,20 @@ ai-agent/               설계·분석 문서, 작업계획, 일지, 스크립�
 docs/                   승인된 산출물 (개발방법론)
 ```
 
+## 모듈별 설명 (역할 · 설계 이유 · 예상 질문)
+
+| 모듈 | 문서 |
+| :--- | :--- |
+| 데이터(SQLite) | [src/data/README.md](src/data/README.md) |
+| 비즈니스 로직 | [src/business/README.md](src/business/README.md) |
+| 웹·보안 | [src/web/README.md](src/web/README.md) |
+| 설정 | [src/utils/README.md](src/utils/README.md) |
+| 화면(템플릿) | [templates/README.md](templates/README.md) |
+| 정적 파일(CSS/JS) | [static/README.md](static/README.md) |
+| 테스트 | [tests/README.md](tests/README.md) |
+
+발표자료(.pptx)는 `python ai-agent/scripts/발표자료생성.py` 로 다시 만들 수 있다 (python-pptx 필요, 내용은 스크립트의 텍스트를 수정).
+
 ## 테스트
 
 ```powershell
