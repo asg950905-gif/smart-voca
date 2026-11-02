@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}학습 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="study-page">
+    <h1>📚 오늘의 단어 학습</h1>
+
+    <div class="study-container">
+        <!-- 진도 정보 -->
+        <div class="card">
+            <h3>학습 진도</h3>
+            <p id="word-progress">로드 중...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="study-progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- 단어 표시 영역 -->
+        <div class="card word-display">
+            <div class="word-english" id="word-english">apple</div>
+            <div class="word-korean" id="word-korean">사과</div>
+        </div>
+
+        <!-- 선택 버튼 -->
+        <div class="button-group">
+            <button class="btn btn-success" onclick="recordAnswer(true)">
+                ✓ 외웠어요! (O)
+            </button>
+            <button class="btn btn-danger" onclick="recordAnswer(false)">
+                ✗ 아직이에요 (X)
+            </button>
+        </div>
+
+        <!-- 성공률 -->
+        <div class="card">
+            <h3>오늘의 성공률</h3>
+            <p id="today-success-rate">0%</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .study-page h1 {
+        color: var(--primary-color);
+        margin-bottom: 30px;
+    }
+
+    .study-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .word-display {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        margin: 20px 0;
+    }
+
+    .word-english {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .word-korean {
+        font-size: 32px;
+    }
+
+    .button-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .button-group .btn {
+        margin-top: 0;
+    }
+</style>
+
+<script src="{{ url_for('static', filename='js/study.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}시험 - smart-voca{% endblock %}
+
+{% block content %}
+<div class="test-page">
+    <h1>✏️ 단어 시험</h1>
+
+    <div id="test-settings" class="card">
+        <h3>시험 설정</h3>
+
+        <label for="num-problems">문제 수:</label>
+        <input type="number" id="num-problems" min="1" max="100" value="10">
+
+        <label for="test-mode">출제 모드:</label>
+        <select id="test-mode">
+            <option value="한->영">한글 → 영문</option>
+            <option value="영->한">영문 → 한글</option>
+            <option value="혼합">혼합</option>
+        </select>
+
+        <label for="test-format">문제 형식:</label>
+        <select id="test-format">
+            <option value="단답형">단답형</option>
+            <option value="4지선다형">4지선다형</option>
+            <option value="OX형">O/X형</option>
+            <option value="혼합">혼합</option>
+        </select>
+
+        <button class="btn btn-primary" onclick="startTest()">시험 시작</button>
+    </div>
+
+    <div id="test-progress" style="display: none;" class="card">
+        <h3>진행 상황</h3>
+        <p id="problem-number">1/10</p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="test-progress-fill" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <div id="test-area" style="display: none;" class="card">
+        <h3 id="problem-text">문제</h3>
+        <div id="answer-area">
+            <!-- 답변 입력 영역 -->
+        </div>
+        <button class="btn btn-primary" onclick="submitAnswer()">제출</button>
+    </div>
+
+    <div id="test-result" style="display: none;" class="card">
+        <h3>시험 결과</h3>
+        <p id="result-score">0/10</p>
+        <button class="btn btn-primary" onclick="location.href='/'">대시보드로</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/test.js') }}"></script>
+{% endblock %}
