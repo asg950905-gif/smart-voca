@@ -41,9 +41,19 @@ smart-voca/
 │   │   └── yymmdd_주제/           # 주제별 작업 묶음 (문서 + src/ + script/)
 │   ├── uploads/                  # 외부 참고자료 (강의자료, 논문, 레퍼런스)
 │   └── scripts/                  # 프로젝트 전용 스크립트
-├── src/                          # 소스 코드
-└── data/                         # 데이터 (용량 큰 원본은 커밋하지 않음)
+├── app.py                        # Flask 앱 팩토리·실행 진입점
+├── src/                          # 소스 코드 (각 폴더에 README.md 있음)
+│   ├── web/                      # 라우트 Blueprint (인증·사용자·관리자)
+│   ├── business/                 # 업무 로직 (단어·학습·시험·리포트·게임화·인증)
+│   ├── data/                     # SQLite 접근 (database.py)
+│   └── utils/                    # 설정 등 공용 도구
+├── templates/                    # Jinja2 화면 (base.html, auth_base.html, admin/)
+├── static/                       # css / js / vendor(Chart.js)
+├── tests/                        # pytest 자동 테스트
+└── data/                         # SQLite DB·secret_key (gitignore, 커밋 금지)
 ```
+
+`logs/`, `backups/` 는 `.gitignore` 대상이다.
 
 `logs/`, `backups/`, `docker-compose.yml`, `.env.example` 등은 필요해지는 시점에 추가한다.
 
@@ -276,11 +286,14 @@ python app.py
 
 ### 작업 시작 시
 1. `git status` 로 깨끗한지 확인 후 `git pull` 을 먼저 한다.
+   깨끗하지 않으면 `git fetch` → `git diff HEAD origin/master --stat` 으로 원격 변경과 로컬 변경이
+   겹치는 파일이 있는지 본다. 겹치지 않으면 `git pull --ff-only`, 겹치면 사용자에게 어느 쪽을 살릴지 묻는다.
 2. 가장 최근 `ai-agent/claude/일지_*.md` 의 "다음 할 일"을 읽고 이어서 작업한다.
 3. 처음 쓰는 환경이면 가상환경 생성 후 `pip install -r requirements.txt` 가 되는지 확인한다.
 
 ### 작업 종료 시
 1. 일지(`ai-agent/claude/일지_yymmdd_*.md`)에 **한 일 / 다음 할 일 / 주의점**을 남긴다.
+   테스트로 띄운 서버(포트 5000)가 남아 있으면 종료한다 (Claude 가 직접 띄운 프로세스 한 개만, 포트 기준으로).
 2. 사용자 승인 후 커밋하고 `git push` 까지 한다. 푸시하지 않은 작업은 다른 환경에서 볼 수 없다.
 
 ### 환경별 동기화되지 않는 것
@@ -324,6 +337,10 @@ python app.py
 
 2. **첫 질문 응답 전 필수 절차**: 관련 코드와 문서를 먼저 확인한다.
 
+2-1. **맥락 유지**: 사용자가 준 참고자료(유사 서비스 사이트 이름·URL, 스크린샷), 범위 결정, 금지 사항은
+   받은 즉시 `ai-agent/claude/일지_*.md` 에 기록한다. 환경(노트북/실습실)과 세션이 바뀌어도 이어져야 하므로
+   Claude 자동 메모리에만 의존하지 않는다. 기록에 없는 일은 기억나는 척하지 않고 사용자에게 다시 묻는다.
+
 3. **응대 원칙**: 모든 응답은 **한글 존댓말**로, 간결하고 명확하게. 모르면 모른다고 한다. 지어내지 않는다.
 
 ## 프로젝트 특화 메모
@@ -331,4 +348,13 @@ python app.py
 > 진행하면서 이 프로젝트에만 해당하는 규칙·주의사항을 여기에 쌓는다.
 > (예: 특정 데이터셋의 결측치 처리 방침, 자주 겪은 에러와 해결법, 채점 기준 등)
 
-- `<아직 없음>`
+- **UI 참고 사이트 규칙**: 유사 영어 학습 서비스는 구조·분위기만 참고한다. 로고·문구·이미지·수치는 따라 하지 않고,
+  랜딩 수치는 DB 실제 값만 표시한다. 참고한 사이트 이름·URL 은 일지에 적는다 (현재 미기록 — 사용자가 다시 알려주면 기록).
+- **정적 파일 MIME 에러** (2026-11-04, 실습실에서 해결 `43a4e72`): Windows 에서 `.js/.css` 가 `text/plain` 으로 잡히면
+  브라우저가 차단한다. `app.py` 의 `mimetypes.add_type` 으로 대응. 정적 라우트 3개(`serve_js` 등)는 Flask 기본과 중복일 수 있어 검증 예정.
+- **테스트 서버 종료**: PowerShell 에서 `Get-NetTCPConnection -LocalPort 5000 -State Listen` 의 프로세스를 `Stop-Process`.
+  `python.exe` 전체를 종료하는 명령은 쓰지 않는다 (다른 파이썬 작업까지 끊김).
+- **줄바꿈 경고**: `LF will be replaced by CRLF` 는 Windows 기본 동작이라 무시해도 된다.
+- **실습실 커밋 작성자**: 실습실 PC 는 `git config --local user.name/user.email` 을 설정하지 않으면 작성자가
+  `user@example.com` 처럼 찍힌다. 작업 시작 시 `git config --local --get user.email` 로 확인한다.
+- **자동 테스트 기준**: `python -m pytest tests -q` 27개 통과 (2026-11-04).
