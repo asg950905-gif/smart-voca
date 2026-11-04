@@ -1,26 +1,23 @@
-{% extends "base.html" %}
-{% from "_mascot.html" import mascot %}
-{# 2026-11-02 - smart-voca - 로그인 화면 (마스코트) #}
+{% extends "auth_base.html" %}
+{# 2026-11-03 - smart-voca - 로그인 화면 (좌우 분할, auth_base.html 상속) #}
 {% block title %}로그인{% endblock %}
-{% block content %}
-<div class="auth-wrap">
-    <div class="card auth-card">
-        <div class="mascot-wrap">{{ mascot(96) }}</div>
-        <h1>다시 만나서 반가워요!</h1>
-        <p class="lead">로그인하고 오늘의 단어를 시작해요</p>
-        <form method="post" novalidate>
-            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-            <div class="field">
-                <label for="username">아이디</label>
-                <input id="username" name="username" value="{{ username }}" autocomplete="username" autofocus required>
-            </div>
-            <div class="field">
-                <label for="password">비밀번호</label>
-                <input id="password" name="password" type="password" autocomplete="current-password" required>
-            </div>
-            <button class="btn block" type="submit">로그인</button>
-        </form>
-        <p class="center small muted" style="margin-top:18px">처음이신가요? <a href="{{ url_for('auth.register') }}">회원가입</a> · <a href="{{ url_for('user.dashboard') }}">소개 보기</a></p>
+{% block side_title %}영어 단어,<br>매일 10분이면 충분해요{% endblock %}
+{% block side_text %}틀린 단어는 더 자주, 아는 단어는 가볍게.<br>학습 · 시험 · 리그까지 한곳에서 이어져요.{% endblock %}
+{% block auth_form %}
+<p class="eyebrow">LOGIN</p>
+<h1>다시 만나서 반가워요!</h1>
+<p class="lead">로그인하고 오늘의 단어를 시작해요</p>
+<form method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div class="field">
+        <label for="username">아이디</label>
+        <input id="username" name="username" value="{{ username }}" autocomplete="username" autofocus required>
     </div>
-</div>
+    <div class="field">
+        <label for="password">비밀번호</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+    </div>
+    <button class="btn block" type="submit">로그인</button>
+</form>
+<p class="auth-foot">처음이신가요? <a href="{{ url_for('auth.register') }}">회원가입</a> · <a href="{{ url_for('user.dashboard') }}">소개 보기</a></p>
 {% endblock %}
