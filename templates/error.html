@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {# 2026-11-02 - smart-voca - 오류 화면 (400/403/404/413/500 공통) #}
+{% from "_mascot.html" import mascot %}
 {% block title %}오류 {{ status }}{% endblock %}
 {% block content %}
 <div class="auth-wrap">
     <div class="card auth-card center">
+        <div style="color:var(--text)">{{ mascot(80) }}</div>
         <div class="score-big">{{ status }}</div>
         <h2 style="margin:12px 0 6px">{{ message }}</h2>
         <p class="muted" style="margin-bottom:20px">주소를 다시 확인하거나 홈으로 이동하세요.</p>

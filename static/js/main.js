@@ -132,6 +132,12 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         applyTheme(document.documentElement.dataset.themePref || 'system');
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 8);
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
         const toggle = document.getElementById('theme-toggle');
         if (toggle) {
             toggle.addEventListener('click', async () => {
