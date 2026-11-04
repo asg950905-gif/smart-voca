@@ -3,13 +3,18 @@
 # 2026-11-02 - smart-voca - Flask 애플리케이션 팩토리 (사용자/관리자 화면, SQLite)
 # 파일 위치: app.py
 
+import mimetypes
 import os
 import secrets
 import sys
 from datetime import timedelta
 from pathlib import Path
 
-from flask import Flask, flash, g, jsonify, render_template, request, session
+from flask import Flask, flash, g, jsonify, render_template, request, session, send_from_directory
+
+# Windows 환경에서 .js, .css MIME type 설정 (한글 경로 호환)
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
 
 # 프로젝트 루트를 import 경로에 추가 (src.* 패키지 import 용)
 PROJECT_ROOT = Path(__file__).parent
@@ -42,7 +47,7 @@ def create_app(data_dir=None) -> Flask:
     data_dir = Path(data_dir or os.environ.get('DATA_DIR') or PROJECT_ROOT / 'data')
     data_dir.mkdir(parents=True, exist_ok=True)
 
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder=str(PROJECT_ROOT / 'static'), static_url_path='/static')
     app.config.update(
         SECRET_KEY=_load_secret_key(data_dir),
         SESSION_COOKIE_HTTPONLY=True,
@@ -67,6 +72,22 @@ def create_app(data_dir=None) -> Flask:
     admin_user, admin_pw = os.environ.get('ADMIN_USERNAME'), os.environ.get('ADMIN_PASSWORD')
     if admin_user and admin_pw:
         app.auth.ensure_admin(admin_user, admin_pw)
+
+    @app.route('/static/js/<path:filename>')
+    def serve_js(filename):
+        response = send_from_directory(app.static_folder + '/js', filename)
+        response.headers['Content-Type'] = 'application/javascript; charset=utf-8'
+        return response
+
+    @app.route('/static/css/<path:filename>')
+    def serve_css(filename):
+        response = send_from_directory(app.static_folder + '/css', filename)
+        response.headers['Content-Type'] = 'text/css; charset=utf-8'
+        return response
+
+    @app.route('/static/<path:filename>')
+    def serve_static(filename):
+        return send_from_directory(app.static_folder, filename)
 
     app.register_blueprint(auth_routes.bp)
     app.register_blueprint(user_routes.bp)
@@ -94,6 +115,12 @@ def create_app(data_dir=None) -> Flask:
 
     @app.after_request
     def add_security_headers(response):
+        # MIME type 명시 (Windows 환경 호환)
+        if request.path.endswith('.js'):
+            response.headers['Content-Type'] = 'application/javascript; charset=utf-8'
+        elif request.path.endswith('.css'):
+            response.headers['Content-Type'] = 'text/css; charset=utf-8'
+
         response.headers.setdefault('X-Content-Type-Options', 'nosniff')
         response.headers.setdefault('X-Frame-Options', 'DENY')
         response.headers.setdefault('Referrer-Policy', 'same-origin')
