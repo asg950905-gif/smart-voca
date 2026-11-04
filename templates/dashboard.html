@@ -7,7 +7,6 @@
 {% set goal_pct = [100, (today_done / progress.daily_target * 100)|round|int]|min if progress.daily_target else 0 %}
 
 <section class="card hero">
-    <span class="hero-chip c1">🃏 오늘의 카드</span><span class="hero-chip c2">🏆 리그 도전</span><span class="hero-chip c3">🔊 발음 듣기</span>
     <div style="flex:1;min-width:230px">
         <p style="opacity:.85;font-weight:700;margin-bottom:4px">{{ progress.streak }}일 연속 학습 중 🔥</p>
         <h1>안녕하세요, {{ current_user.display_name }}님!</h1>
