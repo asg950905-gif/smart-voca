@@ -16,7 +16,7 @@
         {% elif progress.studied_today %}
             <p>오늘 {{ today_done }}개를 학습했어요. 한 번 더 복습하면 XP가 쌓여요.</p>
         {% else %}
-            <p>오늘의 단어 {{ progress.daily_target }}개가 준비되어 있어요. 10분이면 충분해요.</p>
+            <p>오늘 복습할 단어 {{ progress.daily_target }}개를 골라 뒀어요.</p>
         {% endif %}
         <div class="row" style="margin-top:14px">
             <a class="btn" href="{{ url_for('user.study_page') }}">{{ '다시 학습하기' if progress.studied_today else '오늘의 학습 시작' }}</a>

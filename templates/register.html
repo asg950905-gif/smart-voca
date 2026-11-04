@@ -1,11 +1,11 @@
 {% extends "auth_base.html" %}
 {# 2026-11-03 - smart-voca - 회원가입 화면 (좌우 분할, 가입자는 항상 일반 사용자 역할) #}
 {% block title %}회원가입{% endblock %}
-{% block side_title %}함께 시작해요,<br>오늘 첫 10개부터!{% endblock %}
+{% block side_title %}계정 하나로<br>내 기록을 모아요{% endblock %}
 {% block side_text %}계정을 만들면 나만의 학습 기록과<br>레벨·XP·주간 리그 순위가 쌓여요.{% endblock %}
 {% block auth_form %}
 <p class="eyebrow">SIGN UP</p>
-<h1>함께 시작해요!</h1>
+<h1>계정 만들기</h1>
 <p class="lead">계정을 만들고 나만의 학습 기록을 쌓아요</p>
 <form method="post" novalidate>
     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
