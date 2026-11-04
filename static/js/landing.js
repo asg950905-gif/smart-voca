@@ -1,4 +1,5 @@
-// 2026-11-02 - smart-voca - 랜딩 페이지: 스크롤 등장, 상단바 그림자, 빈칸 퀴즈 체험, 수치 카운트업
+// 2026-11-04 - smart-voca - 랜딩 페이지: 스크롤 등장, 상단바 그림자, 빈칸 퀴즈 맛보기, 역할 탭, 수치 카운트업
+// 파일 위치: static/js/landing.js
 
 (function () {
     'use strict';
@@ -38,7 +39,7 @@
         locked = false;
         $('demo-card').classList.remove('ok');
         $('demo-card').querySelector('.demo-check')?.remove();
-        $('demo-level').textContent = `체험 ${step + 1} / ${QUIZ.length}`;
+        $('demo-level').textContent = `${step + 1} / ${QUIZ.length}`;
         $('demo-hint').textContent = `뜻: ${q.hint}`;
         const s = $('demo-sentence');
         s.textContent = '';
@@ -73,14 +74,25 @@
         document.querySelectorAll('#demo-options .option').forEach((o) => { o.disabled = true; });
         confetti(26);
         const last = step === QUIZ.length - 1;
-        $('demo-msg').textContent = last ? '🎉 잘했어요! 이제 진짜 학습을 시작해 볼까요?' : '정답이에요! 다음 문제로 넘어가요…';
+        $('demo-msg').textContent = last ? '🎉 다 풀었어요! 계정을 만들면 기록이 남아요.' : '정답이에요! 다음 문제로 넘어가요…';
         if (last) {
             const cta = document.createElement('a');
-            cta.className = 'btn'; cta.href = '/register'; cta.textContent = '무료로 시작하기'; cta.style.marginTop = '14px';
+            cta.className = 'btn'; cta.href = '/register'; cta.textContent = '계정 만들기'; cta.style.marginTop = '14px';
             $('demo-msg').appendChild(document.createElement('br')); $('demo-msg').appendChild(cta);
         } else {
             setTimeout(() => { step += 1; renderQuiz(); }, 1300);
         }
     }
     renderQuiz();
+
+    // 4) 학습자/관리자 탭 전환
+    const tabs = document.querySelectorAll('.lp-tab');
+    tabs.forEach((tab) => tab.addEventListener('click', () => {
+        tabs.forEach((t) => {
+            const on = t === tab;
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            $(t.getAttribute('aria-controls')).hidden = !on;
+        });
+    }));
 })();

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "_mascot.html" import mascot %}
-{# 2026-11-02 - smart-voca - 랜딩 페이지(로그인 전 첫 화면): 히어로, 인터랙티브 빈칸 퀴즈, 기능 소개, 실제 통계, FAQ #}
-{% block title %}영어 단어, 매일 10분{% endblock %}
+{# 2026-11-04 - smart-voca - 랜딩 페이지 재설계(v3): 좌우 2단 히어로, 하루 3단계 흐름, 빈칸 체험, 학습자/관리자 탭, 실제 기록, FAQ. 외부 서비스의 구성·문구를 따르지 않는다 #}
+{% block title %}함께 쓰는 영어 단어장{% endblock %}
 {% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">{% endblock %}
 {% block main_class %}full{% endblock %}
 {% block content %}
@@ -9,44 +9,62 @@
     <div class="lp-wrap lp-nav-in">
         <a class="brand" href="#top"><span class="logo">📘</span><span class="brand-name">스마트 보카</span></a>
         <nav class="lp-links" aria-label="페이지 내 이동">
-            <a href="#demo">체험하기</a><a href="#features">기능</a><a href="#numbers">숫자로 보기</a><a href="#faq">FAQ</a>
+            <a href="#flow">하루 흐름</a><a href="#demo">맛보기</a><a href="#roles">화면 둘러보기</a><a href="#records">기록</a><a href="#faq">질문</a>
         </nav>
         <div class="row">
             <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">🌙</button>
             <a class="btn secondary small" href="{{ url_for('auth.login') }}">로그인</a>
-            <a class="btn small" href="{{ url_for('auth.register') }}">시작하기</a>
+            <a class="btn small" href="{{ url_for('auth.register') }}">계정 만들기</a>
         </div>
     </div>
 </header>
 
-<!-- 히어로 -->
+<!-- 히어로: 왼쪽 문구 / 오른쪽 실제 기록 패널 -->
 <section class="lp-hero" id="top">
-    <div class="float-card fc1 violet"><span>🃏</span>어휘</div>
-    <div class="float-card fc2 sky"><span>📝</span>시험</div>
-    <div class="float-card fc3 mint"><span>🔊</span>발음</div>
-    <div class="float-card fc4 peach"><span>🔥</span>연속 학습</div>
-    <div class="float-card fc5 lemon"><span>🏆</span>리그</div>
-    <div class="float-card fc6 rose"><span>✏️</span>빈칸</div>
-    <div class="lp-hero-in">
-        <div style="color:var(--text)">{{ mascot(110) }}</div>
-        <p class="eyebrow">웹으로 배우는 영어 단어장</p>
-        <h1>단어부터,<br>매일 10분이면 충분해요</h1>
-        <p class="lead">틀린 단어는 더 자주, 아는 단어는 가볍게.<br>학습 · 시험 · 리그까지 한곳에서 이어져요.</p>
-        <div class="row" style="justify-content:center;margin-top:8px">
-            <a class="btn big" href="{{ url_for('auth.register') }}">무료로 시작하기</a>
-            <a class="btn big secondary" href="#demo">먼저 체험해 보기</a>
+    <div class="lp-wrap lp-hero-grid">
+        <div class="lp-hero-text">
+            <p class="eyebrow">스터디·교실용 영어 단어장</p>
+            <h1>외울 단어는 한 곳에,<br>복습은 틀린 것부터.</h1>
+            <p class="lead">관리자가 단어를 올리면 학습자는 카드로 익히고, 시험으로 확인하고, 틀린 단어만 다시 만나요.</p>
+            <div class="row">
+                <a class="btn big" href="{{ url_for('auth.register') }}">계정 만들기</a>
+                <a class="btn big secondary" href="#demo">문제 하나 풀어보기</a>
+            </div>
         </div>
+        <aside class="lp-panel" aria-label="서비스 현황">
+            <div class="lp-panel-head"><span class="lp-dot"></span>지금 등록된 기록</div>
+            <dl class="lp-panel-list">
+                <div><dt>등록 단어</dt><dd>{{ stats.words }}<small>개</small></dd></div>
+                <div><dt>학습자</dt><dd>{{ stats.learners }}<small>명</small></dd></div>
+                <div><dt>누적 학습</dt><dd>{{ stats.studied }}<small>번</small></dd></div>
+            </dl>
+            <div class="lp-panel-foot" style="color:var(--text)">{{ mascot(44) }}<span>보카가 오늘 복습할 단어를 골라 둘게요.</span></div>
+        </aside>
     </div>
-    <a class="scroll-hint" href="#demo" aria-label="아래로 이동">⌄</a>
 </section>
 
-<!-- 인터랙티브 빈칸 퀴즈 -->
+<!-- 하루 흐름: 가로 3단계 -->
+<section class="lp-section alt" id="flow">
+    <div class="lp-wrap reveal">
+        <h2 class="lp-h2">하루 10분, 세 걸음이면 돼요</h2>
+        <ol class="lp-steps">
+            <li><span class="lp-step-no">1</span><h3>카드로 훑기</h3><p>뜻과 예문을 넘겨 보며 눈에 익혀요. 🔊 를 누르면 발음을 들려줘요.</p></li>
+            <li><span class="lp-step-no">2</span><h3>시험으로 확인</h3><p>객관식과 빈칸 채우기로 정말 아는지 점검해요.</p></li>
+            <li><span class="lp-step-no">3</span><h3>틀린 것만 다시</h3><p>오답이 쌓인 단어가 다음 학습 순서의 앞쪽에 와요.</p></li>
+        </ol>
+    </div>
+</section>
+
+<!-- 맛보기: 왼쪽 설명 / 오른쪽 퀴즈 -->
 <section class="lp-section" id="demo">
-    <div class="lp-wrap center reveal">
-        <p class="eyebrow">TRY IT</p>
-        <h2 class="lp-h2">핵심 단어를 알면<br>문장이 완성돼요</h2>
+    <div class="lp-wrap lp-demo-grid reveal">
+        <div>
+            <p class="eyebrow">가입 없이 해보기</p>
+            <h2 class="lp-h2">문장 속 빈칸,<br>이렇게 풀어요</h2>
+            <p class="muted">보기 중 알맞은 단어를 고르면 돼요. 이 맛보기는 기록이 저장되지 않아요.</p>
+        </div>
         <div class="demo-card" id="demo-card">
-            <span class="demo-level" id="demo-level">체험 1 / 3</span>
+            <span class="demo-level" id="demo-level">1 / 3</span>
             <span class="hint-chip" id="demo-hint"></span>
             <div class="sentence" id="demo-sentence"></div>
             <div class="demo-options" id="demo-options"></div>
@@ -55,55 +73,45 @@
     </div>
 </section>
 
-<!-- 기능 -->
-<section class="lp-section alt" id="features">
-    <div class="lp-wrap">
-        <div class="lp-feature reveal">
-            <div class="lp-text">
-                <span class="chip violet">어휘 학습</span>
-                <h3>카드를 뒤집으며<br>발음까지 한 번에</h3>
-                <p>플립카드로 뜻과 예문을 확인하고, 🔊 버튼으로 원어민 같은 발음을 들어요. 키보드 단축키로 빠르게 넘길 수 있어요.</p>
-            </div>
-            <div class="lp-shot"><img src="{{ url_for('static', filename='img/shot-study.png') }}" alt="플립카드 학습 화면" loading="lazy" width="900" height="560"></div>
+<!-- 화면 둘러보기: 학습자 / 관리자 탭 -->
+<section class="lp-section alt" id="roles">
+    <div class="lp-wrap reveal">
+        <h2 class="lp-h2">쓰는 사람에 따라 화면이 달라요</h2>
+        <div class="lp-tabs" role="tablist" aria-label="역할 선택">
+            <button class="lp-tab active" role="tab" id="tab-user" aria-selected="true" aria-controls="panel-user" type="button">학습하는 사람</button>
+            <button class="lp-tab" role="tab" id="tab-admin" aria-selected="false" aria-controls="panel-admin" type="button">관리하는 사람</button>
         </div>
-        <div class="lp-feature flip-x reveal">
-            <div class="lp-text">
-                <span class="chip sky">자동 복습</span>
-                <h3>틀린 단어는<br>더 자주 만나요</h3>
-                <p>오답이 쌓인 단어를 먼저, 아직 안 본 단어를 그다음으로 골라 줘요. 외워야 할 단어에 시간을 쓰게 돼요.</p>
-            </div>
-            <div class="lp-shot"><img src="{{ url_for('static', filename='img/shot-test.png') }}" alt="시험 화면" loading="lazy" width="900" height="560"></div>
+        <div class="lp-tabpanel" id="panel-user" role="tabpanel" aria-labelledby="tab-user">
+            <ul class="lp-checks">
+                <li>플립카드와 발음 듣기로 하루 분량 학습</li>
+                <li>객관식·빈칸 시험과 오답 자동 복습</li>
+                <li>학습할수록 쌓이는 XP, 레벨, 주간 리그 순위</li>
+                <li>내 정답률과 학습 추이를 차트로 확인</li>
+            </ul>
+            <div class="lp-shot"><img src="{{ url_for('static', filename='img/shot-study.png') }}" alt="학습자 학습 화면" loading="lazy" width="900" height="560"></div>
         </div>
-        <div class="lp-feature reveal">
-            <div class="lp-text">
-                <span class="chip lemon">레벨 · 리그</span>
-                <h3>XP를 모으고<br>주간 리그에 도전해요</h3>
-                <p>학습과 시험으로 XP를 쌓아 레벨을 올리고, 친구들과 주간 순위를 겨뤄요. 틀려도 참여 XP가 쌓여서 포기하지 않게 돼요.</p>
-            </div>
-            <div class="lp-shot"><img src="{{ url_for('static', filename='img/shot-league.png') }}" alt="주간 리그 화면" loading="lazy" width="900" height="560"></div>
-        </div>
-        <div class="lp-feature flip-x reveal">
-            <div class="lp-text">
-                <span class="chip mint">관리자 도구</span>
-                <h3>단어와 학습 현황을<br>한눈에 관리해요</h3>
-                <p>단어 추가·CSV 가져오기, 사용자 관리, 전체 학습 통계 대시보드까지. 가르치는 사람도 편하게 쓸 수 있어요.</p>
-            </div>
+        <div class="lp-tabpanel" id="panel-admin" role="tabpanel" aria-labelledby="tab-admin" hidden>
+            <ul class="lp-checks">
+                <li>단어 추가·수정, CSV 한 번에 가져오기</li>
+                <li>사용자 목록과 활성·비활성 관리</li>
+                <li>전체 학습량과 시험 결과 통계 대시보드</li>
+                <li>학습자 개인 기록은 사용자끼리 서로 볼 수 없음</li>
+            </ul>
             <div class="lp-shot"><img src="{{ url_for('static', filename='img/shot-admin.png') }}" alt="관리자 대시보드 화면" loading="lazy" width="900" height="560"></div>
         </div>
     </div>
 </section>
 
-<!-- 실제 수치 -->
-<section class="lp-section" id="numbers">
-    <div class="lp-wrap center reveal">
-        <p class="eyebrow">LIVE NUMBERS</p>
-        <h2 class="lp-h2">지금까지 함께 쌓은 기록</h2>
-        <p class="muted" style="margin-bottom:26px">서비스 데이터베이스에서 실시간으로 집계한 값이에요.</p>
-        <div class="grid grid-4 lp-stats">
-            <div class="tile violet"><span class="tile-title">등록 단어</span><b class="num" data-count="{{ stats.words }}">0</b><span class="tile-sub">개</span></div>
-            <div class="tile sky"><span class="tile-title">학습자</span><b class="num" data-count="{{ stats.learners }}">0</b><span class="tile-sub">명</span></div>
-            <div class="tile mint"><span class="tile-title">학습한 단어</span><b class="num" data-count="{{ stats.studied }}">0</b><span class="tile-sub">번(누적)</span></div>
-            <div class="tile peach"><span class="tile-title">시험 응시</span><b class="num" data-count="{{ stats.tests }}">0</b><span class="tile-sub">회</span></div>
+<!-- 실제 기록: 한 줄 띠 -->
+<section class="lp-section" id="records">
+    <div class="lp-wrap reveal">
+        <h2 class="lp-h2">숫자는 데이터베이스에서 그대로</h2>
+        <p class="muted" style="margin-bottom:22px">꾸민 숫자 없이, 지금 저장된 값만 보여 드려요.</p>
+        <div class="lp-strip">
+            <div><b class="num" data-count="{{ stats.words }}">0</b><span>등록 단어</span></div>
+            <div><b class="num" data-count="{{ stats.learners }}">0</b><span>학습자</span></div>
+            <div><b class="num" data-count="{{ stats.studied }}">0</b><span>누적 학습</span></div>
+            <div><b class="num" data-count="{{ stats.tests }}">0</b><span>시험 응시</span></div>
         </div>
     </div>
 </section>
@@ -111,22 +119,22 @@
 <!-- FAQ -->
 <section class="lp-section alt" id="faq">
     <div class="lp-wrap narrow reveal">
-        <h2 class="lp-h2 center">자주 묻는 질문</h2>
-        <details><summary>무료인가요?</summary><p>네, 이 프로젝트의 모든 기능은 무료로 사용할 수 있어요. (학습·팀 테스트용 서비스예요)</p></details>
-        <details><summary>스마트폰에서도 쓸 수 있나요?</summary><p>네. 화면 크기에 맞춰 바뀌는 반응형 웹이라 폰 브라우저에서도 편하게 쓸 수 있어요. 설치형 앱은 아직 없어요.</p></details>
-        <details><summary>내 학습 기록은 다른 사람이 볼 수 있나요?</summary><p>개인 기록은 본인만 볼 수 있어요. 리그에는 표시 이름과 주간 XP만 공개돼요.</p></details>
-        <details><summary>발음 듣기는 어떻게 동작하나요?</summary><p>브라우저에 내장된 음성 합성 기능을 사용해요. 별도 서버나 설치가 필요 없고, 브라우저에 따라 목소리가 조금 다를 수 있어요.</p></details>
+        <h2 class="lp-h2">미리 답해 드려요</h2>
+        <details><summary>무료인가요?</summary><p>네, 이 프로젝트의 모든 기능은 무료예요. 학습·팀 테스트용으로 만든 서비스예요.</p></details>
+        <details><summary>스마트폰에서도 되나요?</summary><p>화면 크기에 맞춰 바뀌는 웹이라 폰 브라우저에서 바로 쓸 수 있어요. 설치형 앱은 아직 없어요.</p></details>
+        <details><summary>내 기록을 다른 사람이 보나요?</summary><p>개인 기록은 본인만 볼 수 있어요. 리그에는 표시 이름과 주간 XP만 보여요.</p></details>
+        <details><summary>발음은 어떻게 들려주나요?</summary><p>브라우저의 음성 합성 기능을 써요. 따로 설치할 것은 없고, 브라우저마다 목소리가 조금 달라요.</p></details>
     </div>
 </section>
 
-<!-- 마지막 CTA -->
-<section class="lp-cta">
-    <div class="lp-wrap center reveal">
-        <div style="color:#fff">{{ mascot(96) }}</div>
-        <h2 class="lp-h2" style="color:#fff">오늘 첫 10개, 같이 외워 볼까요?</h2>
-        <a class="btn big light" href="{{ url_for('auth.register') }}">지금 시작하기</a>
+<!-- 얇은 안내 바 -->
+<section class="lp-end">
+    <div class="lp-wrap lp-end-in">
+        <div style="color:var(--text)">{{ mascot(52) }}</div>
+        <p>준비됐다면 계정부터 만들어 보세요.</p>
+        <div class="row"><a class="btn" href="{{ url_for('auth.register') }}">계정 만들기</a><a class="btn secondary" href="{{ url_for('auth.login') }}">로그인</a></div>
     </div>
 </section>
-<footer class="lp-footer"><div class="lp-wrap row between"><span>© 2026 smart-voca · 개인 학습 프로젝트</span><span><a href="{{ url_for('auth.login') }}">로그인</a></span></div></footer>
+<footer class="lp-footer"><div class="lp-wrap">© 2026 smart-voca · 개인 학습 프로젝트</div></footer>
 {% endblock %}
 {% block scripts %}<script src="{{ url_for('static', filename='js/landing.js') }}"></script>{% endblock %}
