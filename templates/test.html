@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% from "_mascot.html" import mascot %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 시험 화면: 설정 → 문제 풀이(빈칸/4지선다/OX/단답, 즉시 피드백) → 결과(XP·축하) #}
 {% block title %}시험{% endblock %}
 {% block content %}
@@ -23,7 +24,7 @@
             <label>문제 형식</label>
             <div class="seg" id="format">
                 <label><input type="radio" name="format" value="혼합" checked><span>혼합</span></label>
-                <label><input type="radio" name="format" value="빈칸형"><span>✏️ 빈칸 채우기</span></label>
+                <label><input type="radio" name="format" value="빈칸형"><span>{{ icon('pencil-line') }} 빈칸 채우기</span></label>
                 <label><input type="radio" name="format" value="4지선다형"><span>4지선다</span></label>
                 <label><input type="radio" name="format" value="단답형"><span>단답형</span></label>
                 <label><input type="radio" name="format" value="OX형"><span>O / X</span></label>

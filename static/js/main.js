@@ -5,6 +5,11 @@
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
+    // 아이콘: templates/_icons.html 매크로의 JS 버전. 이름은 코드에 적은 고정 문자열만 넘긴다 (서버 데이터 금지)
+    window.icon = function (name, extraClass = '') {
+        return `<svg class="ico ${extraClass}" aria-hidden="true" focusable="false"><use href="/static/vendor/icons.svg#i-${name}"></use></svg>`;
+    };
+
     // XSS 방지: 서버 데이터를 innerHTML 에 넣을 때는 반드시 esc() 를 거친다
     window.esc = function (value) {
         const div = document.createElement('div');
@@ -125,7 +130,7 @@
         const dark = pref === 'dark' || (pref === 'system' && media.matches);
         document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
         const btn = document.getElementById('theme-toggle');
-        if (btn) btn.textContent = dark ? '☀️' : '🌙';
+        if (btn) btn.innerHTML = icon(dark ? 'sun' : 'moon');
     }
     window.applyTheme = applyTheme;
     media.addEventListener?.('change', () => applyTheme(localStorage.getItem('theme') || 'system'));

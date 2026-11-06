@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 사용자 통계 화면: 요약 지표 + 학습 추이/시험 점수/취약 단어 차트 #}
 {% block title %}통계{% endblock %}
 {% block content %}
 <div class="page-head">
     <div><h1>내 학습 통계</h1><p>최근 14일의 학습 기록이에요.</p></div>
-    <a class="btn secondary" href="{{ url_for('user.export_report') }}">⬇ CSV 내려받기</a>
+    <a class="btn secondary" href="{{ url_for('user.export_report') }}">{{ icon('download') }} CSV 내려받기</a>
 </div>
 
 <section class="grid grid-4" id="kpis">
@@ -17,15 +18,15 @@
 <section class="grid grid-2" style="margin-top:var(--gap)">
     <div class="card"><div class="card-title"><h2>학습 성공률 추이</h2></div>
         <div class="chart-box"><canvas id="c-study" aria-label="학습 성공률 추이 차트" role="img"></canvas></div>
-        <p id="e-study" class="empty hidden"><span class="emoji">🌱</span>학습을 시작하면 그래프가 나타나요.</p></div>
+        <p id="e-study" class="empty hidden">{{ icon('sprout', 'ico-lg') }}학습을 시작하면 그래프가 나타나요.</p></div>
     <div class="card"><div class="card-title"><h2>시험 점수</h2></div>
         <div class="chart-box"><canvas id="c-test" aria-label="시험 점수 차트" role="img"></canvas></div>
-        <p id="e-test" class="empty hidden"><span class="emoji">📝</span>시험을 보면 점수가 기록돼요.</p></div>
+        <p id="e-test" class="empty hidden">{{ icon('file-pen-line', 'ico-lg') }}시험을 보면 점수가 기록돼요.</p></div>
 </section>
 <section class="card" style="margin-top:var(--gap)">
     <div class="card-title"><h2>자주 틀리는 단어 TOP 8</h2></div>
     <div class="chart-box"><canvas id="c-weak" aria-label="자주 틀리는 단어 차트" role="img"></canvas></div>
-    <p id="e-weak" class="empty hidden"><span class="emoji">👏</span>아직 틀린 단어가 없어요.</p>
+    <p id="e-weak" class="empty hidden">{{ icon('circle-check', 'ico-lg') }}아직 틀린 단어가 없어요.</p>
 </section>
 {% endblock %}
 {% block scripts %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% from "_mascot.html" import mascot %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 학습 화면: 플립카드 + 발음 듣기(TTS) + 완료 축하(컨페티·XP) #}
 {% block title %}학습{% endblock %}
 {% block content %}
@@ -11,21 +12,21 @@
         <div class="flip" id="flip" tabindex="0" role="button" aria-label="카드 뒤집기 (스페이스바)">
             <div class="flip-inner">
                 <div class="face front">
-                    <button class="tts-btn" id="tts-word" type="button" aria-label="단어 발음 듣기" title="발음 듣기">🔊</button>
+                    <button class="tts-btn" id="tts-word" type="button" aria-label="단어 발음 듣기" title="발음 듣기">{{ icon('volume-2') }}</button>
                     <span class="pos" id="pos"></span>
                     <div class="word" id="english"></div>
                     <div class="tap">탭하거나 스페이스바로 뜻 보기</div>
                 </div>
                 <div class="face back">
-                    <button class="tts-btn" id="tts-example" type="button" aria-label="예문 듣기" title="예문 듣기">🔊</button>
+                    <button class="tts-btn" id="tts-example" type="button" aria-label="예문 듣기" title="예문 듣기">{{ icon('volume-2') }}</button>
                     <div class="word" id="korean"></div>
                     <div class="example" id="example"></div>
                 </div>
             </div>
         </div>
         <div class="judge">
-            <button class="btn unknown" id="btn-unknown" type="button">🤔 아직 헷갈려요</button>
-            <button class="btn know" id="btn-know" type="button">😎 알고 있어요</button>
+            <button class="btn unknown" id="btn-unknown" type="button">{{ icon('circle-help') }} 아직 헷갈려요</button>
+            <button class="btn know" id="btn-know" type="button">{{ icon('circle-check') }} 알고 있어요</button>
         </div>
         <p class="center muted small" style="margin-top:10px">단축키: Space 뒤집기 · ← 헷갈려요 · → 알아요 · P 발음 듣기</p>
     </div>

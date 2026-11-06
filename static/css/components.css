@@ -10,6 +10,7 @@
         transition: transform .2s, box-shadow .2s; color: var(--text); }
 a.tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); text-decoration: none; }
 .tile .tile-ico { font-size: 1.8rem; line-height: 1; margin-bottom: 8px; }
+.tile .tile-ico .ico { width: 1.8rem; height: 1.8rem; }
 .tile .tile-title { font-weight: 800; font-size: 1.05rem; }
 .tile .tile-sub { font-size: .85rem; opacity: .75; }
 .tile.violet { background: var(--p-violet); } .tile.violet .tile-title { color: var(--p-violet-ink); }
@@ -75,7 +76,7 @@ a.tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); text-deco
 /* ----- 리그(주간 랭킹) ----- */
 .podium { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: end; margin-bottom: 18px; }
 .podium .step { border-radius: 20px 20px 8px 8px; padding: 14px 8px; text-align: center; font-weight: 800; }
-.podium .step .medal { font-size: 1.8rem; display: block; }
+.podium .step .medal { font-size: 1.3rem; font-weight: 800; display: block; }
 .podium .step .xp { display: block; font-size: .85rem; opacity: .8; font-weight: 700; }
 .podium .s1 { background: var(--p-lemon); color: var(--p-lemon-ink); padding-top: 26px; }
 .podium .s2 { background: var(--p-sky); color: var(--p-sky-ink); }

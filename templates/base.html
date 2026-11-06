@@ -2,6 +2,7 @@
 {# 2026-11-02 - smart-voca - 공통 레이아웃 (상단 내비 + 모바일 하단 탭바, 사용자/관리자 영역 자동 전환) #}
 {# 관리자 영역 표시는 실제 관리자에게만 (권한 없는 사용자의 403 화면에 관리자 메뉴가 노출되지 않게) #}
 {% set in_admin = request.path.startswith('/admin') and current_user and current_user.role == 'admin' %}
+{% from "_icons.html" import icon %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -27,18 +28,18 @@
 <body class="{{ 'admin' if in_admin else '' }}" data-logged-in="{{ '1' if current_user else '0' }}">
 {% if current_user %}
     {% if in_admin %}
-        {% set links = [('/admin/', '📊', '대시보드'), ('/admin/words', '📚', '단어'), ('/admin/users', '👥', '사용자'), ('/admin/settings', '⚙️', '설정')] %}
+        {% set links = [('/admin/', 'layout-dashboard', '대시보드'), ('/admin/words', 'library', '단어'), ('/admin/users', 'users', '사용자'), ('/admin/settings', 'settings', '설정')] %}
     {% else %}
-        {% set links = [('/', '🏠', '홈'), ('/study', '🃏', '학습'), ('/test', '📝', '시험'), ('/league', '🏆', '리그'), ('/report', '📈', '통계'), ('/settings', '⚙️', '설정')] %}
+        {% set links = [('/', 'house', '홈'), ('/study', 'layers', '학습'), ('/test', 'file-pen-line', '시험'), ('/league', 'trophy', '리그'), ('/report', 'trending-up', '통계'), ('/settings', 'settings', '설정')] %}
     {% endif %}
     <header class="navbar">
         <div class="navbar-inner">
             <a class="brand" href="{{ '/admin/' if in_admin else '/' }}">
-                <span class="logo">📘</span><span class="brand-name">스마트 보카</span>
+                <span class="logo">{{ icon('book-marked') }}</span><span class="brand-name">스마트 보카</span>
                 {% if in_admin %}<span class="badge-role">ADMIN</span>{% endif %}
             </a>
             <nav class="nav-links" aria-label="주 메뉴">
-                {% for href, icon, label in links %}
+                {% for href, icon_name, label in links %}
                     <a href="{{ href }}" class="{{ 'active' if (request.path == href or request.path == href.rstrip('/')) else '' }}">{{ label }}</a>
                 {% endfor %}
             </nav>
@@ -47,7 +48,7 @@
                     <a class="btn secondary small" href="{{ '/' if in_admin else '/admin/' }}">{{ '사용자 화면' if in_admin else '관리자' }}</a>
                 {% endif %}
                 <span class="user-chip">{{ current_user.display_name }}</span>
-                <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">🌙</button>
+                <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">{{ icon('moon') }}</button>
                 <form method="post" action="{{ url_for('auth.logout') }}">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                     <button class="btn ghost small" type="submit">로그아웃</button>
@@ -68,8 +69,8 @@
 
 {% if current_user %}
     <nav class="tabbar" aria-label="하단 메뉴">
-        {% for href, icon, label in links %}
-            <a href="{{ href }}" class="{{ 'active' if (request.path == href or request.path == href.rstrip('/')) else '' }}"><span>{{ icon }}</span>{{ label }}</a>
+        {% for href, icon_name, label in links %}
+            <a href="{{ href }}" class="{{ 'active' if (request.path == href or request.path == href.rstrip('/')) else '' }}">{{ icon(icon_name) }}<span>{{ label }}</span></a>
         {% endfor %}
     </nav>
 {% endif %}

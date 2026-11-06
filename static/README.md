@@ -20,6 +20,7 @@
 | `js/study.js` `test.js` `report.js` `settings.js` | 사용자 화면별 동작 |
 | `js/admin-*.js` | 관리자 화면별 동작 (dashboard, words, users, settings) |
 | `vendor/chart.umd.min.js` | Chart.js 4.4.1 (CDN 이 아니라 **로컬 파일**) |
+| `vendor/icons.svg` | 아이콘 스프라이트 — 출처: [Lucide](https://lucide.dev) v0.454.0 (ISC 라이선스, 전문은 `vendor/LICENSE-lucide.txt`). 템플릿은 `_icons.html` 의 `icon()`, JS 는 `main.js` 의 `icon()` 으로 쓴다 |
 
 ## 설계 이유
 - **왜 Vanilla JS (React/Vue 아님)?** 화면 12개 규모에서 빌드 도구(Node, 번들러)를 도입하면 설치·배포가 복잡해진다. Flask 하나로 실행되고, 코드가 곧 동작 원리라 설명하기 쉽다.

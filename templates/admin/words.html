@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 관리자 단어 관리: 검색, 추가/수정/삭제, CSV 가져오기·내보내기 #}
 {% block title %}단어 관리{% endblock %}
 {% block content %}
 <div class="page-head">
     <div><h1>단어 관리</h1><p>전체 사용자가 함께 쓰는 공용 단어장이에요.</p></div>
     <div class="row">
-        <a class="btn secondary" href="/api/admin/words/export">⬇ CSV 내보내기</a>
-        <button class="btn secondary" id="btn-import" type="button">⬆ CSV 가져오기</button>
+        <a class="btn secondary" href="/api/admin/words/export">{{ icon('download') }} CSV 내보내기</a>
+        <button class="btn secondary" id="btn-import" type="button">{{ icon('upload') }} CSV 가져오기</button>
         <button class="btn" id="btn-add" type="button">＋ 단어 추가</button>
     </div>
 </div>

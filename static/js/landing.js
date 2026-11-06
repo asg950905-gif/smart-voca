@@ -69,12 +69,12 @@
         btn.classList.add('correct');
         const blank = $('demo-blank'); blank.textContent = opt; blank.classList.add('filled');
         $('demo-card').classList.add('ok');
-        const check = document.createElement('div'); check.className = 'demo-check'; check.textContent = '✓';
+        const check = document.createElement('div'); check.className = 'demo-check'; check.innerHTML = icon('check');
         $('demo-card').appendChild(check);
         document.querySelectorAll('#demo-options .option').forEach((o) => { o.disabled = true; });
         confetti(26);
         const last = step === QUIZ.length - 1;
-        $('demo-msg').textContent = last ? '🎉 다 풀었어요! 계정을 만들면 기록이 남아요.' : '정답이에요! 다음 문제로 넘어가요…';
+        $('demo-msg').textContent = last ? '다 풀었어요! 계정을 만들면 기록이 남아요.' : '정답이에요! 다음 문제로 넘어가요…';
         if (last) {
             const cta = document.createElement('a');
             cta.className = 'btn'; cta.href = '/register'; cta.textContent = '계정 만들기'; cta.style.marginTop = '14px';

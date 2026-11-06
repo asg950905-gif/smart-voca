@@ -1,0 +1,5 @@
+{# 2026-11-06 - smart-voca - 아이콘 매크로 (Lucide 스프라이트 static/vendor/icons.svg 의 symbol 을 불러 쓴다) #}
+{# 파일 위치: templates/_icons.html / 사용: {% from "_icons.html" import icon %}{{ icon('flame') }} · 크기는 글자 크기를 따른다 (.ico) #}
+{% macro icon(name, extra_class='') -%}
+<svg class="ico {{ extra_class }}" aria-hidden="true" focusable="false"><use href="{{ url_for('static', filename='vendor/icons.svg') }}#i-{{ name }}"></use></svg>
+{%- endmacro %}

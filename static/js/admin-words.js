@@ -19,7 +19,7 @@
                 `<td class="muted small">${esc(w.example)}</td>` +
                 `<td class="row" style="flex-wrap:nowrap"><button class="btn secondary small" data-edit="${w.id}">수정</button>` +
                 `<button class="btn danger outline small" data-del="${w.id}" data-name="${esc(w.english)}">삭제</button></td></tr>`
-            ).join('') : '<tr><td colspan="5" class="empty"><span class="emoji">📭</span>단어가 없어요. 추가하거나 CSV로 가져오세요.</td></tr>';
+            ).join('') : '<tr><td colspan="5" class="empty">' + icon('inbox', 'ico-lg') + '단어가 없어요. 추가하거나 CSV로 가져오세요.</td></tr>';
             window._words = Object.fromEntries(d.items.map((w) => [w.id, w]));
         } catch (e) { toast(e.message, 'error'); }
     }

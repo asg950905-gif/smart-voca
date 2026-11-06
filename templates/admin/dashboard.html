@@ -1,29 +1,30 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 관리자 대시보드: 전체 학습 현황 KPI, 활동/점수 추이, 어려운 단어, 학습 랭킹 #}
 {% block title %}관리자 대시보드{% endblock %}
 {% block content %}
 <div class="page-head"><div><h1>전체 현황</h1><p>모든 사용자의 학습 통계를 한눈에 확인해요.</p></div></div>
 
 <section class="grid grid-4">
-    <div class="card kpi violet"><span class="label">👥 사용자</span><span class="value" id="k-users">–</span><span class="sub" id="k-users-sub"></span></div>
-    <div class="card kpi sky"><span class="label">📚 등록 단어</span><span class="value" id="k-words">–</span><span class="sub">공용 단어장</span></div>
-    <div class="card kpi mint"><span class="label">📝 시험 응시</span><span class="value" id="k-tests">–</span><span class="sub" id="k-tests-sub"></span></div>
-    <div class="card kpi peach"><span class="label">🎯 평균 학습 성공률</span><span class="value" id="k-rate">–</span><span class="sub">전체 학습 기록 기준</span></div>
+    <div class="card kpi violet"><span class="label">{{ icon('users') }} 사용자</span><span class="value" id="k-users">–</span><span class="sub" id="k-users-sub"></span></div>
+    <div class="card kpi sky"><span class="label">{{ icon('library') }} 등록 단어</span><span class="value" id="k-words">–</span><span class="sub">공용 단어장</span></div>
+    <div class="card kpi mint"><span class="label">{{ icon('file-pen-line') }} 시험 응시</span><span class="value" id="k-tests">–</span><span class="sub" id="k-tests-sub"></span></div>
+    <div class="card kpi peach"><span class="label">{{ icon('target') }} 평균 학습 성공률</span><span class="value" id="k-rate">–</span><span class="sub">전체 학습 기록 기준</span></div>
 </section>
 
 <section class="grid grid-2" style="margin-top:var(--gap)">
     <div class="card"><div class="card-title"><h2>일별 활동 (최근 14일)</h2></div>
         <div class="chart-box"><canvas id="c-activity" role="img" aria-label="일별 활동 차트"></canvas></div>
-        <p id="e-activity" class="empty hidden"><span class="emoji">📭</span>아직 학습 기록이 없어요.</p></div>
+        <p id="e-activity" class="empty hidden">{{ icon('inbox', 'ico-lg') }}아직 학습 기록이 없어요.</p></div>
     <div class="card"><div class="card-title"><h2>평균 시험 점수 추이</h2></div>
         <div class="chart-box"><canvas id="c-score" role="img" aria-label="평균 시험 점수 추이 차트"></canvas></div>
-        <p id="e-score" class="empty hidden"><span class="emoji">📝</span>아직 시험 기록이 없어요.</p></div>
+        <p id="e-score" class="empty hidden">{{ icon('file-pen-line', 'ico-lg') }}아직 시험 기록이 없어요.</p></div>
 </section>
 
 <section class="grid grid-2" style="margin-top:var(--gap)">
     <div class="card"><div class="card-title"><h2>가장 어려운 단어 TOP 10</h2></div>
         <div class="chart-box"><canvas id="c-hard" role="img" aria-label="어려운 단어 차트"></canvas></div>
-        <p id="e-hard" class="empty hidden"><span class="emoji">👏</span>아직 오답 데이터가 없어요.</p></div>
+        <p id="e-hard" class="empty hidden">{{ icon('circle-check', 'ico-lg') }}아직 오답 데이터가 없어요.</p></div>
     <div class="card"><div class="card-title"><h2>학습 랭킹 TOP 5</h2></div>
         <div class="table-wrap"><table>
             <thead><tr><th>#</th><th>이름</th><th>학습 일수</th><th>학습 단어</th></tr></thead>

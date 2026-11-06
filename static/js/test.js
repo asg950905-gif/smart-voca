@@ -95,14 +95,14 @@
             fb.textContent = '';
             const badge = document.createElement('span');
             badge.className = 'check-badge' + (r.is_correct ? '' : ' cross');
-            badge.textContent = r.is_correct ? '✓' : '✕';
+            badge.innerHTML = icon(r.is_correct ? 'check' : 'x');
             fb.appendChild(badge);
             fb.appendChild(document.createTextNode(r.is_correct ? '정답이에요!' : `정답: ${r.correct_answer}`));
             const isWord = current && (current.format === '빈칸형' || current.mode === '한->영');
             if (window.ttsSupported && isWord) {   // 영어 정답은 발음을 들려준다
                 const tts = document.createElement('button');
                 tts.type = 'button'; tts.className = 'tts-btn sm'; tts.style.marginLeft = 'auto';
-                tts.textContent = '🔊'; tts.setAttribute('aria-label', '정답 발음 듣기');
+                tts.innerHTML = icon('volume-2'); tts.setAttribute('aria-label', '정답 발음 듣기');
                 tts.dataset.speak = r.correct_answer;
                 fb.appendChild(tts); bindSpeakButtons(fb);
             }
@@ -120,10 +120,10 @@
             const r = await api('/api/test/finish', { method: 'POST' });
             $('r-score').textContent = `${r.score}점`;
             $('r-summary').textContent = `${r.total_problems}문제 중 ${r.correct_answers}문제 정답`;
-            $('r-xp').innerHTML = `<span class="xp-pop">⭐ +${r.xp_gained} XP</span>` +
-                (r.level_up ? `<div class="levelup">🎉 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
+            $('r-xp').innerHTML = `<span class="xp-pop">${icon('star')} +${r.xp_gained} XP</span>` +
+                (r.level_up ? `<div class="levelup">${icon('circle-arrow-up')} 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
             $('r-list').innerHTML = r.details.map((d) =>
-                `<div class="result-item"><span>${d.is_correct ? '✅' : '❌'} ${esc(d.question)}</span>` +
+                `<div class="result-item"><span>${icon(d.is_correct ? 'check' : 'x')} ${esc(d.question)}</span>` +
                 `<span class="muted">정답: ${esc(d.correct_answer)}${d.is_correct ? '' : ` · 내 답: ${esc(d.user_answer || '–')}`}</span></div>`).join('');
             show('result');
             if (r.score >= 80 || r.level_up) confetti(r.level_up ? 80 : 50);

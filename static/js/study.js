@@ -38,8 +38,8 @@
         try {
             const r = await api('/api/study/record', { method: 'POST', body: { results } });
             $('done-summary').textContent = `${r.words_count}개 중 ${r.correct_count}개를 기억했어요 (${r.success_rate}%)`;
-            $('done-xp').innerHTML = `<span class="xp-pop">⭐ +${r.xp_gained} XP</span>` +
-                (r.level_up ? `<div class="levelup">🎉 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
+            $('done-xp').innerHTML = `<span class="xp-pop">${icon('star')} +${r.xp_gained} XP</span>` +
+                (r.level_up ? `<div class="levelup">${icon('circle-arrow-up')} 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
             show('done-area');
             confetti(r.level_up ? 70 : 40);
         } catch (e) {

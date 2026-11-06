@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% from "_mascot.html" import mascot %}
+{% from "_icons.html" import icon %}
 {# 2026-11-04 - smart-voca - 랜딩 페이지 재설계(v3): 좌우 2단 히어로, 하루 3단계 흐름, 빈칸 체험, 학습자/관리자 탭, 실제 기록, FAQ. 외부 서비스의 구성·문구를 따르지 않는다 #}
 {% block title %}함께 쓰는 영어 단어장{% endblock %}
 {% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">{% endblock %}
@@ -7,12 +8,12 @@
 {% block content %}
 <header class="lp-nav" id="lp-nav">
     <div class="lp-wrap lp-nav-in">
-        <a class="brand" href="#top"><span class="logo">📘</span><span class="brand-name">스마트 보카</span></a>
+        <a class="brand" href="#top"><span class="logo">{{ icon('book-marked') }}</span><span class="brand-name">스마트 보카</span></a>
         <nav class="lp-links" aria-label="페이지 내 이동">
             <a href="#flow">하루 흐름</a><a href="#demo">맛보기</a><a href="#roles">화면 둘러보기</a><a href="#records">기록</a><a href="#faq">질문</a>
         </nav>
         <div class="row">
-            <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">🌙</button>
+            <button id="theme-toggle" class="btn secondary icon-btn" type="button" aria-label="테마 전환">{{ icon('moon') }}</button>
             <a class="btn secondary small" href="{{ url_for('auth.login') }}">로그인</a>
             <a class="btn small" href="{{ url_for('auth.register') }}">계정 만들기</a>
         </div>
@@ -48,7 +49,7 @@
     <div class="lp-wrap reveal">
         <h2 class="lp-h2">하루 10분, 세 걸음이면 돼요</h2>
         <ol class="lp-steps">
-            <li><span class="lp-step-no">1</span><h3>카드로 훑기</h3><p>뜻과 예문을 넘겨 보며 눈에 익혀요. 🔊 를 누르면 발음을 들려줘요.</p></li>
+            <li><span class="lp-step-no">1</span><h3>카드로 훑기</h3><p>뜻과 예문을 넘겨 보며 눈에 익혀요. {{ icon('volume-2') }} 를 누르면 발음을 들려줘요.</p></li>
             <li><span class="lp-step-no">2</span><h3>시험으로 확인</h3><p>객관식과 빈칸 채우기로 정말 아는지 점검해요.</p></li>
             <li><span class="lp-step-no">3</span><h3>틀린 것만 다시</h3><p>오답이 쌓인 단어가 다음 학습 순서의 앞쪽에 와요.</p></li>
         </ol>

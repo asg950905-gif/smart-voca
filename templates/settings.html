@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {# 2026-11-02 - smart-voca - 사용자 설정: 하루 학습량, 테마, 내 기록 초기화 #}
 {% block title %}설정{% endblock %}
 {% block content %}
@@ -16,8 +17,8 @@
                 <label>화면 테마</label>
                 <div class="seg" id="theme">
                     <label><input type="radio" name="theme" value="system"><span>시스템</span></label>
-                    <label><input type="radio" name="theme" value="light"><span>☀️ 라이트</span></label>
-                    <label><input type="radio" name="theme" value="dark"><span>🌙 다크</span></label>
+                    <label><input type="radio" name="theme" value="light"><span>{{ icon('sun') }} 라이트</span></label>
+                    <label><input type="radio" name="theme" value="dark"><span>{{ icon('moon') }} 다크</span></label>
                 </div>
             </div>
             <button class="btn" type="submit">저장</button>

@@ -2,7 +2,7 @@
 
 (function () {
     'use strict';
-    const MEDALS = ['🥇', '🥈', '🥉'];
+    // 시상대는 이모지 메달 대신 순위 숫자로 표시한다
 
     async function init() {
         try {
@@ -20,7 +20,7 @@
             podium.innerHTML = order.map((r, i) => {
                 if (!r) return '<div></div>';
                 const cls = ['s2', 's1', 's3'][i];
-                return `<div class="step ${cls}"><span class="medal">${MEDALS[r.rank - 1]}</span>${esc(r.name)}${r.me ? ' (나)' : ''}<span class="xp">${r.xp} XP</span></div>`;
+                return `<div class="step ${cls}"><span class="medal">${r.rank}위</span>${esc(r.name)}${r.me ? ' (나)' : ''}<span class="xp">${r.xp} XP</span></div>`;
             }).join('');
             document.getElementById('board').innerHTML = d.board.map((r) =>
                 `<div class="rank-row${r.me ? ' me' : ''}"><span class="rk">${r.rank}</span>` +
