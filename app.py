@@ -12,7 +12,8 @@ from pathlib import Path
 
 from flask import Flask, flash, g, jsonify, render_template, request, session, send_from_directory
 
-# Windows 환경에서 .js, .css MIME type 설정 (한글 경로 호환)
+# Windows 레지스트리가 .js/.css 를 text/plain 으로 돌려주면 브라우저가 차단한다 (이슈 #3).
+# Flask 기본 static 라우트가 이 mimetypes 표를 쓰므로 add_type 만으로 충분하다 (정적 라우트 별도 정의 불필요, 2026-11-06 검증).
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('text/css', '.css')
 
@@ -72,22 +73,6 @@ def create_app(data_dir=None) -> Flask:
     admin_user, admin_pw = os.environ.get('ADMIN_USERNAME'), os.environ.get('ADMIN_PASSWORD')
     if admin_user and admin_pw:
         app.auth.ensure_admin(admin_user, admin_pw)
-
-    @app.route('/static/js/<path:filename>')
-    def serve_js(filename):
-        response = send_from_directory(app.static_folder + '/js', filename)
-        response.headers['Content-Type'] = 'application/javascript; charset=utf-8'
-        return response
-
-    @app.route('/static/css/<path:filename>')
-    def serve_css(filename):
-        response = send_from_directory(app.static_folder + '/css', filename)
-        response.headers['Content-Type'] = 'text/css; charset=utf-8'
-        return response
-
-    @app.route('/static/<path:filename>')
-    def serve_static(filename):
-        return send_from_directory(app.static_folder, filename)
 
     app.register_blueprint(auth_routes.bp)
     app.register_blueprint(user_routes.bp)

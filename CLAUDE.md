@@ -344,8 +344,9 @@ python app.py
   참고한 사이트는 일지에 적는다. 11/2 UI v2 의 참고 대상은 https://epop.ai/ko 이며, 구성·문구가 지나치게 닮아
   2026-11-04 에 랜딩을 v3 로 재설계했다 (학습·시험 등 다른 화면의 유사성은 미점검).
 - **정적 파일 MIME 에러** (이슈 #3 close, 2026-11-06 / 해결 `43a4e72`): Windows 에서 `.js/.css` 가 `text/plain` 으로 잡히면
-  브라우저가 차단한다. `app.py` 의 `mimetypes.add_type` 으로 대응. **남은 일**: 정적 라우트 3개(`serve_js` 등)가
-  Flask 기본과 중복인지 검증 (미확인, #3 코멘트에 예고).
+  브라우저가 차단한다. `app.py` 의 `mimetypes.add_type` 으로 대응. 정적 라우트 3개(`serve_js` 등)는
+  Flask 기본 static 라우트와 중복이라 제거했다 (2026-11-06 검증: 제거 전후 `/static/js`·`/static/css`·`/static/vendor` Content-Type 동일, pytest 27개 통과).
+  단 `after_request` 의 `.js/.css` Content-Type 덮어쓰기는 유지 중이며 필요 여부는 미확인.
 - **테스트 서버 종료**: PowerShell 에서 `Get-NetTCPConnection -LocalPort 5000 -State Listen` 의 프로세스를 `Stop-Process`.
   `python.exe` 전체를 종료하는 명령은 쓰지 않는다 (다른 파이썬 작업까지 끊김).
 - **줄바꿈 경고**: `LF will be replaced by CRLF` 는 Windows 기본 동작이라 무시해도 된다.
