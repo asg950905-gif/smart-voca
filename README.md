@@ -91,4 +91,4 @@ python ai-agent/scripts/시연데이터생성.py --reset   # data/ 는 git 에 �
 
 - 프로젝트 지침: `CLAUDE.md` / 개발방법론: `docs/개발방법론.md`
 - 작업 계획·결정 기록(ADR-001 SQLite): `ai-agent/claude/작업계획_261102_사용자관리자화면_UI개편_시연.md`
-- 시연 시나리오: `ai-agent/claude/테스트_261102_시연 시나리오 v1.0.md`
+- 시연 시나리오: `ai-agent/claude/테스트_261102_시연시나리오_v1.0.md`
