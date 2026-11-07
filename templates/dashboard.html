@@ -29,9 +29,9 @@
     <div class="card level-card">
         <div class="level-badge"><div><small>LEVEL</small><b>{{ progress.level }}</b></div></div>
         <div class="xp-meta">
-            <div class="row between"><strong>{{ progress.xp }} XP</strong><span class="muted small">다음 레벨까지 {{ progress.level_need - progress.level_xp }} XP</span></div>
+            <div class="row between"><strong>Lv {{ progress.level }} · {{ progress.level_xp }} / {{ progress.level_need }} XP</strong><span class="muted small">다음 레벨까지 {{ progress.level_need - progress.level_xp }} XP</span></div>
             <div class="bar xp thick" role="progressbar" aria-valuenow="{{ progress.level_percent }}" aria-valuemin="0" aria-valuemax="100"><div style="width: {{ progress.level_percent }}%"></div></div>
-            <p class="muted small" style="margin-top:8px">맞히면 +10(학습)/+15(시험) XP, 틀려도 참여 XP가 쌓여요.</p>
+            <p class="muted small" style="margin-top:8px">누적 {{ progress.xp }} XP · 맞히면 +10(학습)/+15(시험) XP, 틀려도 참여 XP가 쌓여요.</p>
         </div>
     </div>
     <div class="card row" style="gap:20px">
