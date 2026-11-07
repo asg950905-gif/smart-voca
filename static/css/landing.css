@@ -34,8 +34,8 @@
 /* ----- 섹션 공통 + 스크롤 등장 ----- */
 .lp-section { padding: 84px 0; }
 .lp-section.alt { background: color-mix(in srgb, var(--accent) 5%, var(--bg)); }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
 
 /* ----- 하루 3단계 ----- */
 .lp-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: none; }
@@ -109,5 +109,5 @@ details p { color: var(--text-muted); margin-top: 10px; line-height: 1.7; }
     .lp-nav-in .brand-name { font-size: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
 }

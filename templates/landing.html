@@ -3,7 +3,8 @@
 {% from "_icons.html" import icon %}
 {# 2026-11-04 - smart-voca - 랜딩 페이지 재설계(v3): 좌우 2단 히어로, 하루 3단계 흐름, 빈칸 체험, 학습자/관리자 탭, 실제 기록, FAQ. 외부 서비스의 구성·문구를 따르지 않는다 #}
 {% block title %}함께 쓰는 영어 단어장{% endblock %}
-{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">{% endblock %}
+{% block head %}<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">{% endblock %}
 {% block main_class %}full{% endblock %}
 {% block content %}
 <header class="lp-nav" id="lp-nav">

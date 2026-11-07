@@ -15,7 +15,7 @@
                 entry.target.querySelectorAll('[data-count]').forEach((el) => countUp(el, Number(el.dataset.count)));
                 io.unobserve(entry.target);
             });
-        }, { threshold: 0.18 });
+        }, { threshold: 0.05 });
         reveals.forEach((el) => io.observe(el));
     } else {
         reveals.forEach((el) => { el.classList.add('in'); el.querySelectorAll('[data-count]').forEach((n) => { n.textContent = n.dataset.count; }); });
