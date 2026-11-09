@@ -26,6 +26,8 @@ DEMO_USERS = [  # (아이디, 비밀번호, 표시이름, 학습 성향: 기본 
     ('minsu', 'demo1234', '김민수', 0.82),
     ('jiyoung', 'demo1234', '이지영', 0.68),
     ('hojun', 'demo1234', '박호준', 0.55),
+    ('seoyun', 'demo1234', '정서윤', 0.74),   # 관리자 대시보드 '학습 랭킹 TOP 5' 가 꽉 차도록 2명 추가 (2026-11-09)
+    ('taeho', 'demo1234', '최태호', 0.62),
 ]
 
 WORDS = """abandon|버리다|verb|He had to abandon the car.

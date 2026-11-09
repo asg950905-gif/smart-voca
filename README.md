@@ -15,7 +15,7 @@ python app.py                                       # http://127.0.0.1:5000
 | 역할 | 아이디 / 비밀번호 (시연 데이터 기준) |
 | :--- | :--- |
 | 관리자 | `admin` / `admin1234` |
-| 사용자 | `minsu`, `jiyoung`, `hojun` / `demo1234` |
+| 사용자 | `minsu`, `jiyoung`, `hojun`, `seoyun`, `taeho` / `demo1234` |
 
 시연 계정의 비밀번호는 **시연 전용**이다. 팀 테스트 배포 때는 새 DB 로 시작하고 `.env`(`.env.example` 참고)로 관리자 계정을 만든다.
 
