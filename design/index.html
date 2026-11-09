@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>smart-voca | 하루 15분, 잊지 않는 단어 학습</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root {
+    --accent: #1F4FD8;
+    --accent-soft: #EEF3FF;
+    --navy: #0E1A2B;
+    --navy-2: #1B2A44;
+    --line: #E6EAF0;
+    --line-2: #D5DCE6;
+    --bg-soft: #F5F7FA;
+    --text: #0E1A2B;
+    --text-2: #3A4A63;
+    --text-3: #5A6A82;
+    --text-4: #8A99B0;
+    --on-navy: #C9D3E3;
+    --on-navy-2: #8A99B0;   /* 네이비 위 보조 글자 (대비 6:1) */
+    --dot: #7A8AA6;         /* 네이비 위 비활성 점·테두리 (대비 3:1 이상) */
+    --font-ko: 'Noto Sans KR Variable', 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+    --font-en: 'Outfit Variable', Outfit, 'Noto Sans KR Variable', 'Malgun Gothic', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  section[id] { scroll-margin-top: 88px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .util :focus-visible, .hero :focus-visible, .schedule :focus-visible, .cta-box :focus-visible, .footer :focus-visible { outline-color: #8FB0FF; }
+  .skip { position: absolute; left: 16px; top: -80px; z-index: 100; background: #fff; color: var(--navy); font-weight: 700; padding: 12px 18px; border-radius: 10px; box-shadow: 0 6px 20px rgba(14,26,43,.2); }
+  .skip:focus { top: 12px; color: var(--navy); }
+  @media (prefers-reduced-motion: reduce) { *, ::before, ::after { transition: none !important; } }
+  body { margin: 0; background: #fff; color: var(--text); font-family: var(--font-ko); word-break: keep-all; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+  h1, h2, p, ul { margin: 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .en { font-family: var(--font-en); }
+  .eyebrow { font-family: var(--font-en); font-weight: 700; letter-spacing: .18em; font-size: 14px; color: var(--accent); }
+  .h2 { font-size: 40px; line-height: 1.3; font-weight: 900; letter-spacing: -.03em; }
+  .btn { white-space: nowrap; display: inline-flex; align-items: center; min-height: 44px; padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { color: #fff; opacity: .92; }
+  .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
+  .section-head .title { display: flex; flex-direction: column; gap: 14px; }
+
+  /* 유틸리티 바 */
+  .util { background: var(--navy); font-size: 13px; }
+  .util .container { display: flex; justify-content: flex-end; gap: 12px; padding-top: 4px; padding-bottom: 4px; letter-spacing: .04em; }
+  .util a { color: var(--on-navy); display: inline-flex; align-items: center; min-height: 28px; padding: 0 6px; }
+
+  /* 헤더 */
+  .header { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 20; }
+  .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+  .logo { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .logo-mark { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 800; font-size: 20px; }
+  .logo-text { font-family: var(--font-en); font-weight: 800; font-size: 24px; letter-spacing: -.02em; }
+  .nav { display: flex; flex-wrap: wrap; gap: 28px; font-size: 16px; font-weight: 500; }
+  .nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .menu-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: 12px; background: #fff; color: var(--navy); cursor: pointer; }
+
+  /* 히어로 */
+  .hero { background: var(--navy); color: #fff; overflow: hidden; }
+  .hero .container { display: flex; flex-wrap: wrap; align-items: center; gap: 56px; padding-top: 96px; padding-bottom: 72px; }
+  .hero-copy { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .hero-copy .eyebrow { color: #8FB0FF; }
+  .hero h1 { font-size: 56px; line-height: 1.2; font-weight: 900; letter-spacing: -.03em; white-space: pre-line; }
+  .hero-desc { font-size: 18px; line-height: 1.7; color: var(--on-navy); max-width: 520px; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .hero-btns .btn { padding: 16px 28px; font-size: 16px; }
+  .btn-ghost { border: 1px solid var(--dot); color: #fff; font-weight: 500; }
+  .btn-ghost:hover { color: #fff; border-color: #fff; }
+  .slider-ctrl { display: flex; align-items: center; gap: 16px; margin-top: 24px; font-family: var(--font-en); font-size: 15px; }
+  .slider-ctrl .total { color: var(--on-navy-2); }
+  .pause { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: 4px; border: 1px solid var(--dot); border-radius: 999px; background: transparent; color: #fff; cursor: pointer; }
+  .pause:hover { border-color: #fff; }
+  .pause svg[hidden] { display: none; }
+  .dots { display: flex; gap: 0; }
+  .dot { position: relative; height: 44px; width: 28px; border: 0; padding: 0; background: none; cursor: pointer; transition: width .3s; }
+  .dot::before { content: ""; position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 999px; background: var(--dot); transition: width .3s, margin .3s, background .3s; }
+  .dot.active { width: 48px; }
+  .dot.active::before { width: 32px; margin-left: -16px; background: #fff; }
+  .scroll-cue { text-align: center; padding-bottom: 32px; font-family: var(--font-en); font-size: 12px; letter-spacing: .24em; color: var(--on-navy-2); }
+
+  /* 플래시카드 목업 */
+  .card-wrap { flex: 1 1 380px; min-width: 0; display: flex; justify-content: center; }
+  .card-stack { position: relative; width: 100%; max-width: 420px; }
+  .card-stack::before { content: ""; position: absolute; top: 24px; left: 24px; right: -12px; bottom: -24px; background: var(--navy-2); border-radius: 24px; }
+  .flashcard { position: relative; background: #fff; color: var(--text); border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .fc-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-3); }
+  .chip { background: var(--accent-soft); color: var(--accent); padding: 6px 12px; border-radius: 999px; font-weight: 700; }
+  .fc-word { font-family: var(--font-en); font-size: 48px; font-weight: 800; letter-spacing: -.02em; }
+  .fc-phon { font-size: 15px; color: var(--text-3); }
+  .fc-line { height: 1px; background: var(--line); }
+  .fc-mean { font-size: 20px; font-weight: 700; }
+  .fc-ex { font-size: 15px; line-height: 1.6; color: var(--text-2); background: var(--bg-soft); border-radius: 12px; padding: 14px 16px; }
+  .fc-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .fc-btns button { min-height: 48px; border-radius: 12px; font-weight: 700; font-size: 14px; font-family: inherit; cursor: pointer; }
+  .fc-no { border: 1px solid #F3C2B0; background: #FFF4EF; color: #B23A12; }
+  .fc-mid { border: 1px solid var(--line); background: #fff; color: var(--text-2); }
+  .fc-yes { border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+
+  /* ABOUT / 학습 모드 */
+  .about { padding: 120px 0 96px; }
+  .about .container { display: flex; flex-direction: column; gap: 48px; }
+  .about-desc { max-width: 420px; font-size: 16px; line-height: 1.7; color: var(--text-3); }
+  .mode-list { border-top: 2px solid var(--navy); }
+  .mode { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding: 32px 8px; border-bottom: 1px solid var(--line); }
+  .mode-no { font-family: var(--font-en); font-weight: 700; font-size: 18px; color: var(--text-3); width: 40px; }
+  .mode-name { flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .mode-name strong { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+  .mode-name span { font-family: var(--font-en); font-size: 14px; color: var(--text-3); letter-spacing: .04em; }
+  .mode-tag { flex: 1 1 320px; min-width: 0; font-size: 16px; color: var(--text-2); line-height: 1.6; }
+  .mode-arrow { width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--line-2); display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .mode:hover .mode-arrow, .mode:focus-visible .mode-arrow { background: var(--accent); border-color: var(--accent); }
+  .mode:hover .mode-arrow svg, .mode:focus-visible .mode-arrow svg { stroke: #fff; }
+
+  /* QUESTION */
+  .faq { background: var(--bg-soft); padding: 112px 0; }
+  .faq .container { display: flex; flex-direction: column; gap: 48px; }
+  .faq-head { display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
+  .faq-head p { font-size: 16px; color: var(--text-3); }
+  .q-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .q-card { background: #fff; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--line); min-height: 140px; }
+  .q-card:hover { border-color: var(--accent); color: var(--text); }
+  .q-cat { align-self: flex-start; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 5px 10px; border-radius: 999px; }
+  .q-text { font-size: 17px; font-weight: 700; line-height: 1.5; }
+
+  /* METHOD */
+  .method { padding: 120px 0; }
+  .method .container { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; }
+  .schedule { flex: 1 1 440px; min-width: 0; background: var(--navy); border-radius: 28px; padding: 40px; color: #fff; display: flex; flex-direction: column; gap: 20px; }
+  .schedule .eyebrow { color: #8FB0FF; font-size: 13px; letter-spacing: .16em; }
+  .schedule-title { font-size: 22px; font-weight: 700; }
+  .sch-rows { display: flex; flex-direction: column; gap: 12px; }
+  .sch-row { display: flex; align-items: center; gap: 16px; }
+  .sch-day { font-family: var(--font-en); font-weight: 700; font-size: 15px; width: 64px; color: var(--on-navy); }
+  .sch-track { flex: 1 1 auto; height: 12px; background: var(--navy-2); border-radius: 999px; overflow: hidden; }
+  .sch-bar { height: 100%; background: var(--accent); border-radius: 999px; }
+  .sch-label { font-size: 14px; color: var(--on-navy); width: 84px; text-align: right; }
+  .schedule-note { font-size: 14px; line-height: 1.6; color: var(--on-navy-2); }
+  .method-copy { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .points { padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .points li { display: flex; gap: 14px; align-items: flex-start; font-size: 17px; line-height: 1.6; color: var(--text-2); }
+  .points svg { flex: none; margin-top: 3px; }
+  .link-underline { align-self: flex-start; font-weight: 700; font-size: 16px; padding: 10px 0; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+  .more-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; font-size: 15px; }
+
+  /* ROUTINE */
+  .routine { background: var(--bg-soft); padding: 112px 0; }
+  .routine .container { display: flex; flex-direction: column; gap: 48px; }
+  .r-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .r-card { background: #fff; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--line); }
+  .r-card:hover { color: var(--text); border-color: var(--accent); }
+  .r-tag { font-family: var(--font-en); font-size: 13px; font-weight: 700; color: var(--text-3); letter-spacing: .1em; }
+  .r-title { font-size: 20px; font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
+  .r-desc { font-size: 15px; line-height: 1.6; color: var(--text-3); }
+  .r-time { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 700; color: var(--accent); }
+
+  /* COMMUNITY */
+  .community { padding: 120px 0; }
+  .community .container { display: flex; flex-wrap: wrap; gap: 48px; }
+  .notice-col { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+  .story-col { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+  .h3 { font-size: 32px; font-weight: 900; letter-spacing: -.03em; }
+  .notice-card { background: var(--accent); color: #fff; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-height: 240px; }
+  .notice-card:hover { color: #fff; opacity: .95; }
+  .notice-card .label { font-size: 13px; font-weight: 700; color: #DCE6FF; }
+  .notice-card .title { font-size: 22px; font-weight: 700; line-height: 1.4; }
+  .notice-card .desc { font-size: 15px; line-height: 1.6; color: #E6ECFF; }
+  .notice-card .more { margin-top: auto; font-size: 14px; font-weight: 700; }
+  .story-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .story-head .title { display: flex; flex-direction: column; gap: 20px; }
+  .s-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .s-card { display: flex; flex-direction: column; gap: 14px; }
+  .s-thumb { aspect-ratio: 4 / 3; border-radius: 16px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-family: var(--font-en); font-size: 34px; font-weight: 800; letter-spacing: -.02em; }
+  .s-thumb.blue { background: #EEF3FF; color: #1F4FD8; }
+  .s-thumb.orange { background: #FFF4EF; color: #B23A12; }
+  .s-thumb.green { background: #E8F5F1; color: #0F6B57; }
+  .s-title { font-size: 18px; font-weight: 700; line-height: 1.4; }
+  .s-desc { font-size: 14px; line-height: 1.6; color: var(--text-3); }
+
+  /* CTA */
+  .cta { padding: 0 24px 120px; }
+  .cta-box { max-width: 1152px; margin: 0 auto; background: var(--navy); border-radius: 28px; padding: 56px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; color: #fff; }
+  .cta-box .copy { display: flex; flex-direction: column; gap: 10px; }
+  .cta-box strong { font-size: 32px; font-weight: 900; letter-spacing: -.03em; }
+  .cta-box span { font-size: 16px; color: var(--on-navy); }
+  .btn-white { background: #fff; color: var(--navy); padding: 18px 32px; font-size: 16px; }
+
+  /* CONTACT */
+  .contact { border-top: 1px solid var(--line); padding: 80px 0; }
+  .contact .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; }
+  .contact-col { display: flex; flex-direction: column; gap: 12px; }
+  .contact-big { font-size: 28px; font-weight: 900; }
+  .muted { font-size: 15px; color: var(--text-3); }
+  .hours { display: grid; grid-template-columns: 96px 1fr; row-gap: 8px; font-size: 15px; }
+  .hours dt { color: var(--text-3); }
+  .hours dd { margin: 0; }
+  .store-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  .footer { background: var(--navy); color: var(--text-4); padding: 48px 0 56px; font-size: 13px; line-height: 1.8; }
+  .footer .container { display: flex; flex-direction: column; gap: 20px; }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+  .footer-logo { font-family: var(--font-en); font-weight: 800; font-size: 22px; color: #fff; }
+  .footer-links { display: flex; gap: 0 20px; flex-wrap: wrap; }
+  .footer-links a { color: var(--on-navy); display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-links a.strong { color: #fff; font-weight: 700; }
+  .footer-line { height: 1px; background: var(--navy-2); }
+
+  /* 퀵메뉴 */
+  .quick { position: fixed; right: 20px; bottom: 24px; display: flex; flex-direction: column; gap: 8px; z-index: 30; }
+  .quick a { width: 64px; height: 64px; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(14,26,43,.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 700; }
+  .quick a.top { height: 48px; background: var(--navy); border: 0; visibility: hidden; opacity: 0; transition: opacity .2s; }
+  .quick.scrolled a.top { visibility: visible; opacity: 1; }
+  @media (max-width: 1100px) {
+    .quick { right: 16px; bottom: 16px; }
+    .quick a:not(.top) { display: none; }
+    .quick a.top { width: 48px; height: 48px; }
+  }
+  @media (max-width: 420px) { .btn-extra { display: none; } }
+
+  /* 모바일 */
+  @media (max-width: 768px) {
+    .header .container { flex-wrap: nowrap; gap: 10px; }
+    .logo-mark { width: 36px; height: 36px; font-size: 18px; }
+    .logo-text { font-size: 21px; }
+    .header .btn-primary { padding: 10px 16px; }
+    .header .btn-primary { margin-left: auto; padding: 10px 16px; font-size: 14px; }
+    .menu-toggle { display: inline-flex; }
+    .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; flex-wrap: nowrap; gap: 0; background: #fff; border-bottom: 1px solid var(--line); box-shadow: 0 16px 28px rgba(14,26,43,.1); padding: 4px 24px 12px; font-size: 16px; }
+    .nav.open { display: flex; }
+    .nav a { min-height: 48px; border-bottom: 1px solid var(--line); }
+    .nav a:last-child { border-bottom: 0; }
+    section[id] { scroll-margin-top: 72px; }
+    .hero .container { padding-top: 48px; padding-bottom: 48px; gap: 40px; }
+    .hero h1 { font-size: 36px; }
+    .hero-btns .btn { padding: 14px 22px; }
+    .h2 { font-size: 28px; }
+    .h3 { font-size: 26px; }
+    .about, .method, .community { padding: 64px 0; }
+    .faq, .routine { padding: 64px 0; }
+    .about .container, .faq .container, .routine .container { gap: 32px; }
+    .method .container { gap: 40px; }
+    .community .container { gap: 40px; }
+    .flashcard { padding: 28px; }
+    .fc-word { font-size: 38px; }
+    /* 학습 모드: 번호 | 이름·설명 | 화살표 3열 */
+    .mode { display: grid; grid-template-columns: 28px minmax(0, 1fr) 36px; gap: 6px 14px; align-items: start; padding: 22px 4px; }
+    .mode-no { grid-column: 1; grid-row: 1; width: auto; padding-top: 4px; font-size: 16px; }
+    .mode-name { grid-column: 2; grid-row: 1; flex: none; }
+    .mode-name strong { font-size: 20px; }
+    .mode-tag { grid-column: 2; grid-row: 2; flex: none; font-size: 15px; }
+    .mode-arrow { grid-column: 3; grid-row: 1 / 3; align-self: center; width: 36px; height: 36px; }
+    .mode-arrow svg { width: 16px; height: 16px; }
+    .q-card { min-height: 0; padding: 20px; gap: 10px; }
+    .q-text { font-size: 16px; }
+    .r-card { padding: 22px; }
+    .schedule { padding: 28px 24px; }
+    .sch-day { width: 56px; }
+    .sch-label { width: 72px; }
+    .s-thumb { aspect-ratio: 16 / 9; font-size: 28px; }
+    .notice-card { min-height: 0; padding: 28px; }
+    .cta { padding-bottom: 64px; }
+    .cta-box { padding: 36px 24px; }
+    .cta-box strong { font-size: 24px; }
+    .contact { padding: 56px 0; }
+    .contact .container { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">본문 바로가기</a>
+<div id="top"></div>
+
+<!-- 유틸리티 바 -->
+<div class="util">
+  <div class="container en">
+    <a href="#">LOGIN</a>
+    <a href="#">JOIN</a>
+    <a href="#top">HOME</a>
+  </div>
+</div>
+
+<!-- 헤더 -->
+<header class="header">
+  <div class="container">
+    <a href="#top" class="logo">
+      <span class="logo-mark">V</span>
+      <span class="logo-text">smart-voca</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#about">학습 모드</a>
+      <a href="#faq">고민 해결</a>
+      <a href="#method">학습 방법</a>
+      <a href="#routine">학습 루틴</a>
+      <a href="#community">커뮤니티</a>
+    </nav>
+    <a href="#" class="btn btn-primary"><span class="btn-extra">무료로&nbsp;</span>시작하기</a>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<!-- 히어로 (슬라이드 3장) -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy" id="hero-copy" aria-live="off">
+      <div class="eyebrow" id="hero-eyebrow">SMART VOCABULARY</div>
+      <h1 id="hero-title">하루 15분,
+잊지 않는 단어 학습</h1>
+      <p class="hero-desc" id="hero-desc">잊어버리기 직전에 다시 보여주는 간격 반복 복습으로, 외운 단어를 오래 기억하세요.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn btn-primary">무료 레벨 테스트</a>
+        <a href="#about" class="btn btn-ghost">학습 모드 보기</a>
+      </div>
+      <div class="slider-ctrl">
+        <span id="hero-no">01</span>
+        <div class="dots" id="hero-dots"></div>
+        <span class="total">03</span>
+        <button type="button" class="pause" id="hero-pause" aria-label="슬라이드 자동 전환 멈춤" aria-pressed="false">
+          <svg class="ic-pause" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
+          <svg class="ic-play" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <div class="card-stack" inert><!-- 화면 예시(장식): 포커스·읽기 대상에서 제외 -->
+        <div class="flashcard">
+          <div class="fc-top">
+            <span class="chip">오늘의 복습 12 / 30</span>
+            <span>Day 4</span>
+          </div>
+          <div class="fc-word" id="fc-word">resilient</div>
+          <div class="fc-phon" id="fc-phon">[rɪˈzɪliənt] · 형용사</div>
+          <div class="fc-line"></div>
+          <div class="fc-mean" id="fc-mean">회복력 있는, 탄력 있는</div>
+          <div class="fc-ex" id="fc-ex">Children are often more resilient than adults.</div>
+          <div class="fc-btns">
+            <button type="button" class="fc-no">모르겠어요</button>
+            <button type="button" class="fc-mid">헷갈려요</button>
+            <button type="button" class="fc-yes">알아요</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+
+<!-- ABOUT US / 학습 모드 -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="title">
+        <div class="eyebrow">ABOUT US</div>
+        <h2 class="h2">초등 영단어부터 시험 대비까지,<br>나에게 맞는 단어 학습</h2>
+      </div>
+      <p class="about-desc">smart-voca는 외운 단어를 잊어버리기 직전에 다시 보여줘서, 오래 기억에 남도록 돕는 단어 학습 서비스입니다.</p>
+    </div>
+    <div class="mode-list">
+      <a href="#" class="mode">
+        <span class="mode-no">01</span>
+        <div class="mode-name"><strong>스마트 플래시카드</strong><span>Smart Flashcard</span></div>
+        <span class="mode-tag">단어·뜻·예문을 카드로 넘기며 ‘알아요 / 헷갈려요 / 모르겠어요’로 바로 체크</span>
+        <span class="mode-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="mode">
+        <span class="mode-no">02</span>
+        <div class="mode-name"><strong>간격 반복 복습</strong><span>Spaced Repetition</span></div>
+        <span class="mode-tag">잊어버릴 때쯤 다시 보여주는 복습 일정을 자동으로 관리</span>
+        <span class="mode-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="mode">
+        <span class="mode-no">03</span>
+        <div class="mode-name"><strong>시험 대비 단어장</strong><span>Exam Voca</span></div>
+        <span class="mode-tag">수능·토익·자격증 등 목표 시험별로 정리된 단어장</span>
+        <span class="mode-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="mode">
+        <span class="mode-no">04</span>
+        <div class="mode-name"><strong>듣기·발음 학습</strong><span>Listening &amp; Pronunciation</span></div>
+        <span class="mode-tag">원어민 발음을 듣고 따라 하며 귀와 입으로 함께 익히기</span>
+        <span class="mode-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#" class="mode">
+        <span class="mode-no">05</span>
+        <div class="mode-name"><strong>나만의 단어장</strong><span>My Voca</span></div>
+        <span class="mode-tag">직접 모은 단어를 저장하고 나만의 복습 리스트로 관리</span>
+        <span class="mode-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-head">
+      <div class="eyebrow">QUESTION</div>
+      <h2 class="h2">이런 고민 있으신가요?</h2>
+      <p>고민을 누르면 맞는 학습법을 안내해 드려요.</p>
+    </div>
+    <div class="q-grid">
+      <a href="#" class="q-card"><span class="q-cat">암기</span><span class="q-text">분명히 외웠는데 며칠 지나면 다 잊어버려요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">시작</span><span class="q-text">어떤 단어장부터 시작해야 할지 모르겠어요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">시험</span><span class="q-text">시험까지 남은 기간에 맞춰 계획을 세우고 싶어요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">습관</span><span class="q-text">매일 꾸준히 하기가 너무 어려워요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">활용</span><span class="q-text">뜻은 아는데 문장에서 쓰지를 못해요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">발음</span><span class="q-text">단어 발음이 맞는지 자신이 없어요</span></a>
+      <a href="#" class="q-card"><span class="q-cat">복습</span><span class="q-text">복습은 언제, 얼마나 해야 효과가 있나요?</span></a>
+      <a href="#" class="q-card"><span class="q-cat">자녀</span><span class="q-text">아이에게 맞는 단어 학습 방법이 궁금해요</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="method">
+  <div class="container">
+    <div class="schedule">
+      <div class="eyebrow">REVIEW SCHEDULE</div>
+      <div class="schedule-title">한 단어의 복습 일정</div>
+      <div class="sch-rows">
+        <div class="sch-row"><span class="sch-day">Day 1</span><div class="sch-track"><div class="sch-bar" style="width:12%"></div></div><span class="sch-label">처음 학습</span></div>
+        <div class="sch-row"><span class="sch-day">Day 2</span><div class="sch-track"><div class="sch-bar" style="width:24%"></div></div><span class="sch-label">1일 후</span></div>
+        <div class="sch-row"><span class="sch-day">Day 4</span><div class="sch-track"><div class="sch-bar" style="width:42%"></div></div><span class="sch-label">3일 후</span></div>
+        <div class="sch-row"><span class="sch-day">Day 11</span><div class="sch-track"><div class="sch-bar" style="width:68%"></div></div><span class="sch-label">1주 후</span></div>
+        <div class="sch-row"><span class="sch-day">Day 30</span><div class="sch-track"><div class="sch-bar" style="width:100%"></div></div><span class="sch-label">약 3주 후</span></div>
+      </div>
+      <p class="schedule-note">‘알아요’를 누를수록 다음 복습 간격이 길어지고, ‘모르겠어요’를 누르면 다시 짧아집니다.</p>
+    </div>
+    <div class="method-copy">
+      <div class="eyebrow">METHOD</div>
+      <h2 class="h2">많이 외우는 것보다,<br>잊기 전에 다시 보는 것</h2>
+      <ul class="points">
+        <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>내가 체크한 결과에 따라 단어마다 복습 시점이 달라집니다.</span></li>
+        <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>뜻만 외우지 않도록 예문과 발음을 함께 보여줍니다.</span></li>
+        <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>오늘 할 분량만 정리해서 보여주니 부담 없이 시작할 수 있어요.</span></li>
+        <li><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>학습 기록과 기억률을 한눈에 보고 약한 단어를 다시 공략합니다.</span></li>
+      </ul>
+      <a href="#" class="link-underline">학습 원리 자세히 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTINE -->
+<section class="routine" id="routine">
+  <div class="container">
+    <div class="section-head">
+      <div class="title">
+        <div class="eyebrow">ROUTINE</div>
+        <h2 class="h2">나와 비슷한 목표, 이렇게 공부해요</h2>
+      </div>
+      <a href="#" class="more-link">루틴 전체보기 +</a>
+    </div>
+    <div class="r-grid">
+      <a href="#" class="r-card"><span class="r-tag">EXAM</span><span class="r-title">수능 영단어, 남은 기간에 맞춘 루틴</span><span class="r-desc">목표일을 입력하면 하루 학습량과 복습량이 자동으로 정해져요.</span><span class="r-time">하루 20분 · 예시 루틴</span></a>
+      <a href="#" class="r-card"><span class="r-tag">TOEIC</span><span class="r-title">토익 빈출 단어 집중 루틴</span><span class="r-desc">파트별 빈출 단어를 플래시카드와 듣기로 함께 익혀요.</span><span class="r-time">하루 15분 · 예시 루틴</span></a>
+      <a href="#" class="r-card"><span class="r-tag">KIDS</span><span class="r-title">초등 기초 영단어 루틴</span><span class="r-desc">그림과 발음 중심으로 짧고 가볍게 매일 반복해요.</span><span class="r-time">하루 10분 · 예시 루틴</span></a>
+      <a href="#" class="r-card"><span class="r-tag">DAILY</span><span class="r-title">출퇴근길 자투리 복습 루틴</span><span class="r-desc">오늘 복습할 단어만 모아 이동 중에 빠르게 확인해요.</span><span class="r-time">하루 5분 × 2 · 예시 루틴</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY: 공지 + 단어 이야기 -->
+<section class="community" id="community">
+  <div class="container">
+    <div class="notice-col">
+      <div class="eyebrow">OUR ISSUE</div>
+      <h2 class="h3">공지사항</h2>
+      <a href="#" class="notice-card">
+        <span class="label">NOTICE</span>
+        <span class="title">smart-voca 서비스 오픈 안내</span>
+        <span class="desc">하루 15분, 간격 반복 복습으로 단어 학습을 시작해 보세요.</span>
+        <span class="more">more +</span>
+      </a>
+    </div>
+    <div class="story-col">
+      <div class="story-head">
+        <div class="title">
+          <div class="eyebrow">VOCA STORY</div>
+          <h2 class="h3">단어 이야기</h2>
+        </div>
+        <a href="#" class="more-link">more +</a>
+      </div>
+      <div class="s-grid">
+        <a href="#" class="s-card"><div class="s-thumb blue">affect / effect</div><span class="s-title">헷갈리는 affect와 effect 구분법</span><span class="s-desc">동사와 명사, 예문 하나로 정리하기</span></a>
+        <a href="#" class="s-card"><div class="s-thumb orange">pre-</div><span class="s-title">어원으로 외우는 접두사 pre-</span><span class="s-desc">preview, predict, prepare를 한 번에</span></a>
+        <a href="#" class="s-card"><div class="s-thumb green">15 min</div><span class="s-title">하루 15분 복습 루틴 만드는 법</span><span class="s-desc">시간보다 꾸준함이 중요한 이유</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 배너 -->
+<section class="cta">
+  <div class="cta-box">
+    <div class="copy">
+      <strong>오늘부터 하루 15분, 단어 습관 만들기</strong>
+      <span>레벨 테스트로 내 수준에 맞는 단어장을 추천받아 보세요.</span>
+    </div>
+    <a href="#" class="btn btn-white">무료로 시작하기</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="container">
+    <div class="contact-col">
+      <div class="eyebrow">CONTACT</div>
+      <div class="contact-big">고객센터 준비 중</div>
+      <div class="muted">문의 채널은 정식 오픈 시 안내됩니다.</div>
+    </div>
+    <div class="contact-col">
+      <div class="eyebrow">OFFICE HOUR</div>
+      <div class="muted">운영 시간은 정식 오픈 시 안내됩니다.</div>
+    </div>
+    <div class="contact-col">
+      <div class="eyebrow">START</div>
+      <div style="font-size:15px;line-height:1.7;color:var(--text-2)">설치 없이 웹에서 바로 시작하세요. 가입하면 어느 기기에서든 같은 계정으로 학습 기록이 이어집니다.</div>
+      <div class="store-btns">
+        <a href="#" class="btn btn-primary">웹에서 바로 시작하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <span class="footer-logo">smart-voca</span>
+      <div class="footer-links">
+        <a href="#">이용약관</a>
+        <a href="#" class="strong">개인정보처리방침</a>
+        <a href="#">이메일무단수집거부</a>
+      </div>
+    </div>
+    <div class="footer-line"></div>
+    <div>사업자 정보는 정식 오픈 시 표기됩니다.</div>
+    <div>© 2026 smart-voca. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- 퀵메뉴 -->
+<div class="quick">
+  <a href="#" aria-label="레벨 테스트"><!-- 목적지 미정: 히어로 CTA 와 같은 곳으로 연결 -->
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    레벨테스트
+  </a>
+  <a href="#" aria-label="오늘의 단어">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5V21h16"/></svg>
+    오늘단어
+  </a>
+  <a href="#" aria-label="1:1 문의">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    1:1 문의
+  </a>
+  <a href="#top" class="top" aria-label="맨 위로">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
+</div>
+
+<script>
+  // 히어로 슬라이드 데이터 (문구·단어 카드 내용을 여기서 수정)
+  const slides = [
+    { eyebrow: 'SMART VOCABULARY', title: '하루 15분,\n잊지 않는 단어 학습', desc: '잊어버리기 직전에 다시 보여주는 간격 반복 복습으로, 외운 단어를 오래 기억하세요.', word: 'resilient', phon: '[rɪˈzɪliənt] · 형용사', mean: '회복력 있는, 탄력 있는', ex: 'Children are often more resilient than adults.' },
+    { eyebrow: 'LEVEL TEST', title: '내 수준에 맞는\n단어장부터 시작', desc: '간단한 레벨 테스트로 이미 아는 단어는 건너뛰고, 필요한 단어부터 학습합니다.', word: 'acquire', phon: '[əˈkwaɪər] · 동사', mean: '얻다, 습득하다', ex: 'She acquired a good knowledge of English.' },
+    { eyebrow: 'MY VOCA', title: '모르는 단어는\n바로 내 단어장으로', desc: '책이나 기사에서 만난 단어를 저장하면, 복습 일정에 자동으로 추가됩니다.', word: 'eventually', phon: '[ɪˈventʃuəli] · 부사', mean: '결국, 마침내', ex: 'Eventually, the hard work paid off.' }
+  ];
+  const AUTOPLAY_MS = 5000;
+
+  const $ = (id) => document.getElementById(id);
+  const dotsEl = $('hero-dots');
+  const heroEl = document.querySelector('.hero');
+  const pauseBtn = $('hero-pause');
+  let current = 0;
+  let timer = null;
+  // 자동 전환을 멈추는 3가지 이유: 사용자가 누른 정지 / 마우스 올림 / 키보드 포커스
+  let userPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let hoverPaused = false;
+  let focusPaused = false;
+
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot';
+    b.setAttribute('aria-label', (i + 1) + '번 슬라이드');
+    b.addEventListener('click', () => { show(i); syncTimer(); });
+    dotsEl.appendChild(b);
+  });
+
+  function show(i) {
+    current = i;
+    const s = slides[i];
+    $('hero-eyebrow').textContent = s.eyebrow;
+    $('hero-title').textContent = s.title;
+    $('hero-desc').textContent = s.desc;
+    $('fc-word').textContent = s.word;
+    $('fc-phon').textContent = s.phon;
+    $('fc-mean').textContent = s.mean;
+    $('fc-ex').textContent = s.ex;
+    $('hero-no').textContent = '0' + (i + 1);
+    [...dotsEl.children].forEach((d, k) => {
+      d.classList.toggle('active', k === i);
+      d.setAttribute('aria-current', k === i ? 'true' : 'false');
+    });
+  }
+  // 타이머를 현재 상태에 맞게 다시 맞춘다. 자동 전환 중에는 스크린리더 알림을 끄고, 멈춘 동안에만 켠다.
+  function syncTimer() {
+    clearInterval(timer);
+    timer = null;
+    if (!userPaused && !hoverPaused && !focusPaused) {
+      timer = setInterval(() => show((current + 1) % slides.length), AUTOPLAY_MS);
+    }
+    $('hero-copy').setAttribute('aria-live', timer ? 'off' : 'polite');
+  }
+  function renderPauseButton() {
+    pauseBtn.setAttribute('aria-pressed', String(userPaused));
+    pauseBtn.setAttribute('aria-label', userPaused ? '슬라이드 자동 전환 재생' : '슬라이드 자동 전환 멈춤');
+    pauseBtn.querySelector('.ic-pause').hidden = userPaused;
+    pauseBtn.querySelector('.ic-play').hidden = !userPaused;
+  }
+  pauseBtn.addEventListener('click', () => {
+    userPaused = !userPaused;
+    if (!userPaused) { hoverPaused = false; focusPaused = false; }
+    renderPauseButton();
+    syncTimer();
+  });
+  heroEl.addEventListener('mouseenter', () => { hoverPaused = true; syncTimer(); });
+  heroEl.addEventListener('mouseleave', () => { hoverPaused = false; syncTimer(); });
+  heroEl.addEventListener('focusin', (e) => { if (!e.target.closest('.pause')) { focusPaused = true; syncTimer(); } });
+  heroEl.addEventListener('focusout', (e) => { if (!heroEl.contains(e.relatedTarget)) { focusPaused = false; syncTimer(); } });
+  show(0);
+  renderPauseButton();
+  syncTimer();
+
+  // 모바일 메뉴 (햄버거)
+  const menuToggle = $('menu-toggle');
+  const navEl = $('nav');
+  function setMenu(open) {
+    navEl.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  }
+  menuToggle.addEventListener('click', () => setMenu(!navEl.classList.contains('open')));
+  navEl.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navEl.classList.contains('open')) { setMenu(false); menuToggle.focus(); }
+  });
+
+  // 퀵메뉴의 '맨 위로' 는 조금 스크롤한 뒤에만 보인다
+  const quickEl = document.querySelector('.quick');
+  window.addEventListener('scroll', () => quickEl.classList.toggle('scrolled', window.scrollY > 400), { passive: true });
+</script>
+</body>
+</html>

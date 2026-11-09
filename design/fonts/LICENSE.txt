@@ -1,0 +1,3 @@
+Noto Sans KR (c) Google / Adobe, Outfit (c) The Outfit Project Authors.
+Both are licensed under the SIL Open Font License 1.1 (https://openfontlicense.org).
+Files were obtained from the fontsource packages (@fontsource-variable/noto-sans-kr, @fontsource-variable/outfit, v5.1.1) via jsDelivr on 2026-11-09.
