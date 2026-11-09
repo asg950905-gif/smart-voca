@@ -16,7 +16,7 @@
 | `js/main.js` | 공통: `api()`(CSRF 자동 첨부 fetch), `toast()`, `confirmDialog()`, `esc()`, 테마 |
 | `js/charts.js` | Chart.js 공통 헬퍼(테마 색 연동, 빈 데이터 처리) |
 | `js/landing.js` `league.js` | 랜딩(스크롤 등장·퀴즈 체험·카운트업), 리그 화면 |
-| `img/shot-*.png` | 랜딩에 쓰는 실제 화면 캡처 (시연 데이터로 촬영) |
+| `img/shot-*.png` | 랜딩에 쓰는 실제 화면 캡처 (시연 데이터로 촬영). `shot-study.png`·`shot-admin.png` 는 2026-11-09 현재 UI 로 재촬영(900×560 비율, 2배 해상도, 핵심 부분만 크롭). `shot-league.png`·`shot-test.png` 는 랜딩에서 쓰지 않으며 11/2 촬영본(이모지 UI)이라 오래됨 |
 | `js/study.js` `test.js` `report.js` `settings.js` | 사용자 화면별 동작 |
 | `js/admin-*.js` | 관리자 화면별 동작 (dashboard, words, users, settings) |
 | `vendor/chart.umd.min.js` | Chart.js 4.4.1 (CDN 이 아니라 **로컬 파일**) |
