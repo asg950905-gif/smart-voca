@@ -416,13 +416,16 @@ s = new_slide("화면 미리보기", "SCREENS", notes=(
     "실제 동작 화면입니다. 왼쪽 위는 사용자 홈으로 연속 학습일과 진도 링이 보입니다. 오른쪽 위는 관리자 대시보드로 청록색으로 구분됩니다.\n"
     "아래쪽은 다크모드의 통계 화면과 모바일 화면입니다. 시연에서는 이 화면들을 직접 보여드리겠습니다.\n"
     "[참고] 화면은 11/9 기준 현재 UI(Lucide 아이콘 적용, 시연 데이터 학습자 5명)로 다시 촬영했습니다."))
-grid = [("02_user_home.png", 0.6, 1.55, "사용자 홈"), ("04_study_back.png", 4.95, 1.55, "플립카드 학습"),
-        ("20_admin_dashboard.png", 0.6, 4.35, "관리자 대시보드"), ("12_report_dark.png", 4.95, 4.35, "통계 (다크모드)")]
+# 라벨 태그는 캡처 위에 얹으면 화면 제목을 가리므로 캡처 아래 가운데에 둔다
+PIC_H, TAG_GAP = 2.25, 0.05
+grid = [("02_user_home.png", 0.6, 1.5, "사용자 홈"), ("04_study_back.png", 4.95, 1.5, "플립카드 학습"),
+        ("20_admin_dashboard.png", 0.6, 4.25, "관리자 대시보드"), ("12_report_dark.png", 4.95, 4.25, "통계 (다크모드)")]
 for name, gx, gy, cap in grid:
-    picture(s, shot(name), gx, gy, 4.16, 2.6, crop=True)
-    tag(s, gx + 0.12, gy + 0.12, cap, fill=INDIGO, color=WHITE, size=11)
-picture(s, shot('13_mobile_home.png'), 9.4, 1.55, 3.35, 5.4)
-tag(s, 9.55, 1.65, "모바일", fill=INDIGO, color=WHITE, size=11)
+    picture(s, shot(name), gx, gy, 4.16, PIC_H, crop=True)
+    tw = 0.4 + 0.19 * len(cap)
+    tag(s, gx + (4.16 - tw) / 2, gy + PIC_H + TAG_GAP, cap, fill=INDIGO, color=WHITE, size=11, w=tw)
+picture(s, shot('13_mobile_home.png'), 9.4, 1.5, 3.35, 5.0)
+tag(s, 9.4 + (3.35 - 1.16) / 2, 1.5 + 5.0 + TAG_GAP, "모바일", fill=INDIGO, color=WHITE, size=11, w=1.16)
 
 # ================================================================ 13. 품질
 s = new_slide("품질 확인: 테스트와 리허설", "QUALITY", notes=(
