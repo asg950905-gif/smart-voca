@@ -141,7 +141,10 @@ python app.py
 - **DB 스키마 변경**: `src/data/database.py` 의 `SCHEMA` 는 `CREATE TABLE IF NOT EXISTS` 라서 기존 DB 의 컬럼은 바뀌지 않는다.
   컬럼을 바꾸면 시연 DB 는 `--reset` 으로 재생성하고, 배포 DB 는 별도 마이그레이션이 필요하다.
 - **새 템플릿에서 서버 데이터를 JS 로 그릴 때는 반드시 `esc()`** (static/js/main.js) 를 거친다 (XSS 방지).
-- **경로**: 프로젝트는 영문 경로 `C:\dev\smart-voca` 에 있다. 과거 한글 경로에서 패키지 호환 문제가 있었다 (`requirements.txt` 버전 수정 이력 참조).
+- **경로**: 환경마다 다르다 (상세는 "작업 환경 전환" 참조).
+  - 노트북: `C:\dev\smart-voca` (영문 경로, OneDrive 밖)
+  - 실습실: `문서\dev\smart-voca` (교수님 지정, 실제 `C:\Users\<계정>\OneDrive\문서\dev\smart-voca`. OneDrive 미실행이라 동기화 안 됨)
+  - 과거 한글 경로에서 패키지 호환 문제가 있었다 (`requirements.txt` 버전 수정 이력 참조). 실습실 경로에는 `문서` 가 들어가므로 설치 오류가 나면 경로부터 의심한다.
 
 ## 코드 작성 규칙
 
@@ -277,7 +280,9 @@ python app.py
 
 0. **저장소**: 원격은 `origin` = https://github.com/asg950905-gif/smart-voca (기본 브랜치 `master`, PUBLIC).
    `.gitignore` 로 `.env`, `data/` 원본, `__pycache__/` 등을 제외한다.
-   프로젝트는 OneDrive 밖(`C:\dev\smart-voca`)에 두어 `.git` 동기화 충돌을 피한다. OneDrive 안으로 옮기지 않는다.
+   노트북은 문서 폴더가 OneDrive 동기화 대상이라 OneDrive 밖(`C:\dev\smart-voca`)에 두어 `.git` 동기화 충돌을 피한다.
+   실습실은 교수님 지정 경로(`문서\dev\smart-voca`)를 쓴다. 경로에 OneDrive 가 들어 있어도 OneDrive 가 실행 중이 아니면 문제없다
+   (2026-11-11 확인). 실습실에서 OneDrive 동기화가 켜지면 사용자에게 알린다.
 
 1. **커밋 메시지 형식** (Conventional Commits):
    - `feat:` 기능 추가 / `fix:` 버그 수정 / `docs:` 문서 / `refactor:` 구조 개선
@@ -298,7 +303,10 @@ python app.py
 
 - **시작 시**: `git status` 확인 후 `git pull` 먼저, 최근 `일지_*.md` 의 "다음 할 일"을 읽고 이어서 작업한다.
 - **종료 시**: 일지에 한 일 / 다음 할 일 / 주의점을 남기고, 사용자 승인 후 커밋·`git push` 한다.
-- 실습실(공용 PC)에서는 `git config --local` 만 쓰고(`--global` 금지), 토큰·`.env` 를 대화창에 붙여넣지 않는다.
+- 실습실 PC 는 **개인 Microsoft 계정으로 Windows 로그인**하므로 사용자 프로필이 분리된다.
+  git `--global` 설정과 `gh` 로그인을 유지해도 된다 (다른 학생 계정에서는 보이지 않음).
+  단 자리를 뜰 때는 Windows 로그아웃(잠깐이면 `Win+L` 잠금), 학기 종료 시 `gh auth logout` 한다.
+- 토큰·`.env` 를 대화창에 붙여넣지 않는다.
 
 ## 이슈 관리
 
