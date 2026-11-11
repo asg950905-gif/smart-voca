@@ -23,7 +23,6 @@
 
 import sys
 import asyncio
-from pathlib import Path
 from playwright.async_api import async_playwright
 
 # 색상 코드 (터미널)
@@ -95,6 +94,32 @@ async def test_page(page, url: str, name: str, session_check=False) -> tuple[boo
         return False, str(e)[:50]
 
 
+async def login_admin_in_new_context(page, browser):
+    """새 브라우저 컨텍스트에서 관리자 로그인"""
+    try:
+        # 새 컨텍스트에서 관리자 로그인 (세션 분리)
+        ctx = await browser.new_context()
+        admin_page = await ctx.new_page()
+
+        # 로그인 페이지로 이동
+        await admin_page.goto(f'{BASE_URL}/login')
+        await admin_page.wait_for_selector('input[name="username"]', timeout=5000)
+
+        # 관리자 로그인
+        await admin_page.fill('input[name="username"]', ADMIN_USER)
+        await admin_page.fill('input[name="password"]', ADMIN_PASS)
+        await admin_page.click('button[type="submit"]')
+        await admin_page.wait_for_load_state('networkidle')
+
+        # 로그인 성공 확인
+        admin_ok = '/login' not in admin_page.url
+
+        return admin_page, admin_ok
+
+    except Exception as e:
+        raise Exception(f'관리자 로그인 실패: {str(e)[:50]}')
+
+
 async def run_tests():
     """모든 테스트 실행"""
 
@@ -108,11 +133,12 @@ async def run_tests():
         sys.exit(1)
     print(f'{PASS} 서버 정상\n')
 
+    results = []
+    expected_count = 15  # 기대 항목 수
+
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
-
-        results = []
 
         try:
             # ===== 비로그인 페이지 =====
@@ -162,41 +188,34 @@ async def run_tests():
                 print(f'  {status} {name}')
                 results.append((name, success))
 
-            # ===== 관리자 로그인 및 페이지 =====
+            # ===== 관리자 로그인 및 페이지 (새 컨텍스트) =====
             print(f'\n{BOLD}[관리자 로그인 & 페이지]{RESET}')
 
-            # 로그아웃
             try:
-                await page.goto(f'{BASE_URL}/logout', wait_until='networkidle')
-            except:
-                pass
+                admin_page, admin_ok = await login_admin_in_new_context(page, browser)
+                print(f'  {PASS if admin_ok else FAIL} 관리자 로그인 (admin)')
+                results.append(('관리자 로그인', admin_ok))
 
-            # 관리자 로그인
-            await page.goto(f'{BASE_URL}/login')
-            await page.wait_for_selector('input[name="username"]', timeout=5000)
-            await page.fill('input[name="username"]', ADMIN_USER)
-            await page.fill('input[name="password"]', ADMIN_PASS)
-            await page.click('button[type="submit"]')
-            await page.wait_for_load_state('networkidle')
+                # 관리자 페이지들
+                admin_tests = [
+                    (f'{BASE_URL}/admin', '관리자 대시보드'),
+                    (f'{BASE_URL}/admin/words', '단어 관리'),
+                    (f'{BASE_URL}/admin/users', '사용자 관리'),
+                    (f'{BASE_URL}/admin/settings', '관리자 설정'),
+                ]
 
-            # 로그인 성공 확인
-            admin_ok = '/login' not in page.url
-            print(f'  {PASS if admin_ok else FAIL} 관리자 로그인 (admin)')
-            results.append(('관리자 로그인', admin_ok))
+                for url, name in admin_tests:
+                    success, reason = await test_page(admin_page, url, name, session_check=True)
+                    status = PASS if success else f'{FAIL} ({reason})'
+                    print(f'  {status} {name}')
+                    results.append((name, success))
 
-            # 관리자 페이지들
-            admin_tests = [
-                (f'{BASE_URL}/admin', '관리자 대시보드'),
-                (f'{BASE_URL}/admin/words', '단어 관리'),
-                (f'{BASE_URL}/admin/users', '사용자 관리'),
-                (f'{BASE_URL}/admin/settings', '관리자 설정'),
-            ]
-
-            for url, name in admin_tests:
-                success, reason = await test_page(page, url, name, session_check=True)
-                status = PASS if success else f'{FAIL} ({reason})'
-                print(f'  {status} {name}')
-                results.append((name, success))
+            except Exception as e:
+                print(f'  {FAIL} 관리자 로그인 실패: {str(e)[:50]}')
+                results.append(('관리자 로그인', False))
+                # 이후 관리자 페이지 4개를 모두 실패로 기록
+                for name in ['관리자 대시보드', '단어 관리', '사용자 관리', '관리자 설정']:
+                    results.append((name, False))
 
         except Exception as e:
             print(f'{FAIL} 예상 밖 에러: {str(e)[:80]}')
@@ -210,7 +229,12 @@ async def run_tests():
     passed = sum(1 for _, ok in results if ok)
     failed = total - passed
 
-    print(f'총 {total}개 테스트: {PASS} {passed}개 통과, {FAIL} {failed}개 실패')
+    print(f'총 {total}개 테스트 (기대: {expected_count}개): {PASS} {passed}개 통과, {FAIL} {failed}개 실패')
+
+    # 기대 항목 수 검증
+    if total != expected_count:
+        print(f'{FAIL} 기대 항목 수({expected_count}개)와 실제 수({total}개)가 다름!')
+        return 1
 
     if failed > 0:
         print(f'\n{BOLD}실패한 항목:{RESET}')
