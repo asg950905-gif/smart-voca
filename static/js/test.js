@@ -97,7 +97,9 @@
             badge.className = 'check-badge' + (r.is_correct ? '' : ' cross');
             badge.innerHTML = icon(r.is_correct ? 'check' : 'x');
             fb.appendChild(badge);
-            fb.appendChild(document.createTextNode(r.is_correct ? '정답이에요!' : `정답: ${r.correct_answer}`));
+            // 동의어로 맞힌 경우: 정답 처리하되 출제된 단어를 알려 준다
+            const okText = r.synonym ? `정답 처리 (출제 단어: ${r.correct_answer})` : '정답이에요!';
+            fb.appendChild(document.createTextNode(r.is_correct ? okText : `정답: ${r.correct_answer}`));
             const isWord = current && (current.format === '빈칸형' || current.mode === '한->영');
             if (window.ttsSupported && isWord) {   // 영어 정답은 발음을 들려준다
                 const tts = document.createElement('button');
@@ -124,7 +126,9 @@
                 (r.level_up ? `<div class="levelup">${icon('circle-arrow-up')} 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
             $('r-list').innerHTML = r.details.map((d) =>
                 `<div class="result-item"><span>${icon(d.is_correct ? 'check' : 'x')} ${esc(d.question)}</span>` +
-                `<span class="muted">정답: ${esc(d.correct_answer)}${d.is_correct ? '' : ` · 내 답: ${esc(d.user_answer || '–')}`}</span></div>`).join('');
+                `<span class="muted">${d.synonym
+                    ? `정답 처리 (출제 단어: ${esc(d.correct_answer)}) · 내 답: ${esc(d.user_answer)}`
+                    : `정답: ${esc(d.correct_answer)}${d.is_correct ? '' : ` · 내 답: ${esc(d.user_answer || '–')}`}`}</span></div>`).join('');
             show('result');
             if (r.score >= 80 || r.level_up) confetti(r.level_up ? 80 : 50);
         } catch (e) { toast(e.message, 'error'); }

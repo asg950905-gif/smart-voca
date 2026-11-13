@@ -198,13 +198,31 @@ class TestEngine:
         p = state['problems'][idx]
         user_answer = (answer or '').strip()
         is_correct = is_same_answer(user_answer, p['correct_answer'])   # 띄어쓰기·괄호·~ 는 무시
+        synonym = None
+        if not is_correct and p.get('mode') == '한->영' and p.get('format') == '단답형':
+            # 한→영 단답: 뜻이 같은 다른 단어(동의어)를 쓰면 정답으로 인정한다 (예: '명백한' -> evident / obvious)
+            synonym = self._same_meaning_word(user_answer, p['prompt'])
+            is_correct = synonym is not None
         state['results'].append({'word_id': p['word_id'], 'question': p['question'],
                                  'user_answer': user_answer, 'correct_answer': p['correct_answer'],
-                                 'is_correct': is_correct})
+                                 'is_correct': is_correct, 'synonym': synonym})
         state['index'] = idx + 1
         self._save(user_id, state)
-        return {'is_correct': is_correct, 'correct_answer': p['correct_answer'],
+        # synonym 이 있으면 정답 처리됐지만 출제 단어(correct_answer)와 다른 단어를 쓴 것이다
+        return {'is_correct': is_correct, 'correct_answer': p['correct_answer'], 'synonym': synonym,
                 'finished': state['index'] >= len(state['problems'])}
+
+    def _same_meaning_word(self, typed: str, meaning: str) -> Optional[str]:
+        """사용자가 입력한 영단어가 DB 에 있고 그 뜻이 meaning 과 normalize 기준으로 같으면 그 단어를 돌려준다.
+        (공백·대소문자는 무시하고 찾는다. 사전에 없는 글자나 뜻이 다른 단어는 None)"""
+        key = normalize_answer(typed)
+        if not key:
+            return None
+        meaning_key = normalize_answer(meaning)
+        for word in self.db.query("SELECT english, korean FROM words WHERE LOWER(REPLACE(english, ' ', '')) = ?", (key,)):
+            if normalize_answer(word['korean']) == meaning_key:
+                return word['english']
+        return None
 
     def finish_test(self, user_id: int) -> Dict:
         """시험 종료: 결과 저장 + 단어 통계 반영 후 세션 삭제"""
