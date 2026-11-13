@@ -1,0 +1,210 @@
+computer|컴퓨터|noun|The computer starts in ten seconds.
+laptop|노트북|noun|Please bring your laptop to the meeting.
+tablet|태블릿|noun|She read the report on her tablet.
+keyboard|자판|noun|The keyboard is wireless.
+monitor|모니터|noun|Place the monitor at eye level.
+mouse|마우스|noun|The mouse needs a new battery.
+hardware|하드웨어|noun|The firm sells computer hardware.
+software|소프트웨어|noun|The software is updated every month.
+program|프로그램|noun|The program runs on any computer.
+application app|응용 프로그램|noun|Download the application from the store.
+install|설치하다|verb|A technician will install the new system.
+installation|설치 작업|noun|Installation takes about two hours.
+uninstall|삭제하다|verb|Uninstall the old version first.
+download|내려받다|verb|You can download the form from our website.
+upload|올리다|verb|Please upload your photo to the site.
+online|온라인의|adj|You can pay online.
+offline|오프라인의|adj|The system was offline for an hour.
+internet|인터넷|noun|The internet connection is slow.
+website|웹사이트|noun|Visit our website for details.
+webpage|웹페이지|noun|The webpage loads very slowly.
+browser|웹 브라우저|noun|Open your browser and go to our site.
+link|링크|noun|Click the link to see the details.
+click|클릭하다|verb|Click the icon to open the file.
+icon|아이콘|noun|Double-click the icon to start.
+menu bar|메뉴 막대|noun|The menu bar is at the top of the screen.
+screen|화면|noun|The screen is too bright.
+display screen|표시 화면|noun|The display screen shows the flight times.
+interface|사용자 환경|noun|The interface is simple and clear.
+feature update|기능 개선|noun|The feature update was released today.
+system|체계|noun|The new system saves a lot of time.
+server room|서버실|noun|The server room is kept cold.
+network connection|네트워크 연결|noun|The network connection is unstable.
+wireless|무선의|adj|Wireless internet is available in the lobby.
+wifi|와이파이|noun|The wifi password is on the card.
+bandwidth|대역폭|noun|The video call needs more bandwidth.
+connect|연결하다|verb|Connect the cable to the port.
+disconnect|연결을 끊다|verb|Do not disconnect the power during the update.
+log in|로그인하다|verb|Please log in with your username.
+log out|로그아웃하다|verb|Remember to log out before leaving.
+sign in|접속 인증하다|verb|Sign in with your email address.
+account holder|계정 소유자|noun|Only the account holder may change the password.
+encrypt|암호화하다|verb|The files are encrypted for security.
+firewall|방화벽|noun|The firewall blocks unwanted traffic.
+virus|바이러스|noun|The virus infected several computers.
+malware|악성 프로그램|noun|Scan your computer for malware.
+backup|백업|noun|Always keep a backup of important files.
+restore|복원하다|verb|The technician restored the lost data.
+recover|복구하다|verb|We recovered most of the deleted files.
+delete|삭제하다|verb|Please delete the old files.
+save file|파일을 저장하다|verb|Save the file before closing the program.
+format|형식|noun|The file is in PDF format.
+folder structure|폴더 구조|noun|The folder structure is easy to follow.
+digital|디지털의|adj|The firm is moving to digital records.
+electronic|전자의|adj|Electronic devices must be switched off.
+automatic|자동의|adj|The door is automatic.
+automate|자동화하다|verb|We automated the billing process.
+automatically|자동으로|adv|The software saves your work automatically.
+technology|기술 분야|noun|The firm invests in new technology.
+technical|기술적인|adj|Call technical support for help.
+technique|기법|noun|The firm uses a new technique to cut costs.
+engineer|기사|noun|The engineer inspected the bridge.
+engineering|공학|noun|She studied engineering at university.
+developer|개발자|noun|The developer fixed the error.
+develop|개발하다|verb|The firm developed a new engine.
+development|개발|noun|The development of the app took a year.
+design|설계하다|verb|She designed the firm's new logo.
+designer|설계자|noun|The designer showed us three samples.
+blueprint|청사진|noun|The blueprint shows the layout of the factory.
+layout|배치도|noun|The layout of the office was changed.
+plan|계획하다|verb|We plan to open a new branch.
+test|시험하다|verb|We test every product before shipping.
+experiment|실험|noun|The experiment lasted three months.
+research|연구하다|verb|The team researches new materials.
+laboratory|실험실|noun|The laboratory is on the second floor.
+discover|발견하다|verb|Scientists discovered a new method.
+invent|발명하다|verb|The engineer invented a new tool.
+invention|발명품|noun|The invention changed the industry.
+capability|역량|noun|The system has great capability.
+compatible|호환되는|adj|The software is compatible with all devices.
+incompatible|호환되지 않는|adj|The new file is incompatible with old software.
+obsolete|구식의|adj|The old model is now obsolete.
+outdated|시대에 뒤진|adj|The software is outdated.
+advanced|진보한|adj|The firm uses advanced technology.
+sophisticated|정교한|adj|The device has a sophisticated design.
+user-friendly|사용하기 쉬운|adj|The app is simple and user-friendly.
+convenient tool|편리한 도구|noun|The app is a convenient tool.
+intuitive|직관적인|adj|The interface is intuitive.
+versatile|다용도의|adj|The versatile tool has many uses.
+multifunction|다기능의|adj|The multifunction printer also scans.
+building|건물|noun|The building has twenty floors.
+construction|건설|noun|Construction of the bridge began in May.
+construct|짓다|verb|The firm will construct a new office tower.
+contractor builder|시공업자|noun|The builder finished the roof.
+architect|건축가|noun|The architect designed the museum.
+architecture|건축 양식|noun|The city is famous for its architecture.
+renovate|개조하다|verb|The hotel will be renovated this winter.
+renovation|보수 공사|noun|The renovation will take two months.
+remodel|리모델링하다|verb|We plan to remodel the lobby.
+refurbish|새로 단장하다|verb|The old hall was refurbished.
+restoration|복구 작업|noun|The restoration of the theater took a year.
+expand the building|건물을 증축하다|verb|They will expand the building next year.
+demolish|철거하다|verb|The old factory will be demolished.
+excavate|굴착하다|verb|Workers excavated the site.
+foundation|기초|noun|The foundation was laid last week.
+structure|구조물|noun|The structure is made of steel.
+framework|골조|noun|The framework of the house is complete.
+steel|강철|noun|The beams are made of steel.
+concrete|콘크리트|noun|The wall is made of concrete.
+brick|벽돌|noun|The wall is made of red brick.
+timber|목재|noun|The roof is made of timber.
+lumber|재목|noun|The lumber was delivered this morning.
+glass|유리|noun|The building has large glass windows.
+tile|타일|noun|The floor is covered with white tile.
+paint|페인트칠하다|verb|They painted the walls white.
+carpet|카펫|noun|The carpet needs to be replaced.
+flooring|바닥재|noun|The flooring was installed last week.
+ceiling|천장|noun|The ceiling is three meters high.
+wall|벽|noun|A map hangs on the wall.
+floor|층|noun|The office is on the fifth floor.
+basement|지하실|noun|The files are stored in the basement.
+attic|다락방|noun|Old boxes are stored in the attic.
+roof|지붕|noun|The roof leaks when it rains.
+rooftop|옥상|noun|The rooftop has a lovely garden.
+balcony|발코니|noun|The room has a small balcony.
+terrace|테라스|noun|Guests dined on the terrace.
+courtyard|안뜰|noun|The courtyard is open to the public.
+garden|정원|noun|The hotel has a beautiful garden.
+yard|마당|noun|A yard surrounds the factory.
+fence|울타리|noun|A fence surrounds the property.
+gate entrance|출입문|noun|The gate entrance is locked at night.
+door|문|noun|Please close the door quietly.
+doorway|출입구|noun|Do not block the doorway.
+window|창문|noun|Please open the window.
+staircase|계단|noun|The staircase leads to the second floor.
+stairs|층계|noun|Take the stairs to the third floor.
+escalator|에스컬레이터|noun|The escalator is out of order.
+ramp|경사로|noun|A ramp was built for wheelchairs.
+hallway|현관|noun|Boots were left in the hallway.
+room|방|noun|The room is available for rent.
+restroom|화장실|noun|The restroom is down the hall.
+storage room|창고방|noun|The storage room is full.
+utility|공공 설비|noun|Utility costs are included in the rent.
+plumbing|배관 설비|noun|The plumbing needs to be repaired.
+plumber|배관공|noun|A plumber fixed the leak.
+electrician|전기 기사|noun|The electrician checked the wiring.
+wiring|배선|noun|The wiring in the old building is unsafe.
+heating|난방|noun|The heating is turned on in October.
+cooling|냉방|noun|The cooling system broke down.
+ventilation|환기|noun|Good ventilation is important.
+air conditioner|에어컨|noun|The air conditioner is too loud.
+thermostat|온도 조절기|noun|Set the thermostat to twenty degrees.
+lighting|조명|noun|The lighting in the hall is dim.
+lamp|전등|noun|There is a lamp on every desk.
+bulb|전구|noun|The bulb needs to be replaced.
+leak|새다|verb|The roof leaks when it rains.
+crack|금|noun|There is a crack in the wall.
+broken|고장 난|adj|The elevator is broken.
+worn|닳은|adj|The carpet is badly worn.
+rusty|녹슨|adj|The gate is old and rusty.
+dusty|먼지투성이의|adj|The storage room is dusty.
+clean|청소하다|verb|Please clean the kitchen after use.
+cleaning|청소|noun|Cleaning is done every evening.
+janitor|건물 관리인|noun|The janitor locks the doors at night.
+custodian|관리인|noun|The custodian cleans the offices.
+sweep|쓸다|verb|He swept the floor before closing.
+polish|광을 내다|verb|She polished the silver every week.
+tidy|정돈된|adj|The office is always tidy.
+neat|단정한|adj|Keep your desk neat.
+clutter|어수선함|noun|Clutter makes the office look messy.
+organize|정리하다|verb|Please organize the files by date.
+arrange files|서류를 정리하다|verb|Arrange the files in alphabetical order.
+rearrange|재배치하다|verb|We rearranged the desks to save space.
+relocation|이전|noun|The relocation will take two weeks.
+move|이사하다|verb|The firm moved to a larger office.
+real estate|부동산|noun|She works in real estate.
+realtor|부동산 중개인|noun|The realtor showed us three apartments.
+apartment|아파트|noun|The apartment has two bedrooms.
+condominium|분양 아파트|noun|The condominium has a swimming pool.
+residence|주거지|noun|His residence is near the station.
+resident|거주자|noun|Residents must show their cards.
+residential|주거의|adj|It is a quiet residential area.
+neighborhood|동네|noun|The neighborhood is safe and quiet.
+district|구역|noun|The shop is in the business district.
+downtown|도심의|adj|The office is in downtown Seoul.
+suburb|교외|noun|They live in a quiet suburb.
+rural|시골의|adj|The firm opened a rural branch.
+urban|도시의|adj|Urban areas are crowded.
+nearby|가까운|adj|There is a bank nearby.
+adjacent|인접한|adj|The shop is adjacent to the station.
+spot|지점|noun|This is a good spot for a new store.
+location|위치|noun|The location is convenient for commuters.
+site|부지|noun|The construction site is closed on Sundays.
+lot size|부지 면적|noun|The lot size is two hundred square meters.
+square footage|평방 피트|noun|The office has ten thousand square footage.
+occupancy|입주율|noun|The hotel has ninety percent occupancy.
+occupy|차지하다|verb|The firm occupies three floors.
+vacate|비우다|verb|Tenants must vacate by Friday.
+sublet|전대하다|verb|He sublet his apartment for the summer.
+furnished|가구가 갖추어진|adj|The apartment comes furnished.
+mansion|저택|noun|The mansion has a large garden.
+cottage|오두막집|noun|They rented a cottage by the lake.
+dormitory|기숙사|noun|Students live in the dormitory.
+complex|단지|noun|The apartment complex has a gym.
+tower|탑|noun|The tower is the tallest building in town.
+skyscraper|고층 건물|noun|The skyscraper dominates the skyline.
+warehouse district|창고 지구|noun|The firm is in the warehouse district.
+industrial|산업의|adj|The industrial park employs many workers.
+commercial district|상업 지구|noun|The commercial district is crowded on weekends.
+industry|산업|noun|The tourism industry is growing.
+sector|분야|noun|The service sector is growing.

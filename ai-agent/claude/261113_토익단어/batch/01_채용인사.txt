@@ -1,0 +1,236 @@
+applicant|지원자|noun|Each applicant must attach a cover letter.
+candidate|후보자|noun|The candidate has ten years of experience.
+recruit|채용하다|verb|We plan to recruit five engineers this year.
+hire|고용하다|verb|The firm will hire two new accountants.
+interview|면접을 보다|verb|We will interview three candidates today.
+vacancy|공석|noun|There is a vacancy in the sales department.
+position|직위|noun|She applied for the managerial position.
+résumé|이력서|noun|Please send your résumé by Friday.
+qualification|자격|noun|Proper qualification is required for this job.
+requirement|필수 조건|noun|A degree is a basic requirement for the post.
+experience|경력|noun|Previous experience in sales is preferred.
+reference|추천서|noun|Two professional references are required.
+referral|소개|noun|Employee referral is our best hiring method.
+employer|고용주|noun|The employer offers flexible working hours.
+employee|직원|noun|Every employee received a holiday bonus.
+employment|고용|noun|Employment rates rose slightly last quarter.
+unemployment|실업|noun|Unemployment fell for the third month.
+workforce|노동력|noun|The workforce has grown by ten percent.
+personnel|인사부|noun|Please contact personnel about your leave.
+staff|직원들|noun|The staff meets every Monday morning.
+colleague|동료|noun|My colleague will cover my shift.
+coworker|동료 사원|noun|A coworker helped me finish the report.
+supervisor|감독관|noun|Ask your supervisor to approve the form.
+manager|관리자|noun|The manager praised the team's effort.
+director|이사|noun|The director will attend the board meeting.
+executive|임원|noun|Senior executives joined the annual retreat.
+chairman|의장|noun|The chairman opened the shareholders' meeting.
+assistant|보조원|noun|The assistant booked a meeting room.
+intern|인턴|noun|Our summer intern designed the new brochure.
+trainee|연수생|noun|Each trainee receives a mentor.
+mentor|멘토|noun|Her mentor taught her to negotiate.
+apprentice|견습생|noun|The apprentice learned welding on site.
+freelancer|프리랜서|noun|We hired a freelancer to translate the manual.
+contractor|계약직 근로자|noun|The contractor finished the work early.
+consultant|컨설턴트|noun|A consultant reviewed our hiring process.
+receptionist|접수 담당자|noun|The receptionist greeted every visitor.
+secretary|비서|noun|The secretary scheduled the interviews.
+clerk|사무원|noun|The clerk filed all the invoices.
+technician|기술자|noun|The technician repaired the printer quickly.
+specialist|전문가|noun|She is a specialist in tax law.
+associate|동료 직원|noun|Our sales associate answered the call.
+representative|대표|noun|A sales representative will call you back.
+spokesperson|대변인|noun|The spokesperson announced the merger.
+supervise|감독하다|verb|She supervises a team of twelve staff.
+oversee|총괄하다|verb|He oversees all overseas operations.
+manage|운영하다|verb|She manages the entire marketing division.
+delegate|위임하다|verb|A good leader knows how to delegate tasks.
+assign|배정하다|verb|The manager assigned the project to Mr. Kim.
+appoint|임명하다|verb|The board will appoint a new director.
+nominate|지명하다|verb|Staff may nominate a colleague for the award.
+promote|승진시키다|verb|The company promoted her to vice president.
+promotion|승진|noun|He received a promotion after two years.
+transfer|전근시키다|verb|They will transfer him to the Seoul branch.
+relocate|이전하다|verb|Our office will relocate next spring.
+resign|사임하다|verb|The director resigned for personal reasons.
+resignation|사직|noun|She submitted her resignation on Monday.
+retire|은퇴하다|verb|Mr. Park will retire at the end of June.
+retirement|퇴직|noun|The retirement party starts at five.
+dismiss|해고하다|verb|The firm dismissed him for misconduct.
+terminate|종료하다|verb|The company may terminate the contract at any time.
+layoff|정리해고|noun|The layoff affected two hundred workers.
+probation|수습 기간|noun|New hires serve a three-month probation.
+tenure|재직 기간|noun|Her tenure at the firm lasted twenty years.
+seniority|연공서열|noun|Promotion is based on seniority.
+veteran|베테랑|noun|The veteran engineer trained the new staff.
+salary|급여|noun|Her salary increased by five percent.
+wage|임금|noun|The minimum wage will rise next year.
+payroll|급여 대장|noun|The payroll is processed every two weeks.
+paycheck|월급|noun|Your paycheck will be deposited on Friday.
+payment|지불|noun|Payment is due within thirty days.
+bonus|상여금|noun|Each employee got a year-end bonus.
+incentive|장려책|noun|The firm offers incentives for high sales.
+allowance|수당|noun|The travel allowance covers meals.
+benefit|복리후생|noun|Health benefits begin after one month.
+compensation|보상|noun|The compensation package includes stock options.
+reimburse|변제하다|verb|The company will reimburse your travel costs.
+reimbursement|환급|noun|Submit your receipts for reimbursement.
+raise|급여 인상|noun|She asked her boss for a raise.
+overtime|초과 근무|noun|Overtime is paid at one and a half times.
+shift|교대 근무|noun|I work the night shift this week.
+workload|업무량|noun|The new hire will ease our workload.
+schedule|일정|noun|My schedule is full on Thursday.
+flexible|유연한|adj|We offer flexible working hours.
+full-time|정규직의|adj|She works full-time at the clinic.
+part-time|시간제의|adj|He took a part-time job at the library.
+temporary|임시의|adj|They hired temporary staff for the holidays.
+permanent|영구적인|adj|The role became a permanent position.
+voluntary|자발적인|adj|Attendance at the workshop is voluntary.
+mandatory|의무적인|adj|Safety training is mandatory for all staff.
+leave|휴가|noun|She is on maternity leave until May.
+vacation|방학|noun|I will take a vacation in August.
+absence|결근|noun|Her absence was reported to the manager.
+absent|결근한|adj|Three employees were absent yesterday.
+attendance|출석|noun|Attendance is recorded at the entrance.
+punctual|시간을 지키는|adj|Please be punctual for the interview.
+tardy|지각한|adj|He was tardy twice this week.
+holiday|공휴일|noun|The office is closed on the national holiday.
+sick leave|병가|noun|You may use sick leave for a doctor visit.
+training|교육 훈련|noun|New staff receive a week of training.
+orientation|신입 교육|noun|Orientation begins at nine on Monday.
+seminar|세미나|noun|The seminar covers customer service skills.
+workshop|워크숍|noun|Register for the workshop by Friday.
+certificate|수료증|noun|You will receive a certificate after the course.
+certification|자격증|noun|Certification is needed to operate the crane.
+skill|기술|noun|Communication skill is vital in this job.
+competence|능력|noun|Her competence impressed the board.
+competent|유능한|adj|He is a competent and reliable worker.
+capable|능숙한|adj|She is capable of leading large teams.
+proficient|능숙한 수준의|adj|He is proficient in three languages.
+fluent|유창한|adj|Applicants should be fluent in English.
+expertise|전문 지식|noun|Her expertise in logistics is well known.
+talent|재능|noun|We want to attract top talent.
+potential|잠재력|noun|The young designer shows great potential.
+ambitious|야심 있는|adj|She is an ambitious young manager.
+diligent|성실한|adj|A diligent worker rarely misses a deadline.
+dedicated|헌신적인|adj|We are looking for a dedicated team player.
+reliable|믿을 수 있는|adj|She is a reliable and honest colleague.
+motivate|동기를 부여하다|verb|Praise can motivate the whole team.
+motivation|의욕|noun|Low motivation affects productivity.
+morale|사기|noun|Morale rose after the bonus announcement.
+productivity|생산성|noun|Productivity increased after the new system.
+efficient|효율적인|adj|The new process is more efficient.
+efficiency|능률|noun|The software improves office efficiency.
+performance|성과|noun|Her performance review was excellent.
+evaluate|평가하다|verb|Managers evaluate staff every six months.
+evaluation|평가서|noun|Your evaluation will be sent next week.
+appraisal|인사 고과|noun|The annual appraisal takes place in March.
+feedback|의견|noun|Please give us feedback on the training.
+assess|가늠하다|verb|We assess each applicant's technical skills.
+assessment|진단|noun|The assessment lasts about one hour.
+criterion|기준|noun|Experience is the main criterion for selection.
+objective|목표|noun|Our objective is to cut costs by ten percent.
+goal|지향점|noun|Her goal is to become a department head.
+target|달성 목표|noun|The sales team met its quarterly target.
+achieve|이루다|verb|We achieved our goal ahead of schedule.
+achievement|업적|noun|The award recognizes her achievement.
+accomplish|완수하다|verb|The team accomplished the task in a week.
+accomplishment|성취|noun|Finishing the project was a major accomplishment.
+commend|칭찬하다|verb|The manager commended her for her hard work.
+recognition|인정|noun|He received recognition for his service.
+reward|보상하다|verb|The firm rewards loyal employees.
+honor|영예를 주다|verb|We will honor the retiring director tonight.
+award|상을 수여하다|verb|The board awarded him a medal.
+recommend|추천하다|verb|I recommend her for the managerial role.
+recommendation|추천|noun|He wrote a recommendation letter for her.
+endorse|보증하다|verb|The directors endorse the new policy.
+eligible|자격이 있는|adj|Full-time staff are eligible for the plan.
+eligibility|적격성|noun|Check your eligibility before applying.
+entitle|권리를 주다|verb|This card entitles you to a free coffee.
+preferred|선호되는|adj|Experience abroad is preferred.
+prior|사전의|adj|Prior experience is not necessary.
+relevant|관련 있는|adj|Please list relevant work experience.
+suitable|적합한|adj|We found a suitable candidate.
+ideal|이상적인|adj|She is the ideal person for this role.
+shortlist|최종 후보 명단|noun|You are on the shortlist for the post.
+screen|가려내다|verb|We screen all applicants by phone first.
+select|선발하다|verb|The committee will select two finalists.
+selection|선정|noun|The selection process takes two weeks.
+reject|거부하다|verb|The firm rejected his application.
+decline|정중히 거절하다|verb|She declined the job offer.
+accept|받아들이다|verb|He accepted the offer without delay.
+negotiate|협상하다|verb|She negotiated a higher salary.
+negotiation|교섭|noun|Wage negotiation continued all night.
+onboard|입사 적응시키다|verb|HR will onboard the new hires on Monday.
+probationary|수습 중인|adj|Probationary employees receive weekly reviews.
+payslip|급여 명세서|noun|Your payslip shows all deductions.
+deduction|공제|noun|Tax deduction is applied each month.
+withhold|원천징수하다|verb|The company will withhold income tax.
+pension|연금|noun|The firm contributes to each worker's pension.
+insurance|보험|noun|Health insurance is covered by the company.
+perk|특전|noun|Free lunch is one of the perks.
+commute|통근하다|verb|Many employees commute by subway.
+commuter|통근자|noun|Commuters use the express line.
+telecommute|재택근무하다|verb|Staff may telecommute twice a week.
+remote|원격의|adj|Remote work is common in our team.
+headcount|인원수|noun|Headcount will be reviewed next quarter.
+turnover|이직률|noun|Staff turnover dropped this year.
+attrition|자연 감소|noun|Attrition reduced the workforce slowly.
+succession|승계|noun|A succession plan is in place for the CEO.
+successor|후임자|noun|The board named her successor.
+predecessor|전임자|noun|My predecessor left detailed notes.
+subordinate|부하 직원|noun|She treats every subordinate with respect.
+superior|상급자|noun|Report the issue to your superior.
+peer|동급자|noun|Peers will review each other's work.
+teamwork|협동|noun|Teamwork is the key to our success.
+collaborate|협력하다|verb|The two teams collaborate on the project.
+collaboration|공동 작업|noun|The collaboration produced excellent results.
+cooperate|공조하다|verb|Staff must cooperate with the auditors.
+cooperation|협조|noun|Thank you for your cooperation.
+coordinate|조율하다|verb|She coordinates the work of three teams.
+coordinator|진행 담당자|noun|The event coordinator booked the venue.
+leadership|지도력|noun|Strong leadership guided us through the crisis.
+initiative|주도권|noun|She took the initiative to train new staff.
+responsibility|책임|noun|Safety is everyone's responsibility.
+responsible|책임이 있는|adj|He is responsible for payroll.
+accountable|해명할 책임이 있는|adj|Managers are accountable for their budgets.
+duty|임무|noun|Her main duty is to answer the phone.
+task|과업|noun|The first task is to review the contract.
+assignment|할당 업무|noun|The assignment is due on Wednesday.
+role|역할|noun|Her role includes managing client accounts.
+job description|직무 기술서|noun|The job description lists all duties.
+department|부서|noun|The accounting department is on the third floor.
+division|사업부|noun|He heads the overseas division.
+branch|지점|noun|The Busan branch opens next month.
+headquarters|본사|noun|The headquarters is located in Seoul.
+subsidiary|자회사|noun|The subsidiary operates in three countries.
+affiliate|제휴 회사|noun|Our affiliate in Tokyo sells the product.
+corporation|주식회사|noun|The corporation was founded in 1990.
+enterprise|기업체|noun|The small enterprise grew quickly.
+firm|사무소|noun|She works for a large law firm.
+organization|조직|noun|The organization has five hundred members.
+institution|기관|noun|The institution offers training courses.
+agency|대행사|noun|The agency found us a new assistant.
+bureau|사무국|noun|The tourism bureau issued a brochure.
+committee|위원회|noun|The committee will review the proposal.
+board|이사회|noun|The board approved the annual budget.
+shareholder|주주|noun|Shareholders voted on the merger.
+stakeholder|이해관계자|noun|Every stakeholder was invited to the meeting.
+founder|설립자|noun|The founder started the firm in a garage.
+partner|제휴자|noun|She became a partner at the firm.
+partnership|동업|noun|The partnership lasted fifteen years.
+associate degree|전문학사 학위|noun|An associate degree is the minimum requirement.
+graduate|졸업하다|verb|She graduated from college last spring.
+degree|학위|noun|He holds a degree in economics.
+diploma|졸업장|noun|Please attach a copy of your diploma.
+internship|인턴십|noun|The internship lasts three months.
+apprenticeship|도제 제도|noun|An apprenticeship takes about two years.
+career|직업 경력|noun|Her career began in a small firm.
+profession|전문직|noun|Teaching is a respected profession.
+professional|전문적인|adj|Please maintain a professional attitude.
+occupation|직종|noun|List your occupation on the form.
+vocation|천직|noun|Nursing was her true vocation.
+workplace|직장|noun|A safe workplace is a priority.
+cubicle|칸막이 사무실|noun|My cubicle is next to the window.
+payday|급여일|noun|Payday falls on the twenty-fifth.
+résumé template|이력서 양식|noun|Download the résumé template from our website.

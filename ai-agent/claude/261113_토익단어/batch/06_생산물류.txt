@@ -1,0 +1,223 @@
+manufacture|제조하다|verb|The firm manufactures electronic parts.
+manufacturer|제조업체|noun|The manufacturer offers a two-year warranty.
+manufacturing|제조업|noun|Manufacturing jobs have increased.
+production|생산량|noun|Production rose by fifteen percent.
+produce|생산하다|verb|The plant produces five thousand cars a year.
+producer|생산자|noun|The producer ships goods worldwide.
+output|산출량|noun|Output doubled after the new machines arrived.
+factory|공장|noun|The factory employs two hundred workers.
+plant|생산 시설|noun|The new plant opens next month.
+facility|시설|noun|The facility is open to all members.
+assembly|조립|noun|Assembly takes about twenty minutes.
+assemble|조립하다|verb|Workers assemble the parts by hand.
+component|구성 요소|noun|Each component is tested before shipping.
+part|부품|noun|The part is out of stock.
+material|재료|noun|We use recycled materials.
+raw material|원자재|noun|Raw material costs have risen.
+ingredient|성분|noun|All ingredients are fresh and local.
+resource|자원|noun|The firm has limited resources.
+machinery|기계류|noun|The machinery is checked every week.
+machine|기계|noun|The machine stopped without warning.
+device|장치|noun|The device is easy to use.
+tool|도구|noun|Keep all tools in the shed.
+instrument|계기|noun|The instrument measures air pressure.
+apparatus|기구|noun|The apparatus is stored in the lab.
+appliance|가전제품|noun|The store sells kitchen appliances.
+gadget|소형 기기|noun|The gadget fits in your pocket.
+assembly line|조립 라인|noun|Workers stood along the assembly line.
+conveyor|컨베이어|noun|Boxes move along the conveyor.
+mass-produce|대량 생산하다|verb|The firm mass-produces affordable furniture.
+fabricate|제작하다|verb|The parts are fabricated in Korea.
+craft|공예품|noun|The shop sells local crafts.
+handmade|수제의|adj|The bag is handmade in Italy.
+custom|맞춤의|adj|We make custom furniture.
+customize|주문 제작하다|verb|You can customize the color and size.
+standardize|표준화하다|verb|The firm standardized its procedures.
+modify|변경하다|verb|We modified the design to cut costs.
+modification|수정 사항|noun|Several modifications were made to the plan.
+adjust|조정하다|verb|Please adjust the temperature.
+adjustment|조절|noun|A small adjustment fixed the problem.
+calibrate|보정하다|verb|The technician calibrated the scale.
+upgrade|개선하다|verb|The firm upgraded its machines.
+improve|향상시키다|verb|We aim to improve the quality.
+improvement|개선점|noun|There has been a big improvement.
+enhance|높이다|verb|The new software enhances performance.
+streamline|간소화하다|verb|We streamlined the ordering process.
+optimize|최적화하다|verb|The team optimized the process.
+maintain|유지하다|verb|The firm maintains high standards.
+maintenance|유지 보수|noun|Maintenance is scheduled for Sunday.
+overhaul|정비하다|verb|The engine was completely overhauled.
+service the machine|기계를 점검하다|verb|A technician will service the machine.
+malfunction|오작동|noun|A malfunction caused the delay.
+breakdown|고장|noun|A breakdown stopped the line for an hour.
+fault|결점|noun|A fault in the wiring caused the fire.
+failure|실패|noun|Power failure delayed the production.
+shortage|부족|noun|There is a shortage of skilled workers.
+scarce|부족한|adj|Skilled workers are scarce.
+sufficient|충분한|adj|We have sufficient stock for the week.
+adequate|적당한|adj|The room has adequate lighting.
+insufficient|불충분한|adj|The funds were insufficient for the repair.
+excess|초과분|noun|Excess stock was sold at a discount.
+surplus goods|잉여 물품|noun|Surplus goods were donated to charity.
+leftover|남은|adj|The leftover materials were recycled.
+quality control|품질 관리|noun|Quality control checks every batch.
+batch|한 묶음|noun|Each batch is tested for quality.
+lot|로트|noun|The whole lot was shipped on Monday.
+unit|개체|noun|Each unit costs ten dollars.
+specification sheet|사양서|noun|See the specification sheet for details.
+tolerance|허용 오차|noun|The part has a tolerance of one millimeter.
+durability|내구성|noun|The test measures the durability of the paint.
+reliability|신뢰성|noun|The machine is known for its reliability.
+sturdy|튼튼한|adj|The shelf is sturdy and easy to build.
+fragile|깨지기 쉬운|adj|Handle with care because the box is fragile.
+perishable|상하기 쉬운|adj|Perishable goods must be kept cold.
+bulky|부피가 큰|adj|Bulky items cost extra to ship.
+heavy|무거운|adj|Heavy boxes must be moved with a cart.
+lightweight|가벼운|adj|The lightweight laptop is easy to carry.
+compact|소형의|adj|The compact design saves space.
+portable|휴대용의|adj|The portable heater is easy to move.
+disposable|일회용의|adj|Disposable cups are not recycled.
+reusable|재사용 가능한|adj|Bring a reusable bag to the store.
+recyclable|재활용 가능한|adj|All packaging is recyclable.
+purchasing|구매 업무|noun|Purchasing is handled by the supply office.
+procure|조달하다|verb|The office will procure new computers.
+procurement|조달|noun|Procurement of supplies takes two weeks.
+acquire goods|물품을 구하다|verb|The firm acquires goods from local suppliers.
+supplier|공급업자|noun|The supplier delivered the parts on time.
+provider|제공자|noun|The provider offers fast internet.
+purveyor|납품업자|noun|The purveyor supplies the hotel with fresh fish.
+vendor contract|납품 계약|noun|The vendor contract expires in June.
+provide|제공하다|verb|The firm provides free training.
+furnish|갖추어 주다|verb|The hotel furnishes each room with a desk.
+equip|장비를 갖추다|verb|The lab is equipped with new tools.
+stock up|비축하다|verb|Stock up on paper before the holiday.
+restock|다시 채우다|verb|The staff restocked the shelves.
+replenish|보충하다|verb|We replenish supplies every Monday.
+reorder|재주문하다|verb|Reorder printer paper when the stock is low.
+backorder|재고 부족 주문|noun|The item is on backorder until May.
+placement|배치|noun|The placement of the shelves was changed.
+requisition|요청서|noun|Submit a requisition for new supplies.
+catalogue|목록을 만들다|verb|The staff catalogued all the new books.
+itemize|항목별로 나누다|verb|Please itemize all the expenses.
+inventory control|재고 관리|noun|Inventory control prevents shortages.
+warehouse|창고|noun|The goods are stored in the warehouse.
+storage|보관|noun|Storage space is limited.
+store|저장하다|verb|Store the files in a safe place.
+depot|보관소|noun|Trucks leave the depot at six.
+stockroom|물품 보관실|noun|The stockroom is on the second floor.
+pallet|화물 깔판|noun|The goods are stacked on a pallet.
+crate|나무 상자|noun|The fruit was packed in a crate.
+carton|판지 상자|noun|A carton holds twenty-four cans.
+container|컨테이너|noun|The container was loaded onto the ship.
+cargo|화물|noun|The ship carries cargo from Asia.
+freight|운송 화물|noun|Freight costs depend on the weight.
+load|싣다|verb|Workers load the truck every morning.
+unload|짐을 내리다|verb|The crew unloaded the cargo quickly.
+pack|포장하다|verb|Please pack the glasses carefully.
+unpack|풀다|verb|She unpacked the new equipment.
+wrap|감싸다|verb|Wrap the glass in paper.
+seal|밀봉하다|verb|Seal the box with tape.
+stack|쌓다|verb|Please stack the boxes against the wall.
+ship|발송하다|verb|We ship orders within two days.
+shipment|선적물|noun|The shipment arrived this morning.
+shipping|배송|noun|Shipping is free on orders over fifty dollars.
+shipper|화주|noun|The shipper insured the goods.
+deliver|배달하다|verb|We deliver to all regions.
+delivery|배송|noun|Delivery takes three to five days.
+dispatch|급파하다|verb|A technician was dispatched to the site.
+consign|위탁하다|verb|The goods were consigned to a local dealer.
+consignment|위탁 화물|noun|The consignment arrived damaged.
+export|수출하다|verb|The firm exports cars to Europe.
+import|수입하다|verb|We import coffee from Brazil.
+exporter|수출업자|noun|The exporter ships goods to ten countries.
+importer|수입업자|noun|The importer pays customs duty.
+trade|무역|noun|Trade between the two countries is growing.
+overseas|해외의|adj|The firm has an overseas branch.
+domestic|국내의|adj|Domestic sales rose slightly.
+international|국제적인|adj|The firm has international clients.
+global|세계적인|adj|The global economy is slowing.
+worldwide|전 세계에|adv|The product is sold worldwide.
+nationwide|전국적인|adj|The firm has a nationwide network.
+local|지역의|adj|We buy from local farmers.
+regional|지방의|adj|The regional manager visited the office.
+logistics|물류|noun|She manages logistics for the firm.
+transport|수송하다|verb|Trucks transport goods across the country.
+transportation|운송 수단|noun|Public transportation is convenient here.
+haul|운반하다|verb|The truck hauls heavy loads.
+route|경로|noun|The shortest route is through the tunnel.
+itinerary route|운행 경로|noun|The itinerary route passes through three cities.
+tracking|추적|noun|Use the tracking number to check your parcel.
+track|추적하다|verb|You can track your order online.
+trace|추적하여 찾아내다|verb|The staff traced the lost package.
+parcel service|택배 서비스|noun|The parcel service delivers overnight.
+express|속달의|adj|Express delivery costs twenty dollars extra.
+overnight|하룻밤 사이의|adj|Overnight delivery is available.
+same-day|당일의|adj|Same-day delivery is available in the city.
+standard delivery|일반 배송|noun|Standard delivery takes a week.
+domestic shipping|국내 배송|noun|Domestic shipping is free.
+bulk|대량|noun|We buy supplies in bulk.
+in bulk|대량으로|adv|The shop sells rice in bulk.
+sort|분류하다|verb|Staff sort the mail every morning.
+classify|구분하다|verb|The goods are classified by size.
+label the goods|물건에 표시하다|verb|Label the goods before shipping.
+weigh|무게를 재다|verb|Please weigh the parcel at the counter.
+weight|무게|noun|The weight limit is twenty kilograms.
+measure|측정하다|verb|Measure the length of the table.
+measurement|치수|noun|Please send me the measurements.
+dimension|크기|noun|The dimensions of the box are listed here.
+capacity|수용 능력|noun|The hall has a capacity of five hundred.
+volume|양|noun|The volume of orders has doubled.
+length|길이|noun|The length of the table is two meters.
+width|너비|noun|The width of the door is one meter.
+height|높이|noun|The height of the ceiling is three meters.
+depth|깊이|noun|The depth of the pool is two meters.
+thickness|두께|noun|The thickness of the wall is thirty centimeters.
+diameter|지름|noun|The pipe has a diameter of ten centimeters.
+square|정사각형의|adj|The room is twenty square meters.
+oval|타원형의|adj|The oval table seats eight people.
+rectangular|직사각형의|adj|The meeting room is rectangular.
+circular|원형의|adj|A circular staircase leads to the roof.
+spacious|널찍한|adj|The office is bright and spacious.
+cramped|비좁은|adj|The old office was cramped.
+narrow|좁은|adj|The aisle is too narrow.
+wide|폭이 넓은|adj|The store has a wide aisle.
+tight|꽉 끼는|adj|The deadline is tight.
+loose|느슨한|adj|The screw is loose.
+smooth|매끄러운|adj|The surface is smooth.
+rough|거친|adj|The road is rough.
+solid|단단한|adj|The table is made of solid wood.
+liquid|액체|noun|Do not carry liquid on the plane.
+gas|기체|noun|Gas is delivered by pipe.
+fuel|연료|noun|The price of fuel has increased.
+energy|에너지|noun|The new machines save energy.
+electricity|전기|noun|Electricity is included in the rent.
+power|전력|noun|The power was out for two hours.
+battery|배터리|noun|The battery lasts for ten hours.
+charger|충전기|noun|Bring your charger to the meeting.
+outlet|콘센트|noun|There is an outlet near the window.
+cable|케이블|noun|Connect the cable to the port.
+wire cable|전선|noun|The wire cable was damaged.
+plug|꽂다|verb|Plug the printer into the outlet.
+switch|스위치|noun|Turn off the switch before leaving.
+button|단추|noun|Press the green button to start.
+lever|레버|noun|Pull the lever to open the gate.
+valve|밸브|noun|Close the valve before repairs.
+pipe|배관|noun|The pipe burst during the winter.
+tank|탱크|noun|The tank holds ten thousand liters.
+engine|엔진|noun|The engine needs to be checked.
+motor|모터|noun|The motor runs quietly.
+gear|기어|noun|The gear was replaced last week.
+bolt|볼트|noun|Tighten the bolt with a wrench.
+screw|나사|noun|Use a screw to hold the panel.
+nail|못|noun|He hammered a nail into the wall.
+hammer|망치|noun|Hand me the hammer.
+wrench|렌치|noun|The mechanic used a wrench.
+drill|드릴|noun|He used a drill to make a hole.
+ladder|사다리|noun|Use a ladder to reach the shelf.
+scaffold|비계|noun|Workers stood on the scaffold.
+crane|크레인|noun|A crane lifted the steel beams.
+forklift|지게차|noun|The forklift moved the pallets.
+truck|트럭|noun|A truck delivered the supplies.
+van|밴|noun|The firm owns three delivery vans.
+vehicle|차량|noun|Vehicles are not allowed in the plaza.
+trailer|트레일러|noun|The trailer carries heavy machinery.

@@ -1,0 +1,97 @@
+# 형식1) 영단어|뜻            -> 뜻만 교체 (뜻이 겹치는 단어를 구분하기 위함)
+# 형식2) 영단어|뜻|품사|예문   -> 통째로 교체 (예문에 표제어가 그대로 없을 때)
+# ---- 예문에 표제어가 없던 항목 (활용형 -> 원형으로 다시 씀) ----
+reply|답장하다|verb|Please reply to the message today.
+charity|자선 단체|noun|The firm gives money to charity every year.
+rise|오르다|verb|Prices rise sharply in winter.
+fall|떨어지다|verb|Prices fall when supply increases.
+grow|성장하다|verb|The company will grow rapidly next year.
+liability|부채액|noun|The firm's liability exceeds its assets.
+break even|손익분기에 도달하다|verb|The shop will break even this year.
+forge|위조하다|verb|He tried to forge a signature.
+signatory|서명인|noun|Each signatory must attend the meeting.
+authority|당국|noun|The city authority closed the road.
+apply|적용되다|verb|The discount will apply to all items.
+investigate|수사하다|verb|Police will investigate the theft.
+certify|증명하다|verb|The doctor will certify that he is fit to work.
+disqualify|자격을 박탈하다|verb|Late forms will disqualify the applicant.
+property|부동산|noun|The firm owns property in three cities.
+steal|훔치다|verb|Thieves steal laptops from offices.
+modify|변경하다|verb|We will modify the design to cut costs.
+classify|구분하다|verb|We classify the goods by size.
+amenity|편의 시설|noun|Free parking is the best amenity of the hotel.
+grocery|식료품점|noun|The grocery opens at seven.
+allergy|알레르기|noun|Please tell us about any food allergy.
+sweep|쓸다|verb|Please sweep the floor before closing.
+occupy|차지하다|verb|The firm will occupy three floors.
+study|공부하다|verb|She will study English every night.
+identify|식별하다|verb|The staff will identify the cause of the problem.
+overcome|극복하다|verb|The firm will overcome many obstacles.
+unify|통합시키다|verb|The firm will unify its brands.
+# ---- 뜻이 겹치는 단어 구분 ----
+suppose|~라고 생각해 보다
+highlight|부각하다
+underline|밑줄을 긋다
+consequence|여파
+fault|과실
+economic|경제의
+shortly|잠시 후에
+authorized|허가받은
+certified|공인 자격을 가진
+block|블록
+code|행동 규범
+engineer|엔지니어
+complex|복합 시설
+comparison|비교
+expose|노출시키다
+fail|불합격하다
+reverse|거꾸로의
+delivery|배달
+reward|포상하다
+guarantee|보증하다
+cover|보험으로 처리하다
+assure|장담하다
+conserve|아껴 쓰다
+supplement|보완하다
+levy|징수하다
+real estate|부동산업
+apparent|명백한
+fraud|사기 행위
+practically|실질적으로
+uninstall|프로그램을 지우다
+yield|수익을 내다
+establishment|영업장
+mayor|도시의 수장
+publicize|대중에 알리다
+commit|전념하다
+book|예매하다
+forecast|예보하다
+contaminate|더럽히다
+commodity|일차 상품
+retain|보유하다
+suspect|짐작하다
+accreditation|공인
+moderate|보통의
+biography|일대기
+exact|딱 맞는
+offer|내놓다
+primarily|우선적으로
+principal|으뜸가는
+observe|(법을) 지키다
+abide|지켜 따르다
+prompt|신속한
+spot|특정 장소
+execute|실행에 옮기다
+settle|결제하다
+revoke|철회하다
+ticket|티켓
+obligatory|반드시 해야 하는
+vital|생명과 직결된
+resolve|타결하다
+approve|승인하다
+authorize|권한을 부여하다
+# ---- 기타 어색한 뜻 ----
+vacation|휴가 여행
+honor|예우하다
+apparent|뚜렷이 드러난
+endorse|지지하다

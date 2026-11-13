@@ -1,0 +1,244 @@
+advertise|광고하다|verb|We advertise our products on television.
+advertisement|광고물|noun|The advertisement appeared in the morning paper.
+advertising|광고업|noun|She works in advertising.
+commercial|상업 광고|noun|The commercial aired during the game.
+campaign|캠페인|noun|The campaign will run for six weeks.
+publicize|알리다|verb|We will publicize the event online.
+publicity|홍보|noun|The event generated a lot of publicity.
+promotion campaign|판촉 활동|noun|The promotion campaign boosted our sales.
+slogan|구호|noun|Our new slogan is easy to remember.
+logo|로고|noun|The logo appears on every package.
+brand|상표|noun|It is a well-known brand of sportswear.
+trademark|등록 상표|noun|The name is a registered trademark.
+label|라벨|noun|Read the label before use.
+packaging|포장재|noun|The packaging is made of recycled paper.
+endorsement|지지 광고|noun|The star's endorsement raised sales.
+sponsor|후원하다|verb|The bank will sponsor the marathon.
+sponsorship|후원|noun|Sponsorship covers all event costs.
+billboard|옥외 광고판|noun|A huge billboard stands by the highway.
+poster|포스터|noun|Put the poster in the lobby.
+banner|현수막|noun|The banner hangs above the entrance.
+display|진열하다|verb|The shop displays new items by the door.
+exhibit|전시하다|verb|The firm will exhibit its latest models.
+exhibition|전람회|noun|The exhibition attracted thousands of visitors.
+exposition|박람회|noun|The trade exposition opens on Monday.
+trade show|무역 박람회|noun|We will have a booth at the trade show.
+booth|전시 부스|noun|Visit our booth in Hall B.
+showroom|전시장|noun|The new cars are in the showroom.
+demonstration|시연|noun|A product demonstration begins at noon.
+demonstrate|입증하다|verb|The study demonstrates the product's value.
+sample|견본|noun|Free samples are available at the door.
+trial|시험 사용|noun|Enjoy a thirty-day free trial.
+giveaway|증정품|noun|Giveaways are available for the first fifty guests.
+coupon|할인권|noun|Present this coupon at the register.
+voucher|상품권|noun|The voucher is valid for one year.
+discount|할인|noun|Members get a ten percent discount.
+rebate|환불금|noun|You may claim a rebate after purchase.
+markdown|가격 인하|noun|Markdowns begin this weekend.
+clearance|재고 정리 판매|noun|The clearance sale ends on Sunday.
+bargain|싼 물건|noun|The shop is full of bargains.
+deal|거래 조건|noun|This week's deal is half price on shoes.
+offer|제공하다|verb|We offer free delivery on large orders.
+special|특가 상품|noun|Today's special is a free dessert.
+limited|한정된|adj|This is a limited offer.
+exclusive|독점적인|adj|The store has exclusive rights to the product.
+complimentary|무료의|adj|Complimentary coffee is served in the lounge.
+free of charge|무료로|adv|Delivery is free of charge.
+affordable|가격이 알맞은|adj|We offer affordable prices for students.
+reasonable|합리적인|adj|The shop has reasonable prices.
+competitive|경쟁력 있는|adj|We offer competitive prices.
+economical|경제적인|adj|The compact car is very economical.
+luxury|고급품|noun|The store sells luxury goods.
+premium|프리미엄|noun|Premium members enjoy free shipping.
+quality|품질|noun|We guarantee the quality of every item.
+durable|내구성 있는|adj|The bag is light and durable.
+innovative|혁신적인|adj|The firm is known for innovative designs.
+innovation|혁신|noun|Innovation drives our company's growth.
+cutting-edge|최첨단의|adj|The lab uses cutting-edge technology.
+state-of-the-art|최신식의|adj|The hospital has state-of-the-art equipment.
+original|독창적인|adj|The designer's work is highly original.
+unique|유일무이한|adj|Each piece is unique and handmade.
+new arrival|신상품|noun|Check out our new arrivals.
+bestseller|베스트셀러|noun|The novel became an instant bestseller.
+popular|인기 있는|adj|The cafe is popular among students.
+popularity|인기도|noun|The game's popularity grew quickly.
+demand|수요|noun|Demand for electric cars is rising.
+supply|공급|noun|Supply cannot meet the growing demand.
+trend|경향|noun|Online shopping is a growing trend.
+fashionable|유행하는|adj|The jacket is fashionable this year.
+market|시장|noun|The firm entered the Asian market.
+marketing|마케팅|noun|She leads the marketing team.
+marketplace|장터|noun|The online marketplace is growing fast.
+market share|시장 점유율|noun|Our market share rose to twenty percent.
+segment|세분 시장|noun|Young adults are our main segment.
+demographic|인구통계의|adj|The demographic data shows a younger audience.
+consumer|소비자|noun|Consumers prefer products with low prices.
+customer|고객|noun|The customer asked for a refund.
+client|의뢰인|noun|The client approved the design.
+patron|단골 고객|noun|The restaurant's patrons love the soup.
+shopper|쇼핑객|noun|Shoppers filled the mall on Saturday.
+buyer|구매자|noun|The buyer inspected the goods.
+purchaser|구입자|noun|The purchaser must sign the receipt.
+clientele|고객층|noun|The cafe has a loyal clientele.
+audience|청중|noun|The audience applauded the speaker.
+target market|목표 시장|noun|Teenagers are our target market.
+loyalty|충성도|noun|Customer loyalty is our greatest asset.
+loyal|충실한|adj|We reward our loyal customers.
+satisfaction|만족|noun|Customer satisfaction is our goal.
+satisfy|충족시키다|verb|We aim to satisfy every customer.
+satisfied|만족한|adj|Most customers are satisfied with the service.
+complaint|불만|noun|We received a complaint about the delivery.
+complain|불평하다|verb|Several customers complained about the noise.
+refund|환불하다|verb|We will refund your money in full.
+exchange|교환하다|verb|You can exchange the item within a week.
+return|반품하다|verb|You may return the item within thirty days.
+receipt|영수증|noun|Keep your receipt as proof of purchase.
+warranty|품질 보증서|noun|The warranty covers repairs for two years.
+guarantee|보장하다|verb|We guarantee delivery within two days.
+defective|결함 있는|adj|The defective item was replaced.
+defect|결함|noun|The defect was found during inspection.
+faulty|하자 있는|adj|The faulty switch was repaired.
+damaged|손상된|adj|The damaged goods were returned.
+replacement|교체품|noun|A replacement will be sent today.
+replace|대체하다|verb|We will replace the broken part.
+repair|수리하다|verb|The technician repaired the machine.
+service|서비스|noun|The hotel is known for excellent service.
+assistance|도움|noun|Please ask the staff for assistance.
+assist|돕다|verb|Our staff will assist you with your bags.
+support|지원|noun|Call customer support for help.
+helpline|상담 전화|noun|Call the helpline for advice.
+hotline|직통 전화|noun|The hotline is open twenty-four hours.
+representative|담당 직원|noun|A service representative will contact you.
+courteous|공손한|adj|The staff was friendly and courteous.
+polite|예의 바른|adj|The waiter was polite and quick.
+attentive|세심한|adj|The attentive staff remembered my order.
+prompt|즉각적인|adj|We appreciate your prompt reply.
+helpful|도움이 되는|adj|The clerk was very helpful.
+friendly|친절한|adj|The friendly staff welcomed us warmly.
+patience|인내심|noun|Thank you for your patience.
+appreciate|감사하다|verb|We appreciate your business.
+appreciation|감사|noun|Please accept this gift as a token of appreciation.
+gratitude|고마움|noun|She expressed her gratitude to the team.
+thank|고마워하다|verb|We thank you for your support.
+valued|소중한|adj|You are a valued customer.
+invite|초대하다|verb|We invite you to our grand opening.
+invitation|초대장|noun|The invitation was sent by email.
+grand opening|개업식|noun|The grand opening takes place on Friday.
+anniversary|기념일|noun|The store celebrates its tenth anniversary.
+celebrate|축하하다|verb|We celebrate our fiftieth anniversary this year.
+celebration|기념 행사|noun|The celebration begins at six.
+ceremony|의식|noun|The award ceremony starts at seven.
+reception party|환영 만찬|noun|A reception party follows the speech.
+gala|축제 행사|noun|The charity gala raised funds for the school.
+fundraiser|모금 행사|noun|The fundraiser raised ten thousand dollars.
+donate|기부하다|verb|Many firms donated books to the library.
+donation|기증품|noun|The donation will help local schools.
+charity|자선 단체|noun|The firm gives to several charities.
+volunteer|자원봉사자|noun|Volunteers cleaned the park on Sunday.
+sale|판매|noun|The sale of the building was completed.
+sell|팔다|verb|The shop sells imported goods.
+retail|소매|noun|She works in retail.
+retailer|소매업자|noun|The retailer opened three new stores.
+wholesale|도매|noun|The shop sells goods at wholesale prices.
+wholesaler|도매업자|noun|The wholesaler supplies local shops.
+distributor|유통업자|noun|The distributor delivers to every region.
+distribute|배급하다|verb|We distribute our products nationwide.
+distribution|유통|noun|Distribution costs have fallen.
+vendor|판매 업체|noun|Vendors sell snacks outside the stadium.
+merchant|상인|noun|The merchant sold silk and spices.
+merchandise|상품|noun|Merchandise must be paid for at the register.
+goods|물품|noun|Goods are shipped within two days.
+commodity|원자재|noun|Oil is a major commodity.
+product|제품|noun|The product line includes five models.
+item|품목|noun|Each item is checked before shipping.
+inventory|재고 목록|noun|The inventory is counted every month.
+stock|재고|noun|The item is out of stock.
+shelf life|유통 기한|noun|The product has a shelf life of one year.
+order|주문하다|verb|I ordered a laptop online.
+purchase|구매하다|verb|You can purchase tickets online.
+checkout|계산대|noun|Please proceed to the checkout.
+cashier|계산원|noun|The cashier gave me my change.
+register|금전 등록기|noun|The register is next to the door.
+transaction|거래|noun|The transaction was completed in seconds.
+price|가격|noun|The price includes tax.
+pricing|가격 책정|noun|The pricing is shown on the website.
+cost|비용이 들다|verb|The repair will cost about two hundred dollars.
+expensive|비싼|adj|The hotel is too expensive for us.
+cheap|저렴한|adj|The tickets were cheap.
+inexpensive|비싸지 않은|adj|It is an inexpensive way to travel.
+overpriced|값이 과하게 매겨진|adj|The souvenirs were overpriced.
+tag|꼬리표|noun|The price tag is on the sleeve.
+sticker|스티커|noun|There is a sticker on the box.
+barcode|바코드|noun|Scan the barcode at the register.
+bundle|묶음 상품|noun|A bundle of three costs fifty dollars.
+package|꾸러미|noun|The package includes free delivery.
+selection of|다양한 모음|noun|The cafe offers a wide selection of teas.
+range|범위|noun|The shop offers a wide range of products.
+variety|다양성|noun|The store has a variety of fresh fruit.
+assortment|모음|noun|The box contains an assortment of cookies.
+collection|수집품|noun|The new autumn collection is in stores.
+line of products|제품군|noun|The firm introduced a new line of products.
+edition|판|noun|The limited edition sold out in a day.
+version|버전|noun|The latest version fixes several bugs.
+model|모델|noun|This model is available in three colors.
+prototype|시제품|noun|The prototype was tested last week.
+specification|사양|noun|See the specifications on the box.
+feature|특징|noun|The phone has many useful features.
+advantage|이점|noun|The main advantage is the low cost.
+benefit from|혜택을 얻다|verb|Customers benefit from lower prices.
+drawback|결점|noun|The only drawback is the high price.
+compare|비교하다|verb|Compare prices before buying.
+comparison|대조|noun|A comparison shows our price is lower.
+alternative|대안|noun|We offer a cheaper alternative.
+option|선택권|noun|Choose from three delivery options.
+choice|선택|noun|The shop offers a wide choice of colors.
+preference|선호|noun|Please state your seating preference.
+recommend a product|상품을 권하다|verb|The clerk recommended a good product.
+review|후기|noun|The product received excellent reviews.
+testimonial|추천의 글|noun|Read testimonials from satisfied clients.
+rating|평점|noun|The hotel has a five-star rating.
+survey|설문 조사|noun|Please complete our online survey.
+questionnaire|설문지|noun|The questionnaire takes five minutes.
+poll|여론조사|noun|A recent poll shows rising interest.
+respondent|응답자|noun|Most respondents preferred the new design.
+focus group|표적 집단|noun|A focus group tested the new package.
+statistics|통계 자료|noun|Statistics show a rise in online sales.
+figure|수치|noun|Sales figures were higher than expected.
+analysis|분석|noun|The analysis shows a clear trend.
+analyze|분석하다|verb|We analyze customer data every week.
+forecast|예측하다|verb|Experts forecast strong growth next year.
+projection|전망치|noun|The projection shows steady growth.
+estimate|추정하다|verb|We estimate that sales will double.
+anticipate|예상하다|verb|We anticipate high demand this winter.
+expect|기대하다|verb|We expect a large turnout.
+expectation|기대치|noun|The results exceeded our expectations.
+increase|증가하다|verb|Sales increased by twelve percent.
+decrease|감소하다|verb|Costs decreased after the merger.
+rise|오르다|verb|Prices rose sharply last month.
+fall|떨어지다|verb|Profits fell in the third quarter.
+grow|성장하다|verb|The company grew rapidly last year.
+growth|성장|noun|The firm reported strong growth.
+expand|확장하다|verb|The chain plans to expand overseas.
+expansion|확대|noun|The expansion will create new jobs.
+boost|북돋우다|verb|Advertising boosted our sales.
+surge|급증하다|verb|Demand surged during the holidays.
+soar|치솟다|verb|Prices soared after the shortage.
+plunge|급락하다|verb|Share prices plunged on Monday.
+decline in sales|매출 감소|noun|A decline in sales worried the board.
+fluctuate|오르내리다|verb|Oil prices fluctuate daily.
+steady|꾸준한|adj|Sales remained steady all year.
+stable|안정된|adj|The market has remained stable.
+significant|상당한|adj|There was a significant rise in sales.
+substantial|실질적인|adj|The firm made a substantial profit.
+considerable|꽤 많은|adj|The project required considerable effort.
+dramatic|극적인|adj|There was a dramatic fall in prices.
+slight|미미한|adj|A slight delay is expected.
+sharply|급격히|adv|Prices rose sharply in March.
+gradually|서서히|adv|Sales gradually improved.
+steadily|꾸준히|adv|The firm grew steadily.
+approximately|대략|adv|The trip takes approximately two hours.
+roughly|대충|adv|Roughly half of the staff attended.
+nearly|거의|adv|Nearly all seats were taken.
+merely|단지|adv|It was merely a suggestion.
+exclusively|오로지|adv|The shop sells exclusively organic food.
+particularly|특히|adv|Sales were particularly strong in May.

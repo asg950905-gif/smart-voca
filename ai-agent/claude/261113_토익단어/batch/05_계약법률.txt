@@ -1,0 +1,216 @@
+contract|계약서|noun|Please sign the contract before Friday.
+agreement|합의서|noun|Both parties signed the agreement.
+agree|동의하다|verb|The two firms agreed on the price.
+clause|조항|noun|The clause limits the firm's liability.
+provision|규정 조항|noun|A new provision was added to the contract.
+stipulate|명시하다|verb|The contract stipulates a two-year term.
+term|기간|noun|The term of the lease is three years.
+terms and conditions|이용 약관|noun|Please read the terms and conditions carefully.
+condition|조건|noun|The offer is subject to certain conditions.
+conditional|조건부의|adj|The offer is conditional on a medical check.
+party|당사자|noun|Each party must keep a copy of the contract.
+signature|서명|noun|Your signature is required on the form.
+sign|서명하다|verb|Please sign at the bottom of the page.
+signatory|서명인|noun|Both signatories were present at the meeting.
+notarize|공증하다|verb|The document must be notarized.
+witness|목격하다|verb|Two people witnessed the signing.
+valid|유효한|adj|The coupon is valid until June.
+validity|유효성|noun|The validity of the permit is one year.
+invalid|무효의|adj|The ticket is invalid after this date.
+void|무효로 하다|verb|Late payment will void the agreement.
+binding|구속력 있는|adj|The agreement is legally binding.
+enforce|집행하다|verb|The city will enforce the new parking rules.
+enforcement|시행|noun|Enforcement of the law begins in May.
+comply|준수하다|verb|All staff must comply with the safety rules.
+compliance|법규 준수|noun|Compliance with the regulations is mandatory.
+conform|따르다|verb|The product conforms to safety standards.
+adhere|고수하다|verb|Staff must adhere to company policy.
+abide|지키다|verb|All visitors must abide by the rules.
+observe|준수하다|verb|Please observe the speed limit.
+violate|위반하다|verb|The firm violated environmental laws.
+violation|위반 행위|noun|A violation of the rules may result in a fine.
+breach|불이행|noun|A breach of contract may lead to legal action.
+infringe|침해하다|verb|The product infringes on our patent.
+infringement|저작권 침해|noun|The firm was sued for patent infringement.
+prohibit|금지하다|verb|Smoking is prohibited in the building.
+prohibition|금지령|noun|There is a prohibition on photography.
+forbid|못하게 하다|verb|Company policy forbids accepting gifts.
+ban|금지시키다|verb|The city banned plastic bags.
+restrict|제한하다|verb|Access to the lab is restricted to staff.
+restriction|제약|noun|There are no restrictions on the use of the room.
+prevent|막다|verb|Good habits prevent accidents.
+permit|허가하다|verb|Smoking is not permitted here.
+permission|허락|noun|You need permission to enter the site.
+license|면허증|noun|The firm has a license to sell alcohol.
+authorize|승인하다|verb|The manager authorized the purchase.
+authorization|인가|noun|Authorization is needed to enter the lab.
+authority|당국|noun|The city authorities closed the road.
+approve|허가하다|verb|The board approved the merger.
+approval|승낙|noun|The plan awaits final approval.
+consent|동의|noun|Parental consent is required.
+waiver|권리 포기서|noun|Please sign the waiver before the tour.
+exception|예외|noun|No exceptions will be made.
+exclude|제외하다|verb|The price excludes tax.
+exclusion|제외 사항|noun|See the exclusions listed on page two.
+include|포함하다|verb|The price includes breakfast.
+inclusive|포괄적인|adj|The price is inclusive of tax.
+apply|적용되다|verb|The discount applies to all items.
+applicable|해당되는|adj|The fee is applicable to all members.
+application|신청서|noun|Please submit your application online.
+subject to|~을 조건으로 하는|adj|The schedule is subject to change.
+pursuant|~에 따른|adj|Pursuant to the contract, payment is due now.
+accordance|일치|noun|The work was done in accordance with the plan.
+accordingly|그에 맞춰|adv|Please adjust the schedule accordingly.
+legal|합법적인|adj|The agreement is legal and binding.
+illegal|불법의|adj|Parking here is illegal.
+lawful|적법한|adj|The firm engaged in lawful business.
+law|법|noun|The new law takes effect in January.
+legislation|입법|noun|New legislation will protect consumers.
+statute|법령|noun|The statute limits working hours.
+act|법률|noun|The act was passed by parliament.
+ordinance|조례|noun|A city ordinance bans loud noise at night.
+code|규약|noun|The dress code is business casual.
+rule|규칙|noun|Please follow the rules of the building.
+jurisdiction|관할권|noun|The matter falls under local jurisdiction.
+court|법원|noun|The case went to court.
+lawsuit|소송|noun|The firm filed a lawsuit against its supplier.
+sue|고소하다|verb|The customer sued the firm for damages.
+litigation|소송 절차|noun|The litigation lasted three years.
+attorney|변호사|noun|Please consult an attorney before signing.
+lawyer|법조인|noun|My lawyer reviewed the lease.
+counsel|법률 고문|noun|The firm hired outside counsel.
+legal counsel|법률 자문|noun|Our legal counsel reviewed the contract.
+plaintiff|원고|noun|The plaintiff asked for compensation.
+defendant|피고|noun|The defendant denied all charges.
+verdict|평결|noun|The jury reached a verdict.
+judge|판사|noun|The judge ruled in favor of the firm.
+ruling|판결|noun|The ruling affected thousands of workers.
+trial|재판|noun|The trial begins next Monday.
+dispute|분쟁|noun|The dispute was settled out of court.
+claim|청구하다|verb|You can claim a refund within thirty days.
+liable|법적 책임이 있는|adj|The firm is liable for any damage.
+liability insurance|배상 책임 보험|noun|The firm has liability insurance.
+damage|손해|noun|The storm caused heavy damage.
+damages|손해배상금|noun|The court awarded damages to the plaintiff.
+indemnify|배상하다|verb|The firm will indemnify the customer for loss.
+compensate|보상하다|verb|The firm compensated her for the loss.
+insure|보험에 들다|verb|The goods are insured against fire.
+insurer|보험사|noun|The insurer paid the claim in full.
+policyholder|보험 계약자|noun|Policyholders must pay a yearly premium.
+premium payment|보험료|noun|The premium is due every January.
+coverage|보장 범위|noun|The policy provides full coverage.
+cover|보장하다|verb|The plan covers medical expenses.
+deductible|공제액|noun|You must pay a deductible of fifty dollars.
+beneficiary|수혜자|noun|The beneficiary will receive the payment.
+patent|특허|noun|The firm holds a patent on the device.
+copyright|저작권|noun|The photo is protected by copyright.
+intellectual property|지식재산|noun|The firm protects its intellectual property.
+confidential|기밀의|adj|All records are strictly confidential.
+confidentiality|기밀성|noun|Confidentiality of data is guaranteed.
+classified|기밀로 분류된|adj|The files are classified.
+privacy|사생활|noun|We respect your privacy.
+disclose|공개하다|verb|Staff must not disclose client information.
+disclosure|공시|noun|The disclosure was required by law.
+reveal|드러내다|verb|The audit revealed several mistakes.
+inspect|점검하다|verb|Officials inspect the factory every year.
+inspection|검사|noun|The inspection takes about two hours.
+inspector|검사관|noun|The inspector approved the building.
+examine|살펴보다|verb|The auditor examined the records.
+examination|조사|noun|The examination showed no problems.
+investigate|수사하다|verb|Police are investigating the theft.
+investigation|조사 활동|noun|The investigation is still under way.
+verify|확인하다|verb|Please verify your identity at the desk.
+verification|검증|noun|Verification of the data is needed.
+certify|증명하다|verb|The doctor certified that he was fit to work.
+certified|공인된|adj|She is a certified public accountant.
+accredit|인가하다|verb|The school is accredited by the board.
+accreditation|인정|noun|The program received international accreditation.
+qualify|자격을 갖추다|verb|You qualify for a ten percent discount.
+disqualify|자격을 박탈하다|verb|Late forms will be disqualified.
+regulate|규제하다|verb|The agency regulates food safety.
+regulatory|규제의|adj|The firm met all regulatory requirements.
+compulsory|강제적인|adj|Helmets are compulsory on the site.
+obligation|의무|noun|The firm has an obligation to pay taxes.
+obligatory|필수의|adj|Attendance is obligatory for all staff.
+required|필수의|adj|A passport is required for entry.
+optional|선택적인|adj|Attendance at the party is optional.
+mandate|지시하다|verb|The law mandates safety training.
+stipulation|약정|noun|There is a stipulation about late fees.
+jurisdictional|관할의|adj|A jurisdictional issue delayed the case.
+amendment|개정안|noun|The amendment was approved last week.
+renew|갱신하다|verb|You must renew your license every year.
+renewal|갱신|noun|The renewal fee is fifty dollars.
+expire|만료되다|verb|Your passport will expire in June.
+expiration|만기|noun|The expiration date is printed on the box.
+revoke|취소하다|verb|The city revoked the firm's license.
+repeal|폐지하다|verb|The government repealed the old law.
+abolish|철폐하다|verb|The firm abolished the dress code.
+cancel a contract|계약을 해지하다|verb|You may cancel a contract within a week.
+void contract|무효 계약|noun|The void contract was never signed.
+lease|임대차 계약|noun|The lease expires in December.
+tenant|세입자|noun|The tenant pays rent on the first.
+landlord|집주인|noun|The landlord repaired the roof.
+property|부동산|noun|The firm owns several properties.
+premises|구내|noun|Smoking is not allowed on the premises.
+ownership|소유권|noun|Ownership of the land was transferred.
+owner|소유주|noun|The owner of the shop is on vacation.
+title|소유권 증서|noun|The title deed was signed by both parties.
+deed|증서|noun|The deed was filed with the city.
+trust|신탁|noun|The money is held in a trust.
+trustee|수탁자|noun|The trustee manages the fund.
+estate|재산|noun|The estate was divided among the heirs.
+heir|상속인|noun|The heir inherited the entire company.
+inherit|상속받다|verb|She inherited the family business.
+safety|안전|noun|Safety is our top concern.
+safe|안전한|adj|The area is safe for visitors.
+unsafe|위험한|adj|The old bridge is unsafe.
+hazard|위험 요소|noun|Wet floors are a safety hazard.
+hazardous|위험한 물질의|adj|Hazardous materials must be stored carefully.
+risk|위험을 무릅쓰다|verb|Do not risk your health for work.
+danger|위험|noun|There is no danger to the public.
+dangerous|위험천만한|adj|The road is dangerous in winter.
+caution|주의|noun|Use caution on wet floors.
+cautious|조심스러운|adj|Be cautious when handling glass.
+warning|경고문|noun|A warning sign was posted at the door.
+warn|경고하다|verb|The manager warned staff about the delay.
+alert|경계 태세의|adj|Drivers must stay alert at all times.
+alarm|경보|noun|The fire alarm went off at noon.
+emergency|비상사태|noun|Call this number in an emergency.
+accident|사고|noun|No one was hurt in the accident.
+injury|부상|noun|The worker suffered a minor injury.
+injure|다치게 하다|verb|He injured his back at work.
+harm|해를 끼치다|verb|The chemicals can harm the environment.
+harmful|해로운|adj|The product contains no harmful chemicals.
+evacuate|대피시키다|verb|Staff evacuated the building quickly.
+evacuation|대피|noun|The evacuation took only five minutes.
+rescue|구조하다|verb|Firefighters rescued the workers.
+extinguish|불을 끄다|verb|He extinguished the fire with a hose.
+extinguisher|소화기|noun|A fire extinguisher is by the door.
+helmet|안전모|noun|Wear a helmet on the construction site.
+goggles|보안경|noun|Wear goggles when using the machine.
+protective|보호용의|adj|Wear protective clothing at all times.
+protect|지키다|verb|The fence protects the garden.
+protection|보호|noun|The cream gives protection from the sun.
+shield|가리다|verb|The glass shields workers from sparks.
+precaution|예방 조치|noun|Take precautions against fire.
+preventive|예방의|adj|Preventive maintenance saves money.
+prevention|예방법|noun|Fire prevention is everyone's duty.
+secure area|보안 구역|noun|Only staff may enter the secure area.
+surveillance|감시|noun|Surveillance cameras cover the parking lot.
+patrol|순찰하다|verb|Guards patrol the building at night.
+guard|경비원|noun|The guard checked every visitor's badge.
+checkpoint|검문소|noun|All cars stop at the checkpoint.
+lock|잠그다|verb|Please lock the door when you leave.
+unlock|열다|verb|The guard will unlock the gate at seven.
+password|비밀번호|noun|Change your password every month.
+username|사용자 이름|noun|Enter your username and password.
+login|접속|noun|Your login has expired.
+access|접근하다|verb|Only staff can access the records.
+accessible|접근 가능한|adj|The building is accessible to wheelchairs.
+restricted|출입 제한된|adj|This area is restricted to authorized staff.
+authorized|공인된|adj|Only authorized staff may enter.
+unauthorized|무단의|adj|Unauthorized entry is prohibited.
+trespass|무단 침입하다|verb|Anyone who trespasses will be fined.
+theft|도난|noun|The theft was reported to police.
+steal|훔치다|verb|Someone stole a laptop from the office.
+burglar|절도범|noun|A burglar broke into the shop.

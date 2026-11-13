@@ -1,0 +1,203 @@
+health|건강|noun|Good health is more important than wealth.
+healthy|건강한|adj|A healthy diet improves productivity.
+medical|의료의|adj|The firm provides medical insurance.
+medicine|약|noun|Take this medicine twice a day.
+medication|약물|noun|Ask your doctor about the medication.
+prescription|처방전|noun|You need a prescription for this drug.
+prescribe|처방하다|verb|The doctor prescribed antibiotics.
+pharmacy|약국|noun|The pharmacy is open until nine.
+pharmacist|약사|noun|The pharmacist explained how to take the pills.
+drug|의약품|noun|The firm develops new drugs.
+dose|복용량|noun|Do not exceed the recommended dose.
+tablet pill|알약|noun|Take one pill after each meal.
+clinic|진료소|noun|The clinic opens at nine.
+hospital|병원|noun|She works at a large hospital.
+doctor|의사|noun|I have an appointment with the doctor.
+physician|내과 의사|noun|Consult a physician before exercising.
+surgeon|외과 의사|noun|The surgeon operated for three hours.
+surgery|수술|noun|He will have surgery next week.
+nurse|간호사|noun|The nurse took my temperature.
+patient|환자|noun|The patient waited in the lobby.
+dentist|치과 의사|noun|I see the dentist twice a year.
+therapist|치료사|noun|The therapist helped him recover.
+ambulance|구급차|noun|An ambulance arrived within five minutes.
+symptom|증상|noun|Fever is a common symptom.
+disease|질병|noun|The disease spread quickly.
+illness|병|noun|She missed work due to illness.
+infection|감염|noun|The infection was treated quickly.
+fever|열|noun|He had a high fever last night.
+cough|기침|noun|She has had a cough for a week.
+pain|통증|noun|The pain went away after an hour.
+ache|쑤시다|verb|My back aches after a long flight.
+wound|상처|noun|The nurse cleaned the wound.
+fracture|골절|noun|The X-ray showed a fracture.
+recover from|회복하다|verb|He recovered from the flu quickly.
+treat|치료하다|verb|The doctor treated her for a cold.
+treatment|치료법|noun|The treatment lasts for six weeks.
+cure|치유하다|verb|Rest will cure the cold.
+heal|낫다|verb|The wound healed in a week.
+diagnose|진단하다|verb|The doctor diagnosed an allergy.
+diagnosis|진단 결과|noun|The diagnosis was confirmed by tests.
+checkup|건강 검진|noun|Employees get a free annual checkup.
+vaccine|백신|noun|The vaccine is available at the clinic.
+vaccination|예방 접종|noun|Vaccination is free for children.
+immune|면역성이 있는|adj|He is immune to the disease.
+nutrition|영양|noun|Good nutrition is essential for health.
+nutritious|영양가 높은|adj|The cafeteria serves nutritious meals.
+diet|식단|noun|A balanced diet keeps you fit.
+exercise|운동하다|verb|Staff exercise at the gym after work.
+fitness|건강 상태|noun|The fitness center opens at six.
+gym|체육관|noun|The gym is open to all staff.
+stress|스트레스|noun|Too much stress affects health.
+fatigue|피로|noun|Long hours caused fatigue.
+relax|쉬다|verb|Relax in the lounge during your break.
+sleep|잠자다|verb|Try to sleep for eight hours.
+rest|휴식|noun|You should get plenty of rest.
+wellness|건강 증진|noun|The firm runs a wellness program.
+sanitary|위생의|adj|The kitchen must be kept sanitary.
+hygiene|위생 상태|noun|Good hygiene prevents disease.
+sterile|살균된|adj|The tools must be sterile.
+disinfect|소독하다|verb|Disinfect the counters every hour.
+contaminate|오염시키다|verb|The spill contaminated the water.
+contamination|오염 상태|noun|Contamination was found in the water.
+school|학교|noun|The school opens in September.
+education|교육|noun|The firm supports education.
+educate|교육하다|verb|The program educates children about safety.
+educational|교육적인|adj|The tour is educational and fun.
+student|학생|noun|Students receive a ten percent discount.
+pupil|초등학생|noun|The pupils visited the museum.
+teacher|교사|noun|The teacher praised the class.
+instructor|강사|noun|The instructor taught us to use the software.
+professor|교수|noun|The professor gave a lecture on trade.
+lecturer|강연자|noun|The lecturer spoke about marketing.
+lecture|강의|noun|The lecture starts at ten.
+class|수업|noun|The class meets on Wednesday evenings.
+course|강좌|noun|She is taking a course in accounting.
+curriculum|교과 과정|noun|The curriculum includes business English.
+syllabus|강의 계획서|noun|The syllabus lists all assignments.
+subject area|학과 분야|noun|Her subject area is economics.
+semester|학기|noun|The new semester begins in March.
+term paper|학기말 과제|noun|The term paper is due on Friday.
+exam|시험|noun|The exam is held on Monday.
+examination test|검정 시험|noun|The examination test lasts two hours.
+quiz|퀴즈|noun|There will be a short quiz tomorrow.
+grade|성적|noun|She received a high grade.
+score|점수|noun|His score on the test was ninety.
+pass|합격하다|verb|She passed the exam on her first try.
+fail|떨어지다|verb|He failed the driving test.
+study|공부하다|verb|She studies English every night.
+learn|배우다|verb|He learned to speak Spanish.
+learner|학습자|noun|The course is designed for beginners and learners.
+teach|가르치다|verb|She teaches business English.
+tutor|개인 교사|noun|He works as a math tutor.
+coach|코치|noun|The coach trained the sales team.
+campus|교정|noun|The campus is a ten-minute walk from here.
+library|도서관|noun|The library is open until ten.
+librarian|사서|noun|The librarian helped me find the book.
+textbook|교재|noun|The textbook is available at the bookstore.
+literacy|읽고 쓰는 능력|noun|The program promotes adult literacy.
+vocabulary|어휘|noun|Learn ten new vocabulary words daily.
+grammar|문법|noun|The test covers grammar and reading.
+language|언어|noun|She speaks three languages.
+translate|번역하다|verb|Please translate the report into English.
+translation|번역본|noun|The translation was done by a professional.
+translator|번역가|noun|The translator worked on the manual.
+interpreter|통역사|noun|An interpreter helped during the meeting.
+bilingual|이중 언어를 쓰는|adj|We need a bilingual receptionist.
+scholar|학자|noun|The scholar published a paper on trade.
+academic|학문의|adj|The academic year starts in September.
+alumni|동문|noun|Alumni are invited to the reunion.
+graduation|졸업|noun|Graduation is held in May.
+tuition fee|등록금|noun|The tuition fee is paid in two parts.
+environment|환경|noun|The firm cares about the environment.
+environmental|환경의|adj|The firm follows environmental rules.
+nature|자연|noun|The park is a haven for nature lovers.
+natural|천연의|adj|The product is made from natural materials.
+pollution|공해|noun|Air pollution is a serious problem.
+pollute|오염시키다|verb|The factory polluted the river.
+emission|배출|noun|The firm cut its carbon emissions.
+carbon|탄소|noun|The firm aims to reduce carbon output.
+climate|기후|noun|Climate change affects farmers.
+weather|날씨|noun|The weather is expected to improve.
+temperature|기온|noun|The temperature dropped overnight.
+forecast weather|일기 예보|noun|The forecast weather is sunny.
+rainfall|강우량|noun|Heavy rainfall flooded the road.
+storm|폭풍|noun|A storm hit the coast last night.
+flood|홍수|noun|The flood damaged many homes.
+drought|가뭄|noun|The drought hurt local farmers.
+earthquake|지진|noun|The earthquake shook the building.
+disaster|재해|noun|The disaster left thousands homeless.
+conserve|보존하다|verb|We must conserve water.
+conservation|보호 활동|noun|The park supports wildlife conservation.
+preserve|보존하다|verb|The city preserves its old buildings.
+preservation|보존|noun|Preservation of the forest is vital.
+sustainable|지속 가능한|adj|The firm uses sustainable materials.
+sustain|지탱하다|verb|The firm cannot sustain such high costs.
+renewable|재생 가능한|adj|The firm invests in renewable energy.
+solar|태양의|adj|Solar panels cover the roof.
+wind|바람|noun|Wind power supplies the town.
+recycle|재활용하다|verb|Please recycle all paper and glass.
+recycling|재활용|noun|Recycling bins are in every office.
+garbage|쓰레기|noun|Garbage is collected on Monday.
+trash|잡동사니 쓰레기|noun|Please put the trash in the bin.
+litter|쓰레기를 버리다|verb|Do not litter in the park.
+dispose|처분하다|verb|Dispose of old batteries properly.
+disposal|폐기|noun|Waste disposal is handled by the city.
+hazardous waste|유해 폐기물|noun|Hazardous waste must be stored in sealed drums.
+toxic|독성의|adj|The paint is not toxic.
+chemical|화학 물질|noun|Chemicals are stored in a locked room.
+pesticide|살충제|noun|The farm does not use pesticide.
+forest|숲|noun|The forest covers half of the island.
+wildlife|야생 동물|noun|The park protects wildlife.
+species|종|noun|The island is home to rare species.
+endangered|멸종 위기의|adj|The park protects endangered animals.
+agriculture|농업|noun|Agriculture is the main industry.
+agricultural|농업의|adj|The region has rich agricultural land.
+farm|농장|noun|The farm produces organic milk.
+farmer|농부|noun|Farmers sell their produce at the market.
+crop|농작물|noun|The crop was damaged by frost.
+harvest|수확|noun|The harvest was larger than expected.
+soil|토양|noun|The soil here is rich.
+irrigation|관개|noun|Irrigation helps crops grow in dry areas.
+fishery|어업|noun|The fishery employs many local people.
+mining|채광|noun|Mining brings jobs to the region.
+oil|석유|noun|The price of oil has fallen.
+coal|석탄|noun|Coal is still used in power plants.
+government|정부|noun|The government announced a new policy.
+municipal|시의|adj|The municipal office opens at nine.
+mayor|시장|noun|The mayor opened the new library.
+official|공무원|noun|A city official visited the site.
+public|공공의|adj|Public transport is cheap here.
+citizen|시민|noun|Citizens voted on the new law.
+community|지역 사회|noun|The firm supports the local community.
+population|인구|noun|The population of the city is one million.
+census|인구 조사|noun|A census is taken every ten years.
+election|선거|noun|The election will be held in May.
+vote|투표하다|verb|Members voted to accept the plan.
+candidate list|후보 명단|noun|The candidate list was published.
+council|의회|noun|The city council approved the budget.
+bureaucracy|관료주의|noun|Bureaucracy slowed the approval.
+ministry|부처|noun|The ministry issued new guidelines.
+embassy|대사관|noun|The embassy issued her a visa.
+diplomat|외교관|noun|The diplomat met the minister.
+treaty|조약|noun|The two countries signed a trade treaty.
+policy maker|정책 입안자|noun|Policy makers met to discuss tax reform.
+reform|개혁하다|verb|The government will reform the tax system.
+campaign trail|유세|noun|The mayor spoke on the campaign trail.
+newspaper|신문|noun|The newspaper is delivered daily.
+reporter|기자|noun|A reporter interviewed the CEO.
+editor|편집장|noun|The editor approved the article.
+headline|표제|noun|The headline caught everyone's attention.
+coverage press|보도|noun|The event received wide coverage.
+radio|라디오|noun|He listens to the radio on the way to work.
+television|텔레비전|noun|The firm advertised on television.
+program broadcast|방송 프로그램|noun|The program broadcast starts at eight.
+audience member|관객|noun|Each audience member got a gift.
+critic|비평가|noun|The critic praised the film.
+author|저자|noun|The author signed copies of her book.
+novel|소설|noun|The novel became a bestseller.
+biography|전기|noun|She wrote a biography of the founder.
+publisher|출판사|noun|The publisher released the book in May.
+edition book|판본|noun|The second edition book was revised.
+volume book|권|noun|The first volume is out of print.
+chapter|장|noun|Chapter three covers marketing.

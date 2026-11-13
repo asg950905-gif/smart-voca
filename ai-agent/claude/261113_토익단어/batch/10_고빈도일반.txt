@@ -1,0 +1,409 @@
+acknowledge|인정하다|verb|The firm acknowledged the error.
+acquaint with|익숙하게 하다|verb|Please acquaint yourself with the new rules.
+adapt|적응하다|verb|The firm adapted quickly to the new market.
+address issue|문제를 다루다|verb|The manager addressed the issue promptly.
+advise|조언하다|verb|The lawyer advised us to sign the contract.
+advice|충고|noun|He gave us helpful advice.
+affect|영향을 미치다|verb|The delay will affect the schedule.
+effect|영향|noun|The new rule has a positive effect.
+influence|영향력을 행사하다|verb|Prices influence customer choices.
+impact|충격|noun|The merger had a strong impact on staff.
+aim|목표로 하다|verb|We aim to finish by Friday.
+allow|허락하다|verb|The rules do not allow late entries.
+alter|바꾸다|verb|We altered the schedule.
+alternate|번갈아 하다|verb|The two teams alternate each week.
+anticipate need|필요를 예상하다|verb|We anticipate your needs.
+apparent|분명한|adj|The benefits of the plan are apparent.
+apparently|보아하니|adv|Apparently, the meeting was canceled.
+appeal|호소하다|verb|The firm appealed to young customers.
+appear|나타나다|verb|The new model will appear in spring.
+appearance|외모|noun|Her neat appearance impressed the interviewer.
+appreciate effort|노력에 감사하다|verb|We appreciate your effort.
+assume|가정하다|verb|We assumed the shipment would arrive on time.
+assumption|가정|noun|The plan is based on a false assumption.
+assure|보장하다|verb|We assure you of prompt delivery.
+attempt|시도하다|verb|They attempted to repair the machine.
+attract|끌어들이다|verb|The sale attracted many shoppers.
+attractive|매력적인|adj|The firm offered an attractive salary.
+aware|알고 있는|adj|Are you aware of the new policy?
+awareness|인식|noun|The campaign raised awareness of safety.
+beneficial|유익한|adj|The change was beneficial to everyone.
+brief message|짧은 메시지|noun|He sent a brief message.
+brilliant|뛰어난|adj|She came up with a brilliant idea.
+casual|격식 없는|adj|The dress code is business casual.
+cautiously|조심스럽게|adv|He drove cautiously in the rain.
+cease operation|운영을 중단하다|verb|The shop ceased operation.
+challenge|도전|noun|The project is a real challenge.
+challenging|힘든|adj|The job is challenging but rewarding.
+circumstance|상황|noun|Under no circumstance may you share the password.
+cite|인용하다|verb|The report cited several studies.
+colleague team|팀 동료|noun|My colleague team is supportive.
+combine|결합하다|verb|The two firms combined their resources.
+commit|약속하다|verb|The firm committed to reducing waste.
+commitment|헌신|noun|Her commitment to quality is clear.
+compile|엮다|verb|The assistant compiled the data.
+complicated|복잡한|adj|The process is too complicated.
+complex process|복잡한 과정|noun|It is a complex process.
+comprehensive|종합적인|adj|The report gives a comprehensive overview.
+concentrate|집중하다|verb|Please concentrate on the task.
+concept|개념|noun|The concept is easy to understand.
+conclude|결론짓다|verb|The study concluded that prices will rise.
+conclusion|결론|noun|The conclusion is clearly stated.
+consecutive|연속된|adj|It rained for three consecutive days.
+consequence|결과|noun|The consequence of the delay was costly.
+consequently|따라서|adv|The shop closed early and consequently lost sales.
+conservative|보수적인|adj|The firm takes a conservative approach.
+consider|고려하다|verb|We are considering a new location.
+consideration|숙고|noun|Thank you for your consideration.
+considerably|상당히|adv|Sales improved considerably.
+consist|구성되다|verb|The team consists of six members.
+consistent|일관된|adj|The quality has been consistent.
+constant|끊임없는|adj|The machine needs constant care.
+constantly|끊임없이|adv|Prices are constantly changing.
+consult|상담하다|verb|Consult your manager before you go.
+consume|소비하다|verb|The machine consumes a lot of power.
+contain|담고 있다|verb|The box contains twelve cups.
+content|내용물|noun|The content of the report is confidential.
+context|문맥|noun|The word must be read in context.
+contrary|반대의|adj|Contrary to reports, sales were strong.
+contrast|대조|noun|The contrast between the two is clear.
+contribute|기여하다|verb|Everyone contributed to the project.
+contribution|기부금|noun|Thank you for your contribution.
+control|통제하다|verb|The firm controls the whole process.
+convince|납득시키다|verb|She convinced the board to approve.
+courage|용기|noun|It takes courage to speak up.
+create|창조하다|verb|The firm created a new brand.
+creative|창의적인|adj|The creative team designed the poster.
+credible|믿을 만한|adj|The report is based on credible sources.
+critical|중대한|adj|Quality is critical to our success.
+crucial|결정적인|adj|The next step is crucial.
+cultivate|개척하다|verb|She cultivated good client relations.
+cumulative|누적되는|adj|The cumulative profit exceeded a million.
+curious|궁금한|adj|Customers were curious about the product.
+current|현재의|adj|The current price is ten dollars.
+decide|결정하다|verb|The board decided to expand.
+decision|결정사항|noun|The decision was made yesterday.
+decisive|단호한|adj|The manager made a decisive move.
+dedicate|바치다|verb|She dedicated her life to teaching.
+define|정의하다|verb|The contract defines each party's role.
+definite|명확한|adj|We need a definite answer by Friday.
+definitely|확실히|adv|I will definitely attend the meeting.
+delegate authority|권한을 위임하다|verb|The manager delegated authority.
+deliberate|고의의|adj|The delay was not deliberate.
+depend|의존하다|verb|The outcome depends on the weather.
+dependent|의존하는|adj|The result is dependent on funding.
+dependable|믿음직한|adj|He is a dependable worker.
+derive|끌어내다|verb|Most income is derived from sales.
+describe|묘사하다|verb|Please describe the problem in detail.
+description|설명|noun|The description is on the label.
+deserve|받을 만하다|verb|You deserve a raise.
+desirable|바람직한|adj|Experience abroad is desirable.
+desire|바라다|verb|Customers desire faster service.
+despite|~에도 불구하고|prep|Despite the rain, the event was held.
+determine|알아내다|verb|We must determine the cause of the failure.
+determined|결심한|adj|She is determined to succeed.
+devote|쏟다|verb|He devoted his time to the project.
+differ|다르다|verb|The two plans differ in cost.
+difference|차이|noun|There is a big difference in price.
+different|다른|adj|We offer a different product line.
+difficult|어려운|adj|The task was difficult.
+difficulty|곤란|noun|We had difficulty finding the place.
+diminish|줄어들다|verb|Interest in the product diminished.
+direct|지시하다|verb|The manager directed the team to start.
+directly|직접적으로|adv|Please contact the manager directly.
+disappoint|실망시키다|verb|The poor service disappointed customers.
+disappointing|실망스러운|adj|The results were disappointing.
+discourage|낙담시키다|verb|Failure should not discourage you.
+discover details|세부 사항을 알아내다|verb|We discovered the details.
+distinct|뚜렷한|adj|The two products have distinct features.
+distinguish|구별하다|verb|It is hard to distinguish the two models.
+diverse|다양한|adj|The firm has a diverse workforce.
+diversity|다양성 존중|noun|The firm values diversity.
+doubt|의심하다|verb|I doubt that he will arrive on time.
+dramatically|극적으로|adv|Prices dropped dramatically.
+dynamic|활기찬|adj|The dynamic team won the award.
+eager|열망하는|adj|We are eager to hear your opinion.
+earn|벌다|verb|She earns a good salary.
+effective|효과적인|adj|The ad was effective.
+effectively|효과적으로|adv|Use your time effectively.
+effort|노력|noun|Thank you for your hard effort.
+elaborate|자세히 설명하다|verb|Could you elaborate on your idea?
+eliminate|없애다|verb|We aim to eliminate waste.
+emerge|부상하다|verb|New trends emerged last year.
+emphasis|강조|noun|The firm places emphasis on quality.
+emphasize|강조하다|verb|The speaker emphasized the need for safety.
+enable|가능하게 하다|verb|The software enables staff to work remotely.
+encourage|격려하다|verb|We encourage staff to ask questions.
+endeavor|노력하다|verb|We endeavor to serve you better.
+engage|참여시키다|verb|The firm engages staff in decision making.
+enhance quality|품질을 높이다|verb|The change enhanced the quality.
+enormous|엄청난|adj|The firm made an enormous profit.
+ensure|확실히 하다|verb|Please ensure the door is locked.
+entire|전체의|adj|The entire staff attended the party.
+entirely|전적으로|adv|The report is entirely accurate.
+essential|필수적인|adj|Sleep is essential to health.
+establish|설립하다|verb|The firm was established in 1990.
+establishment|시설|noun|The establishment is closed on Mondays.
+evident|명백한|adj|The problem became evident quickly.
+exact|정확한|adj|Please give me the exact time.
+exactly|정확하게|adv|The train left exactly at noon.
+excellent|훌륭한|adj|She did an excellent job.
+exceptional|뛰어난 수준의|adj|The service was exceptional.
+exceptionally|이례적으로|adv|The weather was exceptionally cold.
+excessive|지나친|adj|Excessive noise bothers the neighbors.
+exhaust|소진시키다|verb|The long trip exhausted him.
+exist|존재하다|verb|The firm has existed for fifty years.
+existing|기존의|adj|Existing customers get a discount.
+expert|전문가의|adj|We need expert advice.
+explain|설명하다|verb|Please explain the new rules.
+explanation|해명|noun|He gave a clear explanation.
+explicit|명시적인|adj|The rules are explicit.
+explore|탐구하다|verb|We explored several options.
+expose|드러내다|verb|Do not expose the film to light.
+express opinion|의견을 표현하다|verb|Staff may express their opinion freely.
+extensive|광범위한|adj|The firm has extensive experience.
+extra|추가의|adj|Extra seats were added.
+extremely|극도로|adv|The report was extremely helpful.
+facilitate|촉진하다|verb|The software facilitates communication.
+factor|요인|noun|Price is a key factor.
+familiarize|익숙해지게 하다|verb|Familiarize yourself with the new system.
+favor|호의|noun|Could you do me a favor?
+favorable|호의적인|adj|We received favorable reviews.
+favorite|가장 좋아하는|adj|This is my favorite restaurant.
+feasible|실현 가능한|adj|The plan is feasible.
+fortunately|다행히|adv|Fortunately, no one was hurt.
+fundamental|근본적인|adj|The fundamental problem is a lack of funds.
+furthermore|게다가|adv|Furthermore, the price is reasonable.
+generate|만들어 내다|verb|The campaign generated strong interest.
+generous|너그러운|adj|The firm made a generous donation.
+genuine|진짜의|adj|The shop sells genuine leather goods.
+genuinely|진정으로|adv|We are genuinely sorry for the error.
+hesitate|망설이다|verb|Do not hesitate to call us.
+highlight|강조하다|verb|The report highlights the main risks.
+highly|매우|adv|The doctor is highly respected.
+honest|정직한|adj|She gave an honest opinion.
+hopefully|바라건대|adv|Hopefully, the delay will be short.
+identify|확인하다|verb|The staff identified the cause of the problem.
+identical|동일한|adj|The two bags are identical.
+identification|신분증|noun|Please show identification at the door.
+ignore|무시하다|verb|Please do not ignore the warning.
+illustrate|보여 주다|verb|The chart illustrates the trend.
+imaginative|상상력이 풍부한|adj|The ad was imaginative.
+imply|암시하다|verb|The results imply that prices will rise.
+impose|부과하다|verb|The government imposed a new tax.
+impressed|감명받은|adj|The client was impressed by the design.
+impressive|인상적인|adj|The results were impressive.
+inadequate|불충분한 수준의|adj|The budget was inadequate.
+incidentally|그건 그렇고|adv|Incidentally, the meeting has moved.
+incorporate|통합하다|verb|The design incorporates solar panels.
+incur|초래하다|verb|The firm incurred heavy costs.
+indicate|나타내다|verb|The sign indicates the exit.
+indication|징후|noun|There is no indication of a problem.
+individual|개인|noun|Each individual received a gift.
+individually|개별적으로|adv|Each item is wrapped individually.
+influential|영향력 있는|adj|She is an influential leader.
+informative|유익한 정보를 주는|adj|The seminar was very informative.
+ingredient list|성분표|noun|Check the ingredient list.
+initial|초기의|adj|The initial cost is high.
+initially|처음에는|adv|Initially, the plan seemed simple.
+insist|고집하다|verb|The client insisted on a refund.
+inspire|영감을 주다|verb|Her speech inspired the staff.
+instead|대신에|adv|Take the bus instead of a taxi.
+intend|의도하다|verb|We intend to open a new store.
+intention|의향|noun|It was not my intention to upset you.
+interest rate|금리|noun|The interest rate was lowered.
+interested|관심 있는|adj|We are interested in your proposal.
+interesting|흥미로운|adj|The talk was interesting.
+interfere|간섭하다|verb|Do not interfere with the experiment.
+internal|내부의|adj|The internal phone number is 204.
+interpret|해석하다|verb|It is hard to interpret the data.
+interval|간격|noun|Trains run at ten-minute intervals.
+intricate|복잡 정교한|adj|The watch has an intricate design.
+invaluable|매우 귀중한|adj|Her advice was invaluable.
+involve|수반하다|verb|The job involves frequent travel.
+involved|관련된|adj|Everyone involved was informed.
+isolate|고립시키다|verb|The engineers isolated the problem.
+justify|정당화하다|verb|We must justify the cost.
+keen|열정적인|adj|He has a keen interest in design.
+largely|대체로|adv|The delay was largely due to the weather.
+lately|최근에는|adv|Sales have been strong lately.
+likely|~할 것 같은|adj|It is likely to rain this evening.
+likewise|마찬가지로|adv|She smiled and he did likewise.
+magnificent|웅장한|adj|The hotel has a magnificent view.
+mainly|주로|adv|The staff are mainly young people.
+major|주요한|adj|Price is a major concern.
+majority|대다수|noun|The majority of staff agreed.
+minor|사소한|adj|A minor error was found in the report.
+minority|소수|noun|Only a minority of staff objected.
+meanwhile|그동안에|adv|Meanwhile, the work continued.
+moderate|적당한|adj|The firm expects moderate growth.
+moreover|게다가 또한|adv|Moreover, the price is low.
+mutual|상호의|adj|The two firms have a mutual interest.
+namely|즉|adv|Two items, namely a desk and a chair, were damaged.
+necessary|필요한|adj|It is necessary to book early.
+necessity|필수품|noun|Water is a necessity.
+neglect|소홀히 하다|verb|Do not neglect your duties.
+nevertheless|그럼에도 불구하고|adv|The weather was bad; nevertheless, we went.
+nonetheless|그래도|adv|The task was hard; nonetheless, she finished.
+notable|주목할 만한|adj|The firm made a notable profit.
+noticeable|눈에 띄는|adj|There was a noticeable improvement.
+numerous|수많은|adj|Numerous staff members attended.
+obtain|얻다|verb|You can obtain a permit at city hall.
+obvious|분명한 사실의|adj|The solution is obvious.
+obviously|명백하게|adv|Obviously, we need more staff.
+occasion|경우|noun|On this occasion, the manager attended.
+occasionally|가끔|adv|He occasionally works from home.
+occur|발생하다|verb|The error occurred during the update.
+offset|상쇄하다|verb|Savings offset the higher costs.
+ongoing|진행 중인|adj|The ongoing project is on schedule.
+opportunity|기회|noun|This is a great opportunity.
+oppose|반대하다|verb|Several members opposed the plan.
+ordinary|평범한|adj|It was an ordinary day at the office.
+originally|원래|adv|The store was originally a bank.
+otherwise|그렇지 않으면|adv|Hurry; otherwise you will miss the train.
+overall|전반적인|adj|The overall results were good.
+overcome|극복하다|verb|The firm overcame many obstacles.
+overlook|간과하다|verb|Do not overlook the small details.
+participate|참가하다|verb|All staff may participate in the survey.
+participant|참가자|noun|Each participant received a certificate.
+participation|참여|noun|Participation is voluntary.
+particular|특정한|adj|Is there a particular color you prefer?
+perceive|인지하다|verb|Customers perceive the brand as reliable.
+perhaps|아마도|adv|Perhaps we should meet on Friday.
+permanent staff|정규 직원|noun|Permanent staff receive full benefits.
+persuade|설득하다|verb|She persuaded the client to sign.
+pleasant|기분 좋은|adj|The staff were pleasant and helpful.
+pleased|기쁜|adj|We are pleased to announce the winner.
+plentiful|풍부한|adj|Fresh fruit is plentiful in summer.
+possess|소유하다|verb|The firm possesses valuable patents.
+possibility|가능성|noun|There is a possibility of delay.
+possible|가능한|adj|It is possible to extend the deadline.
+possibly|어쩌면|adv|Could you possibly send it today?
+practical|실용적인|adj|The tool is practical and cheap.
+practically|사실상|adv|The task is practically complete.
+precisely|정확히|adv|The meeting starts precisely at nine.
+predict|예측하다|verb|Experts predict a rise in prices.
+prefer|선호하다|verb|I prefer to travel by train.
+preliminary|예비의|adj|Preliminary results will be out soon.
+preparation|준비 작업|noun|Preparation for the event took a month.
+prepare|준비하다|verb|Please prepare the report by Friday.
+prestigious|명망 있는|adj|She won a prestigious award.
+presumably|아마도 그럴 것으로|adv|Presumably, the shipment will arrive today.
+primarily|주로|adv|The shop primarily sells books.
+primary|주된|adj|Our primary goal is to cut costs.
+principal|주요한|adj|The principal reason is cost.
+principle|원칙|noun|The firm follows strict principles.
+prominent|저명한|adj|He is a prominent lawyer.
+promise|약속하다|verb|We promise to deliver on time.
+promising|전도유망한|adj|She is a promising young designer.
+properly|제대로|adv|The machine is not working properly.
+proper|적절한|adj|Use the proper tool for this job.
+prospect|전망|noun|The prospect of growth is good.
+prospective|장래의|adj|Prospective clients visited the office.
+provided|~라는 조건으로|conj|You may go provided that you finish.
+providing|~이라면|conj|Providing you pay today, we will ship it.
+purpose|목적|noun|The purpose of the meeting is to plan.
+pursue|추구하다|verb|She decided to pursue a career in law.
+qualified|자격 있는|adj|We need a qualified engineer.
+rapid|빠른|adj|The firm saw rapid growth.
+rapidly|급속히|adv|The city is growing rapidly.
+rarely|드물게|adv|He rarely arrives late.
+rather|오히려|adv|I would rather stay home.
+readily|손쉽게|adv|The parts are readily available.
+realize|깨닫다|verb|We realized the error too late.
+reasonably|합리적으로|adv|The meal was reasonably priced.
+recall|기억해 내다|verb|Do you recall her name?
+recognize face|얼굴을 알아보다|verb|I did not recognize him.
+reflect|반영하다|verb|The price reflects the quality.
+regard|~로 여기다|verb|They regard her as a leader.
+regarding|~에 관하여|prep|I am writing regarding your order.
+regardless|상관없이|adv|The meeting will go on regardless.
+reliably|믿을 수 있게|adv|The machine works reliably.
+reluctant|꺼리는|adj|He was reluctant to sign the form.
+remain|남아 있다|verb|Only two seats remain.
+remarkable|놀라운|adj|The team made remarkable progress.
+remove|제거하다|verb|Remove the old files from the desk.
+represent|대표하다|verb|She represents the firm at trade shows.
+request|요청하다|verb|You may request a refund by email.
+require|요구하다|verb|The job requires two years of experience.
+resolve|해결하다|verb|The dispute was resolved quickly.
+respect|존경하다|verb|We respect our customers.
+respectively|각각|adv|The two items cost ten and twenty dollars respectively.
+restrain|억제하다|verb|The firm tried to restrain its spending.
+result|결과|noun|The result was better than expected.
+retain|유지하다|verb|The firm wants to retain its best staff.
+reveal secret|비밀을 밝히다|verb|He revealed the secret.
+reverse|반대의|adj|Please read in reverse order.
+rigorous|엄격한|adj|The test is rigorous.
+routinely|정기적으로|adv|The machines are routinely inspected.
+sacrifice|희생하다|verb|She sacrificed her weekend for the job.
+scarcely|거의 ~않다|adv|He scarcely had time to eat.
+seldom|좀처럼 ~않는|adv|The shop is seldom crowded.
+sensible|분별 있는|adj|It was a sensible decision.
+sensitive|민감한|adj|The data is sensitive.
+separate|분리된|adj|Please use separate bills.
+serious|심각한|adj|The delay is a serious problem.
+seriously|진지하게|adv|We take safety seriously.
+severe|혹독한|adj|The storm caused severe damage.
+sharply increase|급증하다|verb|Costs sharply increased.
+similar|비슷한|adj|The two designs are similar.
+similarly|유사하게|adv|Similarly, the second plan failed.
+simply|간단히|adv|Simply press the button.
+simultaneously|동시에|adv|The two events occurred simultaneously.
+sincere|진심 어린|adj|Please accept our sincere thanks.
+sincerely|진심으로|adv|Sincerely yours, Jane Kim.
+slightly|약간|adv|The price is slightly higher.
+solely|오직|adv|The firm relies solely on exports.
+somewhat|다소|adv|The task was somewhat difficult.
+soon|곧|adv|The new model will be out soon.
+sufficiently|충분히|adv|The room is sufficiently large.
+supplement|보충하다|verb|She supplements her income with part-time work.
+supportive|지지하는|adj|The manager is very supportive.
+suppose|가정하다|verb|Suppose we change the plan.
+supposedly|추정상|adv|The store is supposedly open now.
+surely|확실히 ~할 것이다|adv|The plan will surely succeed.
+surprisingly|놀랍게도|adv|Surprisingly, the exam was easy.
+suspect|의심하다|verb|I suspect the report has errors.
+sustained|지속적인|adj|The firm achieved sustained growth.
+tend|~하는 경향이 있다|verb|Prices tend to rise in winter.
+tendency|추세|noun|There is a tendency to overspend.
+thorough|철저한|adj|The inspection was thorough.
+thoroughly|철저히|adv|Please read the manual thoroughly.
+thus|따라서 그렇게|adv|Costs fell, and thus profits rose.
+tightly|단단히|adv|The box was tightly sealed.
+tolerate|참다|verb|We cannot tolerate late payments.
+totally|완전히|adv|The idea is totally new.
+transform|바꾸어 놓다|verb|The app transformed the way we work.
+transparent|투명한|adj|The process is transparent.
+typical|전형적인|adj|It was a typical busy Monday.
+typically|일반적으로|adv|Orders are typically shipped in two days.
+ultimate|궁극적인|adj|The ultimate goal is customer satisfaction.
+ultimately|궁극적으로|adv|Ultimately, the board will decide.
+unanimous|만장일치의|adj|The vote was unanimous.
+undergo|겪다|verb|The factory will undergo repairs.
+underline|강조하다 밑줄|verb|The report underlines the need for change.
+understand|이해하다|verb|I understand your concern.
+unexpected|예상치 못한|adj|An unexpected delay occurred.
+unfortunately|불행히도|adv|Unfortunately, the item is out of stock.
+unify|통합시키다|verb|The firm unified its brands.
+unless|~하지 않는 한|conj|Unless it rains, the picnic will go on.
+unlikely|가능성이 낮은|adj|Rain is unlikely this week.
+unprecedented|전례 없는|adj|Sales reached an unprecedented level.
+unusual|특이한|adj|It is unusual to see him late.
+upcoming|다가오는|adj|The upcoming event is free.
+urge|촉구하다|verb|We urge you to book early.
+usage|사용법|noun|Usage instructions are on the label.
+utilize|활용하다|verb|We utilize local resources.
+vary|다양하다|verb|Prices vary by region.
+various|여러 가지의|adj|The shop sells various items.
+vast|방대한|adj|The firm has a vast network.
+virtually|사실상|adv|Virtually all staff attended.
+visible|눈에 보이는|adj|The sign is clearly visible.
+vital|필수적인|adj|Feedback is vital to improvement.
+whereas|반면에|conj|Sales rose, whereas profits fell.
+whether|~인지 아닌지|conj|Let me know whether you can attend.
+widely|널리|adv|The product is widely available.
+willing|기꺼이 하는|adj|Are you willing to travel?
+wisely|현명하게|adv|Spend your funds wisely.
+withstand|견뎌내다|verb|The building can withstand strong winds.
+yield|산출하다|verb|The investment yielded high returns.

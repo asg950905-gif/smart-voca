@@ -1,0 +1,213 @@
+travel|여행하다|verb|She travels abroad twice a year.
+traveler|여행자|noun|Travelers must show their passports.
+tourist|관광객|noun|Tourists crowded the old market.
+tourism|관광업|noun|Tourism is the city's main industry.
+trip|짧은 여행|noun|The trip to the factory takes an hour.
+journey|여정|noun|The journey took nearly ten hours.
+tour|견학|noun|The tour of the factory starts at ten.
+excursion|소풍|noun|An excursion to the island is planned.
+sightseeing|관광|noun|We went sightseeing in the afternoon.
+destination|목적지|noun|Our destination is a small coastal town.
+itinerary|여행 일정표|noun|The itinerary includes two museum visits.
+departure|출발|noun|Departure is scheduled for seven.
+depart|떠나다|verb|The train departs at nine.
+arrival|도착|noun|Arrival time is ten past noon.
+arrive|도착하다|verb|The guests arrived early.
+board|탑승하다|verb|Passengers may board the plane now.
+boarding|탑승|noun|Boarding begins at gate five.
+disembark|내리다|verb|Passengers disembarked at the port.
+embark|승선하다|verb|The tourists embarked at noon.
+passenger|승객|noun|The bus carries fifty passengers.
+commuter train|통근 열차|noun|The commuter train is always crowded.
+airline|항공사|noun|The airline offers cheap flights.
+airport|공항|noun|The airport is thirty minutes from town.
+flight|항공편|noun|The flight was delayed by an hour.
+runway|활주로|noun|The plane waited on the runway.
+terminal|터미널|noun|Terminal two serves international flights.
+gate|탑승구|noun|Proceed to gate twelve.
+carrier|운송 회사|noun|The carrier lost my luggage.
+aircraft|항공기|noun|The aircraft landed safely.
+pilot|조종사|noun|The pilot welcomed the passengers.
+crew|승무원들|noun|The cabin crew served meals.
+attendant|안내원|noun|A flight attendant helped us with our bags.
+turbulence|난기류|noun|The plane hit some turbulence.
+layover|경유 대기|noun|We had a four-hour layover in Dubai.
+stopover|중간 기착|noun|The flight has a stopover in Seoul.
+connection|연결편|noun|I missed my connection in Chicago.
+transit|환승|noun|Transit passengers must stay in the lounge.
+direct|직행의|adj|There is a direct flight to London.
+nonstop|직항의|adj|It is a nonstop flight to Tokyo.
+one-way|편도의|adj|I bought a one-way ticket.
+round-trip|왕복의|adj|A round-trip ticket costs three hundred dollars.
+ticket|표|noun|Please show your ticket at the gate.
+fare class|좌석 등급|noun|Business is the highest fare class.
+economy|이코노미석|noun|We flew economy to save money.
+first-class|일등석의|adj|The first-class cabin has wide seats.
+seat|좌석|noun|I reserved a window seat.
+aisle|통로|noun|I prefer an aisle seat.
+overhead|머리 위의|adj|Store your bag in the overhead bin.
+luggage|짐|noun|Please keep your luggage with you.
+baggage|수하물|noun|Baggage claim is on the first floor.
+suitcase|여행 가방|noun|My suitcase was too heavy.
+carry-on|기내 반입 짐|noun|One carry-on bag is allowed per passenger.
+claim|찾다|verb|Please claim your baggage at carousel three.
+check in|수속하다|verb|Please check in two hours before departure.
+check-in|탑승 수속|noun|The check-in counter opens at five.
+check out|퇴실하다|verb|Guests must check out by noon.
+passport|여권|noun|Your passport must be valid for six months.
+visa|비자|noun|You need a visa to enter the country.
+immigration|출입국 관리|noun|Immigration officers checked every passport.
+customs office|세관 사무소|noun|The customs office is open all day.
+declare|신고하다|verb|Please declare all items at customs.
+declaration|신고서|noun|Fill out the customs declaration form.
+foreign|외국의|adj|She speaks three foreign languages.
+abroad|해외로|adv|He studied abroad for two years.
+overseas trip|해외 출장|noun|The overseas trip was canceled.
+domestic flight|국내선|noun|Domestic flights depart from terminal one.
+business trip|출장|noun|He is on a business trip to Berlin.
+accommodation|숙소|noun|Accommodation is provided by the firm.
+accommodate|수용하다|verb|The hall can accommodate five hundred guests.
+lodging|숙박 시설|noun|Lodging costs are covered by the firm.
+hotel|호텔|noun|The hotel is near the station.
+motel|모텔|noun|We stayed at a motel for one night.
+inn|여관|noun|The inn is small but comfortable.
+hostel|호스텔|noun|Students often stay in hostels.
+resort|휴양지|noun|The resort has a private beach.
+guesthouse|게스트하우스|noun|The guesthouse has five rooms.
+lodge|오두막 숙소|noun|The ski lodge is open all winter.
+suite|스위트룸|noun|The firm booked a suite for the director.
+single room|1인실|noun|I would like a single room for two nights.
+double room|2인실|noun|A double room costs eighty dollars.
+vacancy sign|빈방 표시|noun|The vacancy sign was on.
+amenity|편의 시설|noun|The hotel offers many amenities.
+concierge|안내 담당 직원|noun|The concierge booked a taxi for us.
+bellhop|벨보이|noun|The bellhop carried our bags.
+housekeeping|객실 관리|noun|Housekeeping cleans the rooms daily.
+valet|발레파킹 직원|noun|The valet parked our car.
+shuttle|셔틀버스|noun|A shuttle runs between the hotel and airport.
+laundry|세탁물|noun|The hotel offers laundry service.
+minibar|객실 냉장고|noun|Items in the minibar are charged.
+wake-up call|모닝콜|noun|Please give me a wake-up call at six.
+checkout time|퇴실 시간|noun|Checkout time is eleven o'clock.
+complimentary breakfast|무료 조식|noun|Complimentary breakfast is served daily.
+upgrade a room|객실을 올려주다|verb|The hotel upgraded our room for free.
+overbook|초과 예약하다|verb|The hotel overbooked its rooms.
+cancellation|취소|noun|A cancellation fee applies.
+refundable|환불 가능한|adj|The ticket is not refundable.
+nonrefundable|환불 불가한|adj|The deposit is nonrefundable.
+deposit refund|보증금 환급|noun|The deposit refund takes a week.
+sightsee|관광하다|verb|We sightsee on weekends.
+landmark|명소|noun|The tower is a famous landmark.
+attraction|명소 시설|noun|The museum is a major attraction.
+monument|기념물|noun|The monument stands in the main square.
+museum|박물관|noun|The museum is closed on Mondays.
+gallery|미술관|noun|The gallery displays modern art.
+theater|극장|noun|The theater seats eight hundred people.
+concert|음악회|noun|The concert starts at eight.
+performance show|공연|noun|The performance was a great success.
+festival|축제|noun|The city hosts a film festival every year.
+parade|행진|noun|The parade passes the town hall.
+fireworks|불꽃놀이|noun|Fireworks lit up the sky.
+souvenir|기념품|noun|I bought a souvenir for my mother.
+guide|안내자|noun|The guide explained the history of the castle.
+guidebook|여행 안내서|noun|The guidebook lists local restaurants.
+map|지도|noun|Check the map for the nearest station.
+direction|방향|noun|Which direction is the station?
+directions|길 안내|noun|Can you give me directions to the hotel?
+destination guide|목적지 안내|noun|A destination guide is in your room.
+sign board|표지판|noun|The sign board shows the way to the exit.
+signpost|이정표|noun|Follow the signpost to the beach.
+crossroads|교차로|noun|Turn left at the crossroads.
+intersection|교차로 지점|noun|The shop is at the intersection.
+junction|분기점|noun|Take the exit at the next junction.
+corner|모퉁이|noun|The bank is on the corner.
+block|구역|noun|The hotel is two blocks from here.
+street|거리|noun|The shop is on Main Street.
+avenue|대로|noun|The firm is located on Fifth Avenue.
+boulevard|큰 길|noun|Tree-lined boulevards cross the city.
+bridge|다리|noun|The bridge is closed for repairs.
+tunnel|터널|noun|The tunnel connects the two cities.
+highway|고속도로|noun|The highway is crowded on weekends.
+expressway|고속화 도로|noun|The expressway connects the two ports.
+road|도로|noun|The road is closed for repairs.
+lane|차선|noun|The left lane is closed.
+pavement|포장도로|noun|Workers repaired the pavement.
+sidewalk|보도|noun|Please do not park on the sidewalk.
+crosswalk|횡단보도|noun|Use the crosswalk to cross the street.
+traffic|교통|noun|Traffic was heavy this morning.
+congestion|혼잡|noun|Traffic congestion delayed the bus.
+detour|우회로|noun|A detour is in place due to the construction.
+parking|주차|noun|Parking is free for customers.
+garage|차고|noun|The firm has a garage for twenty cars.
+parking lot|주차장|noun|The parking lot is full.
+bus|버스|noun|The bus leaves every ten minutes.
+subway|지하철|noun|I take the subway to work.
+train|열차|noun|The train arrives at platform two.
+platform|승강장|noun|The train leaves from platform three.
+station|역|noun|The station is a five-minute walk away.
+taxi|택시|noun|Please call a taxi for the guest.
+cab|택시 차량|noun|A cab was waiting at the door.
+ferry|여객선|noun|The ferry crosses the bay hourly.
+vessel|선박|noun|The vessel left the port at dawn.
+harbor|항구|noun|Ships are anchored in the harbor.
+port|항만|noun|The port handles millions of tons of cargo.
+dock|부두|noun|The ship arrived at the dock.
+pier|부두 잔교|noun|We walked along the pier.
+rental|임차|noun|A car rental costs fifty dollars a day.
+rent a car|차를 빌리다|verb|We rented a car at the airport.
+fuel station|주유소|noun|The nearest fuel station is two miles away.
+mileage|주행 거리|noun|The car has low mileage.
+speed limit|제한 속도|noun|The speed limit here is sixty kilometers.
+restaurant|식당|noun|The restaurant serves local dishes.
+cafe|카페|noun|We met at a cafe near the station.
+diner|간이식당|noun|The diner serves breakfast all day.
+bistro|작은 식당|noun|The bistro has a lovely patio.
+buffet|뷔페|noun|The hotel serves a breakfast buffet.
+cuisine|요리|noun|The restaurant serves Italian cuisine.
+dish|요리 한 접시|noun|The signature dish is grilled salmon.
+meal|식사|noun|Meals are included in the price.
+menu|메뉴|noun|The menu changes every season.
+appetizer|전채 요리|noun|The appetizer was a small salad.
+entree|주요리|noun|I ordered chicken as my entree.
+dessert|후식|noun|We shared a chocolate dessert.
+beverage|음료|noun|Beverages are served at the reception.
+refreshment|가벼운 음식|noun|Refreshments will be served after the talk.
+snack|간식|noun|Snacks are available in the lounge.
+beverage service|음료 서비스|noun|Beverage service begins after takeoff.
+waiter|웨이터|noun|The waiter brought us the menu.
+waitress|여종업원|noun|The waitress took our order.
+server|서빙 직원|noun|Our server recommended the fish.
+chef|요리사|noun|The chef prepared a special menu.
+cook|요리하다|verb|He cooks dinner for the staff.
+kitchen|주방|noun|The kitchen closes at ten.
+recipe|조리법|noun|The recipe uses fresh herbs.
+bake|굽다|verb|They bake fresh bread every morning.
+bakery|제과점|noun|The bakery opens at six.
+grocery|식료품|noun|She bought groceries on the way home.
+supermarket|슈퍼마켓|noun|The supermarket is open until midnight.
+produce section|농산물 코너|noun|The produce section has fresh fruit.
+fresh|신선한|adj|The fish is fresh every morning.
+organic|유기농의|adj|The cafe uses organic vegetables.
+vegetarian|채식주의자|noun|The restaurant has a vegetarian menu.
+allergy|알레르기|noun|Please tell us about any food allergies.
+tip|팁|noun|A tip is included in the bill.
+gratuity|봉사료|noun|A gratuity is added to large groups.
+catering|출장 음식 서비스|noun|The catering was provided by a local firm.
+caterer|음식 공급업자|noun|The caterer prepared lunch for two hundred.
+cater|음식을 공급하다|verb|The firm will cater the staff party.
+banquet|연회|noun|The annual banquet is held in December.
+feast|성찬|noun|The feast lasted for three hours.
+toast|건배하다|verb|We toasted the new partnership.
+host|주최하다|verb|The firm will host the annual conference.
+hostess|여주인|noun|The hostess led us to our table.
+venue|장소|noun|The venue seats two hundred guests.
+ballroom|연회장|noun|The ballroom was decorated with flowers.
+reception desk|안내 데스크|noun|Please leave your key at the reception desk.
+guest|손님|noun|The guest asked for an extra towel.
+patron list|단골 명단|noun|The patron list was updated.
+reservation list|예약자 명단|noun|Your name is on the reservation list.
+table|식탁|noun|We reserved a table for six.
+napkin|냅킨|noun|Please bring some napkins.
+utensil|조리 기구|noun|Plastic utensils are provided.
+tray|쟁반|noun|The waiter carried a tray of glasses.
+bill check|계산서|noun|Could we have the bill, please?

@@ -1,0 +1,324 @@
+# 형식: 영단어|||새 예문   (뜻·품사는 그대로, 예문에 표제어 원형이 그대로 들어가도록 다시 씀)
+# 이유: 빈칸 문제(test_engine._blank_sentence)가 \b표제어\b 정규식으로 예문에서 단어를 찾기 때문
+reference|||Please attach one professional reference to your form.
+executive|||The executive will attend the annual retreat.
+supervise|||She will supervise a team of twelve staff.
+oversee|||He will oversee all overseas operations.
+manage|||She will manage the entire marketing division.
+assign|||The manager will assign the project to Mr. Kim.
+promote|||The company will promote her to vice president.
+resign|||The director will resign for personal reasons.
+dismiss|||The firm may dismiss him for misconduct.
+incentive|||The firm offers an incentive for high sales.
+benefit|||Health benefit starts after one month.
+achieve|||We hope to achieve our goal ahead of schedule.
+accomplish|||The team can accomplish the task in a week.
+commend|||The manager will commend her for her hard work.
+reward|||The firm will reward loyal employees.
+award|||The board will award him a medal.
+entitle|||This card will entitle you to a free coffee.
+reject|||The firm may reject his application.
+decline|||She will decline the job offer.
+accept|||He will accept the offer without delay.
+negotiate|||She will negotiate a higher salary.
+perk|||Free lunch is a great perk.
+commuter|||Each commuter uses the express line.
+peer|||A peer will review your work.
+coordinate|||She will coordinate the work of three teams.
+shareholder|||Each shareholder voted on the merger.
+graduate|||She will graduate from college next spring.
+adjourn|||The chairman will adjourn the meeting at noon.
+cancel|||They will cancel the afternoon session.
+arrange|||She will arrange a meeting with the client.
+arrangement|||The travel arrangement has been confirmed.
+outline|||She will outline the plan for the new project.
+revise|||He will revise the proposal twice.
+amend|||The committee will amend the rules.
+file|||She will file the contracts in the cabinet.
+handout|||A handout is on the table by the door.
+leaflet|||A leaflet was handed out at the entrance.
+guideline|||Follow the safety guideline carefully.
+instruction|||Read the instruction before use.
+regulation|||This safety regulation must be followed.
+standard|||The product meets the international standard.
+function|||The printer does not function properly.
+visitor|||Each visitor must wear a security badge.
+attach|||Please attach the invoice to this email.
+greet|||The receptionist will greet visitors with a smile.
+debate|||The directors will debate the merger.
+suggestion|||Staff may leave a suggestion in the box.
+solve|||Our team will solve the problem quickly.
+reserve|||I would like to reserve the room for two hours.
+book|||She wants to book a flight to Chicago.
+publish|||The firm will publish a guide for travelers.
+execute|||The team will execute the plan flawlessly.
+initiate|||The manager will initiate a review of the process.
+finish|||She will finish the report before lunch.
+extend|||They will extend the deadline by two days.
+prolong|||Heavy rain can prolong the repair work.
+suspend|||The firm will suspend production for repairs.
+delay|||Bad weather can delay the delivery.
+cease|||The factory will cease operations in May.
+display|||The shop will display new items by the door.
+demonstrate|||The study will demonstrate the product's value.
+sample|||A free sample is available at the door.
+giveaway|||A giveaway is available for the first fifty guests.
+markdown|||A markdown begins this weekend.
+bargain|||The shop has a bargain on shoes.
+consumer|||The average consumer prefers low prices.
+patron|||Each patron loves the soup.
+shopper|||A shopper filled the cart with fruit.
+complain|||Several customers may complain about the noise.
+repair|||The technician will repair the machine.
+donate|||Many firms will donate books to the library.
+volunteer|||Each volunteer cleaned the park on Sunday.
+sell|||The shop will sell imported goods.
+vendor|||A vendor sells snacks outside the stadium.
+order|||I want to order a laptop online.
+specification|||See the specification on the box.
+option|||Choose one delivery option.
+review|||The product has an excellent review.
+testimonial|||Read a testimonial from a satisfied client.
+respondent|||Most respondent said they liked the design.
+figure|||The sales figure was higher than expected.
+expectation|||The result exceeded our expectation.
+increase|||Sales will increase by twelve percent.
+decrease|||Costs will decrease after the merger.
+boost|||Advertising can boost our sales.
+surge|||Demand may surge during the holidays.
+soar|||Prices may soar after the shortage.
+plunge|||Share prices may plunge on Monday.
+installment|||You can pay in one monthly installment.
+wire|||They will wire the money to the supplier.
+coin|||The machine accepts only a coin.
+borrow|||The firm plans to borrow money to buy equipment.
+creditor|||The creditor demanded immediate payment.
+owe|||The company will owe us ten thousand dollars.
+default|||The firm may default on its loan.
+invest|||The firm will invest heavily in new machines.
+investor|||The investor was pleased with the results.
+share|||He owns one share of the company.
+bond|||The government issued a new bond.
+expense|||Your travel expense is reimbursed in full.
+save|||She wants to save ten percent of her pay.
+curtail|||The firm will curtail its travel budget.
+allocate|||We will allocate funds to the research team.
+appropriate|||The board will appropriate funds for repairs.
+compute|||The software will compute the tax automatically.
+exceed|||Costs may exceed the budget by ten percent.
+surpass|||Sales will surpass all expectations.
+quote|||The shop will quote a price of eighty dollars.
+appraise|||An expert will appraise the antique.
+embezzle|||The clerk tried to embezzle thousands of dollars.
+waive|||The bank will waive the annual fee.
+acquire|||The firm plans to acquire its main rival.
+competitor|||Our competitor lowered its price.
+rival|||The rival competes for the same clients.
+agree|||The two firms will agree on the price.
+stipulate|||The contract will stipulate a two-year term.
+condition|||The offer is subject to one condition.
+notarize|||A lawyer will notarize the document before filing.
+witness|||Two people will witness the signing.
+conform|||The product must conform to safety standards.
+violate|||The firm may violate environmental laws.
+infringe|||The product might infringe on our patent.
+prohibit|||The rules prohibit smoking in the building.
+forbid|||Company policy will forbid accepting gifts.
+ban|||The city will ban plastic bags.
+restrict|||The firm will restrict access to the lab.
+restriction|||There is no restriction on the use of the room.
+permit|||The rules do not permit smoking here.
+authorize|||The manager will authorize the purchase.
+approve|||The board will approve the merger.
+exception|||No exception will be made.
+exclude|||The price will exclude tax.
+exclusion|||See the exclusion listed on page two.
+include|||The price will include breakfast.
+rule|||Please follow the rule of the building.
+sue|||The customer plans to sue the firm for damages.
+compensate|||The firm will compensate her for the loss.
+insure|||You should insure the goods against fire.
+policyholder|||The policyholder must pay a yearly premium.
+cover|||The plan will cover medical expenses.
+reveal|||The audit will reveal several mistakes.
+examine|||The auditor will examine the records.
+accredit|||The board will accredit the school.
+regulate|||The agency will regulate food safety.
+mandate|||The law will mandate safety training.
+revoke|||The city will revoke the firm's license.
+repeal|||The government will repeal the old law.
+abolish|||The firm will abolish the dress code.
+inherit|||She will inherit the family business.
+warn|||The manager will warn staff about the delay.
+injure|||Careless lifting can injure your back.
+evacuate|||Staff must evacuate the building quickly.
+rescue|||Firefighters will rescue the workers.
+extinguish|||He tried to extinguish the fire with a hose.
+protect|||The fence will protect the garden.
+shield|||The glass will shield workers from sparks.
+precaution|||Take a precaution against fire.
+trespass|||Anyone who tries to trespass will be fined.
+manufacture|||The firm will manufacture electronic parts.
+produce|||The plant will produce five thousand cars a year.
+material|||We use recycled material.
+ingredient|||Every ingredient is fresh and local.
+resource|||The firm has limited resource.
+tool|||Keep the tool in the shed.
+appliance|||The store sells a kitchen appliance.
+mass-produce|||The firm will mass-produce affordable furniture.
+fabricate|||The firm will fabricate the parts in Korea.
+craft|||The shop sells a local craft.
+standardize|||The firm will standardize its procedures.
+modification|||One modification was made to the plan.
+calibrate|||The technician will calibrate the scale.
+upgrade|||The firm will upgrade its machines.
+enhance|||The new software will enhance performance.
+streamline|||We will streamline the ordering process.
+optimize|||The team will optimize the process.
+maintain|||The firm will maintain high standards.
+overhaul|||The team will overhaul the engine completely.
+provide|||The firm will provide free training.
+furnish|||The hotel will furnish each room with a desk.
+equip|||The firm will equip the lab with new tools.
+restock|||The staff will restock the shelves.
+catalogue|||The staff will catalogue all the new books.
+unload|||The crew will unload the cargo quickly.
+unpack|||She will unpack the new equipment.
+dispatch|||The firm will dispatch a technician to the site.
+consign|||The firm will consign the goods to a local dealer.
+export|||The firm will export cars to Europe.
+haul|||The truck can haul heavy loads.
+trace|||The staff will trace the lost package.
+measurement|||Please send me the measurement.
+dimension|||The dimension of the box is listed here.
+van|||The firm owns a delivery van.
+vehicle|||A vehicle is not allowed in the plaza.
+travel|||She will travel abroad twice a year.
+traveler|||Each traveler must show a passport.
+tourist|||Each tourist received a free map of the old market.
+depart|||The train will depart at nine.
+arrive|||The guests will arrive early.
+disembark|||Passengers will disembark at the port.
+embark|||The tourists will embark at noon.
+passenger|||Each passenger must show a ticket.
+hostel|||Students often stay in a hostel.
+overbook|||The hotel may overbook its rooms.
+block|||The hotel is one block from here.
+boulevard|||A tree-lined boulevard crosses the city.
+meal|||A meal is included in the price.
+beverage|||A beverage is served at the reception.
+refreshment|||Refreshment will be served after the talk.
+snack|||A snack is available in the lounge.
+cook|||He will cook dinner for the staff.
+toast|||We will toast the new partnership.
+napkin|||Please bring a napkin.
+utensil|||A plastic utensil is provided.
+encrypt|||The firm will encrypt the files for security.
+restore|||The technician will restore the lost data.
+recover|||We hope to recover most of the deleted files.
+automate|||We will automate the billing process.
+develop|||The firm will develop a new engine.
+design|||She will design the firm's new logo.
+research|||The team will research new materials.
+discover|||Scientists may discover a new method.
+invent|||The engineer will invent a new tool.
+renovate|||The hotel will renovate its lobby this winter.
+refurbish|||The firm will refurbish the old hall.
+demolish|||The city will demolish the old factory.
+excavate|||Workers will excavate the site.
+paint|||They will paint the walls white.
+leak|||The roof may leak when it rains.
+polish|||She will polish the silver every week.
+rearrange|||We will rearrange the desks to save space.
+move|||The firm will move to a larger office.
+resident|||Each resident must show a card.
+prescribe|||The doctor will prescribe antibiotics.
+drug|||The firm develops a new drug.
+ache|||My back may ache after a long flight.
+treat|||The doctor will treat her for a cold.
+heal|||The wound will heal in a week.
+diagnose|||The doctor will diagnose the allergy.
+contaminate|||The spill may contaminate the water.
+educate|||The program will educate children about safety.
+student|||Each student receives a ten percent discount.
+pupil|||The pupil visited the museum.
+pass|||She hopes to pass the exam on her first try.
+fail|||He did not want to fail the driving test.
+learn|||He wants to learn to speak Spanish.
+learner|||The course is designed for a beginner learner.
+teach|||She will teach business English.
+language|||She speaks one foreign language.
+pollute|||The factory may pollute the river.
+emission|||The firm cut its carbon emission.
+preserve|||The city will preserve its old buildings.
+chemical|||A chemical is stored in a locked room.
+farmer|||A farmer sells produce at the market.
+citizen|||Each citizen voted on the new law.
+vote|||Members will vote to accept the plan.
+acknowledge|||The firm will acknowledge the error.
+adapt|||The firm must adapt quickly to the new market.
+advise|||The lawyer will advise us to sign the contract.
+alter|||We will alter the schedule.
+appeal|||The firm hopes to appeal to young customers.
+assume|||We assume the shipment will arrive on time.
+attempt|||They will attempt to repair the machine.
+attract|||The sale will attract many shoppers.
+cite|||The report will cite several studies.
+combine|||The two firms will combine their resources.
+commit|||The firm will commit to reducing waste.
+compile|||The assistant will compile the data.
+conclude|||The study will conclude that prices will rise.
+consider|||We will consider a new location.
+consist|||The team will consist of six members.
+consume|||The machine will consume a lot of power.
+contain|||The box will contain twelve cups.
+contribute|||Everyone should contribute to the project.
+control|||The firm will control the whole process.
+convince|||She will convince the board to approve.
+create|||The firm will create a new brand.
+cultivate|||She will cultivate good client relations.
+decide|||The board will decide to expand.
+dedicate|||She will dedicate her life to teaching.
+define|||The contract will define each party's role.
+depend|||The outcome will depend on the weather.
+derive|||Most income will derive from sales.
+devote|||He will devote his time to the project.
+diminish|||Interest in the product may diminish.
+disappoint|||Poor service will disappoint customers.
+earn|||She will earn a good salary.
+emerge|||New trends may emerge next year.
+emphasize|||The speaker will emphasize the need for safety.
+enable|||The software will enable staff to work remotely.
+engage|||The firm will engage staff in decision making.
+establish|||The firm plans to establish a branch in 2030.
+exhaust|||The long trip will exhaust him.
+exist|||Such a small shop cannot exist without loyal customers.
+explore|||We will explore several options.
+facilitate|||The software will facilitate communication.
+generate|||The campaign will generate strong interest.
+highlight|||The report will highlight the main risks.
+illustrate|||The chart will illustrate the trend.
+impose|||The government will impose a new tax.
+incorporate|||The design will incorporate solar panels.
+incur|||The firm may incur heavy costs.
+indicate|||The sign will indicate the exit.
+insist|||The client will insist on a refund.
+inspire|||Her speech will inspire the staff.
+interval|||Trains run at a ten-minute interval.
+involve|||The job will involve frequent travel.
+isolate|||The engineers will isolate the problem.
+occur|||The error may occur during the update.
+oppose|||Several members will oppose the plan.
+persuade|||She will persuade the client to sign.
+possess|||The firm will possess valuable patents by next year.
+principle|||The firm follows a strict principle.
+realize|||We will realize the error too late.
+reflect|||The price should reflect the quality.
+represent|||She will represent the firm at trade shows.
+require|||The job will require two years of experience.
+resolve|||The team will resolve the dispute quickly.
+sacrifice|||She will sacrifice her weekend for the job.
+supplement|||She will supplement her income with part-time work.
+transform|||The app will transform the way we work.
+underline|||Please underline the key words in your report.
+yield|||The investment will yield high returns.

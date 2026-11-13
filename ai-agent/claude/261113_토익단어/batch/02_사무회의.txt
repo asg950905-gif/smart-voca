@@ -1,0 +1,244 @@
+agenda|안건|noun|The agenda includes three main topics.
+attend|참석하다|verb|All managers must attend the meeting.
+attendee|참석자|noun|Each attendee received a name tag.
+conference|학회|noun|The conference will be held in Singapore.
+convene|소집하다|verb|The board will convene on Tuesday.
+adjourn|휴회하다|verb|The chairman adjourned the meeting at noon.
+postpone|연기하다|verb|We had to postpone the presentation.
+reschedule|일정을 변경하다|verb|Can we reschedule the call for Friday?
+cancel|취소하다|verb|They canceled the afternoon session.
+appointment|예약된 약속|noun|I have a dentist appointment at three.
+arrange|마련하다|verb|She arranged a meeting with the client.
+arrangement|준비|noun|Travel arrangements have been confirmed.
+confirm|확정하다|verb|Please confirm your attendance by email.
+confirmation|확인서|noun|You will receive a confirmation shortly.
+notify|통지하다|verb|We will notify you of the result.
+notice|공지|noun|A notice was posted on the board.
+notification|통보|noun|The notification arrived this morning.
+announce|발표하다|verb|The CEO will announce the new policy.
+announcement|공고|noun|The announcement was made on Monday.
+inform|알리다|verb|Please inform us of any changes.
+remind|상기시키다|verb|Please remind me to call the supplier.
+reminder|알림 메시지|noun|A reminder was sent to all staff.
+memo|사내 메모|noun|The manager circulated a memo about parking.
+memorandum|각서|noun|The memorandum outlines the new rules.
+minutes|회의록|noun|The secretary will take the minutes.
+summary|요약본|noun|Please send me a summary of the report.
+summarize|요약하다|verb|Let me summarize the main points.
+outline|개요를 서술하다|verb|She outlined the plan for the new project.
+overview|개관|noun|The overview covers all departments.
+draft|초안|noun|Please review the first draft by Friday.
+revise|수정하다|verb|He revised the proposal twice.
+revision|개정|noun|The revision will be ready tomorrow.
+edit|편집하다|verb|Please edit the document before sending it.
+proofread|교정하다|verb|I will proofread the brochure tonight.
+amend|개정하다|verb|The committee amended the rules.
+update|최신 정보로 갱신하다|verb|Please update the schedule daily.
+document|문서|noun|Sign the document and return it today.
+paperwork|서류 작업|noun|The paperwork took all morning.
+file|철하다|verb|She filed the contracts in the cabinet.
+folder|서류철|noun|The folder is on your desk.
+binder|바인더|noun|Put the handouts in the binder.
+form|양식|noun|Fill out the form and submit it online.
+fill out|기입하다|verb|Please fill out this form completely.
+submit|제출하다|verb|Submit your expense report by Monday.
+submission|제출물|noun|Late submission will not be accepted.
+deadline|마감 기한|noun|The deadline for the report is Friday.
+due|만기가 된|adj|The report is due next Tuesday.
+overdue|기한이 지난|adj|Your library book is overdue.
+urgent|긴급한|adj|This is an urgent request from the client.
+priority|우선 사항|noun|Customer satisfaction is our top priority.
+immediate|즉각적인|adj|Immediate action is required.
+promptly|신속하게|adv|Please reply promptly to all inquiries.
+shortly|곧|adv|The meeting will begin shortly.
+currently|현재|adv|She is currently working on the budget.
+previously|이전에|adv|Previously, he worked in the Tokyo office.
+subsequently|그 후에|adv|The plan was subsequently approved.
+formerly|예전에|adv|The building was formerly a factory.
+recently|최근에|adv|We recently moved to a new office.
+temporarily|일시적으로|adv|The elevator is temporarily out of service.
+eventually|결국|adv|The project was eventually completed.
+presentation|발표회|noun|Her presentation lasted twenty minutes.
+present|제시하다|verb|He will present the findings tomorrow.
+presenter|발표자|noun|The presenter used several charts.
+projector|영사기|noun|Please turn on the projector.
+slide|슬라이드|noun|The last slide shows our sales figures.
+handout|배포 자료|noun|Handouts are on the table by the door.
+brochure|안내 책자|noun|The brochure describes all our services.
+pamphlet|소책자|noun|Take a pamphlet from the front desk.
+leaflet|전단|noun|Leaflets were handed out at the entrance.
+flyer|광고 전단지|noun|The flyer announces a new store opening.
+catalog|상품 목록|noun|Our catalog is available online.
+directory|안내 명부|noun|Check the staff directory for his number.
+manual|설명서|noun|The manual explains how to use the printer.
+guideline|지침|noun|Follow the safety guidelines carefully.
+instruction|지시|noun|Read the instructions before use.
+procedure|절차|noun|The procedure takes about ten minutes.
+protocol|규약|noun|Follow the protocol for emergencies.
+policy|정책|noun|The new policy takes effect in May.
+regulation|규정|noun|Safety regulations must be followed.
+standard|표준|noun|The product meets international standards.
+routine|일상 업무|noun|Checking email is part of my morning routine.
+operation|가동|noun|The operation of the plant was suspended.
+operate|작동시키다|verb|Only trained staff may operate the machine.
+function|기능하다|verb|The printer is not functioning properly.
+equipment|장비|noun|Office equipment is purchased once a year.
+supplies|비품|noun|Order more office supplies this week.
+stationery|문구류|noun|The stationery is stored in the cabinet.
+photocopy|복사하다|verb|Please photocopy these pages for the meeting.
+copier|복사기|noun|The copier is out of paper.
+printer|인쇄기|noun|The printer on the second floor is broken.
+scanner|스캐너|noun|Use the scanner to send the contract.
+fax|팩스를 보내다|verb|Please fax the form to our office.
+shred|파쇄하다|verb|Shred all confidential documents.
+staple|스테이플러로 고정하다|verb|Please staple the pages together.
+laminate|코팅하다|verb|Laminate the sign to protect it.
+cabinet|수납장|noun|Files are kept in the locked cabinet.
+drawer|서랍|noun|The keys are in the top drawer.
+shelf|선반|noun|The reports are on the top shelf.
+desk|책상|noun|She left the report on his desk.
+workstation|업무 공간|noun|Each workstation has its own computer.
+conference room|회의실|noun|The conference room seats twenty people.
+lounge|휴게실|noun|Lunch is served in the staff lounge.
+cafeteria|구내식당|noun|The cafeteria opens at eleven thirty.
+lobby|로비|noun|Please wait in the lobby.
+elevator|승강기|noun|The elevator is on the left.
+corridor|복도|noun|The meeting room is down the corridor.
+entrance|입구|noun|Visitors must sign in at the entrance.
+exit|출구|noun|The nearest exit is behind you.
+reception|접수처|noun|Leave your bag at the reception.
+visitor|방문객|noun|Visitors must wear a security badge.
+badge|출입증|noun|Please show your badge at the gate.
+security|보안|noun|Security checks all packages.
+supervise|지휘하다|verb|He supervises the night crew.
+correspondence|서신 왕래|noun|All correspondence should be kept for a year.
+corresponding|해당하는|adj|Match each name with the corresponding number.
+communicate|의사소통하다|verb|We communicate with clients by email.
+communication|연락|noun|Good communication prevents mistakes.
+contact|연락하다|verb|Contact us if you need help.
+inquiry|문의|noun|We answered every inquiry within a day.
+inquire|문의하다|verb|I am writing to inquire about the position.
+respond|응답하다|verb|Please respond to this email by noon.
+response|회신|noun|We have not received a response yet.
+reply|답장하다|verb|She replied to the message immediately.
+forward|전달하다|verb|Please forward this email to the team.
+attach|첨부하다|verb|I have attached the invoice to this email.
+attachment|첨부 파일|noun|Open the attachment to see the details.
+enclose|동봉하다|verb|I enclose a copy of the receipt.
+enclosure|동봉물|noun|See the enclosure for pricing.
+recipient|수신인|noun|The recipient must sign for the parcel.
+sender|발신인|noun|The sender's address is on the back.
+address|주소를 쓰다|verb|Address the envelope to the director.
+mail|우편물|noun|The mail arrives at ten each morning.
+courier|택배 회사|noun|A courier delivered the package.
+postage|우편 요금|noun|Postage is included in the price.
+envelope|봉투|noun|Put the contract in a large envelope.
+parcel|소포|noun|The parcel arrived this afternoon.
+voicemail|음성 메시지|noun|Please leave a voicemail after the beep.
+extension|내선 번호|noun|Dial extension 204 for the accounting team.
+switchboard|교환대|noun|The switchboard connects all calls.
+transfer a call|전화를 돌리다|verb|Please transfer a call to the manager.
+hold|기다리게 하다|verb|Please hold while I check the schedule.
+put through|연결해 주다|verb|I will put you through to the director.
+line|회선|noun|The line is busy right now.
+conference call|전화 회의|noun|The conference call starts at nine.
+teleconference|원격 회의|noun|The teleconference connected four offices.
+videoconference|화상 회의|noun|We hold a videoconference every Friday.
+webinar|웨비나|noun|Join the webinar on data security.
+network|연락망|noun|Our professional network helped us find clients.
+networking|인맥 쌓기|noun|Networking is a key part of the conference.
+introduce|소개하다|verb|Let me introduce our new colleague.
+introduction|도입부|noun|The introduction explains the purpose.
+welcome|환영하다|verb|We welcome everyone to the annual meeting.
+greet|인사하다|verb|The receptionist greets visitors with a smile.
+acquaint|익히 알게 하다|verb|Please acquaint yourself with the safety rules.
+familiar|익숙한|adj|Are you familiar with this software?
+brief|간단한 설명을 하다|verb|The manager will brief the staff on Monday.
+briefing|상황 설명회|noun|The press briefing starts at two.
+discuss|논의하다|verb|We will discuss the budget tomorrow.
+discussion|토론|noun|The discussion lasted two hours.
+debate|논쟁하다|verb|The directors debated the merger.
+proposal|제안서|noun|The proposal was approved unanimously.
+propose|제의하다|verb|I propose we meet on Thursday.
+suggest|권하다|verb|I suggest that we postpone the launch.
+suggestion|건의|noun|Staff may leave suggestions in the box.
+opinion|견해|noun|I would like your opinion on the design.
+idea|아이디어|noun|She shared an idea for saving costs.
+approach|접근 방식|noun|We took a new approach to the problem.
+solution|해결책|noun|We found a solution to the delay.
+solve|해결하다|verb|Our team solved the problem quickly.
+issue|쟁점|noun|The main issue is the lack of funds.
+problem|문제점|noun|The problem was fixed in an hour.
+concern|우려|noun|The staff expressed concern about the schedule.
+matter|사안|noun|The matter will be discussed next week.
+topic|주제|noun|Today's topic is workplace safety.
+subject|제목란|noun|Write the subject of your email clearly.
+point|요점|noun|That is a good point.
+detail|세부 사항|noun|Please provide more detail about the delay.
+specific|구체적인|adj|Please give specific examples.
+precise|정밀한|adj|We need precise figures for the report.
+accurate|정확한|adj|Make sure the data is accurate.
+accuracy|정확도|noun|The accuracy of the report is critical.
+clarify|명확히 하다|verb|Could you clarify your request?
+clear|분명한|adj|The instructions are clear and simple.
+confusing|혼란스러운|adj|The map is confusing to read.
+mistake|실수|noun|There is a mistake in the invoice.
+error|오류|noun|An error occurred during the upload.
+correct|바로잡다|verb|Please correct the spelling error.
+correction|정정|noun|A correction was printed the next day.
+apologize|사과하다|verb|We apologize for the inconvenience.
+apology|사과문|noun|The firm issued a public apology.
+inconvenience|불편|noun|We regret any inconvenience this may cause.
+convenient|편리한|adj|Is Friday convenient for you?
+convenience|편의|noun|For your convenience, we open on Sundays.
+available|이용 가능한|adj|Is the manager available this afternoon?
+availability|가용성|noun|Please check the availability of the room.
+unavailable|이용할 수 없는|adj|The director is unavailable until noon.
+occupied|사용 중인|adj|The meeting room is occupied.
+vacant|비어 있는|adj|Is the conference room vacant?
+reserve|예약하다|verb|I reserved the room for two hours.
+reservation|좌석 예약|noun|Please make a reservation by phone.
+book|예약하다|verb|She booked a flight to Chicago.
+register|등록하다|verb|Register online before the deadline.
+registration|등록|noun|Registration closes on Friday.
+enroll|등록시키다|verb|Employees can enroll in the language course.
+enrollment|입학|noun|Enrollment for the program is open.
+sign up|신청하다|verb|Sign up for the seminar at the front desk.
+subscribe|구독하다|verb|Subscribe to our newsletter for updates.
+subscription|구독료|noun|The subscription renews every year.
+newsletter|소식지|noun|The newsletter comes out monthly.
+bulletin|게시|noun|The bulletin board displays company news.
+publication|출판물|noun|The publication is released quarterly.
+publish|출간하다|verb|The firm published a guide for travelers.
+article|기사|noun|The article praised our new product.
+journal|전문 잡지|noun|She writes for a medical journal.
+magazine|잡지|noun|The magazine features local businesses.
+column|칼럼|noun|He writes a weekly column on finance.
+press|언론|noun|The press covered the opening ceremony.
+media|매체|noun|Social media helps us reach customers.
+broadcast|방송하다|verb|The event will be broadcast live.
+feature|특집으로 다루다|verb|The magazine will feature our CEO.
+interview request|인터뷰 요청|noun|She accepted the interview request.
+conduct|수행하다|verb|The firm will conduct a customer survey.
+carry out|실행하다|verb|We will carry out the plan next month.
+implement|시행하다|verb|The company will implement the new system.
+implementation|이행|noun|Implementation will take six months.
+execute|집행하다|verb|The team executed the plan flawlessly.
+launch|출시하다|verb|We will launch the product in June.
+initiate|착수시키다|verb|The manager initiated a review of the process.
+undertake|떠맡다|verb|The firm will undertake the construction.
+proceed|진행하다|verb|Please proceed to the second floor.
+process|처리 과정|noun|The approval process is very slow.
+progress|진척|noun|We made good progress this week.
+complete|완료하다|verb|Please complete the form by noon.
+completion|완공|noun|Completion is expected in December.
+finalize|마무리 짓다|verb|We will finalize the contract tomorrow.
+finish|끝내다|verb|She finished the report before lunch.
+resume|재개하다|verb|Work will resume on Monday.
+continue|지속하다|verb|The meeting will continue after lunch.
+extend|연장하다|verb|They extended the deadline by two days.
+prolong|연장시키다|verb|Heavy rain prolonged the repair work.
+suspend|중단하다|verb|Production was suspended for repairs.
+delay|지연시키다|verb|Bad weather delayed the delivery.
+interrupt|방해하다|verb|Please do not interrupt the speaker.
+cease|그치다|verb|The factory ceased operations in May.

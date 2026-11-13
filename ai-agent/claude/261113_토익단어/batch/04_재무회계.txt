@@ -1,0 +1,222 @@
+finance|재무|noun|She works in the finance department.
+financial|재정적인|adj|The firm is in good financial health.
+fiscal|회계의|adj|The fiscal year ends in March.
+budget|예산|noun|The budget for advertising was cut.
+accounting|회계|noun|He studied accounting at college.
+accountant|회계사|noun|The accountant prepared the tax forms.
+bookkeeping|장부 기입|noun|Bookkeeping is done by an outside firm.
+bookkeeper|경리|noun|The bookkeeper records every payment.
+auditor|감사관|noun|The auditor checked all the accounts.
+audit|회계 감사|noun|The annual audit begins next week.
+ledger|원장|noun|Each payment is entered in the ledger.
+account|계좌|noun|Please transfer the money to my account.
+balance|잔액|noun|Check your account balance online.
+statement|내역서|noun|The bank statement arrives monthly.
+invoice|청구서|noun|Please pay the invoice within thirty days.
+bill|고지서|noun|The electricity bill is due on Friday.
+billing|청구 업무|noun|Billing is handled by the accounting office.
+charge|요금|noun|There is no charge for delivery.
+fee|수수료|noun|A small fee applies to late payments.
+fare|운임|noun|The bus fare has increased.
+toll|통행료|noun|The toll on the bridge is two dollars.
+tuition|수업료|noun|The firm pays tuition for approved courses.
+rent|임대료|noun|The monthly rent is due on the first.
+installment|할부금|noun|You can pay in monthly installments.
+deposit|예치금|noun|A deposit is required to reserve the room.
+withdraw|인출하다|verb|You may withdraw cash from any branch.
+withdrawal|출금|noun|A withdrawal of cash was made on Monday.
+transfer funds|자금을 이체하다|verb|You can transfer funds online.
+remittance|송금액|noun|Your remittance has been received.
+remit|송금하다|verb|Please remit payment by the end of the month.
+wire|전신 송금하다|verb|They wired the money to the supplier.
+credit|신용 거래|noun|The shop does not offer credit.
+debit|직불|noun|Pay with a debit card at the counter.
+cash|현금|noun|The shop accepts cash only.
+check|수표|noun|Make the check payable to the company.
+currency|통화|noun|The local currency is the won.
+coin|동전|noun|The machine accepts only coins.
+banknote|지폐|noun|The banknote was printed in 2020.
+exchange rate|환율|noun|The exchange rate changes daily.
+interest|이자|noun|The interest on the loan is five percent.
+rate|비율|noun|The interest rate is rising.
+loan|대출금|noun|The bank approved a loan of ten thousand dollars.
+lend|빌려주다|verb|The bank will lend us the money.
+borrow|빌리다|verb|The firm borrowed money to buy equipment.
+lender|대금업자|noun|The lender required collateral.
+borrower|차용인|noun|The borrower must repay within five years.
+mortgage|주택담보대출|noun|They took out a mortgage on the building.
+collateral|담보물|noun|The house was offered as collateral.
+debt|부채|noun|The firm paid off its debt in full.
+debtor|채무자|noun|The debtor agreed to a payment plan.
+creditor|채권자|noun|The creditors demanded immediate payment.
+owe|빚지고 있다|verb|The company owes us ten thousand dollars.
+outstanding|미지급된|adj|The outstanding balance is two hundred dollars.
+settle|청산하다|verb|Please settle your account by Friday.
+settlement|합의금|noun|The settlement was paid last week.
+repay|상환하다|verb|The firm will repay the loan in three years.
+repayment|변제|noun|Repayment starts next month.
+default|채무 불이행하다|verb|The firm defaulted on its loan.
+bankrupt|파산한|adj|The bankrupt firm closed all its stores.
+bankruptcy|파산|noun|The firm filed for bankruptcy.
+liquidate|청산하다|verb|The owners had to liquidate the assets.
+solvent|지불 능력이 있는|adj|The firm remained solvent through the crisis.
+asset|자산|noun|The building is the firm's main asset.
+liability|부채액|noun|The firm's liabilities exceed its assets.
+equity|자기자본|noun|The firm raised equity from investors.
+capital|자본금|noun|The startup needs more capital.
+fund|기금|noun|The fund supports research.
+funding|자금 조달|noun|The project received government funding.
+finance a project|사업에 자금을 대다|verb|The bank agreed to finance the project.
+invest|투자하다|verb|The firm invested heavily in new machines.
+investment|투자금|noun|The investment paid off quickly.
+investor|투자자|noun|Investors were pleased with the results.
+stock market|주식 시장|noun|The stock market closed higher today.
+share|주식|noun|He owns a thousand shares of the company.
+dividend|배당금|noun|The dividend was paid in cash.
+portfolio|투자 자산 목록|noun|Her portfolio includes stocks and bonds.
+bond|채권|noun|The government issued new bonds.
+securities|증권|noun|The firm trades in securities.
+broker|중개인|noun|The broker advised us to sell.
+commission|수수료율|noun|Sales staff earn a commission on each sale.
+profit|이익|noun|The firm made a profit of two million dollars.
+profitable|수익성 있는|adj|The new branch is very profitable.
+revenue|매출액|noun|Revenue rose by eight percent.
+income|소득|noun|Her income increased after the promotion.
+earnings|수익|noun|Quarterly earnings beat expectations.
+gross|총계의|adj|Gross income was higher than expected.
+net|순수한|adj|Net profit fell by two percent.
+margin|이윤폭|noun|The profit margin is very narrow.
+loss|손실|noun|The firm reported a loss of ten thousand dollars.
+deficit|적자|noun|The deficit was reduced this year.
+surplus|흑자|noun|The firm ran a surplus last quarter.
+break even|손익분기에 도달하다|verb|The shop broke even in its first year.
+overhead|간접비|noun|Overhead costs include rent and electricity.
+expense|지출|noun|Travel expenses are reimbursed in full.
+expenditure|경비|noun|Government expenditure rose sharply.
+spending|소비|noun|Consumer spending rose in December.
+outlay|초기 투자비|noun|The initial outlay was fifty thousand dollars.
+cost-effective|비용 효율적인|adj|Online ads are cost-effective.
+economize|절약하다|verb|We must economize on office supplies.
+save|저축하다|verb|She saves ten percent of her pay.
+savings|저축액|noun|Her savings are kept in a bank.
+frugal|검소한|adj|The firm is frugal with its funds.
+thrifty|절약하는|adj|The thrifty shopper always compares prices.
+waste|낭비하다|verb|Do not waste paper.
+curtail|삭감하다|verb|The firm curtailed its travel budget.
+cut|줄이다|verb|The firm cut costs by ten percent.
+reduction|삭감|noun|A reduction in costs is expected.
+allocate|배분하다|verb|We allocated funds to the research team.
+allocation|할당량|noun|The allocation for training was increased.
+appropriate|충당하다|verb|The board appropriated funds for repairs.
+subsidy|보조금|noun|The government gives a subsidy to farmers.
+grant|지원금|noun|The school received a research grant.
+scholarship|장학금|noun|She won a full scholarship.
+sponsor a fund|기금을 후원하다|verb|Local firms sponsor the scholarship fund.
+tax|세금|noun|Income tax is deducted from your pay.
+taxation|과세|noun|Taxation of imports will increase.
+taxable|과세 대상의|adj|Interest is taxable income.
+tax-free|면세의|adj|Tax-free items are marked with a star.
+duty|관세|noun|Customs duty is charged on imports.
+tariff|관세율|noun|The government raised the tariff on steel.
+customs|세관|noun|Customs inspected all the luggage.
+levy|부과하다|verb|The city will levy a tax on tourists.
+exempt|면제된|adj|Nonprofits are exempt from tax.
+exemption|면세|noun|The exemption applies to small firms.
+refund tax|세금을 환급하다|verb|You can refund tax at the airport.
+return of tax|세금 신고|noun|File your tax return by April.
+filing|신고서 제출|noun|The filing deadline is in March.
+fiscal year|회계연도|noun|Our fiscal year begins in April.
+quarter|분기|noun|Sales improved in the third quarter.
+quarterly|분기별의|adj|Quarterly reports are due next week.
+annual|연간의|adj|The annual report was published in May.
+annually|매년|adv|The conference is held annually.
+monthly|월간의|adj|The monthly meeting is on Monday.
+weekly|주간의|adj|The weekly report is due on Friday.
+biweekly|격주의|adj|Staff are paid on a biweekly basis.
+daily|매일의|adj|Daily sales are posted on the wall.
+yearly|해마다의|adj|A yearly checkup is recommended.
+fiscal report|재무 보고서|noun|The fiscal report shows steady growth.
+report|보고서|noun|The report was sent to all directors.
+record|기록하다|verb|Please record all expenses carefully.
+records|장부|noun|The records are kept for ten years.
+data|자료|noun|The data shows a rise in sales.
+database|데이터베이스|noun|The database holds all customer details.
+spreadsheet|스프레드시트|noun|The spreadsheet lists all monthly costs.
+chart|도표|noun|The chart shows sales by region.
+graph|그래프|noun|The graph shows a steady rise.
+diagram|도해|noun|See the diagram on page ten.
+table|표|noun|Table two lists the sales figures.
+calculate|계산하다|verb|Calculate the total cost of the order.
+calculation|산출|noun|The calculation was checked twice.
+calculator|계산기|noun|Use the calculator to add the figures.
+compute|산출하다|verb|The software computes the tax automatically.
+total|합계|noun|The total comes to two hundred dollars.
+subtotal|소계|noun|The subtotal does not include tax.
+sum|총액|noun|A large sum was donated to the school.
+amount|금액|noun|The amount due is shown at the bottom.
+quantity|수량|noun|Please state the quantity you need.
+percentage|백분율|noun|A small percentage of customers complained.
+proportion|비율 비중|noun|A large proportion of staff work remotely.
+ratio|비|noun|The ratio of men to women is even.
+average|평균|noun|The average price is ten dollars.
+median|중앙값|noun|The median salary is higher than last year.
+maximum|최대한도|noun|The maximum load is two tons.
+minimum|최소한도|noun|The minimum order is ten units.
+limit|한도|noun|The credit limit is five thousand dollars.
+ceiling|상한선|noun|The government set a price ceiling.
+threshold|한계점|noun|Sales passed the threshold of one million.
+exceed|초과하다|verb|Costs exceeded the budget by ten percent.
+surpass|능가하다|verb|Sales surpassed all expectations.
+approximate|대략적인|adj|The approximate cost is five hundred dollars.
+estimate cost|견적|noun|Please send us an estimate cost.
+quotation|견적서|noun|We received a quotation from three suppliers.
+quote|견적을 내다|verb|The shop quoted a price of eighty dollars.
+bid|입찰하다|verb|Three firms bid on the contract.
+tender|공개 입찰|noun|The tender closes on Friday.
+auction|경매|noun|The painting was sold at auction.
+appraise|감정하다|verb|An expert appraised the antique.
+valuable|값비싼|adj|Please store valuable items in the safe.
+value|가치|noun|The value of the house has risen.
+worth|가치가 있는|adj|The painting is worth a million dollars.
+afford|여유가 되다|verb|We cannot afford a new office.
+payable|지불해야 할|adj|The check is payable to the company.
+receivable|받을 수 있는|adj|Accounts receivable rose last quarter.
+prepaid|선불의|adj|Use a prepaid card to buy tickets.
+cashless|현금이 필요 없는|adj|The shop is moving toward a cashless system.
+secure|안전하게 하다|verb|Please secure your password.
+fraud|사기|noun|The bank detected fraud on the account.
+counterfeit|위조의|adj|The shop spotted a counterfeit bill.
+forge|위조하다|verb|He was arrested for forging a signature.
+embezzle|횡령하다|verb|The clerk embezzled thousands of dollars.
+bribe|뇌물|noun|The official refused to accept a bribe.
+penalty|위약금|noun|A penalty applies for late payment.
+fine|벌금|noun|The firm paid a fine for the violation.
+surcharge|추가 요금|noun|A fuel surcharge was added.
+late fee|연체료|noun|A late fee is charged after ten days.
+waive|포기하다|verb|The bank waived the annual fee.
+discounted|할인된|adj|Discounted tickets are on sale now.
+inflation|물가 상승|noun|Inflation affects the cost of living.
+recession|경기 후퇴|noun|The recession caused many layoffs.
+economy|경제|noun|The economy grew by two percent.
+economic|경제적인|adj|Economic conditions are improving.
+economics|경제학|noun|She teaches economics at the university.
+economist|경제학자|noun|The economist predicted a slow recovery.
+recovery|회복|noun|A recovery in sales is expected.
+boom|호황|noun|The housing boom ended last year.
+downturn|침체|noun|The downturn hit small firms hard.
+crisis|위기|noun|The firm survived the financial crisis.
+volatile|변동이 심한|adj|The stock market was volatile today.
+merger|합병|noun|The merger created the largest bank in Asia.
+merge|합병하다|verb|The two firms will merge next year.
+acquire|인수하다|verb|The firm acquired its main rival.
+acquisition|인수|noun|The acquisition was completed in May.
+takeover|경영권 인수|noun|The takeover was approved by shareholders.
+buyout|매수|noun|The management buyout was successful.
+venture|벤처 사업|noun|The venture received a large investment.
+startup|신생 기업|noun|The startup raised funds from investors.
+franchise|가맹점|noun|She opened a franchise in her hometown.
+monopoly|독점|noun|The firm held a monopoly in the region.
+competitor|경쟁사|noun|Our competitors lowered their prices.
+rival|경쟁 상대|noun|The two rivals compete for the same clients.
+compete|경쟁하다|verb|Small shops cannot compete with large chains.
+competition|경쟁|noun|Competition in the sector is fierce.
