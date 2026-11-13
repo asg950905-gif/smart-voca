@@ -95,3 +95,10 @@ vacation|휴가 여행
 honor|예우하다
 apparent|뚜렷이 드러난
 endorse|지지하다
+# ---- 2026-11-13 검수 반영 (사용자 지정) ----
+summary|요약
+repayment|상환
+advice|조언
+presumably|아마
+cure|치료하다
+treat|대하다

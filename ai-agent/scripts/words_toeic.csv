@@ -258,7 +258,7 @@ reminder,알림 메시지,noun,A reminder was sent to all staff.
 memo,사내 메모,noun,The manager circulated a memo about parking.
 memorandum,각서,noun,The memorandum outlines the new rules.
 minutes,회의록,noun,The secretary will take the minutes.
-summary,요약본,noun,Please send me a summary of the report.
+summary,요약,noun,Please send me a summary of the report.
 summarize,요약하다,verb,Let me summarize the main points.
 outline,개요를 서술하다,verb,She will outline the plan for the new project.
 overview,개관,noun,The overview covers all departments.
@@ -761,7 +761,7 @@ outstanding,미지급된,adj,The outstanding balance is two hundred dollars.
 settle,결제하다,verb,Please settle your account by Friday.
 settlement,합의금,noun,The settlement was paid last week.
 repay,상환하다,verb,The firm will repay the loan in three years.
-repayment,변제,noun,Repayment starts next month.
+repayment,상환,noun,Repayment starts next month.
 default,채무 불이행하다,verb,The firm may default on its loan.
 bankrupt,파산한,adj,The bankrupt firm closed all its stores.
 bankruptcy,파산,noun,The firm filed for bankruptcy.
@@ -1745,9 +1745,9 @@ pain,통증,noun,The pain went away after an hour.
 ache,쑤시다,verb,My back may ache after a long flight.
 wound,상처,noun,The nurse cleaned the wound.
 fracture,골절,noun,The X-ray showed a fracture.
-treat,치료하다,verb,The doctor will treat her for a cold.
+treat,대하다,verb,Please treat every customer with respect.
 treatment,치료법,noun,The treatment lasts for six weeks.
-cure,치유하다,verb,Rest will cure the cold.
+cure,치료하다,verb,Rest will cure the cold.
 heal,낫다,verb,The wound will heal in a week.
 diagnose,진단하다,verb,The doctor will diagnose the allergy.
 diagnosis,진단 결과,noun,The diagnosis was confirmed by tests.
@@ -1904,7 +1904,7 @@ chapter,장,noun,Chapter three covers marketing.
 acknowledge,인정하다,verb,The firm will acknowledge the error.
 adapt,적응하다,verb,The firm must adapt quickly to the new market.
 advise,조언하다,verb,The lawyer will advise us to sign the contract.
-advice,충고,noun,He gave us helpful advice.
+advice,조언,noun,He gave us helpful advice.
 affect,영향을 미치다,verb,The delay will affect the schedule.
 effect,영향,noun,The new rule has a positive effect.
 influence,영향력을 행사하다,verb,Prices influence customer choices.
@@ -2176,7 +2176,7 @@ preliminary,예비의,adj,Preliminary results will be out soon.
 preparation,준비 작업,noun,Preparation for the event took a month.
 prepare,준비하다,verb,Please prepare the report by Friday.
 prestigious,명망 있는,adj,She won a prestigious award.
-presumably,아마도 그럴 것으로,adv,"Presumably, the shipment will arrive today."
+presumably,아마,adv,"Presumably, the shipment will arrive today."
 primarily,우선적으로,adv,The shop primarily sells books.
 primary,주된,adj,Our primary goal is to cut costs.
 principal,으뜸가는,adj,The principal reason is cost.

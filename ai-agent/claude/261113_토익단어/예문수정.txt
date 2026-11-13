@@ -235,7 +235,7 @@ resident|||Each resident must show a card.
 prescribe|||The doctor will prescribe antibiotics.
 drug|||The firm develops a new drug.
 ache|||My back may ache after a long flight.
-treat|||The doctor will treat her for a cold.
+treat|||Please treat every customer with respect.
 heal|||The wound will heal in a week.
 diagnose|||The doctor will diagnose the allergy.
 contaminate|||The spill may contaminate the water.
