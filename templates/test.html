@@ -9,6 +9,15 @@
     <section id="setup" class="card">
         <div class="page-head" style="margin-bottom:14px"><div><h1>실력 테스트</h1><p>방식을 고르고 바로 시작해요.</p></div><div style="color:var(--text)">{{ mascot(70) }}</div></div>
         <div class="field">
+            <label>출제 범위</label>
+            <div class="seg scope" id="scope">
+                <label><input type="radio" name="scope" value="today" checked><span>오늘 공부한 단어 <b class="count" data-scope-count="today"></b><small>학습·시험에서 본 단어 기준</small></span></label>
+                <label><input type="radio" name="scope" value="studied"><span>지금까지 공부한 단어 <b class="count" data-scope-count="studied"></b><small>학습·시험에서 본 단어 기준</small></span></label>
+                <label><input type="radio" name="scope" value="all"><span>전체 단어 <b class="count" data-scope-count="all"></b></span></label>
+            </div>
+            <p id="scope-notice" class="hint hidden" role="status"></p>
+        </div>
+        <div class="field">
             <label for="num">문제 수</label>
             <select id="num"><option>5</option><option selected>10</option><option>20</option><option>30</option></select>
         </div>

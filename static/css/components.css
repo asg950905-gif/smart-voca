@@ -115,3 +115,9 @@ a.tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); text-deco
 .switch:checked::after { transform: translateX(20px); }
 .switch:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .switch, .switch::after { transition: none; } }
+
+/* 시험 시작 화면: 출제 범위 선택 (두 줄 라벨 + 작은 안내 문구) */
+.seg.scope span { border-radius: var(--radius-sm); text-align: left; padding: 10px 16px; line-height: 1.3; }
+.seg.scope small { display: block; font-size: .72rem; font-weight: 500; opacity: .8; margin-top: 2px; }
+.seg.scope .count { font-weight: 800; margin-left: 2px; }
+#scope-notice a { font-weight: 700; text-decoration: underline; }

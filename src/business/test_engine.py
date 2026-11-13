@@ -18,6 +18,13 @@ logger = logging.getLogger(__name__)
 MODES = ('한->영', '영->한', '혼합')
 FORMATS = ('단답형', '4지선다형', 'OX형', '빈칸형', '혼합')
 MIN_WORDS_FOR_CHOICE = 4  # 4지선다형은 오답 보기를 만들 단어가 최소 4개 필요
+# 출제 범위: 오늘 공부한 단어 / 지금까지 공부한 단어 / 전체 단어. 앞의 둘은 user_word_stats(학습·시험에서 본 단어) 기준이다.
+SCOPES = ('today', 'studied', 'all')
+DEFAULT_SCOPE = 'all'   # scope 를 보내지 않는 기존 호출은 예전처럼 전체 단어에서 출제한다 (화면은 항상 'today' 를 보낸다)
+SCOPE_EMPTY_MESSAGE = {
+    'today': '오늘 공부한 단어가 없어요. 먼저 학습을 해주세요.',
+    'studied': '아직 공부한 단어가 없어요. 먼저 학습을 해주세요.',
+}
 
 _BRACKETED = re.compile(r'[(\[（［][^)\]）］]*[)\]）］]')   # (법을) [예] 같은 보충 설명
 
@@ -91,8 +98,11 @@ class TestEngine:
     def start_test(self, user_id: int, config: Dict) -> Dict:
         mode = config.get('mode', '혼합')
         fmt = config.get('format', '혼합')
+        scope = config.get('scope', DEFAULT_SCOPE)
         if mode not in MODES or fmt not in FORMATS:
             raise TestError('올바르지 않은 시험 설정입니다.')
+        if scope not in SCOPES:
+            raise TestError('올바르지 않은 출제 범위입니다.')
         try:
             num = int(config.get('num_problems', 10))
         except (TypeError, ValueError):
@@ -106,22 +116,49 @@ class TestEngine:
         if fmt in ('4지선다형', '빈칸형', '혼합') and total_words < MIN_WORDS_FOR_CHOICE:
             fmt = 'OX형' if total_words >= 2 else '단답형'  # 단어가 부족하면 가능한 형식으로 낮춘다
 
-        # 오답이 많은 단어를 우선 출제한다
-        words = self.db.query(
-            """SELECT w.id, w.english, w.korean, w.example FROM words w
-               LEFT JOIN user_word_stats s ON s.word_id = w.id AND s.user_id = ?
-               ORDER BY COALESCE(s.weight, 0) DESC, RANDOM() LIMIT ?""",
-            (user_id, num),
-        )
-        pool = self.db.query("SELECT id, english, korean FROM words")  # 보기·오답 후보
+        words = self._pick_words(user_id, scope, num)
+        if not words:
+            raise TestError(SCOPE_EMPTY_MESSAGE[scope])   # (scope 'all' 은 위에서 단어 0개를 이미 걸렀다)
+        pool = self.db.query("SELECT id, english, korean FROM words")  # 보기·오답 후보는 범위와 상관없이 전체 단어
         problems = [self._make_problem(w, mode, fmt, pool) for w in words]
         random.shuffle(problems)
 
-        state = {'config': {'num_problems': len(problems), 'mode': mode, 'format': fmt},
+        state = {'config': {'num_problems': len(problems), 'mode': mode, 'format': fmt, 'scope': scope},
                  'problems': problems, 'index': 0, 'results': [],
                  'started_at': datetime.now().isoformat()}
         self._save(user_id, state)
-        return {'total': len(problems), 'config': state['config']}
+        # requested/short: 범위 안 단어가 요청한 문제 수보다 적으면 있는 만큼만 출제했다는 뜻 (화면에서 안내)
+        return {'total': len(problems), 'requested': num, 'short': len(problems) < num, 'config': state['config']}
+
+    def _pick_words(self, user_id: int, scope: str, num: int) -> list:
+        """출제 범위 안에서 문제로 낼 단어를 고른다. 오답이 많은(weight 높은) 단어를 우선하고 나머지는 무작위."""
+        columns = "w.id, w.english, w.korean, w.example"
+        if scope == 'today':
+            today = datetime.now().strftime('%Y-%m-%d')
+            return self.db.query(
+                f"""SELECT {columns} FROM words w JOIN user_word_stats s ON s.word_id = w.id
+                    WHERE s.user_id = ? AND s.last_studied = ?
+                    ORDER BY s.weight DESC, RANDOM() LIMIT ?""", (user_id, today, num))
+        if scope == 'studied':
+            return self.db.query(
+                f"""SELECT {columns} FROM words w JOIN user_word_stats s ON s.word_id = w.id
+                    WHERE s.user_id = ? AND s.success_count + s.fail_count > 0
+                    ORDER BY s.weight DESC, RANDOM() LIMIT ?""", (user_id, num))
+        return self.db.query(
+            f"""SELECT {columns} FROM words w
+                LEFT JOIN user_word_stats s ON s.word_id = w.id AND s.user_id = ?
+                ORDER BY COALESCE(s.weight, 0) DESC, RANDOM() LIMIT ?""", (user_id, num))
+
+    def scope_counts(self, user_id: int) -> Dict:
+        """범위별 단어 수 (시험 시작 화면에 보여준다)."""
+        today = datetime.now().strftime('%Y-%m-%d')
+        return {
+            'today': self.db.scalar(
+                "SELECT COUNT(*) FROM user_word_stats WHERE user_id = ? AND last_studied = ?", (user_id, today)),
+            'studied': self.db.scalar(
+                "SELECT COUNT(*) FROM user_word_stats WHERE user_id = ? AND success_count + fail_count > 0", (user_id,)),
+            'all': self.word_manager.count(),
+        }
 
     def _make_problem(self, word: Dict, mode: str, fmt: str, pool: list) -> Dict:
         p_mode = random.choice(['한->영', '영->한']) if mode == '혼합' else mode

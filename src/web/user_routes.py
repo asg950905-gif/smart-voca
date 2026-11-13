@@ -86,6 +86,13 @@ def api_progress():
 
 
 # ===================== API: 시험 =====================
+@bp.route('/api/test/scopes')
+@login_required
+def api_test_scopes():
+    """출제 범위별 단어 수: today(오늘 공부한), studied(지금까지 공부한), all(전체)"""
+    return jsonify(current_app.tests.scope_counts(g.user['id']))
+
+
 @bp.route('/api/test/start', methods=['POST'])
 @login_required
 def api_test_start():

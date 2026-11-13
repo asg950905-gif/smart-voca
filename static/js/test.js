@@ -10,15 +10,43 @@
     }
     const radio = (name) => document.querySelector(`input[name="${name}"]:checked`).value;
 
+    // 출제 범위별 단어 수 (오늘 공부한 / 지금까지 공부한 / 전체). 범위가 비었거나 문제 수보다 적으면 안내한다.
+    let scopeCounts = { today: 0, studied: 0, all: 0 };
+
+    function updateScopeUI() {
+        document.querySelectorAll('[data-scope-count]').forEach((el) => { el.textContent = `(${scopeCounts[el.dataset.scopeCount]})`; });
+        const scope = radio('scope'), count = scopeCounts[scope], wanted = Number($('num').value);
+        const notice = $('scope-notice');
+        notice.textContent = '';
+        notice.classList.add('hidden');
+        $('btn-start').disabled = count === 0;
+        if (count === 0) {
+            notice.append(document.createTextNode(`${scope === 'today' ? '오늘' : '아직'} 공부한 단어가 없어요. 먼저 학습을 해주세요. `));
+            const link = document.createElement('a');
+            link.href = '/study'; link.textContent = '학습하러 가기';
+            notice.append(link);
+            notice.classList.remove('hidden');
+        } else if (count < wanted) {
+            notice.textContent = `단어가 ${count}개뿐이라 ${count}문제만 출제돼요.`;
+            notice.classList.remove('hidden');
+        }
+    }
+
+    async function loadScopes() {
+        try { scopeCounts = await api('/api/test/scopes'); } catch (e) { toast(e.message, 'error'); }
+        updateScopeUI();
+    }
+
     async function start() {
         $('btn-start').disabled = true;
         try {
-            await api('/api/test/start', { method: 'POST', body: {
-                num_problems: Number($('num').value), mode: radio('mode'), format: radio('format') } });
+            const r = await api('/api/test/start', { method: 'POST', body: {
+                num_problems: Number($('num').value), mode: radio('mode'), format: radio('format'), scope: radio('scope') } });
+            if (r.short) toast(`단어가 부족해서 ${r.total}문제만 출제했어요`, 'info');
             show('quiz');
             await loadProblem();
         } catch (e) { toast(e.message, 'error'); }
-        $('btn-start').disabled = false;
+        updateScopeUI();
     }
 
     // 빈칸 문장을 안전하게 그린다: 서버 문자열은 textContent 로만 넣는다 (XSS 방지)
@@ -140,7 +168,10 @@
         if ($('btn-next').dataset.last === '1') await finish(); else await loadProblem();
     });
     $('q-short').addEventListener('submit', (e) => { e.preventDefault(); if ($('q-input').value.trim()) submit($('q-input').value); });
-    $('btn-retry').addEventListener('click', () => show('setup'));
+    $('btn-retry').addEventListener('click', () => { show('setup'); loadScopes(); });   // 방금 본 단어가 범위에 반영되도록 다시 센다
+    document.querySelectorAll('input[name="scope"]').forEach((el) => el.addEventListener('change', updateScopeUI));
+    $('num').addEventListener('change', updateScopeUI);
+    loadScopes();
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !$('btn-next').classList.contains('hidden') && document.activeElement !== $('btn-next')) {
             $('btn-next').click();
