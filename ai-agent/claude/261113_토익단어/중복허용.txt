@@ -1,0 +1,13 @@
+# 뜻(또는 영어)이 같아도 두기로 한 동의어 묶음. 한 줄에 영단어를 쉼표로 구분한다.
+# 앱은 4지선다·OX·빈칸형 보기를 만들 때 정답과 같은 뜻(normalize 기준)의 단어를 보기에서 뺀다 (2026-11-13).
+# --- 뜻이 같은 동의어 ---
+evident, obvious
+extend, prolong
+essential, vital
+corridor, hallway
+taxi, cab
+colleague, coworker
+objective, goal
+# --- 공백을 무시하면 영어가 같아지는 쌍 (뜻은 다름) ---
+checkout, check out
+login, log in

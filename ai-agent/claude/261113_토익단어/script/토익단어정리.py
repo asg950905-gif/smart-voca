@@ -15,10 +15,13 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 WORK_DIR = HERE.parent
+sys.path.insert(0, str(WORK_DIR.parents[2]))   # 프로젝트 루트: 앱의 채점 정규화 함수를 그대로 쓴다
+from src.business.test_engine import normalize_answer  # noqa: E402
 BATCH_DIR = WORK_DIR / 'batch'
 OUT_CSV = WORK_DIR.parent.parent / 'scripts' / 'words_toeic.csv'
-OVERRIDE_FILES = [WORK_DIR / '수정목록.txt', WORK_DIR / '예문수정.txt']   # 영단어|뜻|품사|예문 (빈 칸은 원래 값 유지)
+OVERRIDE_FILES = [WORK_DIR / '수정목록.txt', WORK_DIR / '예문수정.txt', WORK_DIR / '검수반영.txt']   # 영단어|뜻|품사|예문 (빈 칸은 원래 값 유지, 뒤 파일이 우선)
 DROP_FILE = WORK_DIR / '제외목록.txt'       # 한 줄에 영단어 하나
+ALLOW_DUP_FILE = WORK_DIR / '중복허용.txt'  # 뜻(또는 영어)이 같아도 두기로 한 동의어 묶음 (한 줄에 영단어 쉼표 구분)
 
 # 띄어쓰기가 있는 표현은 실제 토익에 자주 나오는 관용 표현만 허용한다
 PHRASE_ALLOW = {
@@ -116,20 +119,42 @@ def main() -> None:
     for en, ex in no_head[:60]:
         print(f'   {en} :: {ex}')
 
-    # 뜻이 같은 단어가 있으면 4지선다 보기가 모호해진다
-    by_korean = defaultdict(list)
-    for en, ko, pos, ex, src in kept:
-        by_korean[ko].append(en)
-    dup_ko = {k: v for k, v in by_korean.items() if len(v) > 1}
-    print(f'뜻이 겹치는 그룹: {len(dup_ko)}개 (영단어 {sum(len(v) for v in dup_ko.values())}개)')
+    # 채점 기준(괄호·공백·~ 무시)으로 같은 뜻/영어가 되는 단어 묶음. 승인된 동의어 묶음(중복허용.txt)만 통과시킨다.
+    # 앱은 4지선다·OX·빈칸형 보기를 만들 때 정답과 같은 normalize 값을 가진 단어를 보기에서 뺀다.
+    allowed_groups = []
+    if ALLOW_DUP_FILE.exists():
+        for line in ALLOW_DUP_FILE.read_text(encoding='utf-8').splitlines():
+            line = line.strip()
+            if line and not line.startswith('#'):
+                allowed_groups.append({w.strip().lower() for w in line.split(',') if w.strip()})
+
+    def split_groups(key_func, items):
+        groups = defaultdict(list)
+        for en, ko in items:
+            groups[normalize_answer(key_func(en, ko))].append(en)
+        dups = {k: v for k, v in groups.items() if len(v) > 1}
+        ok = {k: v for k, v in dups.items() if any({w.lower() for w in v} <= g for g in allowed_groups)}
+        return ok, {k: v for k, v in dups.items() if k not in ok}
+
+    pairs = [(en, ko) for en, ko, pos, ex, src in kept]
+    ok_ko, dup_ko = split_groups(lambda en, ko: ko, pairs)
+    ok_en, dup_en = split_groups(lambda en, ko: en, pairs)
+    print(f'뜻이 겹치는 그룹: 허용된 {len(ok_ko)}개 / 허용 안 된 {len(dup_ko)}개')
+    for k, v in sorted(ok_ko.items()):
+        print('   (허용) ' + k + ' <- ' + ', '.join(v))
     for k, v in sorted(dup_ko.items()):
-        print('   ' + k + ' <- ' + ', '.join(v))
+        print('   (문제) ' + k + ' <- ' + ', '.join(v))
+    print(f'영어가 겹치는 그룹(공백·대소문자 무시): 허용된 {len(ok_en)}개 / 허용 안 된 {len(dup_en)}개')
+    for k, v in sorted(ok_en.items()):
+        print('   (허용) ' + k + ' <- ' + ', '.join(v))
+    for k, v in sorted(dup_en.items()):
+        print('   (문제) ' + k + ' <- ' + ', '.join(v))
 
     long_ko = [(en, ko) for en, ko, *_ in kept if len(ko) > 20]
     if long_ko:
         print('[뜻이 20자 초과]', long_ko[:10])
 
-    problems = len(no_head) + len(dup_ko) + len(bad_pos)
+    problems = len(no_head) + len(dup_ko) + len(dup_en) + len(bad_pos)
     if args.write:
         if problems:
             sys.exit(f'\n문제 {problems}건이 남아 있어 CSV 를 만들지 않았습니다.')

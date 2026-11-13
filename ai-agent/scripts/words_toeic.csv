@@ -20,7 +20,7 @@ workforce,노동력,noun,The workforce has grown by ten percent.
 personnel,인사부,noun,Please contact personnel about your leave.
 staff,직원들,noun,The staff meets every Monday morning.
 colleague,동료,noun,My colleague will cover my shift.
-coworker,동료 사원,noun,A coworker helped me finish the report.
+coworker,동료,noun,A coworker helped me finish the report.
 supervisor,감독관,noun,Ask your supervisor to approve the form.
 manager,관리자,noun,The manager praised the team's effort.
 director,이사,noun,The director will attend the board meeting.
@@ -51,14 +51,14 @@ appoint,임명하다,verb,The board will appoint a new director.
 nominate,지명하다,verb,Staff may nominate a colleague for the award.
 promote,승진시키다,verb,The company will promote her to vice president.
 promotion,승진,noun,He received a promotion after two years.
-transfer,전근시키다,verb,They will transfer him to the Seoul branch.
+transfer,옮기다,verb,They will transfer him to the Seoul branch.
 relocate,이전하다,verb,Our office will relocate next spring.
 resign,사임하다,verb,The director will resign for personal reasons.
 resignation,사직,noun,She submitted her resignation on Monday.
 retire,은퇴하다,verb,Mr. Park will retire at the end of June.
 retirement,퇴직,noun,The retirement party starts at five.
 dismiss,해고하다,verb,The firm may dismiss him for misconduct.
-terminate,종료하다,verb,The company may terminate the contract at any time.
+terminate,해지하다,verb,The company may terminate the contract at any time.
 layoff,정리해고,noun,The layoff affected two hundred workers.
 probation,수습 기간,noun,New hires serve a three-month probation.
 tenure,재직 기간,noun,Her tenure at the firm lasted twenty years.
@@ -74,9 +74,9 @@ incentive,장려책,noun,The firm offers an incentive for high sales.
 allowance,수당,noun,The travel allowance covers meals.
 benefit,복리후생,noun,Health benefit starts after one month.
 compensation,보상,noun,The compensation package includes stock options.
-reimburse,변제하다,verb,The company will reimburse your travel costs.
+reimburse,환급하다,verb,The company will reimburse your travel costs.
 reimbursement,환급,noun,Submit your receipts for reimbursement.
-raise,급여 인상,noun,She asked her boss for a raise.
+raise,인상,noun,She asked her boss for a raise.
 overtime,초과 근무,noun,Overtime is paid at one and a half times.
 shift,교대 근무,noun,I work the night shift this week.
 workload,업무량,noun,The new hire will ease our workload.
@@ -88,8 +88,8 @@ temporary,임시의,adj,They hired temporary staff for the holidays.
 permanent,영구적인,adj,The role became a permanent position.
 voluntary,자발적인,adj,Attendance at the workshop is voluntary.
 mandatory,의무적인,adj,Safety training is mandatory for all staff.
-leave,휴가,noun,She is on maternity leave until May.
-vacation,휴가 여행,noun,I will take a vacation in August.
+leave,휴직,noun,She is on maternity leave until May.
+vacation,휴가,noun,I will take a vacation in August.
 absence,결근,noun,Her absence was reported to the manager.
 absent,결근한,adj,Three employees were absent yesterday.
 attendance,출석,noun,Attendance is recorded at the entrance.
@@ -98,7 +98,7 @@ tardy,지각한,adj,He was tardy twice this week.
 holiday,공휴일,noun,The office is closed on the national holiday.
 sick leave,병가,noun,You may use sick leave for a doctor visit.
 training,교육 훈련,noun,New staff receive a week of training.
-orientation,신입 교육,noun,Orientation begins at nine on Monday.
+orientation,오리엔테이션,noun,Orientation begins at nine on Monday.
 seminar,세미나,noun,The seminar covers customer service skills.
 workshop,워크숍,noun,Register for the workshop by Friday.
 certificate,수료증,noun,You will receive a certificate after the course.
@@ -107,7 +107,7 @@ skill,기술,noun,Communication skill is vital in this job.
 competence,능력,noun,Her competence impressed the board.
 competent,유능한,adj,He is a competent and reliable worker.
 capable,능숙한,adj,She is capable of leading large teams.
-proficient,능숙한 수준의,adj,He is proficient in three languages.
+proficient,숙련된,adj,He is proficient in three languages.
 fluent,유창한,adj,Applicants should be fluent in English.
 expertise,전문 지식,noun,Her expertise in logistics is well known.
 talent,재능,noun,We want to attract top talent.
@@ -121,17 +121,17 @@ motivation,의욕,noun,Low motivation affects productivity.
 morale,사기,noun,Morale rose after the bonus announcement.
 productivity,생산성,noun,Productivity increased after the new system.
 efficient,효율적인,adj,The new process is more efficient.
-efficiency,능률,noun,The software improves office efficiency.
+efficiency,효율,noun,The software improves office efficiency.
 performance,성과,noun,Her performance review was excellent.
 evaluate,평가하다,verb,Managers evaluate staff every six months.
 evaluation,평가서,noun,Your evaluation will be sent next week.
 appraisal,인사 고과,noun,The annual appraisal takes place in March.
-feedback,의견,noun,Please give us feedback on the training.
-assess,가늠하다,verb,We assess each applicant's technical skills.
-assessment,진단,noun,The assessment lasts about one hour.
+feedback,피드백,noun,Please give us feedback on the training.
+assess,산정하다,verb,We assess each applicant's technical skills.
+assessment,평가,noun,The assessment lasts about one hour.
 criterion,기준,noun,Experience is the main criterion for selection.
 objective,목표,noun,Our objective is to cut costs by ten percent.
-goal,지향점,noun,Her goal is to become a department head.
+goal,목표,noun,Her goal is to become a department head.
 target,달성 목표,noun,The sales team met its quarterly target.
 achieve,이루다,verb,We hope to achieve our goal ahead of schedule.
 achievement,업적,noun,The award recognizes her achievement.
@@ -141,7 +141,7 @@ commend,칭찬하다,verb,The manager will commend her for her hard work.
 recognition,인정,noun,He received recognition for his service.
 reward,포상하다,verb,The firm will reward loyal employees.
 honor,예우하다,verb,We will honor the retiring director tonight.
-award,상을 수여하다,verb,The board will award him a medal.
+award,상,noun,She won an award for her design.
 recommend,추천하다,verb,I recommend her for the managerial role.
 recommendation,추천,noun,He wrote a recommendation letter for her.
 endorse,지지하다,verb,The directors endorse the new policy.
@@ -154,7 +154,7 @@ relevant,관련 있는,adj,Please list relevant work experience.
 suitable,적합한,adj,We found a suitable candidate.
 ideal,이상적인,adj,She is the ideal person for this role.
 shortlist,최종 후보 명단,noun,You are on the shortlist for the post.
-screen,가려내다,verb,We screen all applicants by phone first.
+screen,선별하다,verb,We screen all applicants by phone first.
 select,선발하다,verb,The committee will select two finalists.
 selection,선정,noun,The selection process takes two weeks.
 reject,거부하다,verb,The firm may reject his application.
@@ -162,11 +162,10 @@ decline,정중히 거절하다,verb,She will decline the job offer.
 accept,받아들이다,verb,He will accept the offer without delay.
 negotiate,협상하다,verb,She will negotiate a higher salary.
 negotiation,교섭,noun,Wage negotiation continued all night.
-onboard,입사 적응시키다,verb,HR will onboard the new hires on Monday.
 probationary,수습 중인,adj,Probationary employees receive weekly reviews.
 payslip,급여 명세서,noun,Your payslip shows all deductions.
 deduction,공제,noun,Tax deduction is applied each month.
-withhold,원천징수하다,verb,The company will withhold income tax.
+withhold,보류하다,verb,The bank may withhold payment until the form arrives.
 pension,연금,noun,The firm contributes to each worker's pension.
 insurance,보험,noun,Health insurance is covered by the company.
 perk,특전,noun,Free lunch is a great perk.
@@ -189,15 +188,15 @@ collaboration,공동 작업,noun,The collaboration produced excellent results.
 cooperate,공조하다,verb,Staff must cooperate with the auditors.
 cooperation,협조,noun,Thank you for your cooperation.
 coordinate,조율하다,verb,She will coordinate the work of three teams.
-coordinator,진행 담당자,noun,The event coordinator booked the venue.
+coordinator,진행자,noun,The event coordinator booked the venue.
 leadership,지도력,noun,Strong leadership guided us through the crisis.
 initiative,주도권,noun,She took the initiative to train new staff.
 responsibility,책임,noun,Safety is everyone's responsibility.
 responsible,책임이 있는,adj,He is responsible for payroll.
-accountable,해명할 책임이 있는,adj,Managers are accountable for their budgets.
+accountable,책임져야 하는,adj,Managers are accountable for their budgets.
 duty,임무,noun,Her main duty is to answer the phone.
-task,과업,noun,The first task is to review the contract.
-assignment,할당 업무,noun,The assignment is due on Wednesday.
+task,업무,noun,The first task is to review the contract.
+assignment,과제,noun,The assignment is due on Wednesday.
 role,역할,noun,Her role includes managing client accounts.
 job description,직무 기술서,noun,The job description lists all duties.
 department,부서,noun,The accounting department is on the third floor.
@@ -208,7 +207,7 @@ subsidiary,자회사,noun,The subsidiary operates in three countries.
 affiliate,제휴 회사,noun,Our affiliate in Tokyo sells the product.
 corporation,주식회사,noun,The corporation was founded in 1990.
 enterprise,기업체,noun,The small enterprise grew quickly.
-firm,사무소,noun,She works for a large law firm.
+firm,회사,noun,She works for a large law firm.
 organization,조직,noun,The organization has five hundred members.
 institution,기관,noun,The institution offers training courses.
 agency,대행사,noun,The agency found us a new assistant.
@@ -218,14 +217,14 @@ board,이사회,noun,The board approved the annual budget.
 shareholder,주주,noun,Each shareholder voted on the merger.
 stakeholder,이해관계자,noun,Every stakeholder was invited to the meeting.
 founder,설립자,noun,The founder started the firm in a garage.
-partner,제휴자,noun,She became a partner at the firm.
+partner,파트너,noun,She became a partner at the firm.
 partnership,동업,noun,The partnership lasted fifteen years.
 graduate,졸업하다,verb,She will graduate from college next spring.
 degree,학위,noun,He holds a degree in economics.
 diploma,졸업장,noun,Please attach a copy of your diploma.
 internship,인턴십,noun,The internship lasts three months.
 apprenticeship,도제 제도,noun,An apprenticeship takes about two years.
-career,직업 경력,noun,Her career began in a small firm.
+career,커리어,noun,Her career began in a small firm.
 profession,전문직,noun,Teaching is a respected profession.
 professional,전문적인,adj,Please maintain a professional attitude.
 occupation,직종,noun,List your occupation on the form.
@@ -236,13 +235,13 @@ payday,급여일,noun,Payday falls on the twenty-fifth.
 agenda,안건,noun,The agenda includes three main topics.
 attend,참석하다,verb,All managers must attend the meeting.
 attendee,참석자,noun,Each attendee received a name tag.
-conference,학회,noun,The conference will be held in Singapore.
+conference,회의,noun,The conference will be held in Singapore.
 convene,소집하다,verb,The board will convene on Tuesday.
 adjourn,휴회하다,verb,The chairman will adjourn the meeting at noon.
 postpone,연기하다,verb,We had to postpone the presentation.
 reschedule,일정을 변경하다,verb,Can we reschedule the call for Friday?
 cancel,취소하다,verb,They will cancel the afternoon session.
-appointment,예약된 약속,noun,I have a dentist appointment at three.
+appointment,약속,noun,I have a dentist appointment at three.
 arrange,마련하다,verb,She will arrange a meeting with the client.
 arrangement,준비,noun,The travel arrangement has been confirmed.
 confirm,확정하다,verb,Please confirm your attendance by email.
@@ -260,7 +259,7 @@ memorandum,각서,noun,The memorandum outlines the new rules.
 minutes,회의록,noun,The secretary will take the minutes.
 summary,요약,noun,Please send me a summary of the report.
 summarize,요약하다,verb,Let me summarize the main points.
-outline,개요를 서술하다,verb,She will outline the plan for the new project.
+outline,개요,noun,The report begins with an outline of the plan.
 overview,개관,noun,The overview covers all departments.
 draft,초안,noun,Please review the first draft by Friday.
 revise,수정하다,verb,He will revise the proposal twice.
@@ -268,7 +267,7 @@ revision,개정,noun,The revision will be ready tomorrow.
 edit,편집하다,verb,Please edit the document before sending it.
 proofread,교정하다,verb,I will proofread the brochure tonight.
 amend,개정하다,verb,The committee will amend the rules.
-update,최신 정보로 갱신하다,verb,Please update the schedule daily.
+update,업데이트하다,verb,Please update the schedule daily.
 document,문서,noun,Sign the document and return it today.
 paperwork,서류 작업,noun,The paperwork took all morning.
 file,철하다,verb,She will file the contracts in the cabinet.
@@ -279,7 +278,7 @@ fill out,기입하다,verb,Please fill out this form completely.
 submit,제출하다,verb,Submit your expense report by Monday.
 submission,제출물,noun,Late submission will not be accepted.
 deadline,마감 기한,noun,The deadline for the report is Friday.
-due,만기가 된,adj,The report is due next Tuesday.
+due,예정된,adj,The report is due next Tuesday.
 overdue,기한이 지난,adj,Your library book is overdue.
 urgent,긴급한,adj,This is an urgent request from the client.
 priority,우선 사항,noun,Customer satisfaction is our top priority.
@@ -296,7 +295,7 @@ eventually,결국,adv,The project was eventually completed.
 presentation,발표회,noun,Her presentation lasted twenty minutes.
 present,제시하다,verb,He will present the findings tomorrow.
 presenter,발표자,noun,The presenter used several charts.
-projector,영사기,noun,Please turn on the projector.
+projector,프로젝터,noun,Please turn on the projector.
 slide,슬라이드,noun,The last slide shows our sales figures.
 handout,배포 자료,noun,A handout is on the table by the door.
 brochure,안내 책자,noun,The brochure describes all our services.
@@ -337,7 +336,7 @@ conference room,회의실,noun,The conference room seats twenty people.
 lounge,휴게실,noun,Lunch is served in the staff lounge.
 cafeteria,구내식당,noun,The cafeteria opens at eleven thirty.
 lobby,로비,noun,Please wait in the lobby.
-elevator,승강기,noun,The elevator is on the left.
+elevator,엘리베이터,noun,The elevator is on the left.
 corridor,복도,noun,The meeting room is down the corridor.
 entrance,입구,noun,Visitors must sign in at the entrance.
 exit,출구,noun,The nearest exit is behind you.
@@ -348,7 +347,7 @@ security,보안,noun,Security checks all packages.
 correspondence,서신 왕래,noun,All correspondence should be kept for a year.
 corresponding,해당하는,adj,Match each name with the corresponding number.
 communicate,의사소통하다,verb,We communicate with clients by email.
-communication,연락,noun,Good communication prevents mistakes.
+communication,의사소통,noun,Good communication prevents mistakes.
 contact,연락하다,verb,Contact us if you need help.
 inquiry,문의,noun,We answered every inquiry within a day.
 inquire,문의하다,verb,I am writing to inquire about the position.
@@ -362,7 +361,7 @@ enclose,동봉하다,verb,I enclose a copy of the receipt.
 enclosure,동봉물,noun,See the enclosure for pricing.
 recipient,수신인,noun,The recipient must sign for the parcel.
 sender,발신인,noun,The sender's address is on the back.
-address,주소를 쓰다,verb,Address the envelope to the director.
+address,주소,noun,Please write your home address on the form.
 mail,우편물,noun,The mail arrives at ten each morning.
 courier,택배 회사,noun,A courier delivered the package.
 postage,우편 요금,noun,Postage is included in the price.
@@ -371,36 +370,35 @@ parcel,소포,noun,The parcel arrived this afternoon.
 voicemail,음성 메시지,noun,Please leave a voicemail after the beep.
 extension,내선 번호,noun,Dial extension 204 for the accounting team.
 switchboard,교환대,noun,The switchboard connects all calls.
-hold,기다리게 하다,verb,Please hold while I check the schedule.
+hold,개최하다,verb,The firm will hold a meeting on Monday.
 line,회선,noun,The line is busy right now.
 conference call,전화 회의,noun,The conference call starts at nine.
 teleconference,원격 회의,noun,The teleconference connected four offices.
 videoconference,화상 회의,noun,We hold a videoconference every Friday.
 webinar,웨비나,noun,Join the webinar on data security.
-network,연락망,noun,Our professional network helped us find clients.
+network,네트워크,noun,Our professional network helped us find clients.
 networking,인맥 쌓기,noun,Networking is a key part of the conference.
 introduce,소개하다,verb,Let me introduce our new colleague.
 introduction,도입부,noun,The introduction explains the purpose.
 welcome,환영하다,verb,We welcome everyone to the annual meeting.
 greet,인사하다,verb,The receptionist will greet visitors with a smile.
-acquaint,익히 알게 하다,verb,Please acquaint yourself with the safety rules.
 familiar,익숙한,adj,Are you familiar with this software?
-brief,간단한 설명을 하다,verb,The manager will brief the staff on Monday.
+brief,간단한,adj,Please keep your reply brief.
 briefing,상황 설명회,noun,The press briefing starts at two.
 discuss,논의하다,verb,We will discuss the budget tomorrow.
 discussion,토론,noun,The discussion lasted two hours.
 debate,논쟁하다,verb,The directors will debate the merger.
 proposal,제안서,noun,The proposal was approved unanimously.
 propose,제의하다,verb,I propose we meet on Thursday.
-suggest,권하다,verb,I suggest that we postpone the launch.
+suggest,제안하다,verb,I suggest that we postpone the launch.
 suggestion,건의,noun,Staff may leave a suggestion in the box.
-opinion,견해,noun,I would like your opinion on the design.
+opinion,의견,noun,I would like your opinion on the design.
 idea,아이디어,noun,She shared an idea for saving costs.
 approach,접근 방식,noun,We took a new approach to the problem.
 solution,해결책,noun,We found a solution to the delay.
 solve,해결하다,verb,Our team will solve the problem quickly.
 issue,쟁점,noun,The main issue is the lack of funds.
-problem,문제점,noun,The problem was fixed in an hour.
+problem,문제,noun,The problem was fixed in an hour.
 concern,우려,noun,The staff expressed concern about the schedule.
 matter,사안,noun,The matter will be discussed next week.
 topic,주제,noun,Today's topic is workplace safety.
@@ -419,7 +417,7 @@ error,오류,noun,An error occurred during the upload.
 correct,바로잡다,verb,Please correct the spelling error.
 correction,정정,noun,A correction was printed the next day.
 apologize,사과하다,verb,We apologize for the inconvenience.
-apology,사과문,noun,The firm issued a public apology.
+apology,사과,noun,The firm issued a public apology.
 inconvenience,불편,noun,We regret any inconvenience this may cause.
 convenient,편리한,adj,Is Friday convenient for you?
 convenience,편의,noun,"For your convenience, we open on Sundays."
@@ -429,7 +427,7 @@ unavailable,이용할 수 없는,adj,The director is unavailable until noon.
 occupied,사용 중인,adj,The meeting room is occupied.
 vacant,비어 있는,adj,Is the conference room vacant?
 reserve,예약하다,verb,I would like to reserve the room for two hours.
-reservation,좌석 예약,noun,Please make a reservation by phone.
+reservation,예약,noun,Please make a reservation by phone.
 book,예매하다,verb,She wants to book a flight to Chicago.
 register,등록하다,verb,Register online before the deadline.
 registration,등록,noun,Registration closes on Friday.
@@ -437,7 +435,7 @@ enroll,등록시키다,verb,Employees can enroll in the language course.
 enrollment,입학,noun,Enrollment for the program is open.
 sign up,신청하다,verb,Sign up for the seminar at the front desk.
 subscribe,구독하다,verb,Subscribe to our newsletter for updates.
-subscription,구독료,noun,The subscription renews every year.
+subscription,구독,noun,The subscription renews every year.
 newsletter,소식지,noun,The newsletter comes out monthly.
 bulletin,게시,noun,The bulletin board displays company news.
 publication,출판물,noun,The publication is released quarterly.
@@ -449,7 +447,7 @@ column,칼럼,noun,He writes a weekly column on finance.
 press,언론,noun,The press covered the opening ceremony.
 media,매체,noun,Social media helps us reach customers.
 broadcast,방송하다,verb,The event will be broadcast live.
-feature,특집으로 다루다,verb,The magazine will feature our CEO.
+feature,특징,noun,This feature is available to all members.
 conduct,수행하다,verb,The firm will conduct a customer survey.
 carry out,실행하다,verb,We will carry out the plan next month.
 implement,시행하다,verb,The company will implement the new system.
@@ -459,16 +457,16 @@ launch,출시하다,verb,We will launch the product in June.
 initiate,착수시키다,verb,The manager will initiate a review of the process.
 undertake,떠맡다,verb,The firm will undertake the construction.
 proceed,진행하다,verb,Please proceed to the second floor.
-process,처리 과정,noun,The approval process is very slow.
-progress,진척,noun,We made good progress this week.
+process,과정,noun,The approval process is very slow.
+progress,진전,noun,We made good progress this week.
 complete,완료하다,verb,Please complete the form by noon.
-completion,완공,noun,Completion is expected in December.
+completion,완료,noun,Completion is expected in December.
 finalize,마무리 짓다,verb,We will finalize the contract tomorrow.
 finish,끝내다,verb,She will finish the report before lunch.
 resume,재개하다,verb,Work will resume on Monday.
-continue,지속하다,verb,The meeting will continue after lunch.
+continue,계속하다,verb,The meeting will continue after lunch.
 extend,연장하다,verb,They will extend the deadline by two days.
-prolong,연장시키다,verb,Heavy rain can prolong the repair work.
+prolong,연장하다,verb,Heavy rain can prolong the repair work.
 suspend,중단하다,verb,The firm will suspend production for repairs.
 delay,지연시키다,verb,Bad weather can delay the delivery.
 interrupt,방해하다,verb,Please do not interrupt the speaker.
@@ -480,9 +478,9 @@ commercial,상업 광고,noun,The commercial aired during the game.
 campaign,캠페인,noun,The campaign will run for six weeks.
 publicize,대중에 알리다,verb,We will publicize the event online.
 publicity,홍보,noun,The event generated a lot of publicity.
-slogan,구호,noun,Our new slogan is easy to remember.
+slogan,슬로건,noun,Our new slogan is easy to remember.
 logo,로고,noun,The logo appears on every package.
-brand,상표,noun,It is a well-known brand of sportswear.
+brand,브랜드,noun,It is a well-known brand of sportswear.
 trademark,등록 상표,noun,The name is a registered trademark.
 label,라벨,noun,Read the label before use.
 packaging,포장재,noun,The packaging is made of recycled paper.
@@ -603,7 +601,7 @@ ceremony,의식,noun,The award ceremony starts at seven.
 gala,축제 행사,noun,The charity gala raised funds for the school.
 fundraiser,모금 행사,noun,The fundraiser raised ten thousand dollars.
 donate,기부하다,verb,Many firms will donate books to the library.
-donation,기증품,noun,The donation will help local schools.
+donation,기부,noun,The donation will help local schools.
 charity,자선 단체,noun,The firm gives money to charity every year.
 volunteer,자원봉사자,noun,Each volunteer cleaned the park on Sunday.
 sale,판매,noun,The sale of the building was completed.
@@ -632,7 +630,7 @@ cashier,계산원,noun,The cashier gave me my change.
 transaction,거래,noun,The transaction was completed in seconds.
 price,가격,noun,The price includes tax.
 pricing,가격 책정,noun,The pricing is shown on the website.
-cost,비용이 들다,verb,The repair will cost about two hundred dollars.
+cost,비용,noun,The cost includes tax and delivery.
 expensive,비싼,adj,The hotel is too expensive for us.
 cheap,저렴한,adj,The tickets were cheap.
 inexpensive,비싸지 않은,adj,It is an inexpensive way to travel.
@@ -643,7 +641,7 @@ barcode,바코드,noun,Scan the barcode at the register.
 bundle,묶음 상품,noun,A bundle of three costs fifty dollars.
 package,꾸러미,noun,The package includes free delivery.
 range,범위,noun,The shop offers a wide range of products.
-variety,다양성,noun,The store has a variety of fresh fruit.
+variety,종류,noun,The store has a variety of fresh fruit.
 assortment,모음,noun,The box contains an assortment of cookies.
 collection,수집품,noun,The new autumn collection is in stores.
 edition,판,noun,The limited edition sold out in a day.
@@ -659,7 +657,7 @@ alternative,대안,noun,We offer a cheaper alternative.
 option,선택권,noun,Choose one delivery option.
 choice,선택,noun,The shop offers a wide choice of colors.
 preference,선호,noun,Please state your seating preference.
-review,후기,noun,The product has an excellent review.
+review,검토하다,verb,Please review the contract before signing it.
 testimonial,추천의 글,noun,Read a testimonial from a satisfied client.
 rating,평점,noun,The hotel has a five-star rating.
 survey,설문 조사,noun,Please complete our online survey.
@@ -667,7 +665,7 @@ questionnaire,설문지,noun,The questionnaire takes five minutes.
 poll,여론조사,noun,A recent poll shows rising interest.
 respondent,응답자,noun,Most respondent said they liked the design.
 focus group,표적 집단,noun,A focus group tested the new package.
-statistics,통계 자료,noun,Statistics show a rise in online sales.
+statistics,통계,noun,Statistics show a rise in online sales.
 figure,수치,noun,The sales figure was higher than expected.
 analysis,분석,noun,The analysis shows a clear trend.
 analyze,분석하다,verb,We analyze customer data every week.
@@ -774,19 +772,19 @@ capital,자본금,noun,The startup needs more capital.
 fund,기금,noun,The fund supports research.
 funding,자금 조달,noun,The project received government funding.
 invest,투자하다,verb,The firm will invest heavily in new machines.
-investment,투자금,noun,The investment paid off quickly.
+investment,투자,noun,The investment paid off quickly.
 investor,투자자,noun,The investor was pleased with the results.
 stock market,주식 시장,noun,The stock market closed higher today.
 share,주식,noun,He owns one share of the company.
 dividend,배당금,noun,The dividend was paid in cash.
-portfolio,투자 자산 목록,noun,Her portfolio includes stocks and bonds.
+portfolio,포트폴리오,noun,Her portfolio includes stocks and bonds.
 bond,채권,noun,The government issued a new bond.
 securities,증권,noun,The firm trades in securities.
 broker,중개인,noun,The broker advised us to sell.
 commission,수수료율,noun,Sales staff earn a commission on each sale.
 profit,이익,noun,The firm made a profit of two million dollars.
 profitable,수익성 있는,adj,The new branch is very profitable.
-revenue,매출액,noun,Revenue rose by eight percent.
+revenue,매출,noun,Revenue rose by eight percent.
 income,소득,noun,Her income increased after the promotion.
 earnings,수익,noun,Quarterly earnings beat expectations.
 gross,총계의,adj,Gross income was higher than expected.
@@ -800,7 +798,6 @@ overhead,간접비,noun,Overhead costs include rent and electricity.
 expense,지출,noun,Your travel expense is reimbursed in full.
 expenditure,경비,noun,Government expenditure rose sharply.
 spending,소비,noun,Consumer spending rose in December.
-outlay,초기 투자비,noun,The initial outlay was fifty thousand dollars.
 cost-effective,비용 효율적인,adj,Online ads are cost-effective.
 economize,절약하다,verb,We must economize on office supplies.
 save,저축하다,verb,She wants to save ten percent of her pay.
@@ -812,8 +809,8 @@ curtail,삭감하다,verb,The firm will curtail its travel budget.
 cut,줄이다,verb,The firm cut costs by ten percent.
 reduction,삭감,noun,A reduction in costs is expected.
 allocate,배분하다,verb,We will allocate funds to the research team.
-allocation,할당량,noun,The allocation for training was increased.
-appropriate,충당하다,verb,The board will appropriate funds for repairs.
+allocation,할당,noun,The allocation for training was increased.
+appropriate,적절한,adj,Please wear appropriate clothing to the interview.
 subsidy,보조금,noun,The government gives a subsidy to farmers.
 grant,지원금,noun,The school received a research grant.
 scholarship,장학금,noun,She won a full scholarship.
@@ -825,7 +822,7 @@ tariff,관세율,noun,The government raised the tariff on steel.
 customs,세관,noun,Customs inspected all the luggage.
 levy,징수하다,verb,The city will levy a tax on tourists.
 exempt,면제된,adj,Nonprofits are exempt from tax.
-exemption,면세,noun,The exemption applies to small firms.
+exemption,면제,noun,The exemption applies to small firms.
 filing,신고서 제출,noun,The filing deadline is in March.
 fiscal year,회계연도,noun,Our fiscal year begins in April.
 quarter,분기,noun,Sales improved in the third quarter.
@@ -848,7 +845,7 @@ graph,그래프,noun,The graph shows a steady rise.
 diagram,도해,noun,See the diagram on page ten.
 table,표,noun,Table two lists the sales figures.
 calculate,계산하다,verb,Calculate the total cost of the order.
-calculation,산출,noun,The calculation was checked twice.
+calculation,계산,noun,The calculation was checked twice.
 calculator,계산기,noun,Use the calculator to add the figures.
 compute,산출하다,verb,The software will compute the tax automatically.
 total,합계,noun,The total comes to two hundred dollars.
@@ -857,12 +854,12 @@ sum,총액,noun,A large sum was donated to the school.
 amount,금액,noun,The amount due is shown at the bottom.
 quantity,수량,noun,Please state the quantity you need.
 percentage,백분율,noun,A small percentage of customers complained.
-proportion,비율 비중,noun,A large proportion of staff work remotely.
+proportion,비중,noun,A large proportion of staff work remotely.
 ratio,비,noun,The ratio of men to women is even.
 average,평균,noun,The average price is ten dollars.
 median,중앙값,noun,The median salary is higher than last year.
-maximum,최대한도,noun,The maximum load is two tons.
-minimum,최소한도,noun,The minimum order is ten units.
+maximum,최대,noun,The maximum load is two tons.
+minimum,최소,noun,The minimum order is ten units.
 limit,한도,noun,The credit limit is five thousand dollars.
 ceiling,상한선,noun,The government set a price ceiling.
 threshold,한계점,noun,Sales passed the threshold of one million.
@@ -875,7 +872,7 @@ bid,입찰하다,verb,Three firms bid on the contract.
 tender,공개 입찰,noun,The tender closes on Friday.
 auction,경매,noun,The painting was sold at auction.
 appraise,감정하다,verb,An expert will appraise the antique.
-valuable,값비싼,adj,Please store valuable items in the safe.
+valuable,귀중한,adj,Please store valuable items in the safe.
 value,가치,noun,The value of the house has risen.
 worth,가치가 있는,adj,The painting is worth a million dollars.
 afford,여유가 되다,verb,We cannot afford a new office.
@@ -883,7 +880,7 @@ payable,지불해야 할,adj,The check is payable to the company.
 receivable,받을 수 있는,adj,Accounts receivable rose last quarter.
 prepaid,선불의,adj,Use a prepaid card to buy tickets.
 cashless,현금이 필요 없는,adj,The shop is moving toward a cashless system.
-secure,안전하게 하다,verb,Please secure your password.
+secure,확보하다,verb,We must secure funding for the project.
 fraud,사기 행위,noun,The bank detected fraud on the account.
 counterfeit,위조의,adj,The shop spotted a counterfeit bill.
 forge,위조하다,verb,He tried to forge a signature.
@@ -895,7 +892,7 @@ surcharge,추가 요금,noun,A fuel surcharge was added.
 waive,포기하다,verb,The bank will waive the annual fee.
 discounted,할인된,adj,Discounted tickets are on sale now.
 inflation,물가 상승,noun,Inflation affects the cost of living.
-recession,경기 후퇴,noun,The recession caused many layoffs.
+recession,불황,noun,The recession caused many layoffs.
 economy,경제,noun,The economy grew by two percent.
 economic,경제의,adj,Economic conditions are improving.
 economics,경제학,noun,She teaches economics at the university.
@@ -919,8 +916,8 @@ competitor,경쟁사,noun,Our competitor lowered its price.
 rival,경쟁 상대,noun,The rival competes for the same clients.
 compete,경쟁하다,verb,Small shops cannot compete with large chains.
 competition,경쟁,noun,Competition in the sector is fierce.
-contract,계약서,noun,Please sign the contract before Friday.
-agreement,합의서,noun,Both parties signed the agreement.
+contract,계약,noun,Please sign the contract before Friday.
+agreement,합의,noun,Both parties signed the agreement.
 agree,동의하다,verb,The two firms will agree on the price.
 clause,조항,noun,The clause limits the firm's liability.
 provision,규정 조항,noun,A new provision was added to the contract.
@@ -943,7 +940,7 @@ binding,구속력 있는,adj,The agreement is legally binding.
 enforce,집행하다,verb,The city will enforce the new parking rules.
 enforcement,시행,noun,Enforcement of the law begins in May.
 comply,준수하다,verb,All staff must comply with the safety rules.
-compliance,법규 준수,noun,Compliance with the regulations is mandatory.
+compliance,준수,noun,Compliance with the regulations is mandatory.
 conform,따르다,verb,The product must conform to safety standards.
 adhere,고수하다,verb,Staff must adhere to company policy.
 abide,지켜 따르다,verb,All visitors must abide by the rules.
@@ -952,7 +949,7 @@ violate,위반하다,verb,The firm may violate environmental laws.
 violation,위반 행위,noun,A violation of the rules may result in a fine.
 breach,불이행,noun,A breach of contract may lead to legal action.
 infringe,침해하다,verb,The product might infringe on our patent.
-infringement,저작권 침해,noun,The firm was sued for patent infringement.
+infringement,침해,noun,The firm was sued for patent infringement.
 prohibit,금지하다,verb,The rules prohibit smoking in the building.
 prohibition,금지령,noun,There is a prohibition on photography.
 forbid,못하게 하다,verb,Company policy will forbid accepting gifts.
@@ -962,12 +959,12 @@ restriction,제약,noun,There is no restriction on the use of the room.
 prevent,막다,verb,Good habits prevent accidents.
 permit,허가하다,verb,The rules do not permit smoking here.
 permission,허락,noun,You need permission to enter the site.
-license,면허증,noun,The firm has a license to sell alcohol.
+license,면허,noun,The firm has a license to sell alcohol.
 authorize,권한을 부여하다,verb,The manager will authorize the purchase.
 authorization,인가,noun,Authorization is needed to enter the lab.
 authority,당국,noun,The city authority closed the road.
 approve,승인하다,verb,The board will approve the merger.
-approval,승낙,noun,The plan awaits final approval.
+approval,승인,noun,The plan awaits final approval.
 consent,동의,noun,Parental consent is required.
 waiver,권리 포기서,noun,Please sign the waiver before the tour.
 exception,예외,noun,No exception will be made.
@@ -975,7 +972,7 @@ exclude,제외하다,verb,The price will exclude tax.
 exclusion,제외 사항,noun,See the exclusion listed on page two.
 include,포함하다,verb,The price will include breakfast.
 inclusive,포괄적인,adj,The price is inclusive of tax.
-apply,적용되다,verb,The discount will apply to all items.
+apply,지원하다,verb,Please apply for the position online.
 applicable,해당되는,adj,The fee is applicable to all members.
 application,신청서,noun,Please submit your application online.
 pursuant,~에 따른,adj,"Pursuant to the contract, payment is due now."
@@ -1068,28 +1065,28 @@ property,부동산,noun,The firm owns property in three cities.
 premises,구내,noun,Smoking is not allowed on the premises.
 ownership,소유권,noun,Ownership of the land was transferred.
 owner,소유주,noun,The owner of the shop is on vacation.
-title,소유권 증서,noun,The title deed was signed by both parties.
+title,직함,noun,Her job title is sales manager.
 deed,증서,noun,The deed was filed with the city.
-trust,신탁,noun,The money is held in a trust.
+trust,신뢰,noun,Customers place great trust in our brand.
 trustee,수탁자,noun,The trustee manages the fund.
 estate,재산,noun,The estate was divided among the heirs.
 heir,상속인,noun,The heir inherited the entire company.
 inherit,상속받다,verb,She will inherit the family business.
 safety,안전,noun,Safety is our top concern.
 safe,안전한,adj,The area is safe for visitors.
-unsafe,위험한,adj,The old bridge is unsafe.
+unsafe,안전하지 않은,adj,The old bridge is unsafe.
 hazard,위험 요소,noun,Wet floors are a safety hazard.
-hazardous,위험한 물질의,adj,Hazardous materials must be stored carefully.
+hazardous,유해한,adj,Hazardous materials must be stored carefully.
 risk,위험을 무릅쓰다,verb,Do not risk your health for work.
 danger,위험,noun,There is no danger to the public.
-dangerous,위험천만한,adj,The road is dangerous in winter.
+dangerous,위험한,adj,The road is dangerous in winter.
 caution,주의,noun,Use caution on wet floors.
 cautious,조심스러운,adj,Be cautious when handling glass.
-warning,경고문,noun,A warning sign was posted at the door.
+warning,경고,noun,A warning sign was posted at the door.
 warn,경고하다,verb,The manager will warn staff about the delay.
 alert,경계 태세의,adj,Drivers must stay alert at all times.
 alarm,경보,noun,The fire alarm went off at noon.
-emergency,비상사태,noun,Call this number in an emergency.
+emergency,비상,noun,Call this number in an emergency.
 accident,사고,noun,No one was hurt in the accident.
 injury,부상,noun,The worker suffered a minor injury.
 injure,다치게 하다,verb,Careless lifting can injure your back.
@@ -1103,12 +1100,12 @@ extinguisher,소화기,noun,A fire extinguisher is by the door.
 helmet,안전모,noun,Wear a helmet on the construction site.
 goggles,보안경,noun,Wear goggles when using the machine.
 protective,보호용의,adj,Wear protective clothing at all times.
-protect,지키다,verb,The fence will protect the garden.
+protect,보호하다,verb,The fence will protect the garden.
 protection,보호,noun,The cream gives protection from the sun.
 shield,가리다,verb,The glass will shield workers from sparks.
 precaution,예방 조치,noun,Take a precaution against fire.
 preventive,예방의,adj,Preventive maintenance saves money.
-prevention,예방법,noun,Fire prevention is everyone's duty.
+prevention,예방,noun,Fire prevention is everyone's duty.
 surveillance,감시,noun,Surveillance cameras cover the parking lot.
 patrol,순찰하다,verb,Guards patrol the building at night.
 guard,경비원,noun,The guard checked every visitor's badge.
@@ -1117,7 +1114,7 @@ lock,잠그다,verb,Please lock the door when you leave.
 unlock,열다,verb,The guard will unlock the gate at seven.
 password,비밀번호,noun,Change your password every month.
 username,사용자 이름,noun,Enter your username and password.
-login,접속,noun,Your login has expired.
+login,로그인,noun,Your login has expired.
 access,접근하다,verb,Only staff can access the records.
 accessible,접근 가능한,adj,The building is accessible to wheelchairs.
 restricted,출입 제한된,adj,This area is restricted to authorized staff.
@@ -1178,7 +1175,7 @@ maintenance,유지 보수,noun,Maintenance is scheduled for Sunday.
 overhaul,정비하다,verb,The team will overhaul the engine completely.
 malfunction,오작동,noun,A malfunction caused the delay.
 breakdown,고장,noun,A breakdown stopped the line for an hour.
-fault,과실,noun,A fault in the wiring caused the fire.
+fault,잘못,noun,The accident was not his fault.
 failure,실패,noun,Power failure delayed the production.
 shortage,부족,noun,There is a shortage of skilled workers.
 scarce,부족한,adj,Skilled workers are scarce.
@@ -1210,7 +1207,6 @@ procure,조달하다,verb,The office will procure new computers.
 procurement,조달,noun,Procurement of supplies takes two weeks.
 supplier,공급업자,noun,The supplier delivered the parts on time.
 provider,제공자,noun,The provider offers fast internet.
-purveyor,납품업자,noun,The purveyor supplies the hotel with fresh fish.
 provide,제공하다,verb,The firm will provide free training.
 furnish,갖추어 주다,verb,The hotel will furnish each room with a desk.
 equip,장비를 갖추다,verb,The firm will equip the lab with new tools.
@@ -1221,11 +1217,10 @@ reorder,재주문하다,verb,Reorder printer paper when the stock is low.
 backorder,재고 부족 주문,noun,The item is on backorder until May.
 placement,배치,noun,The placement of the shelves was changed.
 requisition,요청서,noun,Submit a requisition for new supplies.
-catalogue,목록을 만들다,verb,The staff will catalogue all the new books.
 itemize,항목별로 나누다,verb,Please itemize all the expenses.
 warehouse,창고,noun,The goods are stored in the warehouse.
 storage,보관,noun,Storage space is limited.
-store,저장하다,verb,Store the files in a safe place.
+store,매장,noun,The store opens at nine every morning.
 depot,보관소,noun,Trucks leave the depot at six.
 stockroom,물품 보관실,noun,The stockroom is on the second floor.
 pallet,화물 깔판,noun,The goods are stacked on a pallet.
@@ -1248,8 +1243,6 @@ shipper,화주,noun,The shipper insured the goods.
 deliver,배달하다,verb,We deliver to all regions.
 delivery,배달,noun,Delivery takes three to five days.
 dispatch,급파하다,verb,The firm will dispatch a technician to the site.
-consign,위탁하다,verb,The firm will consign the goods to a local dealer.
-consignment,위탁 화물,noun,The consignment arrived damaged.
 export,수출하다,verb,The firm will export cars to Europe.
 import,수입하다,verb,We import coffee from Brazil.
 exporter,수출업자,noun,The exporter ships goods to ten countries.
@@ -1265,12 +1258,11 @@ local,지역의,adj,We buy from local farmers.
 regional,지방의,adj,The regional manager visited the office.
 logistics,물류,noun,She manages logistics for the firm.
 transport,수송하다,verb,Trucks transport goods across the country.
-transportation,운송 수단,noun,Public transportation is convenient here.
+transportation,교통수단,noun,Public transportation is convenient here.
 haul,운반하다,verb,The truck can haul heavy loads.
 route,경로,noun,The shortest route is through the tunnel.
 tracking,추적,noun,Use the tracking number to check your parcel.
 track,추적하다,verb,You can track your order online.
-trace,추적하여 찾아내다,verb,The staff will trace the lost package.
 express,속달의,adj,Express delivery costs twenty dollars extra.
 overnight,하룻밤 사이의,adj,Overnight delivery is available.
 same-day,당일의,adj,Same-day delivery is available in the city.
@@ -1281,8 +1273,8 @@ classify,구분하다,verb,We classify the goods by size.
 weigh,무게를 재다,verb,Please weigh the parcel at the counter.
 weight,무게,noun,The weight limit is twenty kilograms.
 measure,측정하다,verb,Measure the length of the table.
-measurement,치수,noun,Please send me the measurement.
-dimension,크기,noun,The dimension of the box is listed here.
+measurement,측정,noun,Please send me the measurement.
+dimension,치수,noun,The dimension of the box is listed here.
 capacity,수용 능력,noun,The hall has a capacity of five hundred.
 volume,양,noun,The volume of orders has doubled.
 length,길이,noun,The length of the table is two meters.
@@ -1316,7 +1308,7 @@ outlet,콘센트,noun,There is an outlet near the window.
 cable,케이블,noun,Connect the cable to the port.
 plug,꽂다,verb,Plug the printer into the outlet.
 switch,스위치,noun,Turn off the switch before leaving.
-button,단추,noun,Press the green button to start.
+button,버튼,noun,Press the green button to start.
 lever,레버,noun,Pull the lever to open the gate.
 valve,밸브,noun,Close the valve before repairs.
 pipe,배관,noun,The pipe burst during the winter.
@@ -1331,7 +1323,6 @@ hammer,망치,noun,Hand me the hammer.
 wrench,렌치,noun,The mechanic used a wrench.
 drill,드릴,noun,He used a drill to make a hole.
 ladder,사다리,noun,Use a ladder to reach the shelf.
-scaffold,비계,noun,Workers stood on the scaffold.
 crane,크레인,noun,A crane lifted the steel beams.
 forklift,지게차,noun,The forklift moved the pallets.
 truck,트럭,noun,A truck delivered the supplies.
@@ -1342,7 +1333,7 @@ travel,여행하다,verb,She will travel abroad twice a year.
 traveler,여행자,noun,Each traveler must show a passport.
 tourist,관광객,noun,Each tourist received a free map of the old market.
 tourism,관광업,noun,Tourism is the city's main industry.
-trip,짧은 여행,noun,The trip to the factory takes an hour.
+trip,여행,noun,The trip to the factory takes an hour.
 journey,여정,noun,The journey took nearly ten hours.
 tour,견학,noun,The tour of the factory starts at ten.
 excursion,소풍,noun,An excursion to the island is planned.
@@ -1366,14 +1357,14 @@ gate,탑승구,noun,Proceed to gate twelve.
 carrier,운송 회사,noun,The carrier lost my luggage.
 aircraft,항공기,noun,The aircraft landed safely.
 pilot,조종사,noun,The pilot welcomed the passengers.
-crew,승무원들,noun,The cabin crew served meals.
+crew,승무원,noun,The cabin crew served meals.
 attendant,안내원,noun,A flight attendant helped us with our bags.
 turbulence,난기류,noun,The plane hit some turbulence.
 layover,경유 대기,noun,We had a four-hour layover in Dubai.
 stopover,중간 기착,noun,The flight has a stopover in Seoul.
 connection,연결편,noun,I missed my connection in Chicago.
 transit,환승,noun,Transit passengers must stay in the lounge.
-direct,직행의,adj,There is a direct flight to London.
+direct,직접적인,adj,Please give me a direct answer.
 nonstop,직항의,adj,It is a nonstop flight to Tokyo.
 one-way,편도의,adj,I bought a one-way ticket.
 round-trip,왕복의,adj,A round-trip ticket costs three hundred dollars.
@@ -1405,12 +1396,11 @@ inn,여관,noun,The inn is small but comfortable.
 hostel,호스텔,noun,Students often stay in a hostel.
 resort,휴양지,noun,The resort has a private beach.
 guesthouse,게스트하우스,noun,The guesthouse has five rooms.
-lodge,오두막 숙소,noun,The ski lodge is open all winter.
 suite,스위트룸,noun,The firm booked a suite for the director.
 single room,1인실,noun,I would like a single room for two nights.
 double room,2인실,noun,A double room costs eighty dollars.
 amenity,편의 시설,noun,Free parking is the best amenity of the hotel.
-concierge,안내 담당 직원,noun,The concierge booked a taxi for us.
+concierge,컨시어지,noun,The concierge booked a taxi for us.
 bellhop,벨보이,noun,The bellhop carried our bags.
 housekeeping,객실 관리,noun,Housekeeping cleans the rooms daily.
 valet,발레파킹 직원,noun,The valet parked our car.
@@ -1429,7 +1419,7 @@ monument,기념물,noun,The monument stands in the main square.
 museum,박물관,noun,The museum is closed on Mondays.
 gallery,미술관,noun,The gallery displays modern art.
 theater,극장,noun,The theater seats eight hundred people.
-concert,음악회,noun,The concert starts at eight.
+concert,콘서트,noun,The concert starts at eight.
 festival,축제,noun,The city hosts a film festival every year.
 parade,행진,noun,The parade passes the town hall.
 fireworks,불꽃놀이,noun,Fireworks lit up the sky.
@@ -1469,14 +1459,14 @@ train,열차,noun,The train arrives at platform two.
 platform,승강장,noun,The train leaves from platform three.
 station,역,noun,The station is a five-minute walk away.
 taxi,택시,noun,Please call a taxi for the guest.
-cab,택시 차량,noun,A cab was waiting at the door.
+cab,택시,noun,A cab was waiting at the door.
 ferry,여객선,noun,The ferry crosses the bay hourly.
 vessel,선박,noun,The vessel left the port at dawn.
 harbor,항구,noun,Ships are anchored in the harbor.
 port,항만,noun,The port handles millions of tons of cargo.
 dock,부두,noun,The ship arrived at the dock.
 pier,부두 잔교,noun,We walked along the pier.
-rental,임차,noun,A car rental costs fifty dollars a day.
+rental,대여,noun,A car rental costs fifty dollars a day.
 mileage,주행 거리,noun,The car has low mileage.
 speed limit,제한 속도,noun,The speed limit here is sixty kilometers.
 restaurant,식당,noun,The restaurant serves local dishes.
@@ -1511,7 +1501,7 @@ vegetarian,채식주의자,noun,The restaurant has a vegetarian menu.
 allergy,알레르기,noun,Please tell us about any food allergy.
 tip,팁,noun,A tip is included in the bill.
 gratuity,봉사료,noun,A gratuity is added to large groups.
-catering,출장 음식 서비스,noun,The catering was provided by a local firm.
+catering,케이터링,noun,The catering was provided by a local firm.
 caterer,음식 공급업자,noun,The caterer prepared lunch for two hundred.
 cater,음식을 공급하다,verb,The firm will cater the staff party.
 banquet,연회,noun,The annual banquet is held in December.
@@ -1528,7 +1518,7 @@ tray,쟁반,noun,The waiter carried a tray of glasses.
 computer,컴퓨터,noun,The computer starts in ten seconds.
 laptop,노트북,noun,Please bring your laptop to the meeting.
 tablet,태블릿,noun,She read the report on her tablet.
-keyboard,자판,noun,The keyboard is wireless.
+keyboard,키보드,noun,The keyboard is wireless.
 monitor,모니터,noun,Place the monitor at eye level.
 mouse,마우스,noun,The mouse needs a new battery.
 hardware,하드웨어,noun,The firm sells computer hardware.
@@ -1537,8 +1527,8 @@ program,프로그램,noun,The program runs on any computer.
 install,설치하다,verb,A technician will install the new system.
 installation,설치 작업,noun,Installation takes about two hours.
 uninstall,프로그램을 지우다,verb,Uninstall the old version first.
-download,내려받다,verb,You can download the form from our website.
-upload,올리다,verb,Please upload your photo to the site.
+download,다운로드하다,verb,You can download the form from our website.
+upload,업로드하다,verb,Please upload your photo to the site.
 online,온라인의,adj,You can pay online.
 offline,오프라인의,adj,The system was offline for an hour.
 internet,인터넷,noun,The internet connection is slow.
@@ -1548,8 +1538,8 @@ browser,웹 브라우저,noun,Open your browser and go to our site.
 link,링크,noun,Click the link to see the details.
 click,클릭하다,verb,Click the icon to open the file.
 icon,아이콘,noun,Double-click the icon to start.
-interface,사용자 환경,noun,The interface is simple and clear.
-system,체계,noun,The new system saves a lot of time.
+interface,인터페이스,noun,The interface is simple and clear.
+system,시스템,noun,The new system saves a lot of time.
 wireless,무선의,adj,Wireless internet is available in the lobby.
 wifi,와이파이,noun,The wifi password is on the card.
 bandwidth,대역폭,noun,The video call needs more bandwidth.
@@ -1571,7 +1561,7 @@ electronic,전자의,adj,Electronic devices must be switched off.
 automatic,자동의,adj,The door is automatic.
 automate,자동화하다,verb,We will automate the billing process.
 automatically,자동으로,adv,The software saves your work automatically.
-technology,기술 분야,noun,The firm invests in new technology.
+technology,과학 기술,noun,The firm invests in new technology.
 technical,기술적인,adj,Call technical support for help.
 technique,기법,noun,The firm uses a new technique to cut costs.
 engineer,엔지니어,noun,The engineer inspected the bridge.
@@ -1580,7 +1570,7 @@ developer,개발자,noun,The developer fixed the error.
 develop,개발하다,verb,The firm will develop a new engine.
 development,개발,noun,The development of the app took a year.
 design,설계하다,verb,She will design the firm's new logo.
-designer,설계자,noun,The designer showed us three samples.
+designer,디자이너,noun,The designer showed us three samples.
 blueprint,청사진,noun,The blueprint shows the layout of the factory.
 layout,배치도,noun,The layout of the office was changed.
 plan,계획하다,verb,We plan to open a new branch.
@@ -1646,10 +1636,10 @@ staircase,계단,noun,The staircase leads to the second floor.
 stairs,층계,noun,Take the stairs to the third floor.
 escalator,에스컬레이터,noun,The escalator is out of order.
 ramp,경사로,noun,A ramp was built for wheelchairs.
-hallway,현관,noun,Boots were left in the hallway.
+hallway,복도,noun,Boots were left in the hallway.
 room,방,noun,The room is available for rent.
 restroom,화장실,noun,The restroom is down the hall.
-utility,공공 설비,noun,Utility costs are included in the rent.
+utility,공공요금,noun,Utility costs are included in the rent.
 plumbing,배관 설비,noun,The plumbing needs to be repaired.
 plumber,배관공,noun,A plumber fixed the leak.
 electrician,전기 기사,noun,The electrician checked the wiring.
@@ -1663,7 +1653,7 @@ lighting,조명,noun,The lighting in the hall is dim.
 lamp,전등,noun,There is a lamp on every desk.
 bulb,전구,noun,The bulb needs to be replaced.
 leak,새다,verb,The roof may leak when it rains.
-crack,금,noun,There is a crack in the wall.
+crack,균열,noun,There is a crack in the wall.
 broken,고장 난,adj,The elevator is broken.
 worn,닳은,adj,The carpet is badly worn.
 rusty,녹슨,adj,The gate is old and rusty.
@@ -1684,7 +1674,7 @@ move,이사하다,verb,The firm will move to a larger office.
 real estate,부동산업,noun,She works in real estate.
 realtor,부동산 중개인,noun,The realtor showed us three apartments.
 apartment,아파트,noun,The apartment has two bedrooms.
-condominium,분양 아파트,noun,The condominium has a swimming pool.
+condominium,콘도,noun,The condominium has a swimming pool.
 residence,주거지,noun,His residence is near the station.
 resident,거주자,noun,Each resident must show a card.
 residential,주거의,adj,It is a quiet residential area.
@@ -1746,7 +1736,7 @@ ache,쑤시다,verb,My back may ache after a long flight.
 wound,상처,noun,The nurse cleaned the wound.
 fracture,골절,noun,The X-ray showed a fracture.
 treat,대하다,verb,Please treat every customer with respect.
-treatment,치료법,noun,The treatment lasts for six weeks.
+treatment,치료,noun,The treatment lasts for six weeks.
 cure,치료하다,verb,Rest will cure the cold.
 heal,낫다,verb,The wound will heal in a week.
 diagnose,진단하다,verb,The doctor will diagnose the allergy.
@@ -1801,7 +1791,7 @@ learner,학습자,noun,The course is designed for a beginner learner.
 teach,가르치다,verb,She will teach business English.
 tutor,개인 교사,noun,He works as a math tutor.
 coach,코치,noun,The coach trained the sales team.
-campus,교정,noun,The campus is a ten-minute walk from here.
+campus,캠퍼스,noun,The campus is a ten-minute walk from here.
 library,도서관,noun,The library is open until ten.
 librarian,사서,noun,The librarian helped me find the book.
 textbook,교재,noun,The textbook is available at the bookstore.
@@ -1810,7 +1800,7 @@ vocabulary,어휘,noun,Learn ten new vocabulary words daily.
 grammar,문법,noun,The test covers grammar and reading.
 language,언어,noun,She speaks one foreign language.
 translate,번역하다,verb,Please translate the report into English.
-translation,번역본,noun,The translation was done by a professional.
+translation,번역,noun,The translation was done by a professional.
 translator,번역가,noun,The translator worked on the manual.
 interpreter,통역사,noun,An interpreter helped during the meeting.
 bilingual,이중 언어를 쓰는,adj,We need a bilingual receptionist.
@@ -1822,7 +1812,7 @@ environment,환경,noun,The firm cares about the environment.
 environmental,환경의,adj,The firm follows environmental rules.
 nature,자연,noun,The park is a haven for nature lovers.
 natural,천연의,adj,The product is made from natural materials.
-pollution,공해,noun,Air pollution is a serious problem.
+pollution,오염,noun,Air pollution is a serious problem.
 pollute,오염시키다,verb,The factory may pollute the river.
 emission,배출,noun,The firm cut its carbon emission.
 carbon,탄소,noun,The firm aims to reduce carbon output.
@@ -1937,7 +1927,7 @@ cite,인용하다,verb,The report will cite several studies.
 combine,결합하다,verb,The two firms will combine their resources.
 commit,전념하다,verb,The firm will commit to reducing waste.
 commitment,헌신,noun,Her commitment to quality is clear.
-compile,엮다,verb,The assistant will compile the data.
+compile,취합하다,verb,The assistant will compile the data.
 complicated,복잡한,adj,The process is too complicated.
 comprehensive,종합적인,adj,The report gives a comprehensive overview.
 concentrate,집중하다,verb,Please concentrate on the task.
@@ -1949,7 +1939,7 @@ consequence,여파,noun,The consequence of the delay was costly.
 consequently,따라서,adv,The shop closed early and consequently lost sales.
 conservative,보수적인,adj,The firm takes a conservative approach.
 consider,고려하다,verb,We will consider a new location.
-consideration,숙고,noun,Thank you for your consideration.
+consideration,고려,noun,Thank you for your consideration.
 considerably,상당히,adv,Sales improved considerably.
 consist,구성되다,verb,The team will consist of six members.
 consistent,일관된,adj,The quality has been consistent.
@@ -1958,12 +1948,12 @@ constantly,끊임없이,adv,Prices are constantly changing.
 consult,상담하다,verb,Consult your manager before you go.
 consume,소비하다,verb,The machine will consume a lot of power.
 contain,담고 있다,verb,The box will contain twelve cups.
-content,내용물,noun,The content of the report is confidential.
+content,내용,noun,The content of the report is confidential.
 context,문맥,noun,The word must be read in context.
 contrary,반대의,adj,"Contrary to reports, sales were strong."
 contrast,대조,noun,The contrast between the two is clear.
 contribute,기여하다,verb,Everyone should contribute to the project.
-contribution,기부금,noun,Thank you for your contribution.
+contribution,기여,noun,Thank you for your contribution.
 control,통제하다,verb,The firm will control the whole process.
 convince,납득시키다,verb,She will convince the board to approve.
 courage,용기,noun,It takes courage to speak up.
@@ -1977,7 +1967,7 @@ cumulative,누적되는,adj,The cumulative profit exceeded a million.
 curious,궁금한,adj,Customers were curious about the product.
 current,현재의,adj,The current price is ten dollars.
 decide,결정하다,verb,The board will decide to expand.
-decision,결정사항,noun,The decision was made yesterday.
+decision,결정,noun,The decision was made yesterday.
 decisive,단호한,adj,The manager made a decisive move.
 dedicate,바치다,verb,She will dedicate her life to teaching.
 define,정의하다,verb,The contract will define each party's role.
@@ -2001,7 +1991,7 @@ differ,다르다,verb,The two plans differ in cost.
 difference,차이,noun,There is a big difference in price.
 different,다른,adj,We offer a different product line.
 difficult,어려운,adj,The task was difficult.
-difficulty,곤란,noun,We had difficulty finding the place.
+difficulty,어려움,noun,We had difficulty finding the place.
 diminish,줄어들다,verb,Interest in the product may diminish.
 directly,직접적으로,adv,Please contact the manager directly.
 disappoint,실망시키다,verb,Poor service will disappoint customers.
@@ -2010,7 +2000,7 @@ discourage,낙담시키다,verb,Failure should not discourage you.
 distinct,뚜렷한,adj,The two products have distinct features.
 distinguish,구별하다,verb,It is hard to distinguish the two models.
 diverse,다양한,adj,The firm has a diverse workforce.
-diversity,다양성 존중,noun,The firm values diversity.
+diversity,다양성,noun,The firm values diversity.
 doubt,의심하다,verb,I doubt that he will arrive on time.
 dramatically,극적으로,adv,Prices dropped dramatically.
 dynamic,활기찬,adj,The dynamic team won the award.
@@ -2021,7 +2011,7 @@ effectively,효과적으로,adv,Use your time effectively.
 effort,노력,noun,Thank you for your hard effort.
 elaborate,자세히 설명하다,verb,Could you elaborate on your idea?
 eliminate,없애다,verb,We aim to eliminate waste.
-emerge,부상하다,verb,New trends may emerge next year.
+emerge,드러나다,verb,New trends may emerge next year.
 emphasis,강조,noun,The firm places emphasis on quality.
 emphasize,강조하다,verb,The speaker will emphasize the need for safety.
 enable,가능하게 하다,verb,The software will enable staff to work remotely.
@@ -2039,7 +2029,7 @@ evident,명백한,adj,The problem became evident quickly.
 exact,딱 맞는,adj,Please give me the exact time.
 exactly,정확하게,adv,The train left exactly at noon.
 excellent,훌륭한,adj,She did an excellent job.
-exceptional,뛰어난 수준의,adj,The service was exceptional.
+exceptional,탁월한,adj,The service was exceptional.
 exceptionally,이례적으로,adv,The weather was exceptionally cold.
 excessive,지나친,adj,Excessive noise bothers the neighbors.
 exhaust,소진시키다,verb,The long trip will exhaust him.
@@ -2064,7 +2054,7 @@ feasible,실현 가능한,adj,The plan is feasible.
 fortunately,다행히,adv,"Fortunately, no one was hurt."
 fundamental,근본적인,adj,The fundamental problem is a lack of funds.
 furthermore,게다가,adv,"Furthermore, the price is reasonable."
-generate,만들어 내다,verb,The campaign will generate strong interest.
+generate,창출하다,verb,The campaign will generate strong interest.
 generous,너그러운,adj,The firm made a generous donation.
 genuine,진짜의,adj,The shop sells genuine leather goods.
 genuinely,진정으로,adv,We are genuinely sorry for the error.
@@ -2092,10 +2082,10 @@ indication,징후,noun,There is no indication of a problem.
 individual,개인,noun,Each individual received a gift.
 individually,개별적으로,adv,Each item is wrapped individually.
 influential,영향력 있는,adj,She is an influential leader.
-informative,유익한 정보를 주는,adj,The seminar was very informative.
+informative,정보가 풍부한,adj,The seminar was very informative.
 initial,초기의,adj,The initial cost is high.
 initially,처음에는,adv,"Initially, the plan seemed simple."
-insist,고집하다,verb,The client will insist on a refund.
+insist,주장하다,verb,The client will insist on a refund.
 inspire,영감을 주다,verb,Her speech will inspire the staff.
 instead,대신에,adv,Take the bus instead of a taxi.
 intend,의도하다,verb,We intend to open a new store.
@@ -2126,11 +2116,11 @@ minor,사소한,adj,A minor error was found in the report.
 minority,소수,noun,Only a minority of staff objected.
 meanwhile,그동안에,adv,"Meanwhile, the work continued."
 moderate,보통의,adj,The firm expects moderate growth.
-moreover,게다가 또한,adv,"Moreover, the price is low."
+moreover,더욱이,adv,"Moreover, the price is low."
 mutual,상호의,adj,The two firms have a mutual interest.
 namely,즉,adv,"Two items, namely a desk and a chair, were damaged."
 necessary,필요한,adj,It is necessary to book early.
-necessity,필수품,noun,Water is a necessity.
+necessity,필요성,noun,Water is a necessity.
 neglect,소홀히 하다,verb,Do not neglect your duties.
 nevertheless,그럼에도 불구하고,adv,"The weather was bad; nevertheless, we went."
 nonetheless,그래도,adv,"The task was hard; nonetheless, she finished."
@@ -2138,7 +2128,7 @@ notable,주목할 만한,adj,The firm made a notable profit.
 noticeable,눈에 띄는,adj,There was a noticeable improvement.
 numerous,수많은,adj,Numerous staff members attended.
 obtain,얻다,verb,You can obtain a permit at city hall.
-obvious,분명한 사실의,adj,The solution is obvious.
+obvious,명백한,adj,The solution is obvious.
 obviously,명백하게,adv,"Obviously, we need more staff."
 occasion,경우,noun,"On this occasion, the manager attended."
 occasionally,가끔,adv,He occasionally works from home.
@@ -2185,7 +2175,7 @@ prominent,저명한,adj,He is a prominent lawyer.
 promise,약속하다,verb,We promise to deliver on time.
 promising,전도유망한,adj,She is a promising young designer.
 properly,제대로,adv,The machine is not working properly.
-proper,적절한,adj,Use the proper tool for this job.
+proper,알맞은,adj,Use the proper tool for this job.
 prospect,전망,noun,The prospect of growth is good.
 prospective,장래의,adj,Prospective clients visited the office.
 provided,~라는 조건으로,conj,You may go provided that you finish.
@@ -2246,7 +2236,7 @@ supplement,보완하다,verb,She will supplement her income with part-time work.
 supportive,지지하는,adj,The manager is very supportive.
 suppose,~라고 생각해 보다,verb,Suppose we change the plan.
 supposedly,추정상,adv,The store is supposedly open now.
-surely,확실히 ~할 것이다,adv,The plan will surely succeed.
+surely,틀림없이,adv,The plan will surely succeed.
 surprisingly,놀랍게도,adv,"Surprisingly, the exam was easy."
 suspect,짐작하다,verb,I suspect the report has errors.
 sustained,지속적인,adj,The firm achieved sustained growth.
@@ -2254,7 +2244,7 @@ tend,~하는 경향이 있다,verb,Prices tend to rise in winter.
 tendency,추세,noun,There is a tendency to overspend.
 thorough,철저한,adj,The inspection was thorough.
 thoroughly,철저히,adv,Please read the manual thoroughly.
-thus,따라서 그렇게,adv,"Costs fell, and thus profits rose."
+thus,그러므로,adv,"Costs fell, and thus profits rose."
 tightly,단단히,adv,The box was tightly sealed.
 tolerate,참다,verb,We cannot tolerate late payments.
 totally,완전히,adv,The idea is totally new.
@@ -2279,12 +2269,12 @@ upcoming,다가오는,adj,The upcoming event is free.
 urge,촉구하다,verb,We urge you to book early.
 usage,사용법,noun,Usage instructions are on the label.
 utilize,활용하다,verb,We utilize local resources.
-vary,다양하다,verb,Prices vary by region.
+vary,달라지다,verb,Prices vary by region.
 various,여러 가지의,adj,The shop sells various items.
 vast,방대한,adj,The firm has a vast network.
 virtually,사실상,adv,Virtually all staff attended.
 visible,눈에 보이는,adj,The sign is clearly visible.
-vital,생명과 직결된,adj,Feedback is vital to improvement.
+vital,필수적인,adj,Feedback is vital to improvement.
 whereas,반면에,conj,"Sales rose, whereas profits fell."
 whether,~인지 아닌지,conj,Let me know whether you can attend.
 widely,널리,adv,The product is widely available.
