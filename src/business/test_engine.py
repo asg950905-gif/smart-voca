@@ -19,6 +19,25 @@ MODES = ('한->영', '영->한', '혼합')
 FORMATS = ('단답형', '4지선다형', 'OX형', '빈칸형', '혼합')
 MIN_WORDS_FOR_CHOICE = 4  # 4지선다형은 오답 보기를 만들 단어가 최소 4개 필요
 
+_BRACKETED = re.compile(r'[(\[（［][^)\]）］]*[)\]）］]')   # (법을) [예] 같은 보충 설명
+
+
+def normalize_answer(text: str) -> str:
+    """채점용 정규화: 괄호 안 설명, 물결표(~), 모든 공백을 지우고 소문자로 만든다.
+    예) '(법을) 지키다' 와 '지키다' 와 '법을지키다' 중 괄호 밖 글자만 같으면 같은 답으로 본다."""
+    text = _BRACKETED.sub('', text or '')
+    return re.sub(r'[~～\s]+', '', text).lower()
+
+
+def is_same_answer(user_answer: str, correct_answer: str) -> bool:
+    user, correct = normalize_answer(user_answer), normalize_answer(correct_answer)
+    if not correct:                   # 정답이 전부 괄호 같은 기호라 비면 원문끼리 비교 (빈 입력은 오답)
+        raw_user = (user_answer or '').strip().lower()
+        return bool(raw_user) and raw_user == (correct_answer or '').strip().lower()
+    if not user:                      # 빈 입력(공백·물결표만 입력)은 항상 오답
+        return False
+    return user == correct
+
 
 class TestError(Exception):
     """사용자에게 보여줘도 되는 시험 오류"""
@@ -156,7 +175,7 @@ class TestEngine:
             raise TestError('이미 모든 문제를 풀었습니다.')
         p = state['problems'][idx]
         user_answer = (answer or '').strip()
-        is_correct = user_answer.lower() == p['correct_answer'].strip().lower()
+        is_correct = is_same_answer(user_answer, p['correct_answer'])   # 띄어쓰기·괄호·~ 는 무시
         state['results'].append({'word_id': p['word_id'], 'question': p['question'],
                                  'user_answer': user_answer, 'correct_answer': p['correct_answer'],
                                  'is_correct': is_correct})

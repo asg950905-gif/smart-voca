@@ -366,3 +366,60 @@ def test_blank_answer_is_graded_case_insensitively(app):
     problems = _json.loads(state_json)['problems']
     blank = next(pr for pr in problems if pr['format'] == '빈칸형')
     assert blank['correct_answer'] == 'courage' and blank['question'] == 'It takes _____ to speak up.'
+
+
+# ===================== 단답형 채점: 띄어쓰기 · 괄호 · ~ 무시 (2026-11-13) =====================
+from src.business.test_engine import is_same_answer, normalize_answer  # noqa: E402
+
+
+@pytest.mark.parametrize('user, correct', [
+    ('지키다', '(법을) 지키다'),                    # 괄호 안 설명은 입력하지 않아도 정답
+    ('(법을) 지키다', '(법을) 지키다'),             # 그대로 입력해도 정답
+    ('(법을)지키다', '(법을) 지키다'),              # 띄어쓰기 달라도 정답
+    ('지켜따르다', '지켜 따르다'),                  # 붙여 써도 정답
+    ('에 따른', '~에 따른'),                        # ~ 는 입력하지 않아도 정답
+    ('에따른', '~에 따른'),
+    ('~에따른', '~에 따른'),
+    ('손익분기에도달하다', '손익분기에 도달하다'),
+    ('  지키다  ', '지키다'),                       # 앞뒤 공백
+    ('Check In', 'check in'),                       # 영어: 대소문자·띄어쓰기 무시
+    ('checkin', 'check in'),
+    ('지키다', '（법을） 지키다'),                  # 전각 괄호
+    ('(법을)', '(법을)'),                           # 정답이 전부 괄호면 원문끼리 비교
+])
+def test_short_answer_ignores_spacing_brackets_and_tilde(user, correct):
+    assert is_same_answer(user, correct)
+
+
+@pytest.mark.parametrize('user, correct', [
+    ('', '지키다'),                                 # 빈 입력은 오답
+    ('   ', '지키다'),
+    ('~', '~에 따른'),                              # ~ 만 입력해도 오답 (정규화하면 빈 문자열끼리 같아지는 허점 방지)
+    ('()', '(법을)'),                               # 정답이 전부 괄호인데 다른 글자
+    ('지켜다', '(법을) 지키다'),                    # 글자가 다르면 오답
+    ('따르다', '지켜 따르다'),
+    ('에 따라', '~에 따른'),
+    ('check', 'check in'),
+])
+def test_short_answer_still_rejects_wrong_answers(user, correct):
+    assert not is_same_answer(user, correct)
+
+
+def test_normalize_answer_removes_only_noise():
+    assert normalize_answer(' (법을) ~지켜  따르다 ') == '지켜따르다'
+    assert normalize_answer(None) == ''
+
+
+def test_short_answer_grading_via_api_accepts_spacing_and_brackets(app):
+    app.words.add_word('observe', '(법을) 지키다', 'verb', 'Please observe the rules.')
+    app.words.add_word('pursuant', '~에 따른', 'adj', 'Pursuant to the contract, pay now.')
+    client = make_user(app)
+    api(client, 'post', '/api/test/start', json={'num_problems': 10, 'mode': '영->한', 'format': '단답형'})
+    import json as _json
+    problems = _json.loads(app.db.scalar("SELECT state_json FROM test_sessions", default='{}'))['problems']
+    assert len(problems) == 10
+    typed = {'(법을) 지키다': '지키다', '~에 따른': '에따른'}     # 괄호·~·띄어쓰기를 빼고 입력
+    for pr in problems:
+        answer = typed.get(pr['correct_answer'], pr['correct_answer'])
+        res = api(client, 'post', '/api/test/answer', json={'answer': answer}).get_json()
+        assert res['is_correct'] is True, (pr['correct_answer'], answer)
