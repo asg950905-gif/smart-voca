@@ -11,6 +11,7 @@
             $('daily_target').max = s.max_daily_target;
             $('target-hint').textContent = `1 ~ ${s.max_daily_target}개`;
             document.querySelector(`input[name="theme"][value="${s.theme}"]`).checked = true;
+            $('auto_speak').checked = !!s.auto_speak;
         } catch (e) { toast(e.message, 'error'); }
     }
 
@@ -18,7 +19,8 @@
         e.preventDefault();
         const theme = document.querySelector('input[name="theme"]:checked').value;
         try {
-            await api('/api/settings', { method: 'POST', body: { daily_target: Number($('daily_target').value), theme } });
+            await api('/api/settings', { method: 'POST', body: {
+                daily_target: Number($('daily_target').value), theme, auto_speak: $('auto_speak').checked } });
             document.documentElement.dataset.themePref = theme;
             try { localStorage.setItem('theme', theme); } catch (_) { /* 저장 불가 환경 */ }
             applyTheme(theme);

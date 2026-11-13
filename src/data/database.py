@@ -6,10 +6,16 @@
 import sqlite3
 import logging
 from contextlib import contextmanager
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
 logger = logging.getLogger(__name__)
+
+# 이미 만들어진 DB 에 나중에 추가한 컬럼 (테이블, 컬럼, 정의). init_schema 가 없으면 ALTER TABLE 로 추가한다.
+MIGRATIONS = [
+    ('users', 'auto_speak', 'INTEGER NOT NULL DEFAULT 0'),   # 2026-11-13 카드 넘길 때 자동 발음 (기본 꺼짐)
+]
 
 # 스키마: 사용자별 학습 상태를 분리해 다중 사용자 동시 접속에서도 기록이 섞이지 않게 한다.
 SCHEMA = """
@@ -22,6 +28,7 @@ CREATE TABLE IF NOT EXISTS users (
     active        INTEGER NOT NULL DEFAULT 1,
     daily_target  INTEGER NOT NULL DEFAULT 10,
     theme         TEXT    NOT NULL DEFAULT 'system',
+    auto_speak    INTEGER NOT NULL DEFAULT 0,
     created_at    TEXT    NOT NULL DEFAULT (datetime('now', 'localtime'))
 );
 CREATE TABLE IF NOT EXISTS words (
@@ -102,10 +109,44 @@ class Database:
             conn.close()
 
     def init_schema(self) -> None:
+        if self._missing_columns():
+            self._backup_before_migration()
         with self.session() as conn:
             conn.execute("PRAGMA journal_mode = WAL")  # 읽기/쓰기 동시성 향상
             conn.executescript(SCHEMA)
+            for table, column, ddl in MIGRATIONS:      # SCHEMA 는 IF NOT EXISTS 라 기존 DB 의 컬럼은 여기서 보강한다
+                existing = {row['name'] for row in conn.execute(f"PRAGMA table_info({table})")}
+                if column not in existing:
+                    conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
+                    logger.info(f"마이그레이션: {table}.{column} 컬럼 추가")
         logger.info(f"DB 준비 완료: {self.db_path}")
+
+    def _missing_columns(self) -> list:
+        """이미 사용 중인 DB 에 아직 없는 컬럼 목록. 새로 만드는 DB(테이블 없음)는 해당 없음."""
+        if not self.db_path.exists():
+            return []
+        conn = self._connect()
+        try:
+            tables = {row['name'] for row in conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'")}
+            missing = []
+            for table, column, _ in MIGRATIONS:
+                if table in tables and column not in {row['name'] for row in conn.execute(f"PRAGMA table_info({table})")}:
+                    missing.append((table, column))
+            return missing
+        finally:
+            conn.close()
+
+    def _backup_before_migration(self) -> Path:
+        """컬럼을 추가하기 전에 같은 폴더(data/, git 제외)에 백업을 만든다. SQLite 백업 API 라 WAL 상태에서도 안전하다."""
+        backup = self.db_path.with_name(f"{self.db_path.stem}_migration_{datetime.now():%y%m%d_%H%M%S}.db")
+        source, target = sqlite3.connect(str(self.db_path)), sqlite3.connect(str(backup))
+        try:
+            source.backup(target)
+        finally:
+            target.close()
+            source.close()
+        logger.info(f"마이그레이션 전 백업: {backup}")
+        return backup
 
     def query(self, sql: str, params: Iterable[Any] = ()) -> List[Dict]:
         with self.session() as conn:

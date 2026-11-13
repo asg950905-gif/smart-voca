@@ -25,8 +25,9 @@ class SettingsManager:
 
     # ---------- 사용자 개인 ----------
     def get_user_settings(self, user_id: int) -> Dict:
-        row = self.db.query_one("SELECT daily_target, theme FROM users WHERE id = ?", (user_id,))
-        row = row or {'daily_target': 10, 'theme': 'system'}
+        row = self.db.query_one("SELECT daily_target, theme, auto_speak FROM users WHERE id = ?", (user_id,))
+        row = row or {'daily_target': 10, 'theme': 'system', 'auto_speak': 0}
+        row['auto_speak'] = bool(row['auto_speak'])   # 카드 넘길 때 자동 발음 (기본 꺼짐)
         row['max_daily_target'] = self.get_global()['max_daily_target']
         return row
 
@@ -43,7 +44,11 @@ class SettingsManager:
         theme = data.get('theme', current['theme'])
         if theme not in THEMES:
             raise SettingsError('올바르지 않은 테마입니다.')
-        self.db.execute("UPDATE users SET daily_target = ?, theme = ? WHERE id = ?", (target, theme, user_id))
+        auto_speak = data.get('auto_speak', current['auto_speak'])
+        if not isinstance(auto_speak, bool):          # 'yes'·2·null 같은 값은 받지 않는다 (JSON true/false 만)
+            raise SettingsError('자동 발음 설정은 켜짐/꺼짐 값이어야 합니다.')
+        self.db.execute("UPDATE users SET daily_target = ?, theme = ?, auto_speak = ? WHERE id = ?",
+                        (target, theme, int(auto_speak), user_id))
         return self.get_user_settings(user_id)
 
     # ---------- 관리자 전역 ----------

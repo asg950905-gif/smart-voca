@@ -4,7 +4,7 @@
 {# 2026-11-02 - smart-voca - 학습 화면: 플립카드 + 발음 듣기(TTS) + 완료 축하(컨페티·XP) #}
 {% block title %}학습{% endblock %}
 {% block content %}
-<div class="study-stage">
+<div class="study-stage" data-auto-speak="{{ '1' if current_user and current_user.auto_speak else '0' }}">
     <div class="page-head"><div><h1>오늘의 학습</h1><p id="progress-text" class="muted">단어를 불러오는 중…</p></div></div>
     <div class="bar" aria-hidden="true"><div id="progress-bar" style="width:0"></div></div>
 

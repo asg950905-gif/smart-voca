@@ -4,6 +4,8 @@
     'use strict';
     const $ = (id) => document.getElementById(id);
     let words = [], index = 0, results = [], saving = false;
+    // 카드 넘길 때 자동 발음은 설정(기본 꺼짐)을 켠 사람만. 꺼져 있으면 발음 버튼·P 키를 눌렀을 때만 재생한다.
+    const autoSpeak = document.querySelector('.study-stage').dataset.autoSpeak === '1';
 
     function show(area) {
         ['card-area', 'empty-area', 'done-area'].forEach((id) => $(id).classList.toggle('hidden', id !== area));
@@ -22,7 +24,7 @@
         bindSpeakButtons();
         $('progress-text').textContent = `${index + 1} / ${words.length}`;
         $('progress-bar').style.width = `${(index / words.length) * 100}%`;
-        if (window.ttsSupported) speak(w.english, $('tts-word'));   // 카드가 바뀔 때 자동으로 한 번 읽어 준다
+        if (autoSpeak && window.ttsSupported) speak(w.english, $('tts-word'));   // 설정을 켠 사람만 카드가 바뀔 때 읽어 준다
     }
 
     function flip() { $('flip').classList.toggle('flipped'); }

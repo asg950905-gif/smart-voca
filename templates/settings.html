@@ -21,6 +21,15 @@
                     <label><input type="radio" name="theme" value="dark"><span>{{ icon('moon') }} 다크</span></label>
                 </div>
             </div>
+            <div class="field">
+                <label class="switch-row" for="auto_speak">
+                    <span>
+                        <strong>카드 넘길 때 자동 발음</strong>
+                        <span class="hint" style="display:block">켜면 새 카드가 나올 때 단어를 자동으로 읽어 줘요. 끄면 발음 버튼이나 P 키를 눌렀을 때만 들려요. (기본: 꺼짐)</span>
+                    </span>
+                    <input id="auto_speak" class="switch" type="checkbox" role="switch">
+                </label>
+            </div>
             <button class="btn" type="submit">저장</button>
         </form>
     </section>

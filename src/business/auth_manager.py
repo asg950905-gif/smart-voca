@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 USERNAME_PATTERN = re.compile(r'^[A-Za-z0-9_]{3,20}$')
 MIN_PASSWORD_LENGTH = 6
-PUBLIC_FIELDS = "id, username, display_name, role, active, daily_target, theme, created_at"
+PUBLIC_FIELDS = "id, username, display_name, role, active, daily_target, theme, auto_speak, created_at"
 
 
 class AuthError(Exception):
