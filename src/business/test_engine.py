@@ -39,6 +39,27 @@ def is_same_answer(user_answer: str, correct_answer: str) -> bool:
     return user == correct
 
 
+def pick_distractors(candidates, correct: str, count: int = 3) -> list:
+    """보기용 오답을 고른다. 채점 기준(normalize_answer)으로 정답과 같은 후보와, 서로 같은 후보는 뺀다.
+    (뜻이 같은 동의어나 띄어쓰기만 다른 영단어를 보기에 넣으면 '정답이 둘'이 되어 버린다.)"""
+    def key_of(text: str) -> str:
+        return normalize_answer(text) or (text or '').strip().lower()
+
+    seen = {key_of(correct)}
+    shuffled = list(candidates)
+    random.shuffle(shuffled)
+    picked = []
+    for candidate in shuffled:
+        key = key_of(candidate)
+        if key in seen:
+            continue
+        seen.add(key)
+        picked.append(candidate)
+        if len(picked) == count:
+            break
+    return picked
+
+
 class TestError(Exception):
     """사용자에게 보여줘도 되는 시험 오류"""
 
@@ -108,8 +129,8 @@ class TestEngine:
         if p_fmt == '빈칸형':
             sentence = self._blank_sentence(word)
             if sentence and len(pool) >= MIN_WORDS_FOR_CHOICE:
-                others = [w['english'] for w in pool if w['id'] != word['id'] and w['english'].lower() != word['english'].lower()]
-                options = random.sample(others, min(3, len(others))) + [word['english']]
+                others = [w['english'] for w in pool if w['id'] != word['id']]
+                options = pick_distractors(others, word['english']) + [word['english']]
                 random.shuffle(options)
                 return {'word_id': word['id'], 'mode': '빈칸', 'format': '빈칸형', 'prompt': sentence,
                         'question': sentence, 'hint': word['korean'], 'correct_answer': word['english'], 'options': options}
@@ -121,20 +142,21 @@ class TestEngine:
 
         ask, answer = (word['korean'], word['english']) if p_mode == '한->영' else (word['english'], word['korean'])
         key = 'english' if p_mode == '한->영' else 'korean'
-        others = [w[key] for w in pool if w['id'] != word['id'] and w[key] != answer]
+        others = [w[key] for w in pool if w['id'] != word['id']]   # 정답과 같은 뜻/영어는 아래에서 pick_distractors 가 뺀다
         problem = {'word_id': word['id'], 'mode': p_mode, 'format': p_fmt,
                    'prompt': ask, 'correct_answer': answer, 'options': None}
 
         if p_fmt == '4지선다형':
-            options = random.sample(others, min(3, len(others))) + [answer]
+            options = pick_distractors(others, answer) + [answer]
             random.shuffle(options)
             problem['options'] = options
             problem['question'] = f"'{ask}'" + ("의 영문은?" if p_mode == '한->영' else "의 뜻은?")
         elif p_fmt == 'OX형':
             # 절반은 맞는 짝, 절반은 틀린 짝을 보여주고 O/X 를 고르게 한다
             shown, truth = (answer, True)
-            if others and random.random() < 0.5:
-                shown, truth = random.choice(others), False
+            wrong = pick_distractors(others, answer, 1)   # 정답과 같은 뜻이면 'X' 가 오답 처리되므로 제외
+            if wrong and random.random() < 0.5:
+                shown, truth = wrong[0], False
             problem['shown'] = shown
             problem['correct_answer'] = 'O' if truth else 'X'
             problem['options'] = ['O', 'X']
