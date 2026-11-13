@@ -137,6 +137,28 @@ def test_all_scope_and_omitted_scope_ask_from_every_word(app):
         assert result['total'] == 10 and result['config']['scope'] == 'all'   # scope 생략 = 예전처럼 전체
 
 
+@pytest.mark.parametrize('config', [{'scope': 'all'}, {}])        # {} = scope 생략(기본값 all)
+def test_all_scope_is_random_and_ignores_wrong_word_priority(app, studied_user, config):
+    """③ 전체 단어는 틀린 단어(weight) 우선이 없다. weight 가 아주 높은 단어가 있어도 매번 그 단어만 나오지 않는다."""
+    app.db.execute("UPDATE user_word_stats SET weight = 99 WHERE user_id = ? AND word_id = ?",
+                   (studied_user, word_id(app, 'term02')))
+    heavy, picked = word_id(app, 'term02'), []
+    for _ in range(60):
+        app.tests.start_test(studied_user, {'num_problems': 1, **config})
+        picked += asked_ids(app, studied_user)
+    assert len(set(picked)) >= 6                                       # 22개 단어에서 골고루 (weight 우선이면 1개뿐)
+    assert picked.count(heavy) < 30                                     # 기대값은 60/22 ≈ 3회
+
+
+def test_all_scope_can_pick_words_the_user_never_studied(app, studied_user):
+    studied = ids(app, TODAY_WORDS + OLD_WORDS)
+    seen = set()
+    for _ in range(40):
+        app.tests.start_test(studied_user, {'num_problems': 3, 'scope': 'all'})
+        seen |= set(asked_ids(app, studied_user))
+    assert seen - studied                                               # 공부하지 않은 단어도 출제된다
+
+
 # ---------- 빈 범위 / 잘못된 범위 ----------
 @pytest.mark.parametrize('scope, message', [('today', '오늘 공부한 단어가 없어요'), ('studied', '아직 공부한 단어가 없어요')])
 def test_empty_scope_tells_the_user_to_study_first(app, scope, message):

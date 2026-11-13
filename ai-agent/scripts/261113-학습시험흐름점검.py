@@ -338,15 +338,18 @@ def run():
             pick(page, 'scope', 'all')
             pick(page, 'mode', '영->한')
             pick(page, 'format', '4지선다형')
-            page.select_option('#num', '30')              # ③ 도 오답이 많은 단어를 먼저 뽑으므로, 공부한 17개보다 많이 요청해 안 본 단어가 섞이는지 본다
+            page.select_option('#num', '10')              # ③ 은 학습 기록과 상관없는 무작위 출제 (틀린 단어 우선은 ①② 만)
             check('③ 전체 단어 수가 2283 으로 보인다', page.inner_text('[data-scope-count="all"]') == '(2283)')
             shot(page, '08_시험시작_전체단어선택.png', True)
+            weighted = {r['english'] for r in user_stats(env, 'e2e_user') if r['weight'] > 0}   # 시작 전 기준 오답 단어
             page.click('#btn-start')
             log = solve(page, lambda w: None)
             asked = [w for w, _ in log]
             outside = [w for w in asked if w not in studied_all]
-            check('③ 30문제 출제 — 공부한 단어(최대 17개) 외에 아직 안 본 단어가 13개 이상',
-                  len(asked) == 30 and len(outside) >= 13, f'공부 안 한 단어 {len(outside)}개')
+            check('③ 10문제 출제 — 대부분 아직 안 본 단어 (2283개 중 무작위)', len(asked) == 10 and len(outside) >= 7,
+                  f'공부 안 한 단어 {len(outside)}개 / 10개')
+            check('③ 은 틀린 단어 우선이 아니다 (오답 단어가 10문제를 독차지하지 않음)',
+                  len(set(asked) & weighted) <= 3 and len(weighted) >= 5, f'오답 단어 {len(weighted)}개 중 {len(set(asked) & weighted)}개 출제')
 
             # ---------------------------------------------------------------- I. 동의어 채점
             section('I. 한→영 단답형 — 동의어 정답 처리')

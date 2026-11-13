@@ -131,7 +131,8 @@ class TestEngine:
         return {'total': len(problems), 'requested': num, 'short': len(problems) < num, 'config': state['config']}
 
     def _pick_words(self, user_id: int, scope: str, num: int) -> list:
-        """출제 범위 안에서 문제로 낼 단어를 고른다. 오답이 많은(weight 높은) 단어를 우선하고 나머지는 무작위."""
+        """출제 범위 안에서 문제로 낼 단어를 고른다. ①②는 오답이 많은(weight 높은) 단어를 우선하고 나머지는 무작위,
+        ③ 전체 단어는 weight 와 상관없이 무작위."""
         columns = "w.id, w.english, w.korean, w.example"
         if scope == 'today':
             today = datetime.now().strftime('%Y-%m-%d')
@@ -144,10 +145,8 @@ class TestEngine:
                 f"""SELECT {columns} FROM words w JOIN user_word_stats s ON s.word_id = w.id
                     WHERE s.user_id = ? AND s.success_count + s.fail_count > 0
                     ORDER BY s.weight DESC, RANDOM() LIMIT ?""", (user_id, num))
-        return self.db.query(
-            f"""SELECT {columns} FROM words w
-                LEFT JOIN user_word_stats s ON s.word_id = w.id AND s.user_id = ?
-                ORDER BY COALESCE(s.weight, 0) DESC, RANDOM() LIMIT ?""", (user_id, num))
+        # ③ 전체 단어: 학습 기록과 상관없이 순수 무작위 (틀린 단어 우선은 ①②에서만 적용한다)
+        return self.db.query(f"SELECT {columns} FROM words w ORDER BY RANDOM() LIMIT ?", (num,))
 
     def scope_counts(self, user_id: int) -> Dict:
         """범위별 단어 수 (시험 시작 화면에 보여준다)."""
