@@ -9,6 +9,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python ai-agent/scripts/시연데이터생성.py --reset   # 시연용 샘플 데이터 (선택)
+python ai-agent/scripts/토익단어적용.py --replace   # 토익 단어 2,293개로 교체 (--reset 으로 DB 가 지워진 뒤 다시 넣을 때도 사용, 원본: ai-agent/scripts/words_toeic.csv)
 python app.py                                       # http://127.0.0.1:5000
 ```
 
