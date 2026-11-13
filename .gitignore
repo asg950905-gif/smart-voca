@@ -10,6 +10,9 @@
 logs/
 backups/
 
+# Claude 가 만든 미리보기·시안 이미지 등 로컬 산출물 (저장소에 올리지 않음)
+Claude outputs/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -34,6 +37,7 @@ wheels/
 
 # 가상환경
 venv/
+venv-tools/
 ENV/
 env/
 .venv
