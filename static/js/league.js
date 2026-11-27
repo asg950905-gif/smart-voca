@@ -6,7 +6,7 @@
 
     async function init() {
         try {
-            const d = await api('/api/league');
+            const d = await api(fetch('/api/league', req()));
             const withXp = d.board.filter((r) => r.xp > 0);
             document.getElementById('league-empty').classList.toggle('hidden', withXp.length > 0);
             if (d.my_rank) {

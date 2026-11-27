@@ -6,7 +6,7 @@
 
     async function load() {
         try {
-            const s = await api('/api/settings');
+            const s = await api(fetch('/api/settings', req()));
             $('daily_target').value = s.daily_target;
             $('daily_target').max = s.max_daily_target;
             $('target-hint').textContent = `1 ~ ${s.max_daily_target}개`;
@@ -19,8 +19,8 @@
         e.preventDefault();
         const theme = document.querySelector('input[name="theme"]:checked').value;
         try {
-            await api('/api/settings', { method: 'POST', body: {
-                daily_target: Number($('daily_target').value), theme, auto_speak: $('auto_speak').checked } });
+            await api(fetch('/api/settings', req({ method: 'POST', body: {
+                daily_target: Number($('daily_target').value), theme, auto_speak: $('auto_speak').checked } })));
             document.documentElement.dataset.themePref = theme;
             try { localStorage.setItem('theme', theme); } catch (_) { /* 저장 불가 환경 */ }
             applyTheme(theme);
@@ -30,7 +30,7 @@
 
     $('btn-reset').addEventListener('click', async () => {
         if (!(await confirmDialog('내 학습 기록을 모두 삭제할까요?', '삭제'))) return;
-        try { await api('/api/settings/reset', { method: 'POST' }); toast('기록을 초기화했어요'); }
+        try { await api(fetch('/api/settings/reset', req({ method: 'POST' }))); toast('기록을 초기화했어요'); }
         catch (e) { toast(e.message, 'error'); }
     });
     load();

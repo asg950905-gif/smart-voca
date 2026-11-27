@@ -37,7 +37,7 @@
 
     async function init() {
         try {
-            const [o, c] = await Promise.all([api('/api/admin/overview'), api('/api/admin/charts')]);
+            const [o, c] = await Promise.all([api(fetch('/api/admin/overview', req())), api(fetch('/api/admin/charts', req()))]);
             $('k-users').textContent = o.total_users;
             $('k-users-sub').textContent = `오늘 ${o.active_today}명 · 최근 7일 ${o.active_week}명 활동`;
             $('k-words').textContent = o.total_words;

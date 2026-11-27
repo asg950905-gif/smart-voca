@@ -38,7 +38,7 @@
         saving = true;
         $('progress-bar').style.width = '100%';
         try {
-            const r = await api('/api/study/record', { method: 'POST', body: { results } });
+            const r = await api(fetch('/api/study/record', req({ method: 'POST', body: { results } })));
             $('done-summary').textContent = `${r.words_count}개 중 ${r.correct_count}개를 기억했어요 (${r.success_rate}%)`;
             $('done-xp').innerHTML = `<span class="xp-pop">${icon('star')} +${r.xp_gained} XP</span>` +
                 (r.level_up ? `<div class="levelup">${icon('circle-arrow-up')} 레벨 업! 이제 LEVEL ${r.level}이에요</div>` : '');
@@ -54,7 +54,7 @@
 
     async function init() {
         try {
-            words = await api('/api/study/daily-words');
+            words = await api(fetch('/api/study/daily-words', req()));
         } catch (e) { toast(e.message, 'error'); return; }
         if (!words.length) { $('progress-text').textContent = ''; show('empty-area'); return; }
         show('card-area');

@@ -33,15 +33,15 @@
     }
 
     async function loadScopes() {
-        try { scopeCounts = await api('/api/test/scopes'); } catch (e) { toast(e.message, 'error'); }
+        try { scopeCounts = await api(fetch('/api/test/scopes', req())); } catch (e) { toast(e.message, 'error'); }
         updateScopeUI();
     }
 
     async function start() {
         $('btn-start').disabled = true;
         try {
-            const r = await api('/api/test/start', { method: 'POST', body: {
-                num_problems: Number($('num').value), mode: radio('mode'), format: radio('format'), scope: radio('scope') } });
+            const r = await api(fetch('/api/test/start', req({ method: 'POST', body: {
+                num_problems: Number($('num').value), mode: radio('mode'), format: radio('format'), scope: radio('scope') } })));
             if (r.short) toast(`단어가 부족해서 ${r.total}문제만 출제했어요`, 'info');
             show('quiz');
             await loadProblem();
@@ -66,7 +66,7 @@
     }
 
     async function loadProblem() {
-        const p = await api('/api/test/current');
+        const p = await api(fetch('/api/test/current', req()));
         if (p.finished) { await finish(); return; }
         current = p; answered = false;
         $('q-count').textContent = `${p.index} / ${p.total}`;
@@ -109,7 +109,7 @@
         if (answered) return;
         answered = true;
         try {
-            const r = await api('/api/test/answer', { method: 'POST', body: { answer } });
+            const r = await api(fetch('/api/test/answer', req({ method: 'POST', body: { answer } })));
             document.querySelectorAll('#q-options .option').forEach((b) => {
                 b.disabled = true;
                 if (b.textContent === r.correct_answer) b.classList.add('correct');
@@ -147,7 +147,7 @@
         if (finished) return;
         finished = true;
         try {
-            const r = await api('/api/test/finish', { method: 'POST' });
+            const r = await api(fetch('/api/test/finish', req({ method: 'POST' })));
             $('r-score').textContent = `${r.score}점`;
             $('r-summary').textContent = `${r.total_problems}문제 중 ${r.correct_answers}문제 정답`;
             $('r-xp').innerHTML = `<span class="xp-pop">${icon('star')} +${r.xp_gained} XP</span>` +

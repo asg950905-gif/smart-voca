@@ -9,9 +9,9 @@
     document.getElementById('form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const body = Object.fromEntries(keys.map((k) => [k, Number(document.getElementById(k).value)]));
-        try { fill(await api('/api/admin/settings', { method: 'POST', body })); toast('저장했어요'); }
+        try { fill(await api(fetch('/api/admin/settings', req({ method: 'POST', body })))); toast('저장했어요'); }
         catch (err) { toast(err.message, 'error'); }
     });
 
-    api('/api/admin/settings').then(fill).catch((e) => toast(e.message, 'error'));
+    api(fetch('/api/admin/settings', req())).then(fill).catch((e) => toast(e.message, 'error'));
 })();

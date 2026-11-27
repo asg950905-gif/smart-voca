@@ -7,7 +7,7 @@
 
     async function load() {
         try {
-            const d = await api(`/api/admin/words?page=${page}&q=${encodeURIComponent(query)}`);
+            const d = await api(fetch(`/api/admin/words?page=${page}&q=${encodeURIComponent(query)}`, req()));
             pages = d.pages;
             $('total').textContent = `총 ${d.total}개`;
             $('page-info').textContent = `${d.page} / ${d.pages}`;
@@ -44,7 +44,9 @@
             e.preventDefault();
             const body = { english: f('f-en').value, korean: f('f-ko').value, part_of_speech: f('f-pos').value, example: f('f-ex').value };
             try {
-                await api(word ? `/api/admin/words/${word.id}` : '/api/admin/words', { method: word ? 'PUT' : 'POST', body });
+                // 주소는 fetch( 바로 뒤에 글자 그대로 둔다 (서버 하위 경로 치환 규칙 R-04)
+                await api(word ? fetch(`/api/admin/words/${word.id}`, req({ method: 'PUT', body }))
+                               : fetch('/api/admin/words', req({ method: 'POST', body })));
                 back.remove(); toast(word ? '수정했어요' : '추가했어요'); load();
             } catch (err) { toast(err.message, 'error'); }
         });
@@ -55,7 +57,7 @@
         const edit = e.target.dataset.edit, del = e.target.dataset.del;
         if (edit) openForm(window._words[edit]);
         if (del && await confirmDialog(`'${e.target.dataset.name}' 단어를 삭제할까요? 사용자들의 해당 단어 기록도 함께 삭제돼요.`, '삭제')) {
-            try { await api(`/api/admin/words/${del}`, { method: 'DELETE' }); toast('삭제했어요'); load(); }
+            try { await api(fetch(`/api/admin/words/${del}`, req({ method: 'DELETE' }))); toast('삭제했어요'); load(); }
             catch (err) { toast(err.message, 'error'); }
         }
     });
@@ -75,7 +77,7 @@
         const fd = new FormData();
         fd.append('file', file);
         try {
-            const r = await api('/api/admin/words/import', { method: 'POST', formData: fd });
+            const r = await api(fetch('/api/admin/words/import', req({ method: 'POST', formData: fd })));
             toast(`추가 ${r.added}개, 건너뜀 ${r.skipped}개` + (r.errors.length ? ` — ${r.errors[0]}` : ''));
             page = 1; load();
         } catch (e) { toast(e.message, 'error'); }

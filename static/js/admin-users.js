@@ -7,7 +7,7 @@
 
     async function load(q = '') {
         try {
-            const list = await api('/api/admin/users?q=' + encodeURIComponent(q));
+            const list = await api(fetch('/api/admin/users?q=' + encodeURIComponent(q), req()));
             users = Object.fromEntries(list.map((u) => [u.id, u]));
             $('total').textContent = `총 ${list.length}명`;
             $('rows').innerHTML = list.length ? list.map((u) => {
@@ -41,7 +41,7 @@
         back.querySelector('form').addEventListener('submit', async (e) => {
             e.preventDefault();
             try {
-                await api(`/api/admin/users/${user.id}/password`, { method: 'POST', body: { password: back.querySelector('#np').value } });
+                await api(fetch(`/api/admin/users/${user.id}/password`, req({ method: 'POST', body: { password: back.querySelector('#np').value } })));
                 back.remove(); toast('비밀번호를 변경했어요');
             } catch (err) { toast(err.message, 'error'); }
         });
@@ -55,14 +55,14 @@
             if (act === 'role') {
                 const role = u.role === 'admin' ? 'user' : 'admin';
                 if (!(await confirmDialog(`${u.display_name}님을 ${role === 'admin' ? '관리자' : '일반 사용자'}로 변경할까요?`, '변경'))) return;
-                await api(`/api/admin/users/${id}/role`, { method: 'POST', body: { role } });
+                await api(fetch(`/api/admin/users/${id}/role`, req({ method: 'POST', body: { role } })));
             } else if (act === 'active') {
-                await api(`/api/admin/users/${id}/active`, { method: 'POST', body: { active: !u.active } });
+                await api(fetch(`/api/admin/users/${id}/active`, req({ method: 'POST', body: { active: !u.active } })));
             } else if (act === 'pw') {
                 promptPassword(u); return;
             } else if (act === 'del') {
                 if (!(await confirmDialog(`${u.display_name}님과 모든 학습 기록을 삭제할까요?`, '삭제'))) return;
-                await api(`/api/admin/users/${id}`, { method: 'DELETE' });
+                await api(fetch(`/api/admin/users/${id}`, req({ method: 'DELETE' })));
             }
             toast('처리했어요'); load($('search').value);
         } catch (err) { toast(err.message, 'error'); }

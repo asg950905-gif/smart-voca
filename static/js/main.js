@@ -17,8 +17,12 @@
         return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     };
 
-    // fetch 래퍼: CSRF 헤더 자동 추가, 오류 메시지를 Error 로 던진다
-    window.api = async function (url, { method = 'GET', body, formData } = {}) {
+    // API 호출은 api(fetch('/api/...', req({...}))) 형태로 쓴다.
+    // 학교 서버는 앱을 /2026/voca-<학번>/ 아래로 옮기면서 응답 속 fetch('/ 글자를 고쳐 쓴다(R-04).
+    // 그래서 주소는 호출하는 자리의 fetch( 바로 뒤에 문자열로 두고, 변수로 받아 fetch(url) 하지 않는다.
+
+    // fetch 옵션: CSRF 헤더 자동 추가, body 는 JSON, formData 는 파일 업로드
+    window.req = function ({ method = 'GET', body, formData } = {}) {
         const options = { method, headers: { 'X-CSRF-Token': csrfToken }, credentials: 'same-origin' };
         if (formData) {
             options.body = formData;
@@ -26,7 +30,12 @@
             options.headers['Content-Type'] = 'application/json';
             options.body = JSON.stringify(body);
         }
-        const response = await fetch(url, options);
+        return options;
+    };
+
+    // fetch 결과 처리: 401 이면 로그인 화면으로, 오류면 서버 메시지를 Error 로 던진다
+    window.api = async function (request) {
+        const response = await request;
         if (response.status === 401) { location.href = '/login'; throw new Error('로그인이 필요합니다.'); }
         let data = {};
         try { data = await response.json(); } catch (_) { /* 본문 없음 */ }
@@ -151,7 +160,7 @@
                 try { localStorage.setItem('theme', next); } catch (_) { /* 저장 불가 환경 */ }
                 applyTheme(next);
                 if (document.body.dataset.loggedIn === '1') {
-                    try { await api('/api/settings', { method: 'POST', body: { theme: next } }); } catch (_) { /* 로컬만 적용 */ }
+                    try { await api(fetch('/api/settings', req({ method: 'POST', body: { theme: next } }))); } catch (_) { /* 로컬만 적용 */ }
                 }
             });
         }

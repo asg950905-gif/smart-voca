@@ -32,7 +32,7 @@
 
     async function init() {
         try {
-            const [stats, c] = await Promise.all([api('/api/report/statistics'), api('/api/report/charts')]);
+            const [stats, c] = await Promise.all([api(fetch('/api/report/statistics', req())), api(fetch('/api/report/charts', req()))]);
             document.getElementById('k-days').textContent = stats.total_study_days + '일';
             document.getElementById('k-rate').textContent = stats.average_study_success_rate + '%';
             document.getElementById('k-tests').textContent = stats.total_test_attempts + '회';
