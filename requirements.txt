@@ -1,3 +1,6 @@
-Flask>=3.0.0
-Werkzeug>=3.0.0
-Jinja2>=3.1.0
+# 실행에 필요한 패키지 (코드가 직접 import 하는 것만, 버전 고정 — Dockerfile 가이드)
+Flask==3.1.3
+Werkzeug==3.1.9
+Jinja2==3.1.6
+# 운영 서버 (Docker/학교 서버 전용). Windows 에서는 실행되지 않아 개발 PC 에는 설치하지 않는다 (개발은 python app.py)
+gunicorn==23.0.0; sys_platform != "win32"
