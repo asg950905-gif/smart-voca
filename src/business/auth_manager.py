@@ -27,7 +27,7 @@ class AuthManager:
         self.db = db
 
     # ---------- 가입/로그인 ----------
-    def register(self, username: str, password: str, display_name: str = '', role: str = 'user') -> Dict:
+    def _check_new_account(self, username: str, password: str) -> str:
         username = (username or '').strip()
         if not USERNAME_PATTERN.match(username):
             raise AuthError('아이디는 영문·숫자·밑줄 3~20자로 입력하세요.')
@@ -35,12 +35,31 @@ class AuthManager:
             raise AuthError(f'비밀번호는 {MIN_PASSWORD_LENGTH}자 이상이어야 합니다.')
         if self.db.query_one("SELECT 1 FROM users WHERE username = ? COLLATE NOCASE", (username,)):
             raise AuthError('이미 사용 중인 아이디입니다.')
+        return username
+
+    def register(self, username: str, password: str, display_name: str = '', role: str = 'user') -> Dict:
+        username = self._check_new_account(username, password)
         user_id = self.db.execute(
             "INSERT INTO users(username, display_name, password_hash, role) VALUES(?, ?, ?, ?)",
             (username, (display_name or username).strip(), generate_password_hash(password), role),
         )
         logger.info(f"사용자 가입: {username} ({role})")
         return self.get_user(user_id)
+
+    def sign_up(self, username: str, password: str, display_name: str = '') -> Dict:
+        """가입 화면용. DB 에 관리자가 한 명도 없으면 이 가입자를 관리자로, 있으면 일반 회원으로 만든다.
+        빈 DB 로 시작하는 학교 서버에서 단어 등록·CSV 가져오기를 할 관리자가 필요하기 때문이다.
+        (ADMIN_* 환경변수가 있으면 앱 시작 때 관리자가 먼저 만들어지므로 가입자는 일반 회원이 된다.)
+        관리자 유무 확인과 INSERT 를 한 문장으로 묶어, 두 사람이 동시에 가입해도 관리자는 한 명만 생긴다."""
+        username = self._check_new_account(username, password)
+        user_id = self.db.execute(
+            "INSERT INTO users(username, display_name, password_hash, role) "
+            "SELECT ?, ?, ?, CASE WHEN EXISTS (SELECT 1 FROM users WHERE role = 'admin') THEN 'user' ELSE 'admin' END",
+            (username, (display_name or username).strip(), generate_password_hash(password)),
+        )
+        user = self.get_user(user_id)
+        logger.info(f"사용자 가입: {username} ({user['role']})")
+        return user
 
     def authenticate(self, username: str, password: str) -> Dict:
         row = self.db.query_one(

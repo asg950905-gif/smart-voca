@@ -48,7 +48,7 @@ def register():
             flash('비밀번호 확인이 일치하지 않습니다.', 'error')
         else:
             try:
-                user = current_app.auth.register(
+                user = current_app.auth.sign_up(
                     request.form.get('username', ''), password, request.form.get('display_name', ''))
             except AuthError as e:
                 flash(str(e), 'error')
@@ -56,7 +56,9 @@ def register():
                 session.clear()
                 session['user_id'] = user['id']
                 session.permanent = True
-                return redirect(url_for('user.dashboard'))
+                if user['role'] == 'admin':   # 관리자가 없던 DB 의 첫 가입자 (AuthManager.sign_up)
+                    flash('첫 가입자라 관리자 권한이 부여되었어요. 단어 관리에서 CSV 를 가져오세요.', 'success')
+                return redirect(home_for(user))
     return render_template('register.html', username=request.form.get('username', ''),
                            display_name=request.form.get('display_name', ''))
 
