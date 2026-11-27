@@ -1,0 +1,8 @@
+# 2026-11-27 - smart-voca - 줄바꿈을 LF 로 통일 (R-12: Windows CRLF 가 Linux 컨테이너에서 문제를 일으키지 않게)
+* text=auto eol=lf
+
+# 바이너리는 줄바꿈 변환 대상이 아님
+*.png binary
+*.ico binary
+*.woff2 binary
+*.db binary
