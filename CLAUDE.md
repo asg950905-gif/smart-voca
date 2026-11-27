@@ -129,8 +129,18 @@ python app.py
 
 ### 배포
 
-- **개발**: `flask run` (로컬)
-- **프로덕션**: Gunicorn + Nginx (이후 구성)
+- **개발**: `python app.py` (로컬 127.0.0.1:5000)
+- **프로덕션(학교 서버)**: 루트 `Dockerfile` → `gunicorn wsgi:app` (0.0.0.0:8080, UID 10001, DB 는 `DB_PATH=/data/voca.db`).
+  학교 서버가 `/2026/voca-<학번>/` 아래로 옮기므로 JS 주소는 `api(fetch('/api/...', req()))` 처럼 `fetch(` 바로 뒤에 글자로 쓴다.
+  push 마다 `.github/workflows/docker-check.yml`(과제 배포 파일, **수정 금지**)이 green 이어야 한다.
+- 과제 요건 원문: https://lab.aisw.tedso.kr/course/ai-prog/2026-final (요구사항 v1.1, Dockerfile 구성 v1.0, 공지 v1.2)
+
+### 요구사항 ID 추적 (기말과제 VOCA-SUB-022)
+
+- 요구사항 ID 는 과제 요건의 `VOCA-FR-xxx` / `VOCA-NFR-xxx` / `VOCA-SUB-xxx` 를 쓴다.
+- 구현 현황표는 `README.md` "구현한 요구사항" 이 기준이다. 기능을 추가·변경하면 같은 사이클에서 표의 상태(✅/⚠️/❌)를 고친다.
+- 커밋 메시지·일지·설계 문서에 관련 ID 를 적는다 (예: `feat: Day 진도 추가 (VOCA-FR-011)`).
+- 요구사항 명세서의 VOCA-FR 대응표는 최종 docs 정비(12/11 전) 때 만든다.
 
 ### 주의사항
 
@@ -358,4 +368,5 @@ python app.py
 - **테스트 서버 종료**: PowerShell 에서 `Get-NetTCPConnection -LocalPort 5000 -State Listen` 의 프로세스를 `Stop-Process`.
   `python.exe` 전체를 종료하는 명령은 쓰지 않는다 (다른 파이썬 작업까지 끊김).
 - **줄바꿈 경고**: `LF will be replaced by CRLF` 는 Windows 기본 동작이라 무시해도 된다.
-- **자동 테스트 기준**: `python -m pytest tests -q` 27개 통과 (2026-11-04).
+- **자동 테스트 기준**: `python -m pytest tests -q` 141개 통과 (2026-11-27). `app.py` 에 모듈 수준 `create_app()` 이 없어져
+  pytest 가 더 이상 실DB(`data/`)를 열지 않는다 (`tests/test_deploy_config.py` 로 확인).

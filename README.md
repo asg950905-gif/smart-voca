@@ -2,7 +2,36 @@
 
 웹 기반 영어 단어 학습 플랫폼. 사용자 화면(학습·시험·통계)과 관리자 화면(단어·사용자·전체 통계 관리)을 분리했다.
 
-## 빠른 시작 (Windows PowerShell)
+- **선택한 DB**: **SQLite** (파이썬 표준 `sqlite3`). 위치는 환경변수 `DB_PATH` (Docker 기본 `/data/voca.db`). 첫 실행 때 테이블을 자동으로 만든다.
+- **과제**: AI기반프로그래밍 2026-2 기말 — 단어장 앱. 구현한 요구사항 ID 는 아래 [구현한 요구사항](#구현한-요구사항) 표 참고.
+
+## Docker 로 실행 (학교 서버와 같은 방식)
+
+```powershell
+docker build -t smart-voca .
+docker run --rm -p 8080:8080 -v voca-data:/data smart-voca    # http://localhost:8080
+```
+
+- 컨테이너는 `0.0.0.0:8080` 에서 `gunicorn wsgi:app` 으로 실행되고, UID 10001 사용자로 돈다. 쓰기는 `/data`(DB·세션 키)에만 한다.
+- 앱은 `/` 기준으로 만들었다. 학교 서버는 앞단 nginx 가 `/2026/voca-<학번>/` 아래로 옮긴다. 그래서 JS 의 API 주소는 `api(fetch('/api/...', req()))` 처럼 **`fetch(` 바로 뒤에 글자 그대로** 쓴다 (`static/js/main.js` 설명 참고).
+- 배포 점검: push 할 때마다 `.github/workflows/docker-check.yml`(과제 배포 파일, 수정 금지)이 학교 서버 조건으로 빌드·실행을 확인한다.
+
+| 환경변수 | 기본값 | 설명 |
+| :--- | :--- | :--- |
+| `DB_PATH` | Docker `/data/voca.db`, 로컬 `data/smart_voca.db` | SQLite 파일 위치 (`DATA_DIR` 도 계속 지원) |
+| `SECRET_KEY` | 없으면 무작위 생성 | 세션 서명 키. 없으면 DB 와 같은 폴더의 `secret_key.txt` 에 만들어 재사용 (worker·재시작 사이 같은 키) |
+| `ADMIN_USERNAME`, `ADMIN_PASSWORD` | 없음 | 있으면 시작할 때 이 관리자 계정을 만든다 (관리자가 없을 때만) |
+| `SESSION_COOKIE_SECURE` | `0` | HTTPS 로만 접속하면 `1` |
+| `HOST`, `PORT`, `FLASK_DEBUG` | `127.0.0.1`, `5000`, 꺼짐 | `python app.py` 로컬 개발 서버 전용 |
+
+### 처음 관리자 계정 (빈 DB)
+
+- **DB 에 관리자가 한 명도 없으면, 처음 가입한 사람이 관리자가 된다.** 그 뒤 가입자는 일반 회원이다. 관리자 유무 확인과 가입을 SQL 한 문장으로 처리해 동시에 가입해도 관리자는 한 명만 생긴다 (`AuthManager.sign_up`).
+- `ADMIN_USERNAME`/`ADMIN_PASSWORD` 를 주면 그 계정이 먼저 관리자가 되므로, 첫 가입자도 일반 회원이 된다.
+- 단어는 자동으로 넣지 않는다. 관리자 화면 **단어 관리 → CSV 가져오기**로 등록한다.
+- 테스트: `tests/test_deploy_config.py` (첫 가입자 관리자·두 번째 가입자 일반·환경변수 우선·관리자 있을 때 일반).
+
+## 로컬 개발 (Windows PowerShell)
 
 ```powershell
 python -m venv venv
@@ -18,7 +47,7 @@ python app.py                                       # http://127.0.0.1:5000
 | 관리자 | `admin` / `admin1234` |
 | 사용자 | `minsu`, `jiyoung`, `hojun`, `seoyun`, `taeho` / `demo1234` |
 
-시연 계정의 비밀번호는 **시연 전용**이다. 11/16 배포(사용자 5명 공유) 때는 새 DB 로 시작하고 `.env`(`.env.example` 참고)로 관리자 계정을 만든다.
+시연 계정의 비밀번호는 **시연 전용**이다. 배포 서버는 빈 DB 로 시작하므로 위 계정이 없다 (처음 가입자가 관리자, 위 "처음 관리자 계정" 참고).
 
 ## 주요 기능
 
@@ -30,7 +59,9 @@ python app.py                                       # http://127.0.0.1:5000
 ## 구조
 
 ```
-app.py                  앱 팩토리 (환경변수 · 보안 헤더 · 오류 처리)
+app.py                  앱 팩토리 create_app (환경변수 · 보안 헤더 · 오류 처리). python app.py = 로컬 개발 서버
+wsgi.py                 운영 진입점 (gunicorn wsgi:app). 앱 객체는 여기서만 만든다
+Dockerfile              학교 서버 배포 이미지 (.dockerignore, .gitattributes 함께)
 src/data/database.py    SQLite 스키마·접속
 src/business/           auth / word / study / test_engine / gamification / report_generator
 src/web/                Blueprint (auth, user, admin) + security (권한·CSRF·로그인 제한)
@@ -87,6 +118,30 @@ python ai-agent/scripts/시연데이터생성.py --reset   # data/ 는 git 에 �
 토큰·비밀번호·`.env` 내용은 Claude 대화창에 붙여넣지 않는다.
 
 문제 해결: push 거절 → `git pull` 후 재시도 / `Activate.ps1` 차단 → `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+## 구현한 요구사항
+
+과제 소프트웨어 요건 v1.1 기준 (2026-11-27 점검). ✅ 구현 / ⚠️ 일부 구현 / ❌ 미구현. ⚠️·❌ 는 최종 제출(12/11) 전에 보완한다.
+
+| 구분 | ID | 상태 | 비고 |
+| :--- | :--- | :---: | :--- |
+| 단어 등록 | VOCA-FR-001, 002, 004 | ✅ | 관리자 화면 단어 관리 (추가·목록·수정·삭제·검색) |
+| | VOCA-FR-003 | ⚠️ | CSV 가져오기 있음 (UTF-8 BOM 허용, 같은 영단어는 대소문자 무시하고 건너뜀). 헤더 `영단어,뜻` 지원 예정 |
+| 암기 | VOCA-FR-012 | ✅ | 카드 한 장씩, 영어 → 뜻 |
+| | VOCA-FR-011, 013, 014 | ⚠️ | 오답 우선 출제·학습 기록은 있음. Day(1일차…) 진도, 이전 Day 섞기, 단어 단위 암기 이력은 예정 |
+| 시험 | VOCA-FR-021, 023, 024, 025 | ✅ | 문제 수, 한→영/영→한/혼합, 단답·4지선다·OX·빈칸, 점수·오답·정답 |
+| | VOCA-FR-022, 026 | ⚠️ | 오답 우선 출제는 있음. 가중치 랜덤, 문항별 이력 저장은 예정 |
+| 통계 | VOCA-FR-033, 034 | ✅ | 자주 틀린 단어, 모든 통계를 DB 기록에서 계산 |
+| | VOCA-FR-031, 032 | ⚠️ | 학습한 단어 수·날짜별 추이는 있음. 현재 Day·회차별 추이는 예정 |
+| 로그인 (도전) | VOCA-FR-041, 042, 043 | ✅ | 가입·로그인·로그아웃, Werkzeug 비밀번호 해시, 계정별 기록 분리 |
+| 다른 계정 (도전) | VOCA-FR-051, 053 | ⚠️ | 주간 리그 순위(읽기 전용). 공개/비공개 선택(VOCA-FR-052)은 미구현 |
+| 설정 (도전) | VOCA-FR-061, 062 | ⚠️ | 하루 학습량·테마·자동 발음을 계정별 DB 에 저장. 복습 비율·시험 기본값은 미구현 |
+| 비기능 | VOCA-NFR-001, 003, 004, 005 | ✅ | 브라우저 실행, 빈 DB 자동 생성, 비밀은 환경변수, Docker 배포 조건 |
+| | VOCA-NFR-002 | ⚠️ | 단어·학습·시험·사용자·설정을 DB 에 저장. 문항별 시험 이력은 예정 |
+
+## 커밋 작성자 안내
+
+초기 커밋 15개(2026-10-28, 11-04, 11-11)는 git 작성자 이메일을 개인 계정으로 지정하기 전에 만들어져 `user@example.com` 으로 남아 있다. 공개 저장소 이력을 고쳐 쓰지 않으려고(force-push 금지) 그대로 두었다.
 
 ## 문서
 
