@@ -33,19 +33,37 @@ from src.web import admin_routes, auth_routes, user_routes
 from src.web.security import check_csrf, get_csrf_token, wants_json
 
 
+DB_FILENAME = 'smart_voca.db'
+
+
+def resolve_db_path(data_dir=None) -> Path:
+    """DB 파일 위치. 인자(테스트) > DB_PATH(학교 서버·Docker: /data/voca.db) > DATA_DIR > 프로젝트 data/ 순서."""
+    if data_dir:
+        return Path(data_dir) / DB_FILENAME
+    if os.environ.get('DB_PATH'):
+        return Path(os.environ['DB_PATH'])
+    return Path(os.environ.get('DATA_DIR') or PROJECT_ROOT / 'data') / DB_FILENAME
+
+
 def _load_secret_key(data_dir: Path) -> str:
-    """SECRET_KEY 는 환경변수를 우선하고, 없으면 data/ 에 한 번 생성해 재사용한다 (코드에 하드코딩 금지)."""
+    """SECRET_KEY 는 환경변수를 우선하고, 없으면 무작위로 만들어 DB 와 같은 폴더에 저장해 재사용한다.
+    (메모리에만 만들면 gunicorn worker 마다 키가 달라 로그인이 풀린다. 코드에 하드코딩 금지)"""
     env_key = os.environ.get('SECRET_KEY')
     if env_key:
         return env_key
     key_file = data_dir / 'secret_key.txt'
     if not key_file.exists():
-        key_file.write_text(secrets.token_hex(32), encoding='utf-8')
+        try:
+            with open(key_file, 'x', encoding='utf-8') as f:   # 'x': worker 둘이 동시에 만들면 먼저 만든 쪽만 쓴다
+                f.write(secrets.token_hex(32))
+        except FileExistsError:
+            pass
     return key_file.read_text(encoding='utf-8').strip()
 
 
 def create_app(data_dir=None) -> Flask:
-    data_dir = Path(data_dir or os.environ.get('DATA_DIR') or PROJECT_ROOT / 'data')
+    db_path = resolve_db_path(data_dir)
+    data_dir = db_path.parent          # 세션 키·마이그레이션 백업도 DB 와 같은 폴더에 둔다 (서버에서 쓰기 가능한 곳은 /data, /tmp 뿐)
     data_dir.mkdir(parents=True, exist_ok=True)
 
     app = Flask(__name__, static_folder=str(PROJECT_ROOT / 'static'), static_url_path='/static')
@@ -59,7 +77,7 @@ def create_app(data_dir=None) -> Flask:
     )
 
     # 서비스 객체: 요청 간 공유되지만 사용자별 상태는 모두 DB 에 있다
-    db = Database(data_dir / 'smart_voca.db')
+    db = Database(db_path)
     app.db = db
     app.auth = AuthManager(db)
     app.words = WordManager(db)
@@ -140,10 +158,11 @@ def create_app(data_dir=None) -> Flask:
     return app
 
 
-app = create_app()
-
+# 모듈 수준에서 create_app() 을 부르지 않는다: 테스트가 'from app import create_app' 만 해도 실DB 를 열던 문제 해결.
+# 운영(gunicorn)은 wsgi.py 의 app 을, 로컬 개발은 아래 python app.py 를 쓴다.
 if __name__ == '__main__':
     # 기본은 본인 PC(127.0.0.1)만 접속 가능. 팀 테스트 배포 시 HOST=0.0.0.0, FLASK_DEBUG 는 끈 채로 사용한다.
+    app = create_app()
     app.run(debug=os.environ.get('FLASK_DEBUG') == '1',
             host=os.environ.get('HOST', '127.0.0.1'),
             port=int(os.environ.get('PORT', 5000)))
